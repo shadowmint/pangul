@@ -13,7 +13,7 @@ export default class PangulQuestionService {
 
   makeEmptyAnswer() {
     return {
-      body: 'Answer goes here...',
+      body: 'TopicHomePage goes here...',
     };
   }
   

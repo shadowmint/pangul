@@ -20,11 +20,6 @@ export class Answer extends Model<IAnswer> {
         return answer;
     }
 
-    /** Refresh a answer instance */
-    public async refresh(): Promise<void> {
-        await this.update(async () => await this.fetchAnswerData(this.state.answerId));
-    }
-
     /** Search for answers */
     public static search(questionId: string, pageSize: number = 10, page: number = 0): Promise<QuerySet<Answer>> {
         return QuerySet.fromQuery({
@@ -33,6 +28,16 @@ export class Answer extends Model<IAnswer> {
             pageSize,
             query: questionId,
         }, page);
+    }
+
+    private static async searchForIds(questionId: string, offset: number, limit: number): Promise<IQueryResult> {
+        const controller = new AnswersController();
+        return await controller.search(questionId, offset, limit);
+    }
+
+    /** Refresh a answer instance */
+    public async refresh(): Promise<void> {
+        await this.update(async () => await this.fetchAnswerData(this.state.answerId));
     }
 
     /** Reset to the default state */
@@ -61,10 +66,10 @@ export class Answer extends Model<IAnswer> {
 
     protected blank(): IAnswer {
         return {
+            answerId: "",
             body: "...",
             meta: new AnswerMeta(),
             questionId: "",
-            answerId: "",
             rowVersion: "",
         };
     }
@@ -81,10 +86,5 @@ export class Answer extends Model<IAnswer> {
 
     protected rebind(): void {
         this.state.meta.parent = this;
-    }
-
-    private static async searchForIds(questionId: string, offset: number, limit: number): Promise<IQueryResult> {
-        const controller = new AnswersController();
-        return await controller.search(questionId, offset, limit);
     }
 }

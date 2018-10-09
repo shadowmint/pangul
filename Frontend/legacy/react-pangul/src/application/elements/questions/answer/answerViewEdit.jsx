@@ -50,12 +50,12 @@ class AnswerViewEdit extends React.Component {
   }
 
   _onCancel() {
-    console.log('Answer changed cancelled');
+    console.log('TopicHomePage changed cancelled');
     this.setState({answer: null, edit: false, error: null});
   }
 
   _onChange(data) {
-    console.log('Answer changed', data);
+    console.log('TopicHomePage changed', data);
     this.setState({answer: data});
   }
 
