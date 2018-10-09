@@ -1,0 +1,27 @@
+.component--TagList {
+  .tag {
+    a {
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+      &.removeTag {
+        font-size: 0.8em;
+        position: relative;
+        bottom: 0.4em;
+        padding: 0.1em 0em 0.1em 0.2em;
+        display: inline-block;
+        color: #961e1e;
+      }
+    }
+    display: inline-block;
+    margin: 0.1em;
+    padding: 0.2em 0.3em;
+    background: #efefef;
+    border: #000066;
+    &:first-child {
+      margin-left: 0px;
+    }
+  }
+}

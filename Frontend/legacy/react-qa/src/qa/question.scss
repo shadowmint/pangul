@@ -1,0 +1,32 @@
+.component--QuestionView {
+  > div {
+    > h1 {
+      margin: 0;
+    }
+  }
+}
+
+.component--QuestionEdit {
+  > div {
+    > h1 {
+      margin: 0;
+    }
+  }
+  .edit {
+    > div {
+      &.title {
+        input {
+          width: 100%;
+          height: 2em;
+          line-height: 2em;
+          font-size: 1.5em;
+          margin-bottom: 2px;
+          padding: 0.2em;
+        }
+      }
+      .react-mde {
+        width: 100%;
+      }
+    }
+  }
+}

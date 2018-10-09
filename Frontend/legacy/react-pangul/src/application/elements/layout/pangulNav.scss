@@ -1,0 +1,47 @@
+@import '../../../styles/sizes';
+@import '../../../styles/colors';
+
+.component--PangulNav {
+  .burger{
+    border: 0;
+    font-size: 1em;
+    width: $pangulHeaderSize;
+    height: $pangulHeaderSize;
+    display: inline-block;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+  }
+  nav {
+    z-index: 1000;
+    display: block;
+    position: fixed;
+    height: calc(100% - 2.4em);
+    bottom: 0;
+    left: 0;
+    width: $pangulNavSideMenuWidth;
+    background: $pangulColorBackgroundDefault;
+    border-right: thin solid $pangulColorBackgroundSecondary;
+    padding: 0.2em;
+    a {
+      display: block;
+      margin: 0.2em;
+      padding: 0.2em 0.5em;
+      background: $pangulColorBackgroundSecondary;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  .fade {
+    display: block;
+    position: fixed;
+    height: calc(100% - 2.4em);
+    bottom: 0;
+    left: calc(0.4em + #{$pangulNavSideMenuWidth});
+    width: calc(100% - #{$pangulNavSideMenuWidth});
+    background: $pangulColorBackgroundDefault;
+    opacity: 0.7;
+  }
+}

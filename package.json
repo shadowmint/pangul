@@ -1,0 +1,22 @@
+{
+  "name": "pangul",
+  "version": "0.0.1",
+  "description": "...",
+  "main": "index.js",
+  "files": [
+    "lib",
+    "scripts"
+  ],
+  "scripts": {
+    "test": "dotnet build && dotnet test",
+    "start": "cd Backend/Pangul.Backend.Web/ && dotnet watch run"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "NCore.Base.Commands": "github:shadowmint/ncore-base-commands",
+    "NCore.Base.Log": "github:shadowmint/ncore-base-log",
+    "NCore.Base.WebAuth": "github:shadowmint/ncore-base-webauth",
+    "NCore.Optional": "github:shadowmint/ncore-optional"
+  }
+}

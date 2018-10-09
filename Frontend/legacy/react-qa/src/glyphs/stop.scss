@@ -1,0 +1,9 @@
+@import "_styles";
+
+.component--Glyph--Stop {
+  display: inline-block;
+  width: $glyphSize;
+  height: $glyphSize;
+  background: $glyphColor;
+  border-radius: 2px;
+}

@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Pangul.Core.Infrastructure\Pangul.Core.Infrastructure.csproj" />
+    <ProjectReference Include="..\Pangul.Services.Search\Pangul.Services.Search.csproj" />
+    <ProjectReference Include="..\Pangul.Services\Pangul.Services.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Db" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.IO.Abstractions" Version="2.1.0.231" />
+  </ItemGroup>
+</Project>

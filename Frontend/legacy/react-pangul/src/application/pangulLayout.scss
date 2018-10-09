@@ -1,0 +1,7 @@
+@import '../styles/fonts';
+@import '../styles/layouts/defaultPageLayout';
+
+.component--PangulLayout {
+  display: flex;
+  flex-direction: column;
+}

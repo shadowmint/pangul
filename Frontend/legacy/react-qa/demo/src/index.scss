@@ -1,0 +1,35 @@
+body {
+  font-family: 'Fira Sans', sans-serif;
+}
+
+.example {
+  display: inline-block;
+  padding: 1em;
+  margin: 1em;
+  border: 1px solid #efefef;
+  width: 40%;
+  min-width: 512px;
+  height: 400px;
+  vertical-align: top;
+  &.glyph {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    min-width: 80px;
+  }
+}
+
+nav {
+  a {
+    display: inline-block;
+    margin: 0.5em 0 0.5em 0.5em;
+    padding: 0.5em;
+    background: #efefef;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
