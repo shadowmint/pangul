@@ -1,0 +1,37 @@
+{
+  "name": "react-pangul-core",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest unit",
+    "integration": "jest integration",
+    "cleanup": "jest cleanup",
+    "wip": "jest wip",
+    "build": "npx babel ./src --out-dir lib --extensions \".ts,.tsx\"",
+    "check": "tsc --noEmit && tslint src/**/*.ts?x"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-typescript": "^7.0.0",
+    "@types/jest": "^23.3.1",
+    "@types/request": "^2.47.1",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.4.2",
+    "jest": "^23.5.0",
+    "jest-cli": "^23.5.0",
+    "request": "^2.88.0",
+    "ts-jest": "^23.1.4",
+    "tslint": "^5.11.0",
+    "typescript": "^3.0.3"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "rxjs": "^6.2.2"
+  }
+}
