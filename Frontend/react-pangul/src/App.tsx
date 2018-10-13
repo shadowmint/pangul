@@ -1,6 +1,6 @@
 import * as React from 'react';
-import './App.css';
-import { configureApplication } from "./packages/react-pangul-app/src/infrastructure/service/settingsProvider";
+import {LayoutTheme} from "./packages/react-pangul-app/src/components/layout/layoutTheme/layoutTheme";
+import {configureApplication} from "./packages/react-pangul-app/src/infrastructure/service/settingsProvider";
 import TopicAskQuestionTest from "./packages/react-pangul-app/src/pages/topics/topicAskQuestion/topicAskQuestionTest";
 
 configureApplication({
@@ -15,9 +15,9 @@ configureApplication({
 class App extends React.Component {
     public render() {
         return (
-            <div className="App">
+            <LayoutTheme>
                 <TopicAskQuestionTest test={true}/>
-            </div>
+            </LayoutTheme>
         );
     }
 }

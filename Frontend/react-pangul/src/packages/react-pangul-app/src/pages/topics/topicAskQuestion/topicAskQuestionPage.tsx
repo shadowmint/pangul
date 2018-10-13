@@ -1,10 +1,10 @@
 import * as React from "react";
-import { IQuestion } from "../../../../../react-pangul-core/src/domain/question";
-import { LoggerProvider } from "../../../../../react-pangul-core/src/providers/loggerProvider";
-import { QuestionForm } from "../../../components/common/question/questionForm/questionForm";
-import { LayoutStandardHeader } from "../../../components/layout/layoutStandardHeader/layoutStandardHeader";
-import { TopicInfo } from "../../../components/topic/topicInfo/topicInfo";
-import { ITopicAskQuestionProps, TopicAskQuestion } from "./topicAskQuestion";
+import {IQuestion} from "../../../../../react-pangul-core/src/domain/question";
+import {LoggerProvider} from "../../../../../react-pangul-core/src/providers/loggerProvider";
+import {QuestionForm} from "../../../components/common/question/questionForm/questionForm";
+import {LayoutFormContainer} from "../../../components/layout/layoutFormContainer/layoutFormContainer";
+import {LayoutStandardHeader} from "../../../components/layout/layoutStandardHeader/layoutStandardHeader";
+import {ITopicAskQuestionProps, TopicAskQuestion} from "./topicAskQuestion";
 
 export class TopicAskQuestionPage extends React.Component<ITopicAskQuestionProps> {
     private data: TopicAskQuestion;
@@ -39,10 +39,13 @@ export class TopicAskQuestionPage extends React.Component<ITopicAskQuestionProps
         return (
             <div className={"component--TopicHomePage"}>
                 <LayoutStandardHeader user={this.props.user.state}
-                                      loading={this.data.updating}
-                                      error={this.data.error}/>
-                <TopicInfo {...topic.state} />
-                <QuestionForm submit={this.events.askQuestion} question={question}/>
+                                      topic={topic.state}
+                                      loading={this.data.updating}/>
+                <LayoutFormContainer error={this.data.state.question.error}>
+                    <QuestionForm submit={this.events.askQuestion}
+                                  question={question}
+                                  saveText="Save"/>
+                </LayoutFormContainer>
             </div>
         );
     }

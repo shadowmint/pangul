@@ -1,30 +1,25 @@
 import * as React from "react";
-import { IUserContext } from "../../../../../react-pangul-core/src/domain/userContext";
-import { PageLoader } from "../../common/loaders/pageLoader";
-import { UserCurrentInfo } from "../../common/user/userCurrentInfo/userCurrentInfo";
+import {ITopic} from "../../../../../react-pangul-core/src/domain/topic";
+import {IUserContext} from "../../../../../react-pangul-core/src/domain/userContext";
+import {PageLoader} from "../../common/loaders/pageLoader";
+import {UserCurrentInfo} from "../../common/user/userCurrentInfo/userCurrentInfo";
+import {TopicInfo} from "../../topic/topicInfo/topicInfo";
+import "./layoutStandardHeader.css";
 
 export interface ILayoutStandardHeader {
     user: IUserContext;
-    error: Error | null;
+    topic: ITopic;
     loading: boolean;
 }
-
-const LayoutPageError = (props: any) => {
-    return (
-        <div className="component--LayoutPageError">
-            {props.error ? props.error.toString() : ""}
-        </div>
-    );
-};
 
 export class LayoutStandardHeader extends React.Component<ILayoutStandardHeader> {
     public render() {
         return (
-            <React.Fragment>
+            <div className="component--LayoutStandardHeader">
                 <PageLoader loading={this.props.loading}/>
+                <TopicInfo {...this.props.topic} />
                 <UserCurrentInfo user={this.props.user}/>
-                <LayoutPageError error={this.props.error}/>
-            </React.Fragment>
+            </div>
         );
     }
 }

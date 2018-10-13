@@ -1,9 +1,10 @@
 import * as React from "react";
-import { IQuestion, Question } from "../../../../../../react-pangul-core/src/domain/question";
+import {IQuestion, Question} from "../../../../../../react-pangul-core/src/domain/question";
 
 export interface IQuestionForm {
     submit: (state: IQuestion) => Promise<boolean>;
     question: Question;
+    saveText: string;
 }
 
 export interface IQuestionFormState {
@@ -42,7 +43,9 @@ export class QuestionForm extends React.Component<IQuestionForm> {
     public render() {
         return (
             <div className="component--Question">
+                (topic: {this.props.question.state.topic})
                 <input value={this.props.question.state.title} onChange={this.events.onTitleChanged}/>
+                <button className="submit">{this.props.saveText}</button>
             </div>
         );
     }
