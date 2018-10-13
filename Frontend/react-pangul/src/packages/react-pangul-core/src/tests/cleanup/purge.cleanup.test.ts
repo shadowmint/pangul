@@ -1,6 +1,6 @@
 import { Question } from "../../domain/question";
-import IntegrationTestFixture from "../fixtures/integrationTestFixture";
 import { Topic } from "../../domain/topic";
+import IntegrationTestFixture from "../fixtures/integrationTestFixture";
 
 test("test purge test questions", async (done) => {
     // @ts-ignore
@@ -10,8 +10,8 @@ test("test purge test questions", async (done) => {
         let purged = 0;
 
         while (true) {
-            for (let i = 0; i < questions.state.instances.length; i++) {
-                await questions.state.instances[i].delete();
+            for (const instance of questions.state.instances) {
+                await instance.delete();
                 purged += 1;
             }
 
@@ -31,10 +31,10 @@ test("test purge topics", async (done) => {
         const shouldPurge = [];
         const topic = await Topic.search("*", 10);
         do {
-            for (let i = 0; i < topic.state.instances.length; i++) {
-                const questions = await Question.search(`* topic:${topic.state.instances[i].state.name}`, 1);
+            for (const instance of topic.state.instances) {
+                const questions = await Question.search(`* topic:${instance.state.name}`, 1);
                 if (questions.state.instances.length === 0) {
-                    shouldPurge.push(topic.state.instances[i]);
+                    shouldPurge.push(instance);
                 }
             }
             if (topic.state.moreResults) {
@@ -42,8 +42,8 @@ test("test purge topics", async (done) => {
             }
         } while (topic.state.moreResults);
 
-        for (let i = 0; i < shouldPurge.length; i++) {
-            await shouldPurge[i].delete();
+        for (const instance of shouldPurge) {
+            await instance.delete();
         }
         done();
     }, 60000);

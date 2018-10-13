@@ -1,10 +1,10 @@
+import {UserContext} from "../../domain/userContext";
 import RestFetch from "../../infrastructure/fetch/restFetch";
 import ConsoleLogger from "../../infrastructure/logger/consoleLogger";
+import ProviderSingleton from "../../infrastructure/providers/providerSingleton";
 import {FetchProvider} from "../../providers/fetchProvider";
 import {LoggerProvider} from "../../providers/loggerProvider";
-import ProviderSingleton from "../../infrastructure/providers/providerSingleton";
 import AuthService from "../../services/authService";
-import {UserContext} from "../../domain/userContext";
 
 class IntegrationTestFixture {
     public configure(): IntegrationTestFixture {
@@ -13,11 +13,11 @@ class IntegrationTestFixture {
         return this;
     }
 
-    public async withAuth(username: string, password: string, action: (user: UserContext) => Promise<void>): Promise<void> {
+    public async withAuth(user: string, password: string, action: (user: UserContext) => Promise<void>): Promise<void> {
         const authService = new AuthService();
         const userContext = new UserContext();
 
-        await authService.login(userContext, username, password);
+        await authService.login(userContext, user, password);
         if (userContext.error != null) {
             throw new Error("Auth failure");
         }

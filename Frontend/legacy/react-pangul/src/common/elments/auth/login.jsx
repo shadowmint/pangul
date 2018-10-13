@@ -48,7 +48,7 @@ export default class Login extends React.Component {
     this.setState({ loading: true, error: null, password: '' }, async () => {
       try {
         const { authService } = this.props.userContext;
-        await authService.login(this.props.userContext, this.state.username, pwd);
+        await UserService.login(this.props.userContext, this.state.username, pwd);
       } catch (error) {
         this.setState({ error, loading: false });
       }

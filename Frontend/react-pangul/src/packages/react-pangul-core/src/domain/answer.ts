@@ -1,4 +1,4 @@
-import {Model} from "react-stateful/src/model";
+import {Model} from "../../../react-stateful/src/model";
 import {AnswersController} from "../controllers/answersController";
 import {AnswerMeta} from "./answerMeta";
 import {IQueryResult, QuerySet} from "./querySet";

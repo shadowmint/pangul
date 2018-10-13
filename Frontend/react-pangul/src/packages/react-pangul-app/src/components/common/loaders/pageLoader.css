@@ -1,0 +1,22 @@
+.component--PageLoader {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+    height: 1px;
+    border-bottom: 0.1mm solid transparent;
+    background: linear-gradient(white, white) padding-box, repeating-linear-gradient(-90deg, #526492 0, #526492 70%, transparent 0, transparent 100%) 0 / 5mm 1mm;
+    animation: ants 12s linear infinite
+}
+
+.component--PageLoader > div {
+    background: #efefef;
+    padding: 0.3em;
+    font-size: 0.8em;
+}
+
+@keyframes ants {
+    to {
+        background-position: 100% 100%
+    }
+}

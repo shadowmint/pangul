@@ -1,5 +1,5 @@
-import asyncTimeout from "./infrastructure/asyncTimeout";
-import Stateful from "./stateful";
+import asyncTimeout from "../src/infrastructure/asyncTimeout";
+import Stateful from "../src/stateful";
 
 test("test typed props", () => {
     const a = new Stateful();

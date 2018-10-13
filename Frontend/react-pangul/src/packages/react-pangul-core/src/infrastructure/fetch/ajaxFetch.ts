@@ -30,11 +30,7 @@ export default class AjaxFetch implements IFetch {
                 };
             }
 
-            const asData = await response.json();
-            return {
-                data: asData as T,
-                success: true,
-            };
+            return await response.json();
         } catch (error) {
             return {
                 error,

@@ -12,7 +12,7 @@ export class AuthController extends BaseController {
     }
 
     public async logout(): Promise<void> {
-        return await this.post<void>("/api/auth/login", null);
+        return await this.post<void>("/api/auth/logout", null);
     }
 
     public async user(): Promise<IUserClaims> {

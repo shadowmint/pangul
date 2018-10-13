@@ -1,0 +1,19 @@
+.component--TopicInfo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0.5em;
+}
+
+.component--TopicInfo .header {
+    font-weight: bold;
+    text-align: left;
+    font-size: 1em;
+    margin: 0;
+    padding: 0;
+}
+
+.component--TopicInfo .desc {
+    text-align: left;
+    font-size: 0.8em;
+}
