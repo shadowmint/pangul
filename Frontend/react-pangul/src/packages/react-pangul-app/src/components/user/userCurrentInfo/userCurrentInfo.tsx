@@ -1,5 +1,5 @@
 import * as React from "react";
-import { IUserContext } from "../../../../../../react-pangul-core/src/domain/userContext";
+import { IUserContext } from "../../../../../react-pangul-core/src/domain/userContext";
 import "./userCurrentInfo.css";
 
 export interface IUserCurrentInfo {

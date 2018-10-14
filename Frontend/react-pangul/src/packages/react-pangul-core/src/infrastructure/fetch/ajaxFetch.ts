@@ -1,6 +1,7 @@
 import "whatwg-fetch";
 import IFetch from "../../interfaces/fetch";
 import IStandardResponse from "../standardResponse";
+import StandardError from "./standardError";
 
 export default class AjaxFetch implements IFetch {
     constructor(private rootUrl: string) {
@@ -24,10 +25,18 @@ export default class AjaxFetch implements IFetch {
             });
 
             if (!response.ok) {
-                return {
-                    error: new Error(`Request failed: ${response.status}: ${response.statusText}`),
-                    success: false,
-                };
+                try {
+                    const errorDetail = await response.json();
+                    return {
+                        error: new StandardError(errorDetail.result, errorDetail.errors),
+                        success: false,
+                    };
+                } catch (error) {
+                    return {
+                        error: new Error(`Request failed: ${response.status}: ${response.statusText}`),
+                        success: false,
+                    };
+                }
             }
 
             return await response.json();

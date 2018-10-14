@@ -45,7 +45,7 @@ export class TagList extends React.Component {
 }
 
 TagList.propTypes = {
-  // An array of tags as strings
+  // An array of value as strings
   tags: PropTypes.arrayOf(PropTypes.string).isRequired,
 
   // What to do if someone clicks on a tag

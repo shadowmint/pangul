@@ -6,7 +6,7 @@ import {
     ITestProps,
     ITestState,
     loadTestUserAnd,
-} from "../../../infrastructure/components/testComponent";
+} from "../../../infrastructure/componentHelpers/testComponent";
 import { TopicHomePage } from "./topicHomePage";
 
 export default class TopicHomeTest extends React.Component<ITestProps, ITestState> implements ITestComponent {

@@ -105,7 +105,7 @@ QuestionEdit.propTypes = {
   // What is the raw markdown for this question?
   body: PropTypes.string.isRequired,
 
-  // What are the tags for this question?
+  // What are the value for this question?
   tags: PropTypes.arrayOf(PropTypes.string).isRequired,
 
   // Allows the editor height to be set explicitly

@@ -2,8 +2,8 @@
 import * as React from "react";
 import { Topic } from "../../../../../react-pangul-core/src/domain/topic";
 import { LoggerProvider } from "../../../../../react-pangul-core/src/providers/loggerProvider";
-import { PageLoader } from "../../../components/common/loaders/pageLoader";
-import { TopicInfo } from "../../../components/topic/topicInfo";
+import { PageLoader } from "../../../componentHelpers/common/loaders/pageLoader";
+import { TopicInfo } from "../../../componentHelpers/topic/topicInfo";
 import { ITopicHomeProps, ITopicHomeState, TopicHome } from "./topicHome";
 
 export class TopicHomePage extends React.Component<ITopicHomeProps, ITopicHomeState> {

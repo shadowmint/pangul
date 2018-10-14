@@ -1,9 +1,9 @@
 import * as React from "react";
 import {IQuestion} from "../../../../../react-pangul-core/src/domain/question";
 import {LoggerProvider} from "../../../../../react-pangul-core/src/providers/loggerProvider";
-import {QuestionForm} from "../../../components/common/question/questionForm/questionForm";
 import {LayoutFormContainer} from "../../../components/layout/layoutFormContainer/layoutFormContainer";
 import {LayoutStandardHeader} from "../../../components/layout/layoutStandardHeader/layoutStandardHeader";
+import {QuestionForm} from "../../../components/question/questionForm/questionForm";
 import {ITopicAskQuestionProps, TopicAskQuestion} from "./topicAskQuestion";
 
 export class TopicAskQuestionPage extends React.Component<ITopicAskQuestionProps> {
@@ -51,14 +51,14 @@ export class TopicAskQuestionPage extends React.Component<ITopicAskQuestionProps
     }
 
     public guardInvalidState(): boolean {
-        if (this.data === null) {
-            return false;
-        }
-        return true;
+        return this.data !== null;
     }
 
-    private async askQuestion(model: IQuestion): Promise<boolean> {
-        LoggerProvider.get().info("This", this);
-        return Promise.resolve(true);
+    private async askQuestion(model: IQuestion){
+        LoggerProvider.get().info("Save question");
+        await this.data.state.question.save();
+        if (this.data.state.question.error === null) {
+            LoggerProvider.get().info("Success!");
+        }
     }
 }

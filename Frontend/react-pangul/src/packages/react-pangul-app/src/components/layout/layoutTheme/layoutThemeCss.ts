@@ -1,4 +1,4 @@
-/** Font related global styles */
+const styles = `/** Font related global styles */
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 html, body {
@@ -50,4 +50,6 @@ form textarea {
     margin: 0;
     border: thin solid #e0e0e0;
     padding: 0.2em 0.5em;
-}
+}`;
+
+export default styles;

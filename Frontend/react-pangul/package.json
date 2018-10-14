@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@types/showdown": "^1.7.5",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-scripts-ts": "3.1.0",
-    "rxjs": "^6.3.3"
+    "rxjs": "^6.3.3",
+    "showdown": "^1.8.6"
   },
   "scripts": {
     "start": "react-scripts-ts start",

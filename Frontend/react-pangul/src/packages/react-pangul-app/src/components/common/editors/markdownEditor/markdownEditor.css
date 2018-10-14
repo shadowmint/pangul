@@ -1,0 +1,11 @@
+.component--MarkdownEditor textarea {
+    height: 20em;
+}
+
+.component--MarkdownEditor .rendered {
+    background: #ddf4fc;
+    height: 20em;
+    margin: 0.1em;
+    padding: 0.5em;
+    border-radius: 0.3em;
+}

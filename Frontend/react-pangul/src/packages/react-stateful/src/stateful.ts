@@ -52,6 +52,7 @@ export default class Stateful {
     public _startUpdate() {
         this.updateDepth += 1;
         this.updating = true;
+        this.error = null;
         if (this.updateDepth === 1) {
             this.observer.next(this);
         }

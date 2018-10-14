@@ -1,0 +1,7 @@
+.component--TagPicker .rendered {
+    background: #ddf4fc;
+    margin: 0.1em;
+    padding: 0.5em;
+    border-radius: 0.3em;
+    font-size: 0.8em;
+}

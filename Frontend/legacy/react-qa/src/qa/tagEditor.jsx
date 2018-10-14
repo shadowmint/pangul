@@ -91,13 +91,13 @@ export class TagEditor extends React.Component {
 }
 
 TagEditor.propTypes = {
-  // An array of tags as strings
+  // An array of value as strings
   tags: PropTypes.arrayOf(PropTypes.string).isRequired,
 
   // Get suggestions for partial tag input
   onSuggestTags: PropTypes.func.isRequired,
 
-  // Update the list of tags bound to this instance
+  // Update the list of value bound to this instance
   onChangeTags: PropTypes.func.isRequired,
 
   // Is this editor in read-only mode?

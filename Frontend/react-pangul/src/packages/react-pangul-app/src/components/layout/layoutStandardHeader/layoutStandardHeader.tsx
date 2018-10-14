@@ -2,8 +2,8 @@ import * as React from "react";
 import {ITopic} from "../../../../../react-pangul-core/src/domain/topic";
 import {IUserContext} from "../../../../../react-pangul-core/src/domain/userContext";
 import {PageLoader} from "../../common/loaders/pageLoader";
-import {UserCurrentInfo} from "../../common/user/userCurrentInfo/userCurrentInfo";
 import {TopicInfo} from "../../topic/topicInfo/topicInfo";
+import {UserCurrentInfo} from "../../user/userCurrentInfo/userCurrentInfo";
 import "./layoutStandardHeader.css";
 
 export interface ILayoutStandardHeader {

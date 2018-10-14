@@ -1,0 +1,21 @@
+.component--ErrorNotice {
+    background: #fbe9ed;
+    margin: 0.1em;
+    padding: 0.4em;
+    font-size: 1em;
+    border-radius: 3px;
+}
+.component--ErrorNotice em {
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none;
+}
+.component--ErrorNotice ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.component--ErrorNotice ul li {
+    margin: 0;
+    padding: 0;
+}
