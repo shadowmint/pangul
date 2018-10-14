@@ -51,3 +51,11 @@ form textarea {
     border: thin solid #e0e0e0;
     padding: 0.2em 0.5em;
 }
+
+/** Link related globals */
+a {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}

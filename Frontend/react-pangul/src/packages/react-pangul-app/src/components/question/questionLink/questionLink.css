@@ -1,0 +1,8 @@
+.component--QuestionLink {
+    background: transparent;
+    margin: 0.1em;
+    padding: 0.4em;
+    border-radius: 3px;
+    font-size: 0.8em;
+    text-align: right;
+}

@@ -1,9 +1,10 @@
 import * as React from "react";
 import {IQuestion} from "../../../../../react-pangul-core/src/domain/question";
-import {LoggerProvider} from "../../../../../react-pangul-core/src/providers/loggerProvider";
+import {InfoNotice} from "../../../components/common/display/infoNotice/infoNotice";
 import {LayoutFormContainer} from "../../../components/layout/layoutFormContainer/layoutFormContainer";
 import {LayoutStandardHeader} from "../../../components/layout/layoutStandardHeader/layoutStandardHeader";
 import {QuestionForm} from "../../../components/question/questionForm/questionForm";
+import {QuestionLink} from "../../../components/question/questionLink/questionLink";
 import {ITopicAskQuestionProps, TopicAskQuestion} from "./topicAskQuestion";
 
 export class TopicAskQuestionPage extends React.Component<ITopicAskQuestionProps> {
@@ -42,6 +43,8 @@ export class TopicAskQuestionPage extends React.Component<ITopicAskQuestionProps
                                       topic={topic.state}
                                       loading={this.data.updating}/>
                 <LayoutFormContainer error={this.data.state.question.error}>
+                    <QuestionLink question={question} topic={this.props.topic}/>
+                    <InfoNotice value={this.data.state.notice}/>
                     <QuestionForm submit={this.events.askQuestion}
                                   question={question}
                                   saveText="Save"/>
@@ -54,11 +57,15 @@ export class TopicAskQuestionPage extends React.Component<ITopicAskQuestionProps
         return this.data !== null;
     }
 
-    private async askQuestion(model: IQuestion){
-        LoggerProvider.get().info("Save question");
+    private async askQuestion(model: IQuestion) {
+        await this.data.update(async () => {
+            return Promise.resolve({notice: null});
+        });
         await this.data.state.question.save();
         if (this.data.state.question.error === null) {
-            LoggerProvider.get().info("Success!");
+            await this.data.update(async () => {
+                return Promise.resolve({notice: "Saved question"});
+            });
         }
     }
 }

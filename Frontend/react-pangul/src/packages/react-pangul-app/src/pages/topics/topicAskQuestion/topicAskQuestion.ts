@@ -11,6 +11,7 @@ export interface ITopicAskQuestionProps {
 interface ITopicAskQuestion {
     topic: Topic;
     question: Question;
+    notice: string | null;
 }
 
 export class TopicAskQuestion extends Page<ITopicAskQuestionProps, ITopicAskQuestion> {
@@ -26,6 +27,7 @@ export class TopicAskQuestion extends Page<ITopicAskQuestionProps, ITopicAskQues
 
     protected blank(): ITopicAskQuestion {
         return {
+            notice: null,
             question: new Question(),
             topic: new Topic(),
         };
