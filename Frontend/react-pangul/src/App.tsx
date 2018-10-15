@@ -1,7 +1,8 @@
 import * as React from 'react';
-import {LayoutTheme} from "./packages/react-pangul-app/src/components/layout/layoutTheme/layoutTheme";
-import {configureApplication} from "./packages/react-pangul-app/src/infrastructure/service/settingsProvider";
-import TopicAskQuestionTest from "./packages/react-pangul-app/src/pages/topics/topicAskQuestion/topicAskQuestionTest";
+import { LayoutTheme } from "./packages/react-pangul-app/src/components/layout/layoutTheme/layoutTheme";
+import { configureApplication } from "./packages/react-pangul-app/src/infrastructure/service/settingsProvider";
+import TopicViewQuestionTest
+    from "./packages/react-pangul-app/src/pages/question/topicViewQuestion/topicViewQuestionTest";
 
 configureApplication({
     backendUrl: 'http://localhost:5000',
@@ -16,7 +17,7 @@ class App extends React.Component {
     public render() {
         return (
             <LayoutTheme>
-                <TopicAskQuestionTest test={true}/>
+                <TopicViewQuestionTest test={true}/>
             </LayoutTheme>
         );
     }

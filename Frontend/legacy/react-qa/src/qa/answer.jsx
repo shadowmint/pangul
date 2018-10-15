@@ -87,10 +87,10 @@ Answer.propTypes = {
   // ie. Reset this to reload the props
   loadedId: PropTypes.string.isRequired,
 
-  // Is this question in edit mode?
+  // Is this answer in edit mode?
   edit: PropTypes.bool,
 
-  // What is the raw markdown for this question?
+  // What is the raw markdown for this answer?
   body: PropTypes.string.isRequired,
 
   // Invoked with the props when it updates

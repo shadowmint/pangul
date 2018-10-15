@@ -96,22 +96,22 @@ export default class QuestionEdit extends React.Component {
 }
 
 QuestionEdit.propTypes = {
-  // The id of this question
+  // The id of this answer
   questionId: PropTypes.string,
 
-  // What is the raw title of this question?
+  // What is the raw title of this answer?
   title: PropTypes.string.isRequired,
 
-  // What is the raw markdown for this question?
+  // What is the raw markdown for this answer?
   body: PropTypes.string.isRequired,
 
-  // What are the value for this question?
+  // What are the value for this answer?
   tags: PropTypes.arrayOf(PropTypes.string).isRequired,
 
   // Allows the editor height to be set explicitly
   height: PropTypes.string,
 
-  // Invoked when the question props changes at all
+  // Invoked when the answer props changes at all
   onChange: PropTypes.func,
 
   // Is this editor in read-only mode?

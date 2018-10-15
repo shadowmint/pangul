@@ -13,7 +13,7 @@ export class PageModel extends Model<IPageModel> {
     public async loadQuestion(id: string) {
         await this.update(async () => {
             await this.state.question.update(async () => {
-                await asyncTimeout(100); // fake ajax to get question and answers
+                await asyncTimeout(100); // fake ajax to get answer and answers
                 this.state.answers.update(async () => {
                     return {
                         activeAnswers: [

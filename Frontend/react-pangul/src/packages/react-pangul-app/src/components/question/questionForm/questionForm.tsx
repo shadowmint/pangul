@@ -1,8 +1,8 @@
 import * as React from "react";
-import {Question} from "../../../../../react-pangul-core/src/domain/question";
-import {InputEditor} from "../../common/editors/inputEditor/inputEditor";
-import {MarkdownEditor} from "../../common/editors/markdownEditor/markdownEditor";
-import {TagPicker} from "../../tag/tagPicker/tagPicker";
+import { Question } from "../../../../../react-pangul-core/src/domain/question";
+import { InputEditor } from "../../common/editors/inputEditor/inputEditor";
+import { MarkdownEditor } from "../../common/editors/markdownEditor/markdownEditor";
+import { TagPicker } from "../../tag/tagPicker/tagPicker";
 
 export interface IQuestionForm {
     submit: () => void;
@@ -10,57 +10,35 @@ export interface IQuestionForm {
     saveText: string;
 }
 
-export interface IQuestionFormState {
-    lastUpdate: Date;
-}
-
 export class QuestionForm extends React.Component<IQuestionForm> {
-    private events: { [id: string]: (data: any) => void } = {};
-    private unsubscribe: (() => void) | null = null;
+    private onSaveEvent: (e: React.FormEvent) => void;
+    private onTitleChangedEvent: (title: string) => void;
+    private onTagsChangedEvent: (tags: string[]) => void;
+    private onBodyChangedEvent: (body: string) => void;
 
     public constructor(props: IQuestionForm) {
         super(props);
-        this.state = {
-            lastUpdate: new Date(),
-        };
-        this.events = {
-            onBodyChanged: (body: string) => this.onBodyChanged(body),
-            onSave: (e: React.FormEvent) => this.onSave(e),
-            onTagsChanged: (tags) => this.onTagsChanged(tags),
-            onTitleChanged: (value) => this.onTitleChanged(value),
-        };
-    }
-
-    public componentDidMount() {
-        this.unsubscribe = this.props.question.subscribe(() => {
-            this.setState({
-                lastUpdate: new Date(),
-            });
-        });
-    }
-
-    public componentWillUnmount() {
-        if (this.unsubscribe) {
-            this.unsubscribe();
-            this.unsubscribe = null;
-        }
+        this.onBodyChangedEvent = (body: string) => this.onBodyChanged(body);
+        this.onSaveEvent = (e: React.FormEvent) => this.onSave(e);
+        this.onTagsChangedEvent = (tags: string[]) => this.onTagsChanged(tags);
+        this.onTitleChangedEvent = (value: string) => this.onTitleChanged(value);
     }
 
     public render() {
         return (
             <div className="component--Question">
-                <form action="" onSubmit={this.events.onSave}>
+                <form action="" onSubmit={this.onSaveEvent}>
                     <fieldset>
                         <input disabled={true} value={this.props.question.state.topic}/>
                     </fieldset>
                     <fieldset>
-                        <InputEditor value={this.props.question.state.title} onChange={this.events.onTitleChanged}/>
+                        <InputEditor value={this.props.question.state.title} onChange={this.onTitleChangedEvent}/>
                     </fieldset>
                     <fieldset>
-                        <TagPicker value={this.props.question.state.tags} onChange={this.events.onTagsChanged}/>
+                        <TagPicker value={this.props.question.state.tags} onChange={this.onTagsChangedEvent}/>
                     </fieldset>
                     <fieldset>
-                        <MarkdownEditor value={this.props.question.state.body} onChange={this.events.onBodyChanged}/>
+                        <MarkdownEditor value={this.props.question.state.body} onChange={this.onBodyChangedEvent}/>
                     </fieldset>
                     <fieldset className="buttons">
                         <button className="submit">{this.props.saveText}</button>

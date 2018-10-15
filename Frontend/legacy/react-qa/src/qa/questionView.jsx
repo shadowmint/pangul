@@ -38,16 +38,16 @@ export default class QuestionView extends React.Component {
 }
 
 QuestionView.propTypes = {
-  // The id of this question
+  // The id of this answer
   questionId: PropTypes.string,
 
-  // What is the raw title of this QuestionView?
+  // What is the raw title of this AnswerView?
   title: PropTypes.string.isRequired,
 
-  // What is the raw markdown for this question?
+  // What is the raw markdown for this answer?
   body: PropTypes.string.isRequired,
 
-  // What are the value for this question?
+  // What are the value for this answer?
   tags: PropTypes.arrayOf(PropTypes.string).isRequired,
 
   // Tag interactions handler

@@ -5,7 +5,7 @@ import {matchPath} from 'react-router';
 export const history = createBrowserHistory();
 
 export class PangulNavService {
-  /** Return the URL for a specific question by id */
+  /** Return the URL for a specific answer by id */
   questionById(questionId, title) {
     return `/questions/${questionId}${title ? '/' + title : ''}`;
   }

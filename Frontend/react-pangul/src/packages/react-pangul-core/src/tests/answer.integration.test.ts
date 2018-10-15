@@ -2,13 +2,13 @@ import {Answer} from "../domain/answer";
 import {Question} from "../domain/question";
 import IntegrationTestFixture from "./fixtures/integrationTestFixture";
 
-test("test answer question", async (done) => {
+test("test answer answer", async (done) => {
     await IntegrationTestFixture.get().withAuth("admin", "admin", async (user) => {
         const question = new Question();
         await question.update(async () => {
             return {
                 tags: ["integrationTest"],
-                title: "Sample question",
+                title: "Sample answer",
             };
         });
 
@@ -37,7 +37,7 @@ test("test vote for answer", async (done) => {
         await question.update(async () => {
             return {
                 tags: ["integrationTest"],
-                title: "Sample question",
+                title: "Sample answer",
             };
         });
 
@@ -61,13 +61,13 @@ test("test vote for answer", async (done) => {
     });
 });
 
-test("test get answers for question", async (done) => {
+test("test get answers for answer", async (done) => {
     await IntegrationTestFixture.get().withAuth("admin", "admin", async (user) => {
         const question = new Question();
         await question.update(async () => {
             return {
                 tags: ["integrationTest"],
-                title: "Sample question",
+                title: "Sample answer",
             };
         });
 

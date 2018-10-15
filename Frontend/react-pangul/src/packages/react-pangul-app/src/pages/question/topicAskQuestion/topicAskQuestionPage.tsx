@@ -1,11 +1,10 @@
 import * as React from "react";
-import {IQuestion} from "../../../../../react-pangul-core/src/domain/question";
-import {InfoNotice} from "../../../components/common/display/infoNotice/infoNotice";
-import {LayoutFormContainer} from "../../../components/layout/layoutFormContainer/layoutFormContainer";
-import {LayoutStandardHeader} from "../../../components/layout/layoutStandardHeader/layoutStandardHeader";
-import {QuestionForm} from "../../../components/question/questionForm/questionForm";
-import {QuestionLink} from "../../../components/question/questionLink/questionLink";
-import {ITopicAskQuestionProps, TopicAskQuestion} from "./topicAskQuestion";
+import { InfoNotice } from "../../../components/common/display/infoNotice/infoNotice";
+import { LayoutFormContainer } from "../../../components/layout/layoutFormContainer/layoutFormContainer";
+import { LayoutStandardHeader } from "../../../components/layout/layoutStandardHeader/layoutStandardHeader";
+import { QuestionForm } from "../../../components/question/questionForm/questionForm";
+import { QuestionLink, QuestionLinkType } from "../../../components/question/questionLink/questionLink";
+import { ITopicAskQuestionProps, TopicAskQuestion } from "./topicAskQuestion";
 
 export class TopicAskQuestionPage extends React.Component<ITopicAskQuestionProps> {
     private data: TopicAskQuestion;
@@ -15,7 +14,7 @@ export class TopicAskQuestionPage extends React.Component<ITopicAskQuestionProps
         super(props);
         this.data = new TopicAskQuestion(() => this.forceUpdate());
         this.events = {
-            askQuestion: (model: IQuestion) => this.askQuestion(model),
+            askQuestion: () => this.askQuestion(),
         };
     }
 
@@ -43,7 +42,7 @@ export class TopicAskQuestionPage extends React.Component<ITopicAskQuestionProps
                                       topic={topic.state}
                                       loading={this.data.updating}/>
                 <LayoutFormContainer error={this.data.state.question.error}>
-                    <QuestionLink question={question} topic={this.props.topic}/>
+                    <QuestionLink question={question} topic={this.props.topic} target={QuestionLinkType.Edit}/>
                     <InfoNotice value={this.data.state.notice}/>
                     <QuestionForm submit={this.events.askQuestion}
                                   question={question}
@@ -57,7 +56,7 @@ export class TopicAskQuestionPage extends React.Component<ITopicAskQuestionProps
         return this.data !== null;
     }
 
-    private async askQuestion(model: IQuestion) {
+    private async askQuestion() {
         await this.data.update(async () => {
             return Promise.resolve({notice: null});
         });

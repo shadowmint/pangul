@@ -1,7 +1,5 @@
 import * as React from "react";
-import * as Showdown from "showdown";
-import ThemeCss from "../../../layout/layoutTheme/layoutThemeCss";
-import {SafeHtml} from "../../display/safeHtml/safeHtml";
+import { SafeMarkdown } from "../../display/safeMarkdown/safeMarkdown";
 import "./markdownEditor.css";
 
 export interface IMarkdownEditor {
@@ -24,11 +22,9 @@ export class MarkdownEditor extends React.Component<IMarkdownEditor, IMarkdownEd
 
     private events: { [key: string]: any } = {};
 
-    private converter: Showdown.Converter;
-
     constructor(props: IMarkdownEditor) {
         super(props);
-        this.converter = new Showdown.Converter();
+
         this.state = {
             lastPropValue: "",
             value: "",
@@ -39,12 +35,11 @@ export class MarkdownEditor extends React.Component<IMarkdownEditor, IMarkdownEd
     }
 
     public render() {
-        const rendered = this.converter.makeHtml(this.props.value);
         return (
             <div className="component--MarkdownEditor">
                 <textarea value={this.state.value} onChange={this.events.onChange}/>
                 <div className="rendered">
-                    <SafeHtml value={rendered} styles={ThemeCss}/>
+                    <SafeMarkdown markdown={this.state.value}/>
                 </div>
             </div>
         );

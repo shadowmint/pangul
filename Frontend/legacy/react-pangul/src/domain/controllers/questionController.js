@@ -8,7 +8,7 @@ export default class QuestionController extends BaseController {
   create() {
     return {
       questionId: null,
-      title: 'new question',
+      title: 'new answer',
       body: '...',
       tags: ['new'],
     };

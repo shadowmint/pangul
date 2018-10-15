@@ -1,14 +1,14 @@
 import { Question } from "../domain/question";
 import IntegrationTestFixture from "./fixtures/integrationTestFixture";
 
-test("test move question to new topic", async (done) => {
+test("test move answer to new topic", async (done) => {
     await IntegrationTestFixture.get().withAuth("admin", "admin", async (user) => {
         // Create
         const question = new Question();
         await question.update(async () => {
             return {
                 tags: ["integrationTest"],
-                title: "Sample question IN DEMO",
+                title: "Sample answer IN DEMO",
                 topic: "demo",
             };
         });

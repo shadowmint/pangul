@@ -62,7 +62,7 @@ export class Votes extends React.Component {
 }
 
 Votes.propTypes = {
-  // The metadata voting object type, eg. answer, question, etc.
+  // The metadata voting object type, eg. answer, answer, etc.
   dataType: PropTypes.string.isRequired,
 
   // The unique identifier of this piece of content

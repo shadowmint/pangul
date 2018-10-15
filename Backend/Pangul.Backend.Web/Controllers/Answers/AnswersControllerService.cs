@@ -116,8 +116,7 @@ namespace Pangul.Backend.Web.Controllers.Answers
         AnswerId = answer.AnswerId.ToString(),
         QuestionId = answer.QuestionId.ToString(),
         Body = answer.Body,
-        Up = 0,
-        Down = 0,
+        RowVersion = PangulRowVersion.GetString(answer.RowVersion),
         CanEdit = answer.CanEdit,
       };
     }

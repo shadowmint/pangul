@@ -1,13 +1,13 @@
 import { Question } from "../domain/question";
 import IntegrationTestFixture from "./fixtures/integrationTestFixture";
 
-test("test create new question", async (done) => {
+test("test create new answer", async (done) => {
     await IntegrationTestFixture.get().withAuth("admin", "admin", async (user) => {
         const question = new Question();
         await question.update(async () => {
             return {
                 tags: ["integrationTest"],
-                title: "Sample question",
+                title: "Sample answer",
             };
         });
 
@@ -19,13 +19,13 @@ test("test create new question", async (done) => {
     });
 });
 
-test("test get existing question", async (done) => {
+test("test get existing answer", async (done) => {
     await IntegrationTestFixture.get().withAuth("admin", "admin", async (user) => {
         const question = new Question();
         await question.update(async () => {
             return {
                 tags: ["integrationTest"],
-                title: "Sample question",
+                title: "Sample answer",
             };
         });
 
@@ -33,20 +33,20 @@ test("test get existing question", async (done) => {
 
         const newQuestion = await Question.get(question.state.questionId);
 
-        expect(question.state.title).toBe("Sample question");
-        expect(newQuestion.state.title).toBe("Sample question");
+        expect(question.state.title).toBe("Sample answer");
+        expect(newQuestion.state.title).toBe("Sample answer");
 
         done();
     });
 });
 
-test("test update question", async (done) => {
+test("test update answer", async (done) => {
     await IntegrationTestFixture.get().withAuth("admin", "admin", async (user) => {
         const question = new Question();
         await question.update(async () => {
             return {
                 tags: ["integrationTest"],
-                title: "Sample question",
+                title: "Sample answer",
             };
         });
 
@@ -55,7 +55,7 @@ test("test update question", async (done) => {
         await question.update(async () => {
             return {
                 tags: ["integrationTest", "one", "two"],
-                title: "Sample question 2",
+                title: "Sample answer 2",
             };
         });
 
@@ -64,7 +64,7 @@ test("test update question", async (done) => {
         await question.update(async () => {
             return {
                 tags: ["integrationTest", "three", "four"],
-                title: "Sample question 3",
+                title: "Sample answer 3",
             };
         });
 
@@ -72,7 +72,7 @@ test("test update question", async (done) => {
 
         const newQuestion = await Question.get(question.state.questionId);
 
-        expect(newQuestion.state.title).toBe("Sample question 3");
+        expect(newQuestion.state.title).toBe("Sample answer 3");
         expect(newQuestion.state.tags).toContain("three");
 
         done();
@@ -85,7 +85,7 @@ test("test find questions", async (done) => {
         await question.update(async () => {
             return {
                 tags: ["integrationTest"],
-                title: "Sample question",
+                title: "Sample answer",
             };
         });
 
@@ -99,7 +99,7 @@ test("test find questions", async (done) => {
     });
 });
 
-test("test vote on question", async () => {
+test("test vote on answer", async () => {
     let qid = "";
 
     await IntegrationTestFixture.get().withAuth("admin", "admin", async (user) => {
@@ -107,7 +107,7 @@ test("test vote on question", async () => {
         await question.update(async () => {
             return {
                 tags: ["integrationTest"],
-                title: "Sample question",
+                title: "Sample answer",
             };
         });
 
@@ -129,7 +129,7 @@ test("test vote on question", async () => {
         await question.state.meta.voteUp();
     });
 
-    // Now we should have two votes on the question
+    // Now we should have two votes on the answer
     await IntegrationTestFixture.get().withAuth("admin", "admin", async (user) => {
         const question = await Question.get(qid);
         expect(question.state.meta.state.votes).toBe(1);
@@ -137,13 +137,13 @@ test("test vote on question", async () => {
     });
 });
 
-test("test search in topic for question", async (done) => {
+test("test search in topic for answer", async (done) => {
     await IntegrationTestFixture.get().withAuth("admin", "admin", async (user) => {
         const question = new Question();
         await question.update(async () => {
             return {
                 tags: ["integrationTest"],
-                title: "Sample question IN DEMO",
+                title: "Sample answer IN DEMO",
                 topic: "demo"
             };
         });
@@ -157,13 +157,13 @@ test("test search in topic for question", async (done) => {
     });
 });
 
-test("test search in any topic for question", async (done) => {
+test("test search in any topic for answer", async (done) => {
     await IntegrationTestFixture.get().withAuth("admin", "admin", async (user) => {
         const question = new Question();
         await question.update(async () => {
             return {
                 tags: ["integrationTest"],
-                title: "Sample question IN DEMO",
+                title: "Sample answer IN DEMO",
                 topic: "demo"
             };
         });
@@ -172,7 +172,7 @@ test("test search in any topic for question", async (done) => {
         await question2.update(async () => {
             return {
                 tags: ["integrationTest"],
-                title: "Sample question ALSO IN DEMO",
+                title: "Sample answer ALSO IN DEMO",
                 topic: "demo2"
             };
         });
@@ -187,14 +187,14 @@ test("test search in any topic for question", async (done) => {
     });
 }, 5000);
 
-test("test move question to new topic", async (done) => {
+test("test move answer to new topic", async (done) => {
     await IntegrationTestFixture.get().withAuth("admin", "admin", async (user) => {
         // Create
         const question = new Question();
         await question.update(async () => {
             return {
                 tags: ["integrationTest"],
-                title: "Sample question IN DEMO",
+                title: "Sample answer IN DEMO",
                 topic: "demo"
             };
         });

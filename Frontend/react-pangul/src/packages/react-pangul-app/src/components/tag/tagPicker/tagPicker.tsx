@@ -1,6 +1,7 @@
 import * as React from "react";
-import {InputEditor} from "../../common/editors/inputEditor/inputEditor";
-import {TagList} from "../tagList/tagList";
+import { InputEditor } from "../../common/editors/inputEditor/inputEditor";
+import { isSameArray } from "../../common/utility/sameArray";
+import { TagList } from "../tagList/tagList";
 import "./tagPicker.css";
 
 export interface ITagPicker {
@@ -9,36 +10,37 @@ export interface ITagPicker {
 }
 
 export interface ITagPickerStart {
+    lastTags: string[];
     tagEditValue: string;
 }
 
 export class TagPicker extends React.Component<ITagPicker, ITagPickerStart> {
+    public static getDerivedStateFromProps(props: ITagPicker, state: ITagPickerStart) {
+        if (!isSameArray(props.value, state.lastTags)) {
+            return {tagEditValue: props.value.join(", "), lastTags: props.value};
+        }
+        return null;
+    }
+
     private static onlyUnique(value: string, index: number, self: string[]) {
         return self.indexOf(value) === index;
     }
 
-    private events: { [key: string]: any } = {};
+    private onTagsChangedEvent: (value: string) => void;
 
     constructor(props: ITagPicker) {
         super(props);
         this.state = {
+            lastTags: [],
             tagEditValue: "",
         };
-        this.events = {
-            onTagsChanged: (value: string) => this.onTagsChanged(value),
-        };
-    }
-
-    public componentDidMount() {
-        this.setState({
-            tagEditValue: this.props.value.join(", "),
-        });
+        this.onTagsChangedEvent = (value: string) => this.onTagsChanged(value);
     }
 
     public render() {
         return (
             <div className="component--TagPicker">
-                <InputEditor value={this.state.tagEditValue} onChange={this.events.onTagsChanged}/>
+                <InputEditor value={this.state.tagEditValue} onChange={this.onTagsChangedEvent}/>
                 <div className="rendered">
                     <TagList tags={this.props.value}/>
                 </div>

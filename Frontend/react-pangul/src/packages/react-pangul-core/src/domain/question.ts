@@ -14,7 +14,7 @@ export interface IQuestion {
 }
 
 export class Question extends Model<IQuestion> {
-    /** Return a question instance */
+    /** Return a answer instance */
     public static async get(questionId: string): Promise<Question> {
         const question = new Question();
         question.state.questionId = questionId;
@@ -37,7 +37,7 @@ export class Question extends Model<IQuestion> {
         return await controller.search(query, offset, limit);
     }
 
-    /** Delete this question and all it's answers and data */
+    /** Delete this answer and all it's answers and data */
     public async delete(): Promise<void> {
         const controller = new QuestionsController();
         await this.update(async () => {
@@ -49,7 +49,7 @@ export class Question extends Model<IQuestion> {
         });
     }
 
-    /** Refresh a question instance */
+    /** Refresh a answer instance */
     public async refresh(): Promise<void> {
         await this.update(async () => await this.fetchQuestionData(this.state.questionId));
     }
@@ -61,7 +61,7 @@ export class Question extends Model<IQuestion> {
         });
     }
 
-    /** Save a question */
+    /** Save a answer */
     public async save(): Promise<void> {
         const controller = new QuestionsController();
         await this.update(async () => {
@@ -85,7 +85,7 @@ export class Question extends Model<IQuestion> {
             questionId: "",
             rowVersion: "",
             tags: [],
-            title: "new question",
+            title: "new answer",
             topic: "default",
         };
     }

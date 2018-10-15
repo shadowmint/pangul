@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@types/showdown": "^1.7.5",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-scripts-ts": "3.1.0",
     "rxjs": "^6.3.3",
+    "sanitize-html": "^1.19.1",
     "showdown": "^1.8.6"
   },
   "scripts": {
@@ -17,11 +17,13 @@
     "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
+    "@types/showdown": "^1.7.5",
     "@types/jest": "^23.3.5",
     "@types/node": "^10.11.6",
     "@types/react": "^16.4.16",
     "@types/react-dom": "^16.0.9",
     "@types/request": "^2.47.1",
+    "@types/sanitize-html": "^1.18.2",
     "tslint": "^5.11.0",
     "typescript": "^3.1.2"
   }
