@@ -24,7 +24,7 @@ interface ITopicHome {
     topic: Topic;
 }
 
-export class TopicHome extends Page<ITopicHome, ITopicHomeDelta> {
+export class TopicSearch extends Page<ITopicHome, ITopicHomeDelta> {
     public load(fromProps: ITopicHomeProps): void {
         this.runAsync(async () => {
             // Start loading

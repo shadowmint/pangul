@@ -1,30 +1,40 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Pangul.Core.Data.Questions;
-using Pangul.Core.Infrastructure;
 
 namespace Pangul.Backend.Web.Controllers.Questions.ViewModels
 {
-  public class QuestionViewModel
+  public class QuestionSummaryViewModel
   {
+    private const int MaxSummaryLength = 256;
+
     public string QuestionId { get; set; }
     public string Title { get; set; }
-    public string Body { get; set; }
+    public string Summary { get; set; }
     public IList<string> Tags { get; set; }
-    public string RowVersion { get; set; }
     public string Topic { get; set; }
 
-    public static QuestionViewModel From(Question question)
+    public static QuestionSummaryViewModel From(Question question)
     {
-      return new QuestionViewModel()
+      return new QuestionSummaryViewModel()
       {
         QuestionId = question.QuestionId.ToString(),
         Title = question.Title,
         Tags = question.Tags.Select(i => i.Tag).ToList(),
-        Body = question.Body,
-        RowVersion = PangulRowVersion.GetString(question.RowVersion),
+        Summary = MakeSummaryFrom(question),
         Topic = question.Topic.Name
       };
+    }
+
+    private static string MakeSummaryFrom(Question question)
+    {
+      var tmp = question.Body.Trim();
+      if (tmp.Length > MaxSummaryLength)
+      {
+        tmp = tmp.Substring(0, MaxSummaryLength) + "...";
+      }
+
+      return tmp;
     }
   }
 }

@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { LayoutTheme } from "./packages/react-pangul-app/src/components/layout/layoutTheme/layoutTheme";
 import { configureApplication } from "./packages/react-pangul-app/src/infrastructure/service/settingsProvider";
-import TopicViewQuestionTest
-    from "./packages/react-pangul-app/src/pages/question/topicViewQuestion/topicViewQuestionTest";
+import TopicSearchTest from "./packages/react-pangul-app/src/pages/topic/topicSearch/topicSearchTest";
 
 configureApplication({
     backendUrl: 'http://localhost:5000',
@@ -17,7 +16,7 @@ class App extends React.Component {
     public render() {
         return (
             <LayoutTheme>
-                <TopicViewQuestionTest test={true}/>
+                <TopicSearchTest test={true}/>
             </LayoutTheme>
         );
     }

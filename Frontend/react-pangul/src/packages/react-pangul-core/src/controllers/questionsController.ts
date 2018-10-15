@@ -15,6 +15,14 @@ export interface IQuestionData {
     rowVersion: string;
 }
 
+export interface IQuestionSummaryData {
+    questionId: string;
+    topic: string;
+    title: string;
+    summary: string;
+    tags: string[];
+}
+
 export interface IQuestionTopic {
     questionId: string;
     topic: string;
@@ -38,12 +46,12 @@ export class QuestionsController extends BaseController {
         return await this.post<IQuestionMeta>("/api/questions/metadata", {id: questionId});
     }
 
-    public async updateMetadata(metadata: IQuestionMeta) {
-        return await this.post<void>("/api/questions/updateMetadata", metadata);
+    public async getSummary(questionId: string): Promise<IQuestionSummaryData> {
+        return await this.post<IQuestionSummaryData>("/api/questions/getSummary", {id: questionId});
     }
 
-    public async updateTopic(topic: IQuestionTopic) {
-        return await this.post<void>("/api/questions/updateTopic", topic);
+    public async updateMetadata(metadata: IQuestionMeta) {
+        return await this.post<void>("/api/questions/updateMetadata", metadata);
     }
 
     public async update(question: IQuestionData): Promise<IQuestionId> {

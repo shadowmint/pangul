@@ -1,4 +1,3 @@
-/*
 import * as React from "react";
 import { UserContext } from "../../../../../react-pangul-core/src/domain/userContext";
 import {
@@ -7,9 +6,9 @@ import {
     ITestState,
     loadTestUserAnd,
 } from "../../../infrastructure/componentHelpers/testComponent";
-import { TopicSearchPage } from "./topicHomePage";
+import { TopicHomePage } from "./topicHomePage";
 
-export default class TopicSearchTest extends React.Component<ITestProps, ITestState> implements ITestComponent {
+export default class TopicHomeTest extends React.Component<ITestProps, ITestState> implements ITestComponent {
     constructor(props: ITestProps) {
         super(props);
         this.state = {
@@ -19,7 +18,7 @@ export default class TopicSearchTest extends React.Component<ITestProps, ITestSt
 
     public render() {
         return <React.Fragment>
-            <TopicSearchPage topic="default" user={this.state.user}/>
+            <TopicHomePage topic="default" user={this.state.user}/>
         </React.Fragment>;
     }
 
@@ -29,4 +28,3 @@ export default class TopicSearchTest extends React.Component<ITestProps, ITestSt
         });
     }
 }
-*/

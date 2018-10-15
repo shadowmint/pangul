@@ -105,6 +105,22 @@ namespace Pangul.Backend.Web.Controllers.Questions
     }
     
     [HttpPost]
+    [Authorize(Policy = PangulUser.PolicyName)]
+    public async Task<IActionResult> GetSummary([FromBody] GetQuestionViewModel model)
+    {
+      try
+      {
+        var response = await _service.GetQuestionSummary(User, model, ModelState);
+        return response.JsonResult();
+      }
+      catch (Exception error)
+      {
+        _logger.Error(error);
+        return StandardResponse.ForError().JsonResult();
+      }
+    }
+    
+    [HttpPost]
     [Authorize(Policy = PangulAdmin.PolicyName)]
     public async Task<IActionResult> Delete([FromBody] DeleteQuestionViewModel model)
     {

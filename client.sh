@@ -1,3 +1,3 @@
-cd Frontend/react-pangul && npm start
+cd Frontend/react-pangul && npm install && npm start
 
 

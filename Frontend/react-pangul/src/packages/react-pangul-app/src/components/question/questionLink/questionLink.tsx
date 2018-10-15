@@ -1,5 +1,6 @@
 import * as React from "react";
-import { Question } from "../../../../../react-pangul-core/src/domain/question";
+import {Question} from "../../../../../react-pangul-core/src/domain/question";
+import {QuestionSummary} from "../../../../../react-pangul-core/src/domain/questionSummary";
 import NavigationService from "../../../infrastructure/service/navigationService";
 import "./questionLink.css";
 
@@ -9,7 +10,7 @@ export enum QuestionLinkType {
 }
 
 export interface IQuestionLink {
-    question: Question;
+    question: Question | QuestionSummary;
     target: QuestionLinkType;
     topic: string;
 }
@@ -23,7 +24,7 @@ export class QuestionLink extends React.Component<IQuestionLink> {
     }
 
     public render() {
-        if (!this.props.question.state.questionId) {
+        if (!this.props.question) {
             return (<React.Fragment/>);
         }
         const linkUrl = this.getUrl();

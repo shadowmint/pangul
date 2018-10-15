@@ -4,10 +4,10 @@ import { Topic } from "../../../../../react-pangul-core/src/domain/topic";
 import { LoggerProvider } from "../../../../../react-pangul-core/src/providers/loggerProvider";
 import { PageLoader } from "../../../componentHelpers/common/loaders/pageLoader";
 import { TopicInfo } from "../../../componentHelpers/topic/topicInfo";
-import { ITopicHomeProps, ITopicHomeState, TopicHome } from "./topicHome";
+import { ITopicHomeProps, ITopicHomeState, TopicSearch } from "./topicHome";
 
-export class TopicHomePage extends React.Component<ITopicHomeProps, ITopicHomeState> {
-    private data: TopicHome | null = null;
+export class TopicSearchPage extends React.Component<ITopicHomeProps, ITopicHomeState> {
+    private data: TopicSearch | null = null;
 
     constructor(props: ITopicHomeProps) {
         super(props);
@@ -20,7 +20,7 @@ export class TopicHomePage extends React.Component<ITopicHomeProps, ITopicHomeSt
 
     public componentDidMount() {
         LoggerProvider.get().info("Did mount");
-        this.data = new TopicHome((delta, cb) => this.setState(delta, cb));
+        this.data = new TopicSearch((delta, cb) => this.setState(delta, cb));
         this.data.load(this.props);
     }
 
@@ -37,7 +37,7 @@ export class TopicHomePage extends React.Component<ITopicHomeProps, ITopicHomeSt
         }
         LoggerProvider.get().info("Render state", this.state);
         return (
-            <div className={"component--TopicHomePage"}>
+            <div className={"component--TopicSearchPage"}>
                 <PageLoader loading={this.state.loading}/>
                 <div>
                     error: {this.state.error ? this.state.error.toString() : "no"}

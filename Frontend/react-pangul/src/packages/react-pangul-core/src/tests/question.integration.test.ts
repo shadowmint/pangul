@@ -144,7 +144,7 @@ test("test search in topic for answer", async (done) => {
             return {
                 tags: ["integrationTest"],
                 title: "Sample answer IN DEMO",
-                topic: "demo"
+                topic: "demo",
             };
         });
 
@@ -164,7 +164,7 @@ test("test search in any topic for answer", async (done) => {
             return {
                 tags: ["integrationTest"],
                 title: "Sample answer IN DEMO",
-                topic: "demo"
+                topic: "demo",
             };
         });
 
@@ -173,7 +173,7 @@ test("test search in any topic for answer", async (done) => {
             return {
                 tags: ["integrationTest"],
                 title: "Sample answer ALSO IN DEMO",
-                topic: "demo2"
+                topic: "demo2",
             };
         });
 
@@ -195,7 +195,7 @@ test("test move answer to new topic", async (done) => {
             return {
                 tags: ["integrationTest"],
                 title: "Sample answer IN DEMO",
-                topic: "demo"
+                topic: "demo",
             };
         });
         await question.save();
@@ -203,14 +203,14 @@ test("test move answer to new topic", async (done) => {
         // Move
         await question.update(async () => {
             return {
-                topic: "demo-moved"
+                topic: "demo-moved",
             };
         });
         await question.save();
 
         // Check
         const questionClone = await Question.get(question.state.questionId);
-        expect(questionClone.state.topic).toBe("demo-moved")
+        expect(questionClone.state.topic).toBe("demo-moved");
 
         done();
     });

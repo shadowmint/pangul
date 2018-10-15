@@ -177,6 +177,23 @@ namespace Pangul.Backend.Web.Controllers.Questions
           return StandardResponse.For(QuestionMetaViewModel.From(question));
         }
       }
-    }   
+    }
+
+    public async Task<StandardResponse> GetQuestionSummary(ClaimsPrincipal identity, GetQuestionViewModel model, ModelStateDictionary modelState)
+    {
+      if (!modelState.IsValid)
+      {
+        return modelState.StandardError();
+      }
+
+      using (var db = new ServiceDb())
+      {
+        using (var user = await _userService.Become(db, identity, null))
+        {
+          var question = await _questionService.GetQuestion(db, user, model.Id);
+          return StandardResponse.For(QuestionSummaryViewModel.From(question));
+        }
+      }
+    }
   }
 }
