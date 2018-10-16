@@ -1,3 +1,4 @@
 .component--LayoutStandardHeader {
     height: 3em;
+    border-bottom: 3px double #efefef;
 }

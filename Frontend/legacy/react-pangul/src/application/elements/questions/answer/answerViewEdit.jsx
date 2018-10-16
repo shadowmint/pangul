@@ -50,12 +50,12 @@ class AnswerViewEdit extends React.Component {
   }
 
   _onCancel() {
-    console.log('TopicSearchPage changed cancelled');
+    console.log('TopicDiscoverPage changed cancelled');
     this.setState({answer: null, edit: false, error: null});
   }
 
   _onChange(data) {
-    console.log('TopicSearchPage changed', data);
+    console.log('TopicDiscoverPage changed', data);
     this.setState({answer: data});
   }
 

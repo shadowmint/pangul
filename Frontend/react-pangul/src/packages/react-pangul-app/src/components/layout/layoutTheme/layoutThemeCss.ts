@@ -1,4 +1,5 @@
-const styles = `/** Font related global styles */
+const styles = `
+/** Font related global styles */
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 html, body {
@@ -15,6 +16,36 @@ html, body {
 html, body {
     padding: 0;
     margin: 0;
+}
+
+/** Headers */
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+    text-shadow: 2px 2px #efefef;
+}
+h1 {
+    font-size: 2em;
+}
+h2 {
+    font-size: 1.8em;
+}
+h3 {
+    font-size: 1.6em;
+}
+h4 {
+    font-size: 1.4em;
+}
+h5 {
+    font-size: 1.2em;
+}
+h6 {
+    font-size: 1em;
+}
+
+/** Margins and paragraphs */
+p {
+    margin: 0.2em 0;
 }
 
 /** Form related global styles */
@@ -50,6 +81,15 @@ form textarea {
     margin: 0;
     border: thin solid #e0e0e0;
     padding: 0.2em 0.5em;
-}`;
+}
+
+/** Link related globals */
+a {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+`;
 
 export default styles;

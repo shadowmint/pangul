@@ -21,7 +21,7 @@ export class QuestionSummary extends Model<IQuestionSummary> {
         return question;
     }
 
-    /** Search for questions */
+    /** Search for topics */
     public static search(query: string, pageSize: number = 10, page: number = 0): Promise<QuerySet<QuestionSummary>> {
         return QuerySet.fromQuery({
             fetchIds: QuestionSummary.searchForIds,

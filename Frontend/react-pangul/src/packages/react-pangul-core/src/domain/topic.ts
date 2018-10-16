@@ -19,7 +19,7 @@ export class Topic extends Model<ITopic> {
         return topic;
     }
 
-    /** Search for questions */
+    /** Search for topics */
     public static search(query: string, pageSize: number = 10, page: number = 0): Promise<QuerySet<Topic>> {
         return QuerySet.fromQuery({
             fetchIds: Topic.searchForIds,

@@ -13,17 +13,17 @@ export default class PangulQuestionService {
 
   makeEmptyAnswer() {
     return {
-      body: 'TopicSearchPage goes here...',
+      body: 'TopicDiscoverPage goes here...',
     };
   }
   
   async askQuestion(question) {
-    const response = await this.api.questions.askNewQuestion(question);
+    const response = await this.api.topics.askNewQuestion(question);
     return response.questionId;
   }
 
   async getQuestion(questionId) {
-    return await this.api.questions.getQuestion(questionId);
+    return await this.api.topics.getQuestion(questionId);
   }
 
   async answerQuestion(questionId, answer) {
@@ -39,7 +39,7 @@ export default class PangulQuestionService {
   }
   
   async searchForQuestions(query) {
-    let results = await this.api.questions.searchForQuestions(query);
+    let results = await this.api.topics.searchForQuestions(query);
     return results.map((i) => {
       const question = {...i};
       question.total = i.up - i.down;

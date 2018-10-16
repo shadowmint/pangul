@@ -1,3 +1,5 @@
+import {Subject} from "rxjs";
+import {debounceTime} from "rxjs/operators";
 import {QuerySet} from "../../../../../react-pangul-core/src/domain/querySet";
 import {QuestionSummary} from "../../../../../react-pangul-core/src/domain/questionSummary";
 import {Topic} from "../../../../../react-pangul-core/src/domain/topic";
@@ -17,14 +19,26 @@ interface ITopicHome {
 }
 
 export class TopicSearch extends Page<ITopicViewQuestionProps, ITopicHome> {
-    public async search(value: string): Promise<void> {
-        await this.update(async () => {
-            const questions = await QuestionSummary.search(`topic:${this.state.topic.state.name} ${value}`);
-            if (questions.error) {
-                throw questions.error;
-            }
+    private searchStream = new Subject<string>();
 
-            return {questions, search: value};
+    constructor(forceUpdate: () => void) {
+        super(forceUpdate);
+        this.searchStream.pipe(debounceTime(200)).subscribe(async (value: string) => {
+            await this.update(async () => {
+                const questions = await QuestionSummary.search(`topic:${this.state.topic.state.name} ${value}`);
+                if (questions.error) {
+                    throw questions.error;
+                }
+
+                return {questions};
+            });
+        });
+    }
+
+    public async search(value: string): Promise<void> {
+        this.searchStream.next(value);
+        await this.update(async () => {
+            return {search: value};
         });
     }
 

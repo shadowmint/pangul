@@ -10,4 +10,12 @@ export default class NavigationService {
     public urlForQuestionEdit(topic: string, questionId: string): string {
         return `/t/${topic}/question/edit/${questionId}`;
     }
+
+    public urlForTopic(topic: string) {
+        return `/t/${topic}`;
+    }
+
+    public urlForTopicEdit(topic: string) {
+        return `/t/${topic}/edit`;
+    }
 }

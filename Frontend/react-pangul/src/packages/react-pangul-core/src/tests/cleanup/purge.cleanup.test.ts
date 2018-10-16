@@ -2,7 +2,7 @@ import { Question } from "../../domain/question";
 import { Topic } from "../../domain/topic";
 import IntegrationTestFixture from "../fixtures/integrationTestFixture";
 
-test("test purge test questions", async (done) => {
+test("test purge test topics", async (done) => {
     // @ts-ignore
     await IntegrationTestFixture.get().withAuth("admin", "admin", async (user) => {
 

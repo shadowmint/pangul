@@ -2,7 +2,7 @@ import BaseController from '../infrastructure/baseController';
 
 export default class QuestionController extends BaseController {
   constructor() {
-    super('/fetch/questions', k => k.questionId);
+    super('/fetch/topics', k => k.questionId);
   }
 
   create() {

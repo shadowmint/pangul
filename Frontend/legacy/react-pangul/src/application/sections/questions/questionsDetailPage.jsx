@@ -33,7 +33,7 @@ class QuestionsDetailPage extends React.Component {
   }
 
   render() {
-    const match = new PangulNavService().match('/questions/:questionId/:questionTitle?');
+    const match = new PangulNavService().match('/topics/:questionId/:questionTitle?');
     return (
         <div className='component--QuestionsDetailPage'>
           <PangulContext.Consumer>

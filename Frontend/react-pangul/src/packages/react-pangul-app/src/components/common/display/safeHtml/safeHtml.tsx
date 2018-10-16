@@ -11,7 +11,7 @@ export interface ISafeHtml {
 
 /**
  * Note that we deliberately strip H1 and H2 out of the possible content to stop people
- * spamming random stuff into questions. The topic is H1, the answer title is H2.
+ * spamming random stuff into topics. The topic is H1, the answer title is H2.
  * Anything else is beyond that.
  */
 export class SafeHtml extends React.Component<ISafeHtml> {

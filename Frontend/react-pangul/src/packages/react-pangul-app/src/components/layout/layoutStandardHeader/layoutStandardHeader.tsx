@@ -1,5 +1,5 @@
 import * as React from "react";
-import {ITopic} from "../../../../../react-pangul-core/src/domain/topic";
+import {ITopic, Topic} from "../../../../../react-pangul-core/src/domain/topic";
 import {IUserContext} from "../../../../../react-pangul-core/src/domain/userContext";
 import {PageLoader} from "../../common/loaders/pageLoader";
 import {TopicInfo} from "../../topic/topicInfo/topicInfo";
@@ -8,16 +8,17 @@ import "./layoutStandardHeader.css";
 
 export interface ILayoutStandardHeader {
     user: IUserContext;
-    topic: ITopic;
+    topic: ITopic | null;
     loading: boolean;
 }
 
 export class LayoutStandardHeader extends React.Component<ILayoutStandardHeader> {
     public render() {
+        const topic = this.props.topic || new Topic().state;
         return (
             <div className="component--LayoutStandardHeader">
                 <PageLoader loading={this.props.loading}/>
-                <TopicInfo {...this.props.topic} />
+                <TopicInfo {...topic} />
                 <UserCurrentInfo user={this.props.user}/>
             </div>
         );

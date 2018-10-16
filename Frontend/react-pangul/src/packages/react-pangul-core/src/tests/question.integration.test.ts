@@ -79,7 +79,7 @@ test("test update answer", async (done) => {
     });
 });
 
-test("test find questions", async (done) => {
+test("test find topics", async (done) => {
     await IntegrationTestFixture.get().withAuth("admin", "admin", async (user) => {
         const question = new Question();
         await question.update(async () => {

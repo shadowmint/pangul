@@ -5,15 +5,15 @@ export class QuestionsController {
   }
 
   async getQuestion(questionId) {
-    return await this._fetch('/fetch/questions/get', {id: questionId});
+    return await this._fetch('/fetch/topics/get', {id: questionId});
   }
   
   async askNewQuestion(question) {
-    return await this._fetch('/fetch/questions/ask', question);
+    return await this._fetch('/fetch/topics/ask', question);
   }
 
   async searchForQuestions(query) {
-    return await this._fetch('/fetch/questions/search', {query});
+    return await this._fetch('/fetch/topics/search', {query});
   }
 
   async _fetch(url, payload) {

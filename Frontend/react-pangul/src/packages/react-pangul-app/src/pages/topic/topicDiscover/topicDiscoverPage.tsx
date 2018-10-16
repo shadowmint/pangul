@@ -2,20 +2,20 @@ import * as React from "react";
 import {InputEditor} from "../../../components/common/editors/inputEditor/inputEditor";
 import {LayoutFormContainer} from "../../../components/layout/layoutFormContainer/layoutFormContainer";
 import {LayoutStandardHeader} from "../../../components/layout/layoutStandardHeader/layoutStandardHeader";
-import {QuestionSummaryList} from "../../../components/question/questionSummaryList/questionSummaryList";
-import {ITopicViewQuestionProps, TopicSearch} from "./topicSearch";
+import {TopicList} from "../../../components/topic/topicList/topicList";
+import {ITopicDiscoverProps, TopicDiscover} from "./topicDiscover";
 
-export class TopicSearchPage extends React.Component<ITopicViewQuestionProps> {
-    private data: TopicSearch;
+export class TopicDiscoverPage extends React.Component<ITopicDiscoverProps> {
+    private data: TopicDiscover;
 
-    constructor(props: ITopicViewQuestionProps) {
+    constructor(props: ITopicDiscoverProps) {
         super(props);
-        this.data = new TopicSearch(() => this.forceUpdate());
+        this.data = new TopicDiscover(() => this.forceUpdate());
     }
 
     public componentDidMount() {
         this.data.unload();
-        this.data = new TopicSearch(() => this.forceUpdate());
+        this.data = new TopicDiscover(() => this.forceUpdate());
         this.data.load(this.props);
     }
 
@@ -28,23 +28,22 @@ export class TopicSearchPage extends React.Component<ITopicViewQuestionProps> {
             return (<React.Fragment/>);
         }
 
-        const questions = this.data.state.questions;
         const search = this.data.state.search;
-        const topic = this.data.state.topic;
+        const topics = this.data.state.topics;
 
         return (
             <div className={"component--TopicSearchPage"}>
                 <LayoutStandardHeader user={this.props.user.state}
-                                      topic={topic.state}
+                                      topic={null}
                                       loading={this.data.updating}/>
                 <LayoutFormContainer error={this.data.error}>
                     <form>
-                        <fieldset>
+                        <fieldset className="search">
                             <InputEditor value={search} onChange={this.onSearchEvent}/>
                         </fieldset>
                     </form>
                 </LayoutFormContainer>
-                <QuestionSummaryList topic={topic} questions={questions}/>
+                <TopicList topics={topics}/>
             </div>
         );
     }

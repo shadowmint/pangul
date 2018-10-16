@@ -3,3 +3,7 @@
     padding: 0.2em;
     margin: 0.5em;
 }
+
+.component--LayoutFormContainer .search input {
+    border: 0;
+}

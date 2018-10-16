@@ -36,7 +36,7 @@ class QuestionViewEdit extends React.Component {
     if (!this.pending && this.state.loadedQuestionId !== this.state.questionId) {
       try {
         this.pending = true;
-        const data = await this.props.api.questions.getQuestion(this.state.questionId);
+        const data = await this.props.api.topics.getQuestion(this.state.questionId);
         if (this.state.questionId === data.questionId) {
           this.pending = false;
           await this.updateState({
