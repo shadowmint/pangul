@@ -29,9 +29,6 @@ export class QuestionForm extends React.Component<IQuestionForm> {
             <div className="component--Question">
                 <form action="" onSubmit={this.onSaveEvent}>
                     <fieldset>
-                        <input disabled={true} value={this.props.question.state.topic}/>
-                    </fieldset>
-                    <fieldset>
                         <InputEditor value={this.props.question.state.title} onChange={this.onTitleChangedEvent}/>
                     </fieldset>
                     <fieldset>

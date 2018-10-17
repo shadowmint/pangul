@@ -3,7 +3,7 @@ import {debounceTime} from "rxjs/operators";
 import {QuerySet} from "../../../../../react-pangul-core/src/domain/querySet";
 import {Topic} from "../../../../../react-pangul-core/src/domain/topic";
 import {UserContext} from "../../../../../react-pangul-core/src/domain/userContext";
-import {Page} from "../../page";
+import {Page} from "../../../infrastructure/componentHelpers/page";
 
 export interface ITopicDiscoverProps {
     search: string;

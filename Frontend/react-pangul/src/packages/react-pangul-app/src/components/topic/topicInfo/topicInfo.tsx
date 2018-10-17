@@ -1,6 +1,6 @@
 import * as React from "react";
-import {ITopic} from "../../../../../react-pangul-core/src/domain/topic";
-import {TopicLink, TopicLinkType} from "../topicLink/topicLink";
+import { ITopic } from "../../../../../react-pangul-core/src/domain/topic";
+import { TopicLink, TopicLinkType } from "../topicLink/topicLink";
 import "./topicInfo.css";
 
 const TopicDescription = (props: ITopic) => {
@@ -19,14 +19,30 @@ const TopicDescription = (props: ITopic) => {
     );
 };
 
+const TopicIcon = (props: ITopic) => {
+    if (!props.icon) {
+        return <React.Fragment/>;
+    }
+    return (
+        <div className="icon">
+            <img src={props.icon}/>
+        </div>
+    );
+};
+
 export class TopicInfo extends React.Component<ITopic> {
     public render() {
         const name = this.props.name || "no topic";
 
         return (
             <div className="component--TopicInfo">
-                <h1 className="header">{name}</h1>
-                <TopicDescription {...this.props}/>
+                <TopicIcon {...this.props}/>
+                <div>
+                    <TopicLink target={TopicLinkType.View} topic={name}>
+                        <h1 className="header">{name}</h1>
+                    </TopicLink>
+                    <TopicDescription {...this.props}/>
+                </div>
             </div>
         );
     }

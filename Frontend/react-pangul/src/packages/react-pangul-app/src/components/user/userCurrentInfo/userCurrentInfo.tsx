@@ -11,7 +11,12 @@ export class UserCurrentInfo extends React.Component<IUserCurrentInfo> {
     public render() {
         return (
             <div className="component--UserCurrentInfo">
-                {this.props.user.username}
+                <div>
+                    {this.props.user.username}
+                </div>
+                <div>
+                    [logout]
+                </div>
             </div>
         );
     }

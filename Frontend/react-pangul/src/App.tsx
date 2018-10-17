@@ -1,7 +1,7 @@
 import * as React from 'react';
+import AppRoutesTest from "./packages/react-pangul-app/src/app/appRoutesTest";
 import { LayoutTheme } from "./packages/react-pangul-app/src/components/layout/layoutTheme/layoutTheme";
 import { configureApplication } from "./packages/react-pangul-app/src/infrastructure/service/settingsProvider";
-import TopicDiscoverTest from "./packages/react-pangul-app/src/pages/topic/topicDiscover/topicDiscoverTest";
 
 configureApplication({
     backendUrl: 'http://localhost:5000',
@@ -16,7 +16,7 @@ class App extends React.Component {
     public render() {
         return (
             <LayoutTheme>
-                <TopicDiscoverTest test={true}/>
+                <AppRoutesTest test={true}/>
             </LayoutTheme>
         );
     }

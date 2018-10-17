@@ -1,4 +1,5 @@
 import * as React from "react";
+import {Link} from "react-router-dom";
 import NavigationService from "../../../infrastructure/service/navigationService";
 import "./topicLink.css";
 
@@ -27,7 +28,7 @@ export class TopicLink extends React.Component<ITopicLink> {
         const linkUrl = this.getUrl();
         return (
             <div className="component--TopicLink">
-                <a href={linkUrl}>{this.props.children}</a>
+                <Link to={linkUrl}>{this.props.children}</Link>
             </div>
         );
     }

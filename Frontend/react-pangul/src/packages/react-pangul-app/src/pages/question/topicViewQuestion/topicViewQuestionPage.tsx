@@ -1,10 +1,11 @@
 import * as React from "react";
-import { AnswerList } from "../../../components/answer/answerList/answerList";
-import { LayoutContentContainer } from "../../../components/layout/layoutContentContainer/layoutContentContainer";
-import { LayoutStandardHeader } from "../../../components/layout/layoutStandardHeader/layoutStandardHeader";
-import { QuestionLink, QuestionLinkType } from "../../../components/question/questionLink/questionLink";
-import { QuestionView } from "../../../components/question/questionView/questionView";
-import { ITopicViewQuestionProps, TopicViewQuestion } from "./topicViewQuestion";
+import {AnswerList} from "../../../components/answer/answerList/answerList";
+import {LayoutContentContainer} from "../../../components/layout/layoutContentContainer/layoutContentContainer";
+import {LayoutRightBox} from "../../../components/layout/layoutRightBox/layoutRightBox";
+import {LayoutStandardHeader} from "../../../components/layout/layoutStandardHeader/layoutStandardHeader";
+import {QuestionLink, QuestionLinkType} from "../../../components/question/questionLink/questionLink";
+import {QuestionView} from "../../../components/question/questionView/questionView";
+import {ITopicViewQuestionProps, TopicViewQuestion} from "./topicViewQuestion";
 
 export class TopicViewQuestionPage extends React.Component<ITopicViewQuestionProps> {
     private data: TopicViewQuestion;
@@ -40,7 +41,9 @@ export class TopicViewQuestionPage extends React.Component<ITopicViewQuestionPro
                                       loading={this.data.updating}/>
 
                 <LayoutContentContainer>
-                    <QuestionLink question={question} topic={this.props.topic} target={QuestionLinkType.Edit}/>
+                    <LayoutRightBox expand={false}>
+                        <QuestionLink question={question} target={QuestionLinkType.Edit}>Edit</QuestionLink>
+                    </LayoutRightBox>
                     <QuestionView question={question}/>
                 </LayoutContentContainer>
 

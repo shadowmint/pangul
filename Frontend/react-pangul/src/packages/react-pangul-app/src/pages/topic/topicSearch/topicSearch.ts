@@ -4,7 +4,7 @@ import {QuerySet} from "../../../../../react-pangul-core/src/domain/querySet";
 import {QuestionSummary} from "../../../../../react-pangul-core/src/domain/questionSummary";
 import {Topic} from "../../../../../react-pangul-core/src/domain/topic";
 import {UserContext} from "../../../../../react-pangul-core/src/domain/userContext";
-import {Page} from "../../page";
+import {Page} from "../../../infrastructure/componentHelpers/page";
 
 export interface ITopicViewQuestionProps {
     topic: string;

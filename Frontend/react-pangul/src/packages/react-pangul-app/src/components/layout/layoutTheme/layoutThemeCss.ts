@@ -24,21 +24,27 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0;
     text-shadow: 2px 2px #efefef;
 }
+
 h1 {
     font-size: 2em;
 }
+
 h2 {
     font-size: 1.8em;
 }
+
 h3 {
     font-size: 1.6em;
 }
+
 h4 {
     font-size: 1.4em;
 }
+
 h5 {
     font-size: 1.2em;
 }
+
 h6 {
     font-size: 1em;
 }
@@ -56,6 +62,7 @@ form fieldset {
     position: relative;
     text-align: center;
 }
+
 form fieldset input {
     display: inline-block;
     width: calc(100% - 1.4em);
@@ -66,15 +73,18 @@ form fieldset input {
     padding: 0.2em 0.5em;
     border: thin solid #e0e0e0;
 }
+
 form button {
     font-size: 1em;
     padding: 0.2em 0.5em;
     border: thin solid #e0e0e0;
     border-radius: 2px;
 }
+
 form .buttons {
     text-align: right;
 }
+
 form textarea {
     width: calc(100% - 1.4em);
     font-size: 1em;
@@ -85,10 +95,17 @@ form textarea {
 
 /** Link related globals */
 a {
+    color: #00008a;
     text-decoration: none;
 }
+
+a:visited {
+    color: #00008a;
+}
+
 a:hover {
-    text-decoration: underline;
+    color: #00008a;
+    text-decoration: none !important;
 }
 `;
 

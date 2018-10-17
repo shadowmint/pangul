@@ -1,5 +1,5 @@
-import { LoggerProvider } from "../../../react-pangul-core/src/providers/loggerProvider";
-import { Model } from "../../../react-stateful/src/model";
+import { LoggerProvider } from "../../../../react-pangul-core/src/providers/loggerProvider";
+import { Model } from "../../../../react-stateful/src/model";
 
 export abstract class Page<TInitialStateProps, TPageState> extends Model<TPageState> {
     protected isLoaded: boolean = false;

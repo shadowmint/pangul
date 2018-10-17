@@ -13,11 +13,11 @@ export interface IQuestionSummaryView {
 
 export class QuestionSummaryView extends React.Component<IQuestionSummaryView> {
     public render() {
-        const topidName = this.props.topic.state.name;
         return (
             <div className="component--QuestionSummaryView">
-                <QuestionLink topic={topidName} question={this.props.question} target={QuestionLinkType.View}/>
-                <h2>{this.props.question.state.title}</h2>
+                <QuestionLink question={this.props.question} target={QuestionLinkType.View}>
+                    <h2>{this.props.question.state.title}</h2>
+                </QuestionLink>
                 <TagList tags={this.props.question.state.tags}/>
                 <SafeMarkdown markdown={this.props.question.state.summary}/>
             </div>

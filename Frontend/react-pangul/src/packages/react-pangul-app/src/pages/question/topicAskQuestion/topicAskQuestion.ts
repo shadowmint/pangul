@@ -1,7 +1,7 @@
-import { Question } from "../../../../../react-pangul-core/src/domain/question";
-import { Topic } from "../../../../../react-pangul-core/src/domain/topic";
-import { UserContext } from "../../../../../react-pangul-core/src/domain/userContext";
-import { Page } from "../../page";
+import {Question} from "../../../../../react-pangul-core/src/domain/question";
+import {Topic} from "../../../../../react-pangul-core/src/domain/topic";
+import {UserContext} from "../../../../../react-pangul-core/src/domain/userContext";
+import {Page} from "../../../infrastructure/componentHelpers/page";
 
 export interface ITopicAskQuestionProps {
     topic: string;
@@ -15,6 +15,18 @@ interface ITopicAskQuestion {
 }
 
 export class TopicAskQuestion extends Page<ITopicAskQuestionProps, ITopicAskQuestion> {
+    public async askQuestion() {
+        await this.update(async () => {
+            return Promise.resolve({notice: null});
+        });
+        await this.state.question.save();
+        if (this.state.question.error === null) {
+            await this.update(async () => {
+                return Promise.resolve({notice: "Saved question"});
+            });
+        }
+    }
+
     protected async loadInitialData(fromProps: ITopicAskQuestionProps): Promise<void> {
         await this.update(async () => {
             const topic = await Topic.get(fromProps.topic);

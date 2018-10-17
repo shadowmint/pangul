@@ -1,21 +1,18 @@
 import * as React from "react";
-import { AnswerForm } from "../../../components/answer/answerForm/answerForm";
-import { InfoNotice } from "../../../components/common/display/infoNotice/infoNotice";
-import { LayoutContentContainer } from "../../../components/layout/layoutContentContainer/layoutContentContainer";
-import { LayoutFormContainer } from "../../../components/layout/layoutFormContainer/layoutFormContainer";
-import { LayoutStandardHeader } from "../../../components/layout/layoutStandardHeader/layoutStandardHeader";
-import { QuestionLink, QuestionLinkType } from "../../../components/question/questionLink/questionLink";
-import { QuestionView } from "../../../components/question/questionView/questionView";
-import { ITopicEditAnswerProps, TopicEditAnswer } from "./topicEditAnswer";
+import {AnswerForm} from "../../../components/answer/answerForm/answerForm";
+import {InfoNotice} from "../../../components/common/display/infoNotice/infoNotice";
+import {LayoutContentContainer} from "../../../components/layout/layoutContentContainer/layoutContentContainer";
+import {LayoutFormContainer} from "../../../components/layout/layoutFormContainer/layoutFormContainer";
+import {LayoutStandardHeader} from "../../../components/layout/layoutStandardHeader/layoutStandardHeader";
+import {QuestionView} from "../../../components/question/questionView/questionView";
+import {ITopicEditAnswerProps, TopicEditAnswer} from "./topicEditAnswer";
 
 export class TopicEditAnswerPage extends React.Component<ITopicEditAnswerProps> {
     private data: TopicEditAnswer;
-    private saveAnswerEvent: () => Promise<void>;
 
     constructor(props: ITopicEditAnswerProps) {
         super(props);
         this.data = new TopicEditAnswer(() => this.forceUpdate());
-        this.saveAnswerEvent = () => this.saveAnswer();
     }
 
     public componentDidMount() {
@@ -43,7 +40,6 @@ export class TopicEditAnswerPage extends React.Component<ITopicEditAnswerProps> 
                                       topic={topic.state}
                                       loading={this.data.updating}/>
                 <LayoutContentContainer>
-                    <QuestionLink question={question} topic={this.props.topic} target={QuestionLinkType.View}/>
                     <QuestionView question={question}/>
                 </LayoutContentContainer>
 
@@ -59,15 +55,5 @@ export class TopicEditAnswerPage extends React.Component<ITopicEditAnswerProps> 
         return this.data !== null;
     }
 
-    private async saveAnswer(): Promise<void> {
-        await this.data.update(async () => {
-            return Promise.resolve({notice: null});
-        });
-        await this.data.state.answer.save();
-        if (this.data.state.answer.error === null) {
-            await this.data.update(async () => {
-                return Promise.resolve({notice: "Saved answer"});
-            });
-        }
-    }
+    private readonly saveAnswerEvent = () => this.data.saveAnswer();
 }

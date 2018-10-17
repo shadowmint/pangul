@@ -1,4 +1,5 @@
 import * as React from "react";
+import {Link} from "react-router-dom";
 import {Question} from "../../../../../react-pangul-core/src/domain/question";
 import {QuestionSummary} from "../../../../../react-pangul-core/src/domain/questionSummary";
 import NavigationService from "../../../infrastructure/service/navigationService";
@@ -12,7 +13,6 @@ export enum QuestionLinkType {
 export interface IQuestionLink {
     question: Question | QuestionSummary;
     target: QuestionLinkType;
-    topic: string;
 }
 
 export class QuestionLink extends React.Component<IQuestionLink> {
@@ -28,31 +28,22 @@ export class QuestionLink extends React.Component<IQuestionLink> {
             return (<React.Fragment/>);
         }
         const linkUrl = this.getUrl();
-        const text = this.getLinkText();
+
         return (
             <div className="component--QuestionLink">
-                <a href={linkUrl}>{text}</a>
+                <Link to={linkUrl}>{this.props.children}</Link>
             </div>
         );
     }
 
     private getUrl(): string {
+        const topicName = this.props.question.state.topic;
+        const questionId = this.props.question.state.questionId;
         switch (this.props.target) {
             case QuestionLinkType.View:
-                return this.nav.urlForQuestion(this.props.topic, this.props.question.state.questionId);
+                return this.nav.urlForQuestion(topicName, questionId);
             case QuestionLinkType.Edit:
-                return this.nav.urlForQuestionEdit(this.props.topic, this.props.question.state.questionId);
-            default:
-                throw new Error("Unsupported target");
-        }
-    }
-
-    private getLinkText(): string {
-        switch (this.props.target) {
-            case QuestionLinkType.View:
-                return "view";
-            case QuestionLinkType.Edit:
-                return "edit";
+                return this.nav.urlForQuestionEdit(topicName, questionId);
             default:
                 throw new Error("Unsupported target");
         }
