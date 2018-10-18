@@ -1,6 +1,9 @@
 import * as React from "react";
-import {BrowserRouter, Route} from "react-router-dom";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 import {UserContext} from "../../../react-pangul-core/src/domain/userContext";
+import {TopicAnswerQuestionPage} from "../pages/answer/topicAnswerQuestion/topicAnswerQuestionPage";
+import {TopicEditAnswerPage} from "../pages/answer/topicEditAnswer/topicEditAnswerPage";
+import {TopicAskQuestionPage} from "../pages/question/topicAskQuestion/topicAskQuestionPage";
 import {TopicEditQuestionPage} from "../pages/question/topicEditQuestion/topicEditQuestionPage";
 import {TopicViewQuestionPage} from "../pages/question/topicViewQuestion/topicViewQuestionPage";
 import {TopicDiscoverPage} from "../pages/topic/topicDiscover/topicDiscoverPage";
@@ -14,17 +17,18 @@ export interface IAppRoutes {
 export class AppRoutes extends React.Component<IAppRoutes> {
     public render() {
         return (
-            <React.Fragment>
-                <BrowserRouter>
-                    <React.Fragment>
-                        <Route exact={true} path="/" render={this.discoverTopics}/>
-                        <Route exact={true} path="/t/:name" render={this.searchTopic}/>
-                        <Route exact={true} path="/t/:name/edit" render={this.editTopic}/>
-                        <Route exact={true} path="/t/:name/question/:questionId" render={this.viewQuestion}/>
-                        <Route exact={true} path="/t/:name/question/edit/:questionId" render={this.editQuestion}/>
-                    </React.Fragment>
-                </BrowserRouter>
-            </React.Fragment>
+            <BrowserRouter>
+                <Switch>
+                    <Route exact={true} path="/" render={this.discoverTopics}/>
+                    <Route exact={true} path="/t/:name" render={this.searchTopic}/>
+                    <Route exact={true} path="/t/:name/edit" render={this.editTopic}/>
+                    <Route exact={true} path="/t/:name/ask" render={this.askQuestion}/>
+                    <Route exact={true} path="/t/:name/:questionId" render={this.viewQuestion}/>
+                    <Route exact={true} path="/t/:name/:questionId/edit" render={this.editQuestion}/>
+                    <Route exact={true} path="/t/:name/:questionId/answer" render={this.answerQuestion}/>
+                    <Route exact={true} path="/t/:name/:questionId/answer/:answerId/edit" render={this.editAnswer}/>
+                </Switch>
+            </BrowserRouter>
         );
     }
 
@@ -40,6 +44,11 @@ export class AppRoutes extends React.Component<IAppRoutes> {
         <TopicEditPage user={this.props.user} topic={props.match.params.name}/>
     )
 
+    private askQuestion = (props: any) => (
+        <TopicAskQuestionPage user={this.props.user}
+                              topic={props.match.params.name}/>
+    )
+
     private viewQuestion = (props: any) => (
         <TopicViewQuestionPage user={this.props.user}
                                topic={props.match.params.name}
@@ -50,5 +59,18 @@ export class AppRoutes extends React.Component<IAppRoutes> {
         <TopicEditQuestionPage user={this.props.user}
                                topic={props.match.params.name}
                                question={props.match.params.questionId}/>
+    )
+
+    private editAnswer = (props: any) => (
+        <TopicEditAnswerPage user={this.props.user}
+                             topic={props.match.params.name}
+                             question={props.match.params.questionId}
+                             answer={props.match.params.answerId}/>
+    )
+
+    private answerQuestion = (props: any) => (
+        <TopicAnswerQuestionPage user={this.props.user}
+                                 topic={props.match.params.name}
+                                 question={props.match.params.questionId}/>
     )
 }

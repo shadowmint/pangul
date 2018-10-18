@@ -3,7 +3,9 @@ import {AnswerForm} from "../../../components/answer/answerForm/answerForm";
 import {InfoNotice} from "../../../components/common/display/infoNotice/infoNotice";
 import {LayoutContentContainer} from "../../../components/layout/layoutContentContainer/layoutContentContainer";
 import {LayoutFormContainer} from "../../../components/layout/layoutFormContainer/layoutFormContainer";
+import {LayoutRightBox} from "../../../components/layout/layoutRightBox/layoutRightBox";
 import {LayoutStandardHeader} from "../../../components/layout/layoutStandardHeader/layoutStandardHeader";
+import {QuestionLink, QuestionLinkType} from "../../../components/question/questionLink/questionLink";
 import {QuestionView} from "../../../components/question/questionView/questionView";
 import {ITopicEditAnswerProps, TopicEditAnswer} from "./topicEditAnswer";
 
@@ -44,6 +46,9 @@ export class TopicEditAnswerPage extends React.Component<ITopicEditAnswerProps> 
                 </LayoutContentContainer>
 
                 <LayoutFormContainer error={this.data.state.question.error}>
+                    <LayoutRightBox expand={true}>
+                        <QuestionLink question={question} target={QuestionLinkType.View}>Close</QuestionLink>
+                    </LayoutRightBox>
                     <InfoNotice value={this.data.state.notice}/>
                     <AnswerForm submit={this.saveAnswerEvent} answer={answer} saveText="Save"/>
                 </LayoutFormContainer>

@@ -3,7 +3,9 @@ import {AnswerForm} from "../../../components/answer/answerForm/answerForm";
 import {InfoNotice} from "../../../components/common/display/infoNotice/infoNotice";
 import {LayoutContentContainer} from "../../../components/layout/layoutContentContainer/layoutContentContainer";
 import {LayoutFormContainer} from "../../../components/layout/layoutFormContainer/layoutFormContainer";
+import {LayoutRightBox} from "../../../components/layout/layoutRightBox/layoutRightBox";
 import {LayoutStandardHeader} from "../../../components/layout/layoutStandardHeader/layoutStandardHeader";
+import {QuestionLink, QuestionLinkType} from "../../../components/question/questionLink/questionLink";
 import {QuestionView} from "../../../components/question/questionView/questionView";
 import {ITopicAnswerQuestionProps, TopicAnswerQuestion} from "./topicAnswerQuestion";
 
@@ -41,6 +43,11 @@ export class TopicAnswerQuestionPage extends React.Component<ITopicAnswerQuestio
                                       topic={topic.state}
                                       loading={this.data.updating}/>
                 <LayoutContentContainer>
+                    <LayoutRightBox expand={false}>
+                        <QuestionLink question={question} target={QuestionLinkType.View}>
+                            View full question
+                        </QuestionLink>
+                    </LayoutRightBox>
                     <QuestionView question={question}/>
                 </LayoutContentContainer>
 

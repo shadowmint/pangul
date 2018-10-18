@@ -43,8 +43,13 @@ export class TopicEditQuestionPage extends React.Component<ITopicEditQuestionPro
                     <LayoutRightBox expand={true}>
                         <QuestionLink question={question} target={QuestionLinkType.View}>Close</QuestionLink>
                     </LayoutRightBox>
+
                     <InfoNotice value={this.data.state.notice}/>
-                    <QuestionForm submit={this.onUpdateQuestionEvent} question={question} saveText="Save"/>
+
+                    <QuestionForm showTopic={true}
+                                  submit={this.onUpdateQuestionEvent}
+                                  question={question}
+                                  saveText="Save"/>
                 </LayoutFormContainer>
             </div>
         );

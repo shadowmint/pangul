@@ -1,13 +1,15 @@
 import * as React from "react";
-import { Question } from "../../../../../react-pangul-core/src/domain/question";
-import { InputEditor } from "../../common/editors/inputEditor/inputEditor";
-import { MarkdownEditor } from "../../common/editors/markdownEditor/markdownEditor";
-import { TagPicker } from "../../tag/tagPicker/tagPicker";
+import {Question} from "../../../../../react-pangul-core/src/domain/question";
+import {InputEditor} from "../../common/editors/inputEditor/inputEditor";
+import {MarkdownEditor} from "../../common/editors/markdownEditor/markdownEditor";
+import {LayoutIf} from "../../layout/layoutIf/layoutIf";
+import {TagPicker} from "../../tag/tagPicker/tagPicker";
 
 export interface IQuestionForm {
     submit: () => void;
     question: Question;
     saveText: string;
+    showTopic: boolean;
 }
 
 export class QuestionForm extends React.Component<IQuestionForm> {
@@ -28,6 +30,11 @@ export class QuestionForm extends React.Component<IQuestionForm> {
         return (
             <div className="component--Question">
                 <form action="" onSubmit={this.onSaveEvent}>
+                    <LayoutIf show={this.props.showTopic}>
+                        <fieldset>
+                            <InputEditor value={this.props.question.state.topic} onChange={this.onTopicChanged}/>
+                        </fieldset>
+                    </LayoutIf>
                     <fieldset>
                         <InputEditor value={this.props.question.state.title} onChange={this.onTitleChangedEvent}/>
                     </fieldset>
@@ -43,6 +50,12 @@ export class QuestionForm extends React.Component<IQuestionForm> {
                 </form>
             </div>
         );
+    }
+
+    private onTopicChanged = (topic: string) => {
+        this.props.question.update(async () => {
+            return {topic};
+        });
     }
 
     private onSave(e: React.FormEvent) {

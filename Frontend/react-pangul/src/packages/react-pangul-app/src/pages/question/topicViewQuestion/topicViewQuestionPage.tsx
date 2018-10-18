@@ -50,6 +50,14 @@ export class TopicViewQuestionPage extends React.Component<ITopicViewQuestionPro
                 <AnswerList topic={this.data.state.topic}
                             question={this.data.state.question}
                             answers={this.data.state.answers}/>
+
+                <LayoutContentContainer>
+                    <LayoutRightBox expand={true}>
+                        <QuestionLink question={question} target={QuestionLinkType.Answer}>
+                            <button>Answer Question</button>
+                        </QuestionLink>
+                    </LayoutRightBox>
+                </LayoutContentContainer>
             </div>
         );
     }

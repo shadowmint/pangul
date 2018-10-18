@@ -2,7 +2,6 @@ import * as React from "react";
 import {Question} from "../../../../../react-pangul-core/src/domain/question";
 import {SafeMarkdown} from "../../common/display/safeMarkdown/safeMarkdown";
 import {TagList} from "../../tag/tagList/tagList";
-import {QuestionLink, QuestionLinkType} from "../questionLink/questionLink";
 import "./questionView.css";
 
 export interface IQuestionView {
@@ -16,7 +15,6 @@ export class QuestionView extends React.Component<IQuestionView> {
                 <h2>{this.props.question.state.title}</h2>
                 <TagList tags={this.props.question.state.tags}/>
                 <SafeMarkdown markdown={this.props.question.state.body}/>
-                <QuestionLink question={this.props.question} target={QuestionLinkType.Edit}/>
             </div>
         );
     }

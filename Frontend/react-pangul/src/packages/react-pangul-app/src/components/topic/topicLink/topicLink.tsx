@@ -4,6 +4,7 @@ import NavigationService from "../../../infrastructure/service/navigationService
 import "./topicLink.css";
 
 export enum TopicLinkType {
+    AddQuestion,
     View,
     Edit,
 }
@@ -35,6 +36,8 @@ export class TopicLink extends React.Component<ITopicLink> {
 
     private getUrl(): string {
         switch (this.props.target) {
+            case TopicLinkType.AddQuestion:
+                return this.nav.urlForTopicAddQuestion(this.props.topic);
             case TopicLinkType.View:
                 return this.nav.urlForTopic(this.props.topic);
             case TopicLinkType.Edit:

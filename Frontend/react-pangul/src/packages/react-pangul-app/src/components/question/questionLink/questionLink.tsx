@@ -6,6 +6,7 @@ import NavigationService from "../../../infrastructure/service/navigationService
 import "./questionLink.css";
 
 export enum QuestionLinkType {
+    Answer,
     View,
     Edit,
 }
@@ -30,9 +31,7 @@ export class QuestionLink extends React.Component<IQuestionLink> {
         const linkUrl = this.getUrl();
 
         return (
-            <div className="component--QuestionLink">
-                <Link to={linkUrl}>{this.props.children}</Link>
-            </div>
+            <Link to={linkUrl}>{this.props.children}</Link>
         );
     }
 
@@ -44,6 +43,8 @@ export class QuestionLink extends React.Component<IQuestionLink> {
                 return this.nav.urlForQuestion(topicName, questionId);
             case QuestionLinkType.Edit:
                 return this.nav.urlForQuestionEdit(topicName, questionId);
+            case QuestionLinkType.Answer:
+                return this.nav.urlForQuestionAnswer(topicName, questionId);
             default:
                 throw new Error("Unsupported target");
         }

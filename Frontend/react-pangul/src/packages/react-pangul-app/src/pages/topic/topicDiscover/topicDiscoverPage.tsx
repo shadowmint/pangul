@@ -32,7 +32,7 @@ export class TopicDiscoverPage extends React.Component<ITopicDiscoverProps> {
         const topics = this.data.state.topics;
 
         return (
-            <div className={"component--TopicSearchPage"}>
+            <div className={"component--TopicDiscoverPage"}>
                 <LayoutStandardHeader user={this.props.user.state}
                                       topic={null}
                                       loading={this.data.updating}/>

@@ -73,7 +73,7 @@ form fieldset input {
     border: thin solid #e0e0e0;
 }
 
-form button {
+button {
     font-size: 1em;
     padding: 0.2em 0.5em;
     border: thin solid #e0e0e0;

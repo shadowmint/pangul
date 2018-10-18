@@ -4,6 +4,9 @@ import {LayoutFormContainer} from "../../../components/layout/layoutFormContaine
 import {LayoutStandardHeader} from "../../../components/layout/layoutStandardHeader/layoutStandardHeader";
 import {QuestionSummaryList} from "../../../components/question/questionSummaryList/questionSummaryList";
 import {ITopicViewQuestionProps, TopicSearch} from "./topicSearch";
+import {LayoutRightBox} from "../../../components/layout/layoutRightBox/layoutRightBox";
+import {TopicLink, TopicLinkType} from "../../../components/topic/topicLink/topicLink";
+import {LayoutContentContainer} from "../../../components/layout/layoutContentContainer/layoutContentContainer";
 
 export class TopicSearchPage extends React.Component<ITopicViewQuestionProps> {
     private data: TopicSearch;
@@ -37,6 +40,15 @@ export class TopicSearchPage extends React.Component<ITopicViewQuestionProps> {
                 <LayoutStandardHeader user={this.props.user.state}
                                       topic={topic.state}
                                       loading={this.data.updating}/>
+
+                <LayoutContentContainer>
+                    <LayoutRightBox expand={true}>
+                        <TopicLink target={TopicLinkType.AddQuestion} topic={this.props.topic}>
+                            <button>Ask question</button>
+                        </TopicLink>
+                    </LayoutRightBox>
+                </LayoutContentContainer>
+
                 <LayoutFormContainer error={this.data.error}>
                     <form>
                         <fieldset>
@@ -44,6 +56,7 @@ export class TopicSearchPage extends React.Component<ITopicViewQuestionProps> {
                         </fieldset>
                     </form>
                 </LayoutFormContainer>
+
                 <QuestionSummaryList topic={topic} questions={questions}/>
             </div>
         );
