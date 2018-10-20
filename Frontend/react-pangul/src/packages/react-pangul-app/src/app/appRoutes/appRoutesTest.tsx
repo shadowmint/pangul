@@ -1,12 +1,12 @@
 import * as React from "react";
-import { UserContext } from "../../../react-pangul-core/src/domain/userContext";
+import { UserContext } from "../../../../react-pangul-core/src/domain/userContext";
 import {
     ITestComponent,
     ITestProps,
     ITestState,
     loadTestUserAnd,
-} from "../infrastructure/componentHelpers/testComponent";
-import { AppRoutes } from "./appRoutes";
+} from "../../infrastructure/componentHelpers/testComponent";
+import { AppRoutes } from "./";
 
 export default class AppRoutesTest extends React.Component<ITestProps, ITestState> implements ITestComponent {
     constructor(props: ITestProps) {

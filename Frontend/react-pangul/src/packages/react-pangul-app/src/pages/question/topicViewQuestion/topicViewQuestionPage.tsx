@@ -7,6 +7,7 @@ import {LayoutStandardHeader} from "../../../components/layout/layoutStandardHea
 import {QuestionLink, QuestionLinkType} from "../../../components/question/questionLink/questionLink";
 import {QuestionView} from "../../../components/question/questionView/questionView";
 import {ITopicViewQuestionProps, TopicViewQuestion} from "./topicViewQuestion";
+import {TopicLink, TopicLinkType} from "../../../components/topic/topicLink/topicLink";
 
 export class TopicViewQuestionPage extends React.Component<ITopicViewQuestionProps> {
     private data: TopicViewQuestion;
@@ -45,6 +46,7 @@ export class TopicViewQuestionPage extends React.Component<ITopicViewQuestionPro
                 <LayoutContentContainer>
                     <LayoutRightBox expand={false}>
                         <QuestionLink question={question} target={QuestionLinkType.Edit}>Edit</QuestionLink>
+                        <TopicLink topic={question.state.topic} target={TopicLinkType.View}>Close</TopicLink>
                     </LayoutRightBox>
                     <QuestionView question={question}/>
                 </LayoutContentContainer>

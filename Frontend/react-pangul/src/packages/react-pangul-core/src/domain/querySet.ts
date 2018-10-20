@@ -49,12 +49,8 @@ export class QuerySet<TModel extends Stateful> extends Model<IQuery<TModel>> {
         return this.update(async () => {
             const offset = page <= 0 ? 0 : page * this.state.pageSize;
             const queryResult = await this.state.fetchIds(this.state.query, offset, this.state.pageSize);
-            const promises = [];
-            const instances: TModel[] = [];
-            for (const id of queryResult.identityList) {
-                promises.push(this.state.fetchInstance(id).then((v) => instances.push(v)));
-            }
-            await Promise.all(promises);
+            const deferred = queryResult.identityList.map((id) => this.state.fetchInstance(id));
+            const instances = await Promise.all(deferred);
             return {
                 instances,
                 moreResults: queryResult.moreResults,

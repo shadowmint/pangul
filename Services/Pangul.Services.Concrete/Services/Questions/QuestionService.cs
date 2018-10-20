@@ -82,16 +82,16 @@ namespace Pangul.Services.Concrete.Services.Questions
       model.UserContext = user;
 
       var meta = await _internalMetaService.RequireQuestionMetaForUser(db, user, model.QuestionId);
+      var delta = model.Votes - meta.Votes;
+      await _updateQuestionMeta.Execute(db, model);
 
-      if (meta.Votes != model.Votes)
+      if (delta != 0)
       {
-        await _updateQuestionMeta.Execute(db, model);
-
         await _internalMetaService.UpdateQuestionGlobalMetadata(db, user, new UpdateQuestionGlobalMeta()
         {
           UserContext = user,
           QuestionId = model.QuestionId,
-          Votes = model.Votes
+          Votes = delta,
         });
       }
 

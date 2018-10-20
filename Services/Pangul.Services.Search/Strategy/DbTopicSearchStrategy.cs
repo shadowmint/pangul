@@ -44,7 +44,7 @@ namespace Pangul.Services.Search.Strategy
       {
         collectedResults.AddRange(await db.Topic
           .Where(q => EF.Functions.Like(q.Name, $"%{term}%"))
-          .OrderBy(i => i.TopicId)
+          .OrderByDescending(i => i.TimeCreated)
           .Select(i => i.TopicId)
           .ToListAsync());
       }
@@ -60,7 +60,7 @@ namespace Pangul.Services.Search.Strategy
       }
 
       return await db.Topic
-        .OrderBy(i => i.TopicId)
+        .OrderByDescending(i => i.TimeCreated)
         .Select(i => i.TopicId)
         .ToListAsync();
     }

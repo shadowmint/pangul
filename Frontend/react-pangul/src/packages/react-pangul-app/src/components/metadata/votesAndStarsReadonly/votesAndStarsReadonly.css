@@ -1,0 +1,120 @@
+.component--VotesAndStarsReadonly {
+  display: inline-block;
+  width: 50px;
+  margin-top: 5px;
+  margin-right: 20px;
+  overflow: hidden;
+  vertical-align: top;
+  text-align: center;
+}
+.component--VotesAndStarsReadonly li {
+  padding: 0;
+  margin: 0;
+  display: block;
+  width: 100%;
+  text-align: center;
+  /* Magic CSS shapes */
+}
+.component--VotesAndStarsReadonly li > div {
+  display: inline-block;
+  width: auto;
+  height: auto;
+}
+.component--VotesAndStarsReadonly li .votes {
+  color: #6d6d6d;
+  font-size: 1.4em;
+  text-align: center;
+  width: 100%;
+}
+.component--VotesAndStarsReadonly li .up {
+  color: #a7a0a8;
+  margin-bottom: 10px;
+  margin-left: 1px;
+  width: 0;
+  height: 0;
+  border-left: 12.5px solid transparent;
+  border-right: 12.5px solid transparent;
+  border-bottom: 20px solid;
+}
+.component--VotesAndStarsReadonly li .up.active {
+  color: #6d6d6d;
+}
+.component--VotesAndStarsReadonly li .up.active.disabled {
+  color: #888aa2;
+}
+.component--VotesAndStarsReadonly li .up.disabled {
+  color: #cbcbcb;
+  cursor: auto;
+}
+.component--VotesAndStarsReadonly li .down {
+  color: #a7a0a8;
+  margin-top: 10px;
+  margin-left: 1px;
+  width: 0;
+  height: 0;
+  border-left: 12.5px solid transparent;
+  border-right: 12.5px solid transparent;
+  border-top: 20px solid;
+}
+.component--VotesAndStarsReadonly li .down.active {
+  color: #6d6d6d;
+}
+.component--VotesAndStarsReadonly li .down.active.disabled {
+  color: #888aa2;
+}
+.component--VotesAndStarsReadonly li .down.disabled {
+  color: #cbcbcb;
+  cursor: auto;
+}
+.component--VotesAndStarsReadonly li.star-container {
+  margin-top: 1em;
+  margin-left: 1px;
+}
+.component--VotesAndStarsReadonly li .star {
+  color: #a7a0a8;
+  margin: 8.5px 0;
+  position: relative;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-right: 17px solid transparent;
+  border-bottom: 11.9px solid;
+  border-left: 17px solid transparent;
+  transform: rotate(35deg);
+}
+.component--VotesAndStarsReadonly li .star.active {
+  color: #6d6d6d;
+}
+.component--VotesAndStarsReadonly li .star.active.disabled {
+  color: #888aa2;
+}
+.component--VotesAndStarsReadonly li .star.disabled {
+  color: #cbcbcb;
+  cursor: auto;
+}
+.component--VotesAndStarsReadonly li .star:before {
+  border-bottom: 13.6px solid;
+  border-left: 5.1px solid transparent;
+  border-right: 5.1px solid transparent;
+  position: absolute;
+  height: 0;
+  width: 0;
+  top: -7.65px;
+  left: -11.05px;
+  display: block;
+  content: "";
+  transform: rotate(-35deg);
+}
+.component--VotesAndStarsReadonly li .star:after {
+  position: absolute;
+  display: block;
+  top: 0.51px;
+  left: -17.85px;
+  width: 0;
+  height: 0;
+  border-right: 17px solid transparent;
+  border-bottom: 11.9px solid;
+  border-left: 17px solid transparent;
+  transform: rotate(-70deg);
+  content: "";
+}

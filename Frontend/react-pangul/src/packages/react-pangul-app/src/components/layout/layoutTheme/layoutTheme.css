@@ -12,7 +12,12 @@ html, body {
     margin: 0;
 }
 
-html, body {
+body {
+    padding: 0 0 2em 0;
+    margin: 0;
+}
+
+html {
     padding: 0;
     margin: 0;
 }

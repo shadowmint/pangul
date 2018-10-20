@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Pangul.Core.Data.Topics;
 using Pangul.Core.Data.Users;
@@ -20,6 +21,8 @@ namespace Pangul.Core.Data.Questions
 
     public string Title { get; set; }
     public string Body { get; set; }
+    
+    public DateTimeOffset TimeCreated { get; set; }
 
     public virtual ICollection<QuestionMeta> Meta { get; set; }
 
@@ -50,6 +53,10 @@ namespace Pangul.Core.Data.Questions
       
       modelBuilder.Entity<Question>()
         .Property(i => i.TopicId)
+        .IsRequired();
+      
+      modelBuilder.Entity<Question>()
+        .Property(i => i.TimeCreated)
         .IsRequired();
       
       BuildVersionModel<Question>(modelBuilder);

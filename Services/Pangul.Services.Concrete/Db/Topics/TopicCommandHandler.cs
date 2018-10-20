@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -70,7 +71,8 @@ namespace Pangul.Services.Concrete.Db.Topics
       var instance = new Topic()
       {
         Icon = null,
-        Name = command.DerivedProperties.TopicName
+        Name = command.DerivedProperties.TopicName,
+        TimeCreated = DateTimeOffset.Now
       };
       db.Topic.Add(instance);
       return Task.FromResult(instance);

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Pangul.Core.Data;
 using Pangul.Core.Data.Questions;
@@ -78,6 +79,7 @@ namespace Pangul.Services.Concrete.Db.Questions
         Body = command.Body,
         User = command.UserContext.User,
         TopicId = command.TopicRef.TopicId,
+        TimeCreated = DateTimeOffset.Now,
         QuestionGlobalMeta = new QuestionGlobalMeta()
         {
           Votes = 0

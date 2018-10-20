@@ -144,7 +144,7 @@ namespace Pangul.Backend.Web.Controllers.Questions
             Body = model.Body,
             Tags = model.Tags ?? new string[] { },
             Title = model.Title,
-            Topic = model.Topic
+            Topic = model.Topic            
           });
 
           await db.SaveChangesAsync();

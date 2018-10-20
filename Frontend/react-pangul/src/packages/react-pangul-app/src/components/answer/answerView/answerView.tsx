@@ -4,9 +4,9 @@ import {Question} from "../../../../../react-pangul-core/src/domain/question";
 import {Topic} from "../../../../../react-pangul-core/src/domain/topic";
 import {SafeMarkdown} from "../../common/display/safeMarkdown/safeMarkdown";
 import {LayoutRightBox} from "../../layout/layoutRightBox/layoutRightBox";
+import {VotesAndStars} from "../../metadata/votesAndStars/votesAndStars";
 import {AnswerLink, AnswerLinkType} from "../answerLink/answerLink";
 import "./answerView.css";
-import {VotesAndStars} from "../../metadata/votesAndStars/votesAndStars";
 
 export interface IAnswerView {
     answer: Answer;
@@ -30,7 +30,8 @@ export class AnswerView extends React.Component<IAnswerView> {
                                    userStars={0}
                                    userVotes={meta.state.votes}
                                    votes={meta.state.global.votes}
-                                   onVote={this.onVote}/>
+                                   onVote={this.onVote}
+                                   onStar={null}/>
                 </div>
                 <div className="output">
                     <SafeMarkdown markdown={this.props.answer.state.body}/>
@@ -47,5 +48,5 @@ export class AnswerView extends React.Component<IAnswerView> {
         } else {
             await this.props.answer.state.meta.voteNeutral();
         }
-    };
+    }
 }

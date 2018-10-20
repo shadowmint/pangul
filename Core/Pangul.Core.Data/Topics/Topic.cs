@@ -1,3 +1,4 @@
+using System;
 using Microsoft.EntityFrameworkCore;
 
 namespace Pangul.Core.Data.Topics
@@ -14,6 +15,8 @@ namespace Pangul.Core.Data.Topics
     public string Description { get; set; }
     public byte[] Icon { get; set; }
     public string IconType { get; set; }
+    
+    public DateTimeOffset TimeCreated { get; set; }
 
     public static void BuildModel(ModelBuilder modelBuilder)
     {
@@ -31,7 +34,11 @@ namespace Pangul.Core.Data.Topics
       modelBuilder.Entity<Topic>()
         .HasIndex(b => b.Name)
         .IsUnique();
-      
+    
+      modelBuilder.Entity<Topic>()
+        .Property(i => i.TimeCreated)
+        .IsRequired();
+
       BuildVersionModel<Topic>(modelBuilder);
     }
   }

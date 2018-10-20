@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Pangul.Backend.Web.Configuration.Core;
 
 namespace Pangul.Backend.Web.Migrations
 {
     [DbContext(typeof(ServiceDb))]
-    partial class ServiceDbModelSnapshot : ModelSnapshot
+    [Migration("20181020055547_UpdateTables")]
+    partial class UpdateTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -10,7 +10,7 @@ namespace Pangul.Services.Db.Questions
     public UserContext UserContext { get; set; }
     public string QuestionId { get; set; }
     public int Votes { get; set; }
-
+    
     public DerivedProperties Derived { get; } = new DerivedProperties();
 
     public void GuardPropertyValues()
@@ -20,7 +20,8 @@ namespace Pangul.Services.Db.Questions
         throw new CommandValidationException(CommandValidationType.InvalidProperty, "QuestionId");
       }
 
-      if (Math.Abs(Votes) != 1)
+      // -1 -> 1, etc.
+      if (Math.Abs(Votes) > 2)
       {
         throw new CommandValidationException(CommandValidationType.InvalidProperty, "Votes");
       }

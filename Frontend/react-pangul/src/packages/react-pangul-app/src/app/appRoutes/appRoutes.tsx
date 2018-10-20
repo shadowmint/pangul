@@ -1,15 +1,15 @@
 import * as React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { UserContext } from "../../../react-pangul-core/src/domain/userContext";
-import { TopicAnswerQuestionPage } from "../pages/answer/topicAnswerQuestion/topicAnswerQuestionPage";
-import { TopicEditAnswerPage } from "../pages/answer/topicEditAnswer/topicEditAnswerPage";
-import { GenericHelpPage } from "../pages/generic/genericHelpPage/genericHelpPage";
-import { TopicAskQuestionPage } from "../pages/question/topicAskQuestion/topicAskQuestionPage";
-import { TopicEditQuestionPage } from "../pages/question/topicEditQuestion/topicEditQuestionPage";
-import { TopicViewQuestionPage } from "../pages/question/topicViewQuestion/topicViewQuestionPage";
-import { TopicDiscoverPage } from "../pages/topic/topicDiscover/topicDiscoverPage";
-import { TopicEditPage } from "../pages/topic/topicEdit/topicEditPage";
-import { TopicSearchPage } from "../pages/topic/topicSearch/topicSearchPage";
+import { UserContext } from "../../../../react-pangul-core/src/domain/userContext";
+import { TopicAnswerQuestionPage } from "../../pages/answer/topicAnswerQuestion/topicAnswerQuestionPage";
+import { TopicEditAnswerPage } from "../../pages/answer/topicEditAnswer/topicEditAnswerPage";
+import { GenericHelpPage } from "../../pages/generic/genericHelpPage/genericHelpPage";
+import { TopicAskQuestionPage } from "../../pages/question/topicAskQuestion/topicAskQuestionPage";
+import { TopicEditQuestionPage } from "../../pages/question/topicEditQuestion/topicEditQuestionPage";
+import { TopicViewQuestionPage } from "../../pages/question/topicViewQuestion/topicViewQuestionPage";
+import { TopicDiscoverPage } from "../../pages/topic/topicDiscover/topicDiscoverPage";
+import { TopicEditPage } from "../../pages/topic/topicEdit/topicEditPage";
+import { TopicSearchPage } from "../../pages/topic/topicSearch/topicSearchPage";
 
 export interface IAppRoutes {
     user: UserContext;

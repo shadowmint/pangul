@@ -141,7 +141,7 @@ namespace Pangul.Backend.Web.Controllers.Answers
           });
 
           await db.SaveChangesAsync();
-          return StandardResponse.For(MapToAnswerMetaResult(metadata));
+          return StandardResponse.For(AnswerMetaViewModel.From(metadata));
         }
       }
     }
@@ -158,24 +158,9 @@ namespace Pangul.Backend.Web.Controllers.Answers
         using (var user = await _userService.Become(db, identity, null))
         {
           var meta = await _answerService.GetAnswerMetadata(db, user, model.Id);
-          return StandardResponse.For(MapToAnswerMetaResult(meta));
+          return StandardResponse.For(AnswerMetaViewModel.From(meta));
         }
       }
-    }
-
-    private AnswerMetaViewModel MapToAnswerMetaResult(AnswerMetaInternalModel model)
-    {
-      return new AnswerMetaViewModel()
-      {
-        AnswerId = model.Meta.AnswerId.ToString(),
-        AnswerMetaId = model.Meta.AnswerMetaId.ToString(),
-        Votes = model.Meta.Votes,
-        Global = new AnswerGlobalMetaViewModel()
-        {
-          Votes = model.GlobalMeta.Votes
-        },
-        RowVersion = PangulRowVersion.GetString(model.Meta.RowVersion),
-      };
     }
   }
 }

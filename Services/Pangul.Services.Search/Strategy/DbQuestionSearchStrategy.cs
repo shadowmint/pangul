@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Pangul.Core.Data;
+using Pangul.Core.Data.Questions;
 using Pangul.Core.Data.Topics;
 using Pangul.Services.Infrastructure.Search;
 using Pangul.Services.Search.Infrastructure;
@@ -50,7 +52,7 @@ namespace Pangul.Services.Search.Strategy
       {
         return results.AsResult();
       }
-      
+
       return results.AsResult();
     }
 
@@ -76,7 +78,7 @@ namespace Pangul.Services.Search.Strategy
           join question in db.Question on answer.QuestionId equals question.QuestionId
           join topic in db.Topic on question.TopicId equals topic.TopicId
           where EF.Functions.Like(answer.Body, $"%{term}%") && (topics.AnyTopic || topics.Topics.Contains(topic.Name))
-          orderby question.QuestionId
+          orderby question.TimeCreated descending
           select question.QuestionId;
 
         allMatches.AddRange(await matches.ToListAsync());
@@ -95,7 +97,7 @@ namespace Pangul.Services.Search.Strategy
         var matches = from question in db.Question
           join topic in db.Topic on question.TopicId equals topic.TopicId
           where EF.Functions.Like(question.Body, $"%{term}%") && (topics.AnyTopic || topics.Topics.Contains(topic.Name))
-          orderby question.QuestionId
+          orderby question.TimeCreated descending
           select question.QuestionId;
 
         allMatches.AddRange(await matches.ToListAsync());
@@ -115,7 +117,7 @@ namespace Pangul.Services.Search.Strategy
           join question in db.Question on tag.QuestionId equals question.QuestionId
           join topic in db.Topic on question.TopicId equals topic.TopicId
           where tagList.Contains(tag.Tag) && (topics.AnyTopic || topics.Topics.Contains(topic.Name))
-          orderby question.QuestionId
+          orderby question.TimeCreated descending
           select tag.QuestionId)
         .ToListAsync();
     }
@@ -130,7 +132,7 @@ namespace Pangul.Services.Search.Strategy
         var matches = from question in db.Question
           join topic in db.Topic on question.TopicId equals topic.TopicId
           where EF.Functions.Like(question.Title, $"%{term}%") && (topics.AnyTopic || topics.Topics.Contains(topic.Name))
-          orderby question.QuestionId
+          orderby question.TimeCreated descending
           select question.QuestionId;
 
         allMatches.AddRange(await matches.ToListAsync());
@@ -151,7 +153,7 @@ namespace Pangul.Services.Search.Strategy
       return await (from question in db.Question
         join topic in db.Topic on question.TopicId equals topic.TopicId
         where topics.AnyTopic || topics.Topics.Contains(topic.Name)
-        orderby question.QuestionId
+        orderby question.TimeCreated descending
         select question.QuestionId).ToListAsync();
     }
 
