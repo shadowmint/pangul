@@ -1,5 +1,6 @@
 import * as React from "react";
 import {AnswerList} from "../../../components/answer/answerList/answerList";
+import {QuerySetPaginator} from "../../../components/common/fragments/querySetPaginator/querySetPaginator";
 import {LayoutContentContainer} from "../../../components/layout/layoutContentContainer/layoutContentContainer";
 import {LayoutRightBox} from "../../../components/layout/layoutRightBox/layoutRightBox";
 import {LayoutStandardHeader} from "../../../components/layout/layoutStandardHeader/layoutStandardHeader";
@@ -32,6 +33,7 @@ export class TopicViewQuestionPage extends React.Component<ITopicViewQuestionPro
         }
 
         const question = this.data.state.question;
+        const answers = this.data.state.answers;
         const topic = this.data.state.topic;
 
         return (
@@ -51,6 +53,13 @@ export class TopicViewQuestionPage extends React.Component<ITopicViewQuestionPro
                             question={this.data.state.question}
                             answers={this.data.state.answers}/>
 
+                <QuerySetPaginator allowedSizes={[1, 5, 10, 25]}
+                                   queryState={answers.state}
+                                   onChangeSize={this.onChangeSize}
+                                   onNext={this.onNext}
+                                   onPrev={this.onPrev}
+                                   error={answers.error}/>
+
                 <LayoutContentContainer>
                     <LayoutRightBox expand={true}>
                         <QuestionLink question={question} target={QuestionLinkType.Answer}>
@@ -65,4 +74,10 @@ export class TopicViewQuestionPage extends React.Component<ITopicViewQuestionPro
     public guardInvalidState(): boolean {
         return this.data !== null;
     }
+
+    private onChangeSize = (size: number) => this.data.setPageSize(size);
+
+    private onNext = () => this.data.next();
+
+    private onPrev = () => this.data.prev();
 }

@@ -1,4 +1,4 @@
-import { Model } from "../../../react-stateful/src/model";
+import {Model} from "../../../react-stateful/src/model";
 import Stateful from "../../../react-stateful/src/stateful";
 
 export interface IQueryResult {
@@ -65,18 +65,28 @@ export class QuerySet<TModel extends Stateful> extends Model<IQuery<TModel>> {
 
     /** Next page */
     public async next() {
-        if (!this.state.moreResults) {
-            throw new Error("No more results in QuerySet");
+        await this.update(async () => {
+            if (!this.state.moreResults) {
+                throw new Error("No more results in QuerySet");
+            }
+            return null;
+        });
+        if (!this.error) {
+            await this.fetch(this.state.page + 1);
         }
-        await this.fetch(this.state.page + 1);
     }
 
     /** Previous page */
     public async prev() {
-        if (this.state.page <= 0) {
-            throw new Error("Already on first page of QuerySet");
+        await this.update(async () => {
+            if (this.state.page <= 0) {
+                throw new Error("Already on first page of QuerySet");
+            }
+            return null;
+        });
+        if (!this.error) {
+            await this.fetch(this.state.page - 1);
         }
-        await this.fetch(this.state.page - 1);
     }
 
     protected blank(): IQuery<TModel> {

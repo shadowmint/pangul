@@ -3,6 +3,7 @@ import { IQueryLike } from "../../../../../../react-pangul-core/src/domain/query
 import { LayoutContentContainer } from "../../../layout/layoutContentContainer/layoutContentContainer";
 import { LayoutIf } from "../../../layout/layoutIf/layoutIf";
 import "./querySetPaginator.css";
+import {ErrorNotice} from "../../errors/errorNotice/errorNotice";
 
 export interface IQuerySetPaginator {
     allowedSizes: number[];
@@ -10,6 +11,7 @@ export interface IQuerySetPaginator {
     onNext: () => void;
     onPrev: () => void;
     onChangeSize: (size: number) => void;
+    error: Error | null;
 }
 
 export class QuerySetPaginator extends React.PureComponent<IQuerySetPaginator> {
@@ -22,6 +24,7 @@ export class QuerySetPaginator extends React.PureComponent<IQuerySetPaginator> {
 
         return (
             <div className="component--QuerySetPaginator">
+                <ErrorNotice error={this.props.error}/>
                 <LayoutContentContainer>
                     <div className="part">
                         Results per page:

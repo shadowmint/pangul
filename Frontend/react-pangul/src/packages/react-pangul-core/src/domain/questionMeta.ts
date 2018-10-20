@@ -70,6 +70,7 @@ export class QuestionMeta extends Model<IQuestionMeta> {
             return await controller.getMetadata(this.state.questionId);
         });
     }
+
     protected blank(): IQuestionMeta {
         return {
             global: {

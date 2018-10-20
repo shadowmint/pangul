@@ -47,6 +47,7 @@ export class AnswerMeta extends Model<IAnswerMeta> {
             return await controller.getMetadata(this.state.answerId);
         });
     }
+
     protected blank(): IAnswerMeta {
         return {
             answerId: "",

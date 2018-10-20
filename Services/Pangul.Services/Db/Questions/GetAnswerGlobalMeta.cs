@@ -1,6 +1,5 @@
 ﻿using Pangul.Core.Data.Questions;
 using Pangul.Services.Actions;
-using Pangul.Services.Infrastructure.Errors;
 using Pangul.Services.Model;
 
 namespace Pangul.Services.Db.Questions

@@ -6,6 +6,7 @@ import {SafeMarkdown} from "../../common/display/safeMarkdown/safeMarkdown";
 import {LayoutRightBox} from "../../layout/layoutRightBox/layoutRightBox";
 import {AnswerLink, AnswerLinkType} from "../answerLink/answerLink";
 import "./answerView.css";
+import {VotesAndStars} from "../../metadata/votesAndStars/votesAndStars";
 
 export interface IAnswerView {
     answer: Answer;
@@ -15,6 +16,8 @@ export interface IAnswerView {
 
 export class AnswerView extends React.Component<IAnswerView> {
     public render() {
+        const meta = this.props.answer.state.meta;
+
         return (
             <div className="component--AnswerView">
                 <LayoutRightBox expand={false}>
@@ -22,10 +25,27 @@ export class AnswerView extends React.Component<IAnswerView> {
                         Edit
                     </AnswerLink>
                 </LayoutRightBox>
+                <div className="metadata">
+                    <VotesAndStars showStars={false}
+                                   userStars={0}
+                                   userVotes={meta.state.votes}
+                                   votes={meta.state.global.votes}
+                                   onVote={this.onVote}/>
+                </div>
                 <div className="output">
                     <SafeMarkdown markdown={this.props.answer.state.body}/>
                 </div>
             </div>
         );
     }
+
+    private onVote = async (votes: number) => {
+        if (votes > 0) {
+            await this.props.answer.state.meta.voteUp();
+        } else if (votes < 0) {
+            await this.props.answer.state.meta.voteDown();
+        } else {
+            await this.props.answer.state.meta.voteNeutral();
+        }
+    };
 }

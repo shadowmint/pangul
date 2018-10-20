@@ -20,7 +20,8 @@ namespace Pangul.Services.Db.Questions
         throw new CommandValidationException(CommandValidationType.InvalidProperty, "AnswerId");
       }
 
-      if (Math.Abs(Votes) != 1)
+      // -1 -> 1, etc.
+      if (Math.Abs(Votes) > 2)
       {
         throw new CommandValidationException(CommandValidationType.InvalidProperty, "Votes");
       }

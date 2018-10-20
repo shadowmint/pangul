@@ -71,13 +71,14 @@ namespace Pangul.Services.Concrete.Services.Questions
 
       if (meta.Votes != model.Votes)
       {
+        var delta = model.Votes - meta.Votes;
         await _updateAnswerMeta.Execute(db, model);
 
         await _internalMetaService.UpdateAnswerGlobalMetadata(db, user, new UpdateAnswerGlobalMeta()
         {
           UserContext = user,
           AnswerId = model.AnswerId,
-          Votes = model.Votes
+          Votes = delta
         });
       }
 

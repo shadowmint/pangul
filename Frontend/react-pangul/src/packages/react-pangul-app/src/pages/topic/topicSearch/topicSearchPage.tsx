@@ -1,12 +1,12 @@
 import * as React from "react";
-import { QuerySetPaginator } from "../../../components/common/fragments/querySetPaginator/querySetPaginator";
-import { SearchBar } from "../../../components/common/fragments/searchBar/searchBar";
-import { LayoutContentContainer } from "../../../components/layout/layoutContentContainer/layoutContentContainer";
-import { LayoutRightBox } from "../../../components/layout/layoutRightBox/layoutRightBox";
-import { LayoutStandardHeader } from "../../../components/layout/layoutStandardHeader/layoutStandardHeader";
-import { QuestionSummaryList } from "../../../components/question/questionSummaryList/questionSummaryList";
-import { TopicLink, TopicLinkType } from "../../../components/topic/topicLink/topicLink";
-import { ITopicViewQuestionProps, TopicSearch } from "./topicSearch";
+import {QuerySetPaginator} from "../../../components/common/fragments/querySetPaginator/querySetPaginator";
+import {SearchBar} from "../../../components/common/fragments/searchBar/searchBar";
+import {LayoutContentContainer} from "../../../components/layout/layoutContentContainer/layoutContentContainer";
+import {LayoutRightBox} from "../../../components/layout/layoutRightBox/layoutRightBox";
+import {LayoutStandardHeader} from "../../../components/layout/layoutStandardHeader/layoutStandardHeader";
+import {QuestionSummaryList} from "../../../components/question/questionSummaryList/questionSummaryList";
+import {TopicLink, TopicLinkType} from "../../../components/topic/topicLink/topicLink";
+import {ITopicViewQuestionProps, TopicSearch} from "./topicSearch";
 
 export class TopicSearchPage extends React.Component<ITopicViewQuestionProps> {
     private data: TopicSearch;
@@ -59,7 +59,8 @@ export class TopicSearchPage extends React.Component<ITopicViewQuestionProps> {
                                    queryState={questions.state}
                                    onChangeSize={this.onChangeSize}
                                    onNext={this.onNext}
-                                   onPrev={this.onPrev}/>
+                                   onPrev={this.onPrev}
+                                   error={questions.error}/>
             </div>
         );
     }
