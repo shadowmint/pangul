@@ -39,10 +39,10 @@ export class QuestionForm extends React.Component<IQuestionForm> {
                         <InputEditor value={this.props.question.state.title} onChange={this.onTitleChangedEvent}/>
                     </fieldset>
                     <fieldset>
-                        <TagPicker value={this.props.question.state.tags} onChange={this.onTagsChangedEvent}/>
+                        <MarkdownEditor value={this.props.question.state.body} onChange={this.onBodyChangedEvent}/>
                     </fieldset>
                     <fieldset>
-                        <MarkdownEditor value={this.props.question.state.body} onChange={this.onBodyChangedEvent}/>
+                        <TagPicker value={this.props.question.state.tags} onChange={this.onTagsChangedEvent}/>
                     </fieldset>
                     <fieldset className="buttons">
                         <button className="submit">{this.props.saveText}</button>

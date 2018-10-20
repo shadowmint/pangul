@@ -1,4 +1,4 @@
-import {Model} from "../../../react-stateful/src/model";
+import { Model } from "../../../react-stateful/src/model";
 import Stateful from "../../../react-stateful/src/stateful";
 
 export interface IQueryResult {
@@ -13,14 +13,17 @@ export interface IQueryFunc<TModel> {
     pageSize: number;
 }
 
-export interface IQuery<TModel> {
+export interface IQuery<TModel> extends IQueryLike {
     query: string;
     fetchIds: (query: string, offset: number, limit: number) => Promise<IQueryResult>;
     fetchInstance: (identity: string) => Promise<TModel>;
+    instances: TModel[];
+}
+
+export interface IQueryLike {
     page: number;
     pageSize: number;
     moreResults: boolean;
-    instances: TModel[];
 }
 
 export class QuerySet<TModel extends Stateful> extends Model<IQuery<TModel>> {
@@ -46,10 +49,12 @@ export class QuerySet<TModel extends Stateful> extends Model<IQuery<TModel>> {
         return this.update(async () => {
             const offset = page <= 0 ? 0 : page * this.state.pageSize;
             const queryResult = await this.state.fetchIds(this.state.query, offset, this.state.pageSize);
-            const instances = [];
+            const promises = [];
+            const instances: TModel[] = [];
             for (const id of queryResult.identityList) {
-                instances.push(await this.state.fetchInstance(id));
+                promises.push(this.state.fetchInstance(id).then((v) => instances.push(v)));
             }
+            await Promise.all(promises);
             return {
                 instances,
                 moreResults: queryResult.moreResults,

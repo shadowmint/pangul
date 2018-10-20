@@ -3,9 +3,9 @@ import {Answer} from "../../../../../react-pangul-core/src/domain/answer";
 import {Question} from "../../../../../react-pangul-core/src/domain/question";
 import {Topic} from "../../../../../react-pangul-core/src/domain/topic";
 import {SafeMarkdown} from "../../common/display/safeMarkdown/safeMarkdown";
+import {LayoutRightBox} from "../../layout/layoutRightBox/layoutRightBox";
 import {AnswerLink, AnswerLinkType} from "../answerLink/answerLink";
 import "./answerView.css";
-import {LayoutRightBox} from "../../layout/layoutRightBox/layoutRightBox";
 
 export interface IAnswerView {
     answer: Answer;

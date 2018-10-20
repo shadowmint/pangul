@@ -1,12 +1,12 @@
 import * as React from "react";
-import {InputEditor} from "../../../components/common/editors/inputEditor/inputEditor";
-import {LayoutFormContainer} from "../../../components/layout/layoutFormContainer/layoutFormContainer";
-import {LayoutStandardHeader} from "../../../components/layout/layoutStandardHeader/layoutStandardHeader";
-import {QuestionSummaryList} from "../../../components/question/questionSummaryList/questionSummaryList";
-import {ITopicViewQuestionProps, TopicSearch} from "./topicSearch";
-import {LayoutRightBox} from "../../../components/layout/layoutRightBox/layoutRightBox";
-import {TopicLink, TopicLinkType} from "../../../components/topic/topicLink/topicLink";
-import {LayoutContentContainer} from "../../../components/layout/layoutContentContainer/layoutContentContainer";
+import { QuerySetPaginator } from "../../../components/common/fragments/querySetPaginator/querySetPaginator";
+import { SearchBar } from "../../../components/common/fragments/searchBar/searchBar";
+import { LayoutContentContainer } from "../../../components/layout/layoutContentContainer/layoutContentContainer";
+import { LayoutRightBox } from "../../../components/layout/layoutRightBox/layoutRightBox";
+import { LayoutStandardHeader } from "../../../components/layout/layoutStandardHeader/layoutStandardHeader";
+import { QuestionSummaryList } from "../../../components/question/questionSummaryList/questionSummaryList";
+import { TopicLink, TopicLinkType } from "../../../components/topic/topicLink/topicLink";
+import { ITopicViewQuestionProps, TopicSearch } from "./topicSearch";
 
 export class TopicSearchPage extends React.Component<ITopicViewQuestionProps> {
     private data: TopicSearch;
@@ -49,15 +49,17 @@ export class TopicSearchPage extends React.Component<ITopicViewQuestionProps> {
                     </LayoutRightBox>
                 </LayoutContentContainer>
 
-                <LayoutFormContainer error={this.data.error}>
-                    <form>
-                        <fieldset>
-                            <InputEditor value={search} onChange={this.onSearchEvent}/>
-                        </fieldset>
-                    </form>
-                </LayoutFormContainer>
+                <SearchBar error={this.data.error}
+                           value={search}
+                           onChange={this.onSearchEvent}/>
 
                 <QuestionSummaryList topic={topic} questions={questions}/>
+
+                <QuerySetPaginator allowedSizes={[1, 5, 10, 25]}
+                                   queryState={questions.state}
+                                   onChangeSize={this.onChangeSize}
+                                   onNext={this.onNext}
+                                   onPrev={this.onPrev}/>
             </div>
         );
     }
@@ -66,9 +68,11 @@ export class TopicSearchPage extends React.Component<ITopicViewQuestionProps> {
         return this.data !== null;
     }
 
-    private onSearchEvent = (value: string) => this.onSearch(value);
+    private onSearchEvent = (value: string) => this.data.search(value);
 
-    private onSearch(value: string) {
-        this.data.search(value);
-    }
+    private onChangeSize = (size: number) => this.data.setPageSize(size);
+
+    private onNext = () => this.data.next();
+
+    private onPrev = () => this.data.prev();
 }

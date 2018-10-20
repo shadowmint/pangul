@@ -1,6 +1,4 @@
 import * as React from "react";
-import { Subject } from "rxjs";
-import { debounceTime } from "rxjs/operators";
 import * as sanitize from "sanitize-html";
 import "./safeHtml.css";
 
@@ -35,57 +33,17 @@ export class SafeHtml extends React.Component<ISafeHtml> {
         }) as string;
     }
 
-    private updateStream: Subject<any>;
-
-    private frameRef: React.RefObject<HTMLIFrameElement>;
 
     public constructor(props: ISafeHtml) {
         super(props);
-        this.frameRef = React.createRef();
-        this.updateStream = new Subject();
-        this.updateStream.pipe(debounceTime(100)).subscribe(() => this.renderContentAsync());
     }
 
     public render() {
-        this.updateStream.next();
+        const output = SafeHtml.safe(this.props.value);
         return (
-            <div className="component--SafeHtml">
-                <iframe ref={this.frameRef}/>
-            </div>
+            <div className="component--SafeHtml" dangerouslySetInnerHTML={{__html: output}}/>
         );
     }
 
-    private renderContentAsync() {
-        const output = SafeHtml.safe(this.props.value);
-        this.withDoc((frame, doc) => {
-            const innerContent = doc.getElementById("content");
-            if (innerContent == null) {
-                doc.open();
-                doc.write(`<style>${this.props.styles}</style>`);
-                doc.write(`<div id='content'>${output}</div>`);
-                doc.close();
-            } else {
-                innerContent.innerHTML = output;
-            }
-        }, () => {
-            this.withDoc((frame, doc) => {
-                frame.style.height = `${doc.body.scrollHeight}px`;
-            });
-        });
-    }
-
-    private withDoc(action: (frame: HTMLIFrameElement, doc: Document) => void, then: (() => void) | null = null) {
-        setTimeout(() => {
-            if (this.frameRef.current != null) {
-                const doc = this.frameRef.current.contentDocument;
-                if (doc != null) {
-                    action(this.frameRef.current, doc);
-                    if (then) {
-                        then();
-                    }
-                }
-            }
-        }, 1);
-    }
 
 }

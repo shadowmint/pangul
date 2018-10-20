@@ -1,9 +1,7 @@
-import {Subject} from "rxjs";
-import {debounceTime} from "rxjs/operators";
-import {QuerySet} from "../../../../../react-pangul-core/src/domain/querySet";
-import {Topic} from "../../../../../react-pangul-core/src/domain/topic";
-import {UserContext} from "../../../../../react-pangul-core/src/domain/userContext";
-import {Page} from "../../../infrastructure/componentHelpers/page";
+import { QuerySet } from "../../../../../react-pangul-core/src/domain/querySet";
+import { Topic } from "../../../../../react-pangul-core/src/domain/topic";
+import { UserContext } from "../../../../../react-pangul-core/src/domain/userContext";
+import { Page } from "../../../infrastructure/componentHelpers/page";
 
 export interface ITopicDiscoverProps {
     search: string;
@@ -16,26 +14,22 @@ interface ITopicDiscover {
 }
 
 export class TopicDiscover extends Page<ITopicDiscoverProps, ITopicDiscover> {
-    private searchStream = new Subject<string>();
-
     constructor(forceUpdate: () => void) {
         super(forceUpdate);
-        this.searchStream.pipe(debounceTime(200)).subscribe(async (value: string) => {
-            await this.update(async () => {
-                const topics = await Topic.search(value);
-                if (topics.error) {
-                    throw topics.error;
-                }
-
-                return {topics};
-            });
-        });
     }
 
     public async search(value: string): Promise<void> {
-        this.searchStream.next(value);
         await this.update(async () => {
             return {search: value};
+        });
+
+        await this.update(async () => {
+            const topics = await Topic.search(value);
+            if (topics.error) {
+                throw topics.error;
+            }
+
+            return {topics};
         });
     }
 

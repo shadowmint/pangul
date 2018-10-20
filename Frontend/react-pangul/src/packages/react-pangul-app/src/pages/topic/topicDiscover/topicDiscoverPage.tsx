@@ -1,9 +1,8 @@
 import * as React from "react";
-import {InputEditor} from "../../../components/common/editors/inputEditor/inputEditor";
-import {LayoutFormContainer} from "../../../components/layout/layoutFormContainer/layoutFormContainer";
-import {LayoutStandardHeader} from "../../../components/layout/layoutStandardHeader/layoutStandardHeader";
-import {TopicList} from "../../../components/topic/topicList/topicList";
-import {ITopicDiscoverProps, TopicDiscover} from "./topicDiscover";
+import { SearchBar } from "../../../components/common/fragments/searchBar/searchBar";
+import { LayoutStandardHeader } from "../../../components/layout/layoutStandardHeader/layoutStandardHeader";
+import { TopicList } from "../../../components/topic/topicList/topicList";
+import { ITopicDiscoverProps, TopicDiscover } from "./topicDiscover";
 
 export class TopicDiscoverPage extends React.Component<ITopicDiscoverProps> {
     private data: TopicDiscover;
@@ -36,13 +35,11 @@ export class TopicDiscoverPage extends React.Component<ITopicDiscoverProps> {
                 <LayoutStandardHeader user={this.props.user.state}
                                       topic={null}
                                       loading={this.data.updating}/>
-                <LayoutFormContainer error={this.data.error}>
-                    <form>
-                        <fieldset className="search">
-                            <InputEditor value={search} onChange={this.onSearchEvent}/>
-                        </fieldset>
-                    </form>
-                </LayoutFormContainer>
+
+                <SearchBar value={search}
+                           onChange={this.onSearchEvent}
+                           error={this.data.error}/>
+
                 <TopicList topics={topics}/>
             </div>
         );

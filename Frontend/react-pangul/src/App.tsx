@@ -5,6 +5,8 @@ import { configureApplication } from "./packages/react-pangul-app/src/infrastruc
 
 configureApplication({
     backendUrl: 'http://localhost:5000',
+    baseUrl: '',
+    footerNotice: 'hello!',
     test: {
         testUser: "admin",
         testUserAuth: "admin",

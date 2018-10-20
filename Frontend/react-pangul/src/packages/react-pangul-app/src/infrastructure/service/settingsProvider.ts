@@ -12,6 +12,8 @@ export interface ITestSettings {
 
 export interface ISettings {
     backendUrl: string;
+    baseUrl: string;
+    footerNotice: string;
     test: ITestSettings;
 }
 

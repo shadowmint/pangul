@@ -1,0 +1,20 @@
+.component--QuerySetPaginator {
+    line-height: 1.5em;
+}
+.component--QuerySetPaginator .part {
+    display: inline-block;
+    padding: 0.3em 0 0.3em 0.3em;
+}
+
+.component--QuerySetPaginator select {
+    margin-left: 0.4em;
+}
+
+.component--QuerySetPaginator .buttons {
+    text-align: right;
+    float: right;
+}
+
+.component--QuerySetPaginator .buttons button {
+    margin-right: 0.4em;
+}

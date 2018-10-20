@@ -85,7 +85,7 @@ export class Question extends Model<IQuestion> {
             questionId: "",
             rowVersion: "",
             tags: [],
-            title: "new answer",
+            title: "new question",
             topic: "default",
         };
     }
