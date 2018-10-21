@@ -13,6 +13,8 @@ Should be usable for small numbers of users for simple purposes.
     sh server.sh
     sh client.sh
 
+(hint: on windows use git bash)
+
 ### 1.0.0
 
 - site in now basically feature complete and can be used for dog fooding.
