@@ -1,58 +1,21 @@
 # Pangul
 
-Pangul mega-project.
+A simple Q&A site in .Net Core and React.
 
-...
+## status
 
-# Initial setup
+This is a work in progress.
 
-    edit setup.sh
-    edit package.json
+Should be usable for small numbers of users for simple purposes.
 
-Now run the scaffolds:
+## quickstart
 
-    ./setup.sh
+    sh server.sh
+    sh client.sh
 
-Add the packages folder to make nuget happy:
+### 1.0.0
 
-    git add -f ./packages/.gitkeep
-
-You may also want to edit the .csproj of the library file and put a real version specifier in it:
-
-    <PropertyGroup>
-      <TargetFramework>netstandard2.0</TargetFramework>
-      <VersionPrefix>0.0.1</VersionPrefix> <--- This
-    </PropertyGroup>
-
-# Installing
-
-    npm install --save shadowmint/core-TEMPLATE
-
-This will install the package in the `_packages` folder.
-
-Now add the `NuGet.Config` to the project folder:
-
-    <?xml version="1.0" encoding="utf-8"?>
-    <configuration>
-     <packageSources>
-        <add key="local" value="./_packages" />
-     </packageSources>
-    </configuration>
-
-Now you can install the package:
-
-    dotnet add package TEMPLATE
-
-Note that nuget will prefer your global package cache to the actual version in your packages folder be design.
-
-You may want to use `dotnet nuget locals all --clear` to clear cached objects.
-
-Requires npm >= 5.4 to install correctly.
-
-# Building a new package version
-
-    npm run build
-
-# Testing
-
-    npm test
+- site in now basically feature complete and can be used for dog fooding.
+- users are hard coded into [ServiceAuthentication.cs](https://github.com/shadowmint/pangul/blob/master/Backend/Pangul.Backend.Web/Configuration/Authentication/Identity/ServiceAuthentication.cs) for now.
+- deployment & builds as a single unified project still WIP
+- only runs with sqlite
