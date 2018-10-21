@@ -18,7 +18,7 @@ export class BaseController {
             return response.data as TResponse;
         }
         this.logger.error(response);
-        if (response.error != null && response.error.message === "ValidationError") {
+        if (response.error != null) {
             throw response.error;
         }
         throw new Error("Internal server error");

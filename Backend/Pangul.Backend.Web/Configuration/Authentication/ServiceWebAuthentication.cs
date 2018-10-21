@@ -15,6 +15,7 @@ namespace Pangul.Backend.Web.Configuration.Authentication
             AddPolicy<PangulAdmin>();
             AddPolicy<PangulAdminDatabase>();
             AddPolicy<PangulQuestionAsker>();
+            AddPolicy<PolicyCanDeleteTopic>();
         }
     }
 }

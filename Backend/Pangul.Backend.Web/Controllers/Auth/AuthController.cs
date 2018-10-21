@@ -38,7 +38,7 @@ namespace Pangul.Backend.Web.Controllers.Auth
       catch (Exception error)
       {
         _logger.Error(error);
-        return StandardResponse.ForError().JsonResult();
+        return StandardResponse.Forbidden().JsonResult();
       }
     }
 

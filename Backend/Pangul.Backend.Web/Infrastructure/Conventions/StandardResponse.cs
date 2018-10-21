@@ -24,6 +24,15 @@ namespace Pangul.Backend.Web.Infrastructure.Conventions
         Data = data
       };
     }
+    
+    public static StandardResponse Forbidden()
+    {
+      return new StandardResponse()
+      {
+        Result = StandardResponseCode.Forbidden,
+        Success = false
+      };
+    }
 
     public static StandardResponse ForError()
     {

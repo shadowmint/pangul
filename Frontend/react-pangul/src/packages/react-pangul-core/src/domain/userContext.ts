@@ -1,6 +1,7 @@
 import {Model} from "../../../react-stateful/src/model";
 
 export interface IUserContext {
+    loggedIn: boolean;
     username: string;
     permissions: string[];
 }
@@ -15,6 +16,7 @@ export class UserContext extends Model<IUserContext> {
 
     protected blank(): IUserContext {
         return {
+            loggedIn: false,
             permissions: [],
             username: "anonymous user",
         };

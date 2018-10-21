@@ -6,7 +6,7 @@ import {
     ITestState,
     loadTestUserAnd,
 } from "../../infrastructure/componentHelpers/testComponent";
-import { AppRoutes } from "./";
+import { AppRoutes } from "./appRoutes";
 
 export default class AppRoutesTest extends React.Component<ITestProps, ITestState> implements ITestComponent {
     constructor(props: ITestProps) {

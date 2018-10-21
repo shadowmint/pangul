@@ -4,6 +4,7 @@
   {
     Success,
     ValidationError,
-    InternalError
+    InternalError,
+    Forbidden,
   }
 }

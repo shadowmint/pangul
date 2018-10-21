@@ -45,4 +45,8 @@ export default class NavigationService {
     public urlForRoot() {
         return `${this.root}`;
     }
+
+    public urlForLogout() {
+        return `${this.root}/logout`;
+    }
 }

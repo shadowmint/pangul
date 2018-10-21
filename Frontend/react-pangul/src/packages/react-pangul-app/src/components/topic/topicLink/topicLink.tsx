@@ -7,6 +7,7 @@ export enum TopicLinkType {
     AddQuestion,
     View,
     Edit,
+    None,
 }
 
 export interface ITopicLink {
@@ -42,6 +43,8 @@ export class TopicLink extends React.Component<ITopicLink> {
                 return this.nav.urlForTopic(this.props.topic);
             case TopicLinkType.Edit:
                 return this.nav.urlForTopicEdit(this.props.topic);
+            case TopicLinkType.None:
+                return this.nav.urlForRoot();
             default:
                 throw new Error("Unsupported target");
         }

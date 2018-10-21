@@ -1,0 +1,18 @@
+.component--LayoutUnsafeBox {
+    margin: 0.3em;
+    padding: 0.3em;
+    border: thin solid #f2a2a6;
+    background: #ffe9ee;
+    border-radius: 3px;
+    color: #714548;
+}
+
+.component--LayoutUnsafeBox .header {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.component--LayoutUnsafeBox button {
+    margin: 0.1em 0;
+    font-size: 1.1em;
+}

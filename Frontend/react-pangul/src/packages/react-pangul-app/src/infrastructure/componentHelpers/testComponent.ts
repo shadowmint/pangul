@@ -16,15 +16,19 @@ export interface ITestComponent {
     componentDidMount(): void;
 }
 
-export function loadTestUserAnd(performAction: (user: UserContext) => void): void {
+export function loadTestUserAnd(performAction: (user: UserContext) => void, skipLogin: boolean = false): void {
     const logger = LoggerProvider.get();
     const settings = SettingsProvider.get();
     if (!settings.test || !settings.test.testUserEnabled) {
         throw new Error("Testing is disabled in settings");
     }
-    UserService.login(settings.test.testUser, settings.test.testUserAuth).then((user) => {
-        performAction(user);
-    }, (err) => {
-        logger.error(err);
-    });
+    if (skipLogin) {
+        performAction(new UserContext());
+    } else {
+        UserService.login(settings.test.testUser, settings.test.testUserAuth).then((user) => {
+            performAction(user);
+        }, (err) => {
+            logger.error(err);
+        });
+    }
 }

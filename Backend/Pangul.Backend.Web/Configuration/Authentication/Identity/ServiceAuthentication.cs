@@ -22,8 +22,23 @@ namespace Pangul.Backend.Web.Configuration.Authentication.Identity
 
     private readonly Dictionary<string, IClaims[]> _userClaims = new Dictionary<string, IClaims[]>
     {
-      {"doug", new IClaims[] {new PangulUser(), new PangulQuestionAsker()}},
-      {"admin", new IClaims[] {new PangulUser(), new PangulAdmin(), new PangulAdminDatabase(), new PangulQuestionAsker()}}
+      {
+        "doug", new IClaims[]
+        {
+          new PangulUser(),
+          new PangulQuestionAsker()
+        }
+      },
+      {
+        "admin", new IClaims[]
+        {
+          new PangulUser(),
+          new PangulAdmin(),
+          new PolicyCanDeleteTopic(),
+          new PangulAdminDatabase(),
+          new PangulQuestionAsker()
+        }
+      }
     };
 
     public ServiceAuthentication(IUserService userService)

@@ -1,6 +1,6 @@
-import { Topic } from "../../../../../react-pangul-core/src/domain/topic";
-import { UserContext } from "../../../../../react-pangul-core/src/domain/userContext";
-import { Page } from "../../../infrastructure/componentHelpers/page";
+import {Topic} from "../../../../../react-pangul-core/src/domain/topic";
+import {UserContext} from "../../../../../react-pangul-core/src/domain/userContext";
+import {Page} from "../../../infrastructure/componentHelpers/page";
 
 export interface ITopicEditProps {
     topic: string;
@@ -23,6 +23,10 @@ export class TopicEdit extends Page<ITopicEditProps, ITopicEdit> {
                 return Promise.resolve({notice: "Saved topic"});
             });
         }
+    }
+
+    public async deleteTopic() {
+        await this.state.topic.delete();
     }
 
     protected async loadInitialData(fromProps: ITopicEditProps): Promise<void> {

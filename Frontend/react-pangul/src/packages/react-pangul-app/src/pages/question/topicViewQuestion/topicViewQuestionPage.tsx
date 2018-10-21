@@ -6,8 +6,8 @@ import {LayoutRightBox} from "../../../components/layout/layoutRightBox/layoutRi
 import {LayoutStandardHeader} from "../../../components/layout/layoutStandardHeader/layoutStandardHeader";
 import {QuestionLink, QuestionLinkType} from "../../../components/question/questionLink/questionLink";
 import {QuestionView} from "../../../components/question/questionView/questionView";
-import {ITopicViewQuestionProps, TopicViewQuestion} from "./topicViewQuestion";
 import {TopicLink, TopicLinkType} from "../../../components/topic/topicLink/topicLink";
+import {ITopicViewQuestionProps, TopicViewQuestion} from "./topicViewQuestion";
 
 export class TopicViewQuestionPage extends React.Component<ITopicViewQuestionProps> {
     private data: TopicViewQuestion;

@@ -1,15 +1,16 @@
 import * as React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { UserContext } from "../../../../react-pangul-core/src/domain/userContext";
-import { TopicAnswerQuestionPage } from "../../pages/answer/topicAnswerQuestion/topicAnswerQuestionPage";
-import { TopicEditAnswerPage } from "../../pages/answer/topicEditAnswer/topicEditAnswerPage";
-import { GenericHelpPage } from "../../pages/generic/genericHelpPage/genericHelpPage";
-import { TopicAskQuestionPage } from "../../pages/question/topicAskQuestion/topicAskQuestionPage";
-import { TopicEditQuestionPage } from "../../pages/question/topicEditQuestion/topicEditQuestionPage";
-import { TopicViewQuestionPage } from "../../pages/question/topicViewQuestion/topicViewQuestionPage";
-import { TopicDiscoverPage } from "../../pages/topic/topicDiscover/topicDiscoverPage";
-import { TopicEditPage } from "../../pages/topic/topicEdit/topicEditPage";
-import { TopicSearchPage } from "../../pages/topic/topicSearch/topicSearchPage";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {UserContext} from "../../../../react-pangul-core/src/domain/userContext";
+import {TopicAnswerQuestionPage} from "../../pages/answer/topicAnswerQuestion/topicAnswerQuestionPage";
+import {TopicEditAnswerPage} from "../../pages/answer/topicEditAnswer/topicEditAnswerPage";
+import {GenericHelpPage} from "../../pages/generic/genericHelpPage/genericHelpPage";
+import {GenericLogoutPage} from "../../pages/generic/genericLogoutPage/genericLogoutPage";
+import {TopicAskQuestionPage} from "../../pages/question/topicAskQuestion/topicAskQuestionPage";
+import {TopicEditQuestionPage} from "../../pages/question/topicEditQuestion/topicEditQuestionPage";
+import {TopicViewQuestionPage} from "../../pages/question/topicViewQuestion/topicViewQuestionPage";
+import {TopicDiscoverPage} from "../../pages/topic/topicDiscover/topicDiscoverPage";
+import {TopicEditPage} from "../../pages/topic/topicEdit/topicEditPage";
+import {TopicSearchPage} from "../../pages/topic/topicSearch/topicSearchPage";
 
 export interface IAppRoutes {
     user: UserContext;
@@ -22,6 +23,7 @@ export class AppRoutes extends React.Component<IAppRoutes> {
                 <Switch>
                     <Route exact={true} path="/" render={this.discoverTopics}/>
                     <Route exact={true} path="/help" render={this.help}/>
+                    <Route exact={true} path="/logout" render={this.logout}/>
                     <Route exact={true} path="/t/:name" render={this.searchTopic}/>
                     <Route exact={true} path="/t/:name/edit" render={this.editTopic}/>
                     <Route exact={true} path="/t/:name/ask" render={this.askQuestion}/>
@@ -36,6 +38,10 @@ export class AppRoutes extends React.Component<IAppRoutes> {
 
     private help = () => (
         <GenericHelpPage/>
+    )
+
+    private logout = () => (
+        <GenericLogoutPage user={this.props.user}/>
     )
 
     private discoverTopics = () => (

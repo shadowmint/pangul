@@ -15,7 +15,7 @@ export class AuthController extends BaseController {
         return await this.post<void>("/api/auth/logout", null);
     }
 
-    public async user(): Promise<IUserClaims> {
+    public async claims(): Promise<IUserClaims> {
         return this.post<IUserClaims>("/api/auth/claims", null);
     }
 }

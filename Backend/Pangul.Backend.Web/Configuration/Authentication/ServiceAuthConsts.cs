@@ -15,6 +15,10 @@ namespace Pangul.Backend.Web.Configuration.Authentication
     public const string ClaimCanCreate = "CanCreate";
     public const string ClaimCanCreateQuestion = "Question";
     
+    // Topic claims
+    public const string ClaimCanDelete = "CanDelete";
+    public const string ClaimCanDeleteTopic = "Topic";
+    
     /// The roles this admin is permitted to do.
     public static string ClaimAdminRoles = "AdminRoles";
     public const string ClaimAdminRolesView = "View";

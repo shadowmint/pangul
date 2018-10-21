@@ -58,7 +58,7 @@ namespace Pangul.Backend.Web.Controllers.Topics
     }
 
     [HttpPost]
-    [Authorize(Policy = PangulAdmin.PolicyName)]
+    [Authorize(Policy = PolicyCanDeleteTopic.PolicyName)]
     public async Task<IActionResult> Delete([FromBody] TopicDeleteViewModel model)
     {
       try

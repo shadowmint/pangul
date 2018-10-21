@@ -46,10 +46,7 @@ export class Topic extends Model<ITopic> {
         const controller = new TopicsController();
         await this.update(async () => {
             await controller.delete(this.state);
-            return {
-                questionId: "",
-                rowVersion: "",
-            };
+            return this.blank();
         });
     }
 

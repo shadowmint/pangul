@@ -5,3 +5,7 @@
     margin: 0;
     padding: 0.5em;
 }
+
+.component--UserCurrentInfo .logout {
+    font-size: 0.8em;
+}
