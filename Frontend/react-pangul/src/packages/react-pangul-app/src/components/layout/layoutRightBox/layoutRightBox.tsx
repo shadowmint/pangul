@@ -7,10 +7,9 @@ export interface ILayoutRightBox {
 
 export class LayoutRightBox extends React.PureComponent<ILayoutRightBox> {
     public render() {
-        const height = this.props.expand ? "auto" : "1px";
-        const padding = this.props.expand ? "0.3em 0.5em" : "0 0.5em";
+        const position = this.props.expand ? "static" : "absolute";
         return (
-            <div className="component--LayoutRightBox" style={{height, padding}}>
+            <div className="component--LayoutRightBox" style={{position}}>
                 {this.props.children}
             </div>
         );

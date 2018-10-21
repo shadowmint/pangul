@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using NCore.Base.WebAuth;
+using Pangul.Backend.Web.Configuration.Authentication.Infrastructure;
 using Pangul.Backend.Web.Configuration.Authentication.Policy;
 using Pangul.Backend.Web.Configuration.Core;
 using Pangul.Services.Services;
 using Pangul.Services.Services.Auth;
 
-namespace Pangul.Backend.Web.Configuration.Authentication.Identity
+namespace Pangul.Backend.Web.Configuration.Authentication
 {
-  public class ServiceAuthentication : IPangulAuthProvider
+  public class ServiceIdentityList : IPangulAuthProvider
   {
     private readonly IUserService _userService;
 
@@ -26,7 +27,8 @@ namespace Pangul.Backend.Web.Configuration.Authentication.Identity
         "doug", new IClaims[]
         {
           new PangulUser(),
-          new PangulQuestionAsker()
+          new PolicyCanCreateQuestion(),
+          new PolicyCanDeleteAnswer(),
         }
       },
       {
@@ -35,13 +37,14 @@ namespace Pangul.Backend.Web.Configuration.Authentication.Identity
           new PangulUser(),
           new PangulAdmin(),
           new PolicyCanDeleteTopic(),
+          new PolicyCanDeleteAnswer(),
           new PangulAdminDatabase(),
-          new PangulQuestionAsker()
+          new PolicyCanCreateQuestion()
         }
       }
     };
 
-    public ServiceAuthentication(IUserService userService)
+    public ServiceIdentityList(IUserService userService)
     {
       _userService = userService;
     }

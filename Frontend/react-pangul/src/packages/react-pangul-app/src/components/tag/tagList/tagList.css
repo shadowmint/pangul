@@ -3,3 +3,9 @@
     text-align: left;
     width: 100%;
 }
+
+.component--TagList .tag {
+    display: inline-block;
+    color: #346655;
+    cursor: pointer;
+}

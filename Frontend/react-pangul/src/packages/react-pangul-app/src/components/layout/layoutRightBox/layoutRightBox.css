@@ -1,4 +1,8 @@
 .component--LayoutRightBox {
+    top: 0;
+    right: 0;
     display: block;
     text-align: right;
+    margin-top: 0.3em;
+    margin-right: 0.5em;
 }

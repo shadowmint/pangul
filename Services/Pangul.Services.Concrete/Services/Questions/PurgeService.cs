@@ -5,6 +5,7 @@ using Pangul.Services.Db.Questions;
 using Pangul.Services.Infrastructure.Backup;
 using Pangul.Services.Infrastructure.Errors;
 using Pangul.Services.Internal.Cleanup;
+using Pangul.Services.Internal.User;
 using Pangul.Services.Model;
 using Pangul.Services.Services.Questions;
 
@@ -16,15 +17,17 @@ namespace Pangul.Services.Concrete.Services.Questions
     private readonly ICommandHandler<PurgeAnswerData> _purgeAnswer;
     private readonly IInternalDataBackupService _backupService;
     private readonly IQuestionService _questionService;
+    private readonly IInternalUserPermissionService _internalUserPermissionService;
     private readonly IAnswerService _answerService;
 
     public PurgeService(ICommandHandler<PurgeQuestionData> purgeQuestion, ICommandHandler<PurgeAnswerData> purgeAnswer, IInternalDataBackupService backupService, IQuestionService questionService,
-      IAnswerService answerService)
+      IAnswerService answerService, IInternalUserPermissionService internalUserPermissionService)
     {
       _purgeQuestion = purgeQuestion;
       _purgeAnswer = purgeAnswer;
       _backupService = backupService;
       _questionService = questionService;
+      _internalUserPermissionService = internalUserPermissionService;
       _answerService = answerService;
     }
 
@@ -53,6 +56,8 @@ namespace Pangul.Services.Concrete.Services.Questions
         throw new PangulCommandFailedException(CommandFailureType.MissingData, $"No such answer ({answerId})");
       }
 
+      await _internalUserPermissionService.RequireWriteAccessFor(answer, user);
+      
       _backupService.Backup(answer, backupConfiguration);
 
       await _purgeAnswer.Execute(db, new PurgeAnswerData()

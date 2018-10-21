@@ -64,6 +64,15 @@ export class Answer extends Model<IAnswer> {
         });
     }
 
+    /** Delete this answer, if you're allowed to */
+    public async delete(): Promise<void> {
+        await this.update(async () => {
+            const controller = new AnswersController();
+            await controller.delete(this.state.answerId);
+            return this.blank();
+        });
+    }
+
     protected blank(): IAnswer {
         return {
             answerId: "",
@@ -87,4 +96,5 @@ export class Answer extends Model<IAnswer> {
     protected rebind(): void {
         this.state.meta.parent = this;
     }
+
 }

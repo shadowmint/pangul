@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Pangul.Backend.Web.Configuration.Core;
 using Pangul.Backend.Web.Controllers.Answers.ViewModels;
 using Pangul.Backend.Web.Controllers.Questions.ViewModels;
+using Pangul.Backend.Web.Infrastructure;
 using Pangul.Backend.Web.Infrastructure.Conventions;
 using Pangul.Core.Data.Questions;
 using Pangul.Core.Infrastructure;
@@ -21,12 +22,14 @@ namespace Pangul.Backend.Web.Controllers.Answers
     private readonly IUserService _userService;
     private readonly IAnswerService _answerService;
     private readonly ISearchService _searchService;
+    private readonly IPurgeService _purgeService;
 
-    public AnswersControllerService(IUserService userService, IAnswerService answerService, ISearchService searchService)
+    public AnswersControllerService(IUserService userService, IAnswerService answerService, ISearchService searchService, IPurgeService purgeService)
     {
       _userService = userService;
       _answerService = answerService;
       _searchService = searchService;
+      _purgeService = purgeService;
     }
 
     public async Task<StandardResponse> AddAnswerToQuestion(ClaimsPrincipal identity, AddAnswerViewModel model, ModelStateDictionary modelState)
@@ -108,6 +111,24 @@ namespace Pangul.Backend.Web.Controllers.Answers
         }
       }
     }
+    
+    public async Task<StandardResponse> DeleteAnswer(ClaimsPrincipal identity, DeleteAnswerViewModel model, ModelStateDictionary modelState)
+    {
+      if (!modelState.IsValid)
+      {
+        return modelState.StandardError();
+      }
+
+      using (var t = new ServiceDb().WithTransaction())
+      {
+        using (var user = await _userService.Become(t.Db, identity, null))
+        {
+          await _purgeService.PurgeExistingAnswer(t.Db, user, model.Id, new BackupConfig());
+          return StandardResponse.ForSuccess();
+        }
+      }
+    }
+
 
     private AnswerViewModel MapToAnswerViewModel(Answer answer)
     {

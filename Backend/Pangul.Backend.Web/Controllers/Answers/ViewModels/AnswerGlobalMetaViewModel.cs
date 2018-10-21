@@ -1,4 +1,4 @@
-﻿namespace Pangul.Backend.Web.Controllers.Answers
+﻿namespace Pangul.Backend.Web.Controllers.Answers.ViewModels
 {
   internal class AnswerGlobalMetaViewModel
   {

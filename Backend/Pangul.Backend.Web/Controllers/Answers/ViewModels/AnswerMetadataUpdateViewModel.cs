@@ -1,4 +1,4 @@
-﻿namespace Pangul.Backend.Web.Controllers.Questions.ViewModels
+﻿namespace Pangul.Backend.Web.Controllers.Answers.ViewModels
 {
   public class AnswerMetadataUpdateViewModel
   {

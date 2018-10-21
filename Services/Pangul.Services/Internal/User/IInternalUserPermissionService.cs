@@ -8,6 +8,6 @@ namespace Pangul.Services.Internal.User
     {
         Task<bool> HasWriteAccessFor(Answer answer, UserContext user);
         Task RequireWriteAccessFor(Answer answer, UserContext user);
-        Task RequireWriteAccessFor(Question question, UserContext commandUserContext);
+        Task RequireWriteAccessFor(Question question, UserContext user);
     }
 }

@@ -5,7 +5,7 @@ using NCore.Base.WebAuth;
 
 namespace Pangul.Backend.Web.Configuration.Authentication.Policy
 {
-    public class PangulQuestionAsker : IPolicy, IClaims
+    public class PolicyCanCreateQuestion : IPolicy, IClaims
     {
         public void Require(AuthorizationPolicyBuilder policyOptions)
         {
@@ -22,6 +22,6 @@ namespace Pangul.Backend.Web.Configuration.Authentication.Policy
 
         string IPolicy.PolicyName => PolicyName;
 
-        public const string PolicyName = "PangulQuestionAsker";
+        public const string PolicyName = "PolicyCanAskQuestion";
     }
 }

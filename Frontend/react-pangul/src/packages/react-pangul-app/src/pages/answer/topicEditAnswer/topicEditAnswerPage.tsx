@@ -8,12 +8,18 @@ import {LayoutStandardHeader} from "../../../components/layout/layoutStandardHea
 import {QuestionLink, QuestionLinkType} from "../../../components/question/questionLink/questionLink";
 import {QuestionView} from "../../../components/question/questionView/questionView";
 import {ITopicEditAnswerProps, TopicEditAnswer} from "./topicEditAnswer";
+import {LayoutWithPermissions} from "../../../components/layout/layoutWithPermissions/layoutWithPermissions";
+import {LayoutUnsafeBox} from "../../../components/layout/layoutUnsafeBox/layoutUnsafeBox";
+import {Redirect} from "react-router";
+import NavigationService from "../../../infrastructure/service/navigationService";
 
 export class TopicEditAnswerPage extends React.Component<ITopicEditAnswerProps> {
     private data: TopicEditAnswer;
+    private redirect: boolean;
 
     constructor(props: ITopicEditAnswerProps) {
         super(props);
+        this.redirect = false;
         this.data = new TopicEditAnswer(() => this.forceUpdate());
     }
 
@@ -32,6 +38,11 @@ export class TopicEditAnswerPage extends React.Component<ITopicEditAnswerProps> 
             return "";
         }
 
+        if (this.redirect) {
+            const url = new NavigationService().urlForQuestion(this.props.topic, this.props.question);
+            return <Redirect to={url}/>;
+        }
+
         const question = this.data.state.question;
         const answer = this.data.state.answer;
         const topic = this.data.state.topic;
@@ -45,13 +56,33 @@ export class TopicEditAnswerPage extends React.Component<ITopicEditAnswerProps> 
                     <QuestionView question={question}/>
                 </LayoutContentContainer>
 
-                <LayoutFormContainer error={this.data.state.question.error}>
+                <LayoutFormContainer error={this.data.state.answer.error}>
                     <LayoutRightBox expand={true}>
                         <QuestionLink question={question} target={QuestionLinkType.View}>Close</QuestionLink>
                     </LayoutRightBox>
                     <InfoNotice value={this.data.state.notice}/>
                     <AnswerForm submit={this.saveAnswerEvent} answer={answer} saveText="Save"/>
                 </LayoutFormContainer>
+
+                <LayoutWithPermissions user={this.props.user} requirePermissions={["CanDelete:Answer"]}>
+                    <LayoutContentContainer>
+                        <LayoutUnsafeBox title="Unsafe commands">
+                            <form>
+                                <fieldset>
+                                    <LayoutRightBox expand={true}>
+                                        <p>
+                                            Delete this answer?
+                                        </p>
+                                        <p>
+                                            Careful! No undo for this!
+                                        </p>
+                                        <button onClick={this.onDeleteQuestion}>Delete answer</button>
+                                    </LayoutRightBox>
+                                </fieldset>
+                            </form>
+                        </LayoutUnsafeBox>
+                    </LayoutContentContainer>
+                </LayoutWithPermissions>
             </div>
         );
     }
@@ -61,4 +92,12 @@ export class TopicEditAnswerPage extends React.Component<ITopicEditAnswerProps> 
     }
 
     private readonly saveAnswerEvent = () => this.data.saveAnswer();
+
+    private onDeleteQuestion = async (e: React.FormEvent) => {
+        e.preventDefault();
+        await this.data.deleteAnswer();
+        if (!this.data.state.topic.error) {
+            this.redirect = true;
+        }
+    }
 }

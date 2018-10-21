@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using Pangul.Backend.Web.Controllers.Answers.ViewModels;
 
 namespace Pangul.Backend.Web.Controllers.Answers.Validators
 {

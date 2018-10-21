@@ -19,7 +19,7 @@ namespace Pangul.Services.Services.Questions
     /// Add an answer for an existing question.
     /// </summary>
     Task<Answer> CreateAnswer(PangulDbContext db, UserContext user, string modelQuestionId, string answerBody);
-    
+
     /// <summary>
     /// Get the user specific metadata about this question for this user.
     /// </summary>
@@ -29,7 +29,7 @@ namespace Pangul.Services.Services.Questions
     /// Update the user specific metadata and global metadata for this question.
     /// </summary>
     Task<AnswerMetaInternalModel> UpdateAnswerMetadata(PangulDbContext db, UserContext user, UpdateAnswerMeta model);
-    
+
     /// <summary>
     /// Update an existing answer, if the user has permission to do so. 
     /// </summary>

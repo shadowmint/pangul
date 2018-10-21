@@ -31,6 +31,10 @@ export class TopicEditAnswer extends Page<ITopicEditAnswerProps, ITopicEditAnswe
         }
     }
 
+    public async deleteAnswer() {
+        await this.state.answer.delete();
+    }
+
     protected async loadInitialData(fromProps: ITopicEditAnswerProps): Promise<void> {
         await this.update(async () => {
             const topic = await Topic.get(fromProps.topic);
