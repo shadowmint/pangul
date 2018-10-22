@@ -49,4 +49,8 @@ export default class NavigationService {
     public urlForLogout() {
         return `${this.root}/logout`;
     }
+
+    public urlForSelfProfile() {
+        return `${this.root}/self`;
+    }
 }

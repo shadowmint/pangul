@@ -28,32 +28,104 @@ namespace Pangul.Services.Search.Strategy
       SetQueryTopic(parsedQuery);
       var results = new SearchResultAggregator(offset, limit);
 
-      if (results.Push(await MatchTitle(parsedQuery, db)))
+      if (results.Push(await MatchTitle(parsedQuery, db, user)))
       {
         return results.AsResult();
       }
 
-      if (results.Push(await MatchTag(parsedQuery, db)))
+      if (results.Push(await MatchTag(parsedQuery, db, user)))
       {
         return results.AsResult();
       }
 
-      if (results.Push(await MatchQuestionBody(parsedQuery, db)))
+      if (results.Push(await MatchQuestionBody(parsedQuery, db, user)))
       {
         return results.AsResult();
       }
 
-      if (results.Push(await MatchAnswerBody(parsedQuery, db)))
+      if (results.Push(await MatchAnswerBody(parsedQuery, db, user)))
       {
         return results.AsResult();
       }
 
-      if (results.Push(await MatchAll(parsedQuery, db)))
+      if (results.Push(await MatchAll(parsedQuery, db, user)))
       {
         return results.AsResult();
       }
 
       return results.AsResult();
+    }
+
+
+    private async Task<IEnumerable<long>> MatchAnswerBody(SearchQuery parsedQuery, PangulDbContext db, UserContext user)
+    {
+      var allMatches = new List<long>();
+      foreach (var term in parsedQuery.Terms)
+      {
+        var questionQuery = db.Question
+          .Join(db.Answer, q => q.QuestionId, a => a.QuestionId, (question, answer) => new {question, answer})
+          .Where(i => EF.Functions.Like(i.answer.Body, $"%{term}%"))
+          .Select(i => i.question);
+
+        questionQuery = ApplyTopicFilter(questionQuery, parsedQuery, db);
+        questionQuery = ApplyStarFilter(questionQuery, parsedQuery, db, user);
+        allMatches.AddRange(await questionQuery.Select(i => i.QuestionId).ToListAsync());
+      }
+
+      return allMatches.Distinct().ToList();
+    }
+
+    private async Task<IEnumerable<long>> MatchQuestionBody(SearchQuery parsedQuery, PangulDbContext db, UserContext user)
+    {
+      var allMatches = new List<long>();
+      foreach (var term in parsedQuery.Terms)
+      {
+        var questionQuery = db.Question.Where(i => EF.Functions.Like(i.Body, $"%{term}%")).Select(i => i);
+        questionQuery = ApplyTopicFilter(questionQuery, parsedQuery, db);
+        questionQuery = ApplyStarFilter(questionQuery, parsedQuery, db, user);
+        allMatches.AddRange(await questionQuery.Select(i => i.QuestionId).ToListAsync());
+      }
+
+      return allMatches.Distinct().ToList();
+    }
+
+    private static async Task<IEnumerable<long>> MatchTag(SearchQuery parsedQuery, PangulDbContext db, UserContext user)
+    {
+      var tagList = parsedQuery.Tokens.Where(i => i.TokenType == SearchTokenType.Tag).Select(i => i.TokenValue).ToArray();
+      if (tagList.Length == 0) return new long[] { };
+
+      var questionQuery = db.Question.Select(i => i);
+      questionQuery = ApplyTopicFilter(questionQuery, parsedQuery, db);
+      questionQuery = ApplyStarFilter(questionQuery, parsedQuery, db, user);
+      questionQuery = ApplyTagFilter(questionQuery, parsedQuery, db, tagList);
+      return await questionQuery.Select(i => i.QuestionId).ToListAsync();
+    }
+
+    private static async Task<IEnumerable<long>> MatchTitle(SearchQuery parsedQuery, PangulDbContext db, UserContext user)
+    {
+      var allMatches = new List<long>();
+      foreach (var term in parsedQuery.Terms)
+      {
+        var questionQuery = db.Question.Where(i => EF.Functions.Like(i.Title, $"%{term}%")).Select(i => i);
+        questionQuery = ApplyTopicFilter(questionQuery, parsedQuery, db);
+        questionQuery = ApplyStarFilter(questionQuery, parsedQuery, db, user);
+        allMatches.AddRange(await questionQuery.Select(i => i.QuestionId).ToListAsync());
+      }
+
+      return allMatches.Distinct().ToList();
+    }
+
+    private static async Task<IEnumerable<long>> MatchAll(SearchQuery parsedQuery, PangulDbContext db, UserContext user)
+    {
+      if (!parsedQuery.Terms.Contains("*"))
+      {
+        return new long[] { };
+      }
+
+      var questionQuery = db.Question.Select(i => i);
+      questionQuery = ApplyTopicFilter(questionQuery, parsedQuery, db);
+      questionQuery = ApplyStarFilter(questionQuery, parsedQuery, db, user);
+      return await questionQuery.Select(i => i.QuestionId).ToListAsync();
     }
 
     /// <summary>
@@ -67,94 +139,39 @@ namespace Pangul.Services.Search.Strategy
       }
     }
 
-    private async Task<IEnumerable<long>> MatchAnswerBody(SearchQuery parsedQuery, PangulDbContext db)
+    private static IQueryable<Question> ApplyTopicFilter(IQueryable<Question> questionQuery, SearchQuery parsedQuery, PangulDbContext db)
     {
-      var allMatches = new List<long>();
       var topics = CollectTopics(parsedQuery);
-
-      foreach (var term in parsedQuery.Terms)
-      {
-        var matches = from answer in db.Answer
-          join question in db.Question on answer.QuestionId equals question.QuestionId
-          join topic in db.Topic on question.TopicId equals topic.TopicId
-          where EF.Functions.Like(answer.Body, $"%{term}%") && (topics.AnyTopic || topics.Topics.Contains(topic.Name))
-          orderby question.TimeCreated descending
-          select question.QuestionId;
-
-        allMatches.AddRange(await matches.ToListAsync());
-      }
-
-      return allMatches.Distinct().ToList();
+      return questionQuery
+        .Join(db.Topic, q => q.TopicId, t => t.TopicId, (question, topic) => new {question, topic})
+        .Where(r => topics.AnyTopic || topics.Topics.Contains(r.topic.Name))
+        .Select(r => r.question);
     }
 
-    private async Task<IEnumerable<long>> MatchQuestionBody(SearchQuery parsedQuery, PangulDbContext db)
+    private static IQueryable<Question> ApplyTagFilter(IQueryable<Question> questionQuery, SearchQuery query, PangulDbContext db, string[] tagList)
     {
-      var allMatches = new List<long>();
-      var topics = CollectTopics(parsedQuery);
-
-      foreach (var term in parsedQuery.Terms)
+      if (query.Tokens.All(i => i.TokenType != SearchTokenType.Tag))
       {
-        var matches = from question in db.Question
-          join topic in db.Topic on question.TopicId equals topic.TopicId
-          where EF.Functions.Like(question.Body, $"%{term}%") && (topics.AnyTopic || topics.Topics.Contains(topic.Name))
-          orderby question.TimeCreated descending
-          select question.QuestionId;
-
-        allMatches.AddRange(await matches.ToListAsync());
+        return questionQuery;
       }
 
-      return allMatches.Distinct().ToList();
+      return questionQuery
+        .Join(db.QuestionTag, q => q.QuestionId, t => t.QuestionId, (question, tag) => new {question, tag})
+        .Where(r => tagList.Contains(r.tag.Tag))
+        .Select(r => r.question);
     }
 
-    private static async Task<IEnumerable<long>> MatchTag(SearchQuery parsedQuery, PangulDbContext db)
+    private static IQueryable<Question> ApplyStarFilter(IQueryable<Question> questionQuery, SearchQuery query, PangulDbContext db, UserContext user)
     {
-      var tagList = parsedQuery.Tokens.Where(i => i.TokenType == SearchTokenType.Tag).Select(i => i.TokenValue).ToArray();
-      if (tagList.Length == 0) return new long[] { };
-
-      var topics = CollectTopics(parsedQuery);
-
-      return await (from tag in db.QuestionTag
-          join question in db.Question on tag.QuestionId equals question.QuestionId
-          join topic in db.Topic on question.TopicId equals topic.TopicId
-          where tagList.Contains(tag.Tag) && (topics.AnyTopic || topics.Topics.Contains(topic.Name))
-          orderby question.TimeCreated descending
-          select tag.QuestionId)
-        .ToListAsync();
-    }
-
-    private static async Task<IEnumerable<long>> MatchTitle(SearchQuery parsedQuery, PangulDbContext db)
-    {
-      var allMatches = new List<long>();
-      var topics = CollectTopics(parsedQuery);
-
-      foreach (var term in parsedQuery.Terms)
+      if (!query.Tokens.Any(i => i.TokenType == SearchTokenType.Is && i.TokenValue == "star"))
       {
-        var matches = from question in db.Question
-          join topic in db.Topic on question.TopicId equals topic.TopicId
-          where EF.Functions.Like(question.Title, $"%{term}%") && (topics.AnyTopic || topics.Topics.Contains(topic.Name))
-          orderby question.TimeCreated descending
-          select question.QuestionId;
-
-        allMatches.AddRange(await matches.ToListAsync());
+        return questionQuery;
       }
 
-      return allMatches.Distinct().ToList();
-    }
-
-    private static async Task<IEnumerable<long>> MatchAll(SearchQuery parsedQuery, PangulDbContext db)
-    {
-      if (!parsedQuery.Terms.Contains("*"))
-      {
-        return new long[] { };
-      }
-
-      var topics = CollectTopics(parsedQuery);
-
-      return await (from question in db.Question
-        join topic in db.Topic on question.TopicId equals topic.TopicId
-        where topics.AnyTopic || topics.Topics.Contains(topic.Name)
-        orderby question.TimeCreated descending
-        select question.QuestionId).ToListAsync();
+      return questionQuery
+        .Join(db.QuestionMeta, q => q.QuestionId, m => m.QuestionId, (question, meta) => new {question, meta})
+        .Where(r => r.meta.Star && r.meta.UserId == user.User.UserId)
+        .Select(r => r.question);
     }
 
     private static TopicList CollectTopics(SearchQuery parsedQuery)

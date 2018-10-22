@@ -19,7 +19,7 @@ export interface ITestComponent {
 export function loadTestUserAnd(performAction: (user: UserContext) => void, skipLogin: boolean = false): void {
     const logger = LoggerProvider.get();
     const settings = SettingsProvider.get();
-    if (!settings.test || !settings.test.testUserEnabled) {
+    if (!settings.test || !settings.test.test) {
         throw new Error("Testing is disabled in settings");
     }
     if (skipLogin) {

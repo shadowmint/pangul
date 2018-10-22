@@ -1,6 +1,5 @@
 import * as React from "react";
 import {QuestionSummary} from "../../../../../react-pangul-core/src/domain/questionSummary";
-import {Topic} from "../../../../../react-pangul-core/src/domain/topic";
 import {SafeMarkdown} from "../../common/display/safeMarkdown/safeMarkdown";
 import {VotesAndStarsReadonly} from "../../metadata/votesAndStarsReadonly/votesAndStarsReadonly";
 import {TagList} from "../../tag/tagList/tagList";
@@ -9,7 +8,6 @@ import "./questionSummaryView.css";
 
 export interface IQuestionSummaryView {
     question: QuestionSummary;
-    topic: Topic;
 }
 
 export class QuestionSummaryView extends React.Component<IQuestionSummaryView> {

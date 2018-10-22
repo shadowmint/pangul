@@ -1,17 +1,17 @@
 import * as React from "react";
+import {Redirect} from "react-router";
 import {AnswerForm} from "../../../components/answer/answerForm/answerForm";
 import {InfoNotice} from "../../../components/common/display/infoNotice/infoNotice";
 import {LayoutContentContainer} from "../../../components/layout/layoutContentContainer/layoutContentContainer";
 import {LayoutFormContainer} from "../../../components/layout/layoutFormContainer/layoutFormContainer";
 import {LayoutRightBox} from "../../../components/layout/layoutRightBox/layoutRightBox";
 import {LayoutStandardHeader} from "../../../components/layout/layoutStandardHeader/layoutStandardHeader";
+import {LayoutUnsafeBox} from "../../../components/layout/layoutUnsafeBox/layoutUnsafeBox";
+import {LayoutWithPermissions} from "../../../components/layout/layoutWithPermissions/layoutWithPermissions";
 import {QuestionLink, QuestionLinkType} from "../../../components/question/questionLink/questionLink";
 import {QuestionView} from "../../../components/question/questionView/questionView";
-import {ITopicEditAnswerProps, TopicEditAnswer} from "./topicEditAnswer";
-import {LayoutWithPermissions} from "../../../components/layout/layoutWithPermissions/layoutWithPermissions";
-import {LayoutUnsafeBox} from "../../../components/layout/layoutUnsafeBox/layoutUnsafeBox";
-import {Redirect} from "react-router";
 import NavigationService from "../../../infrastructure/service/navigationService";
+import {ITopicEditAnswerProps, TopicEditAnswer} from "./topicEditAnswer";
 
 export class TopicEditAnswerPage extends React.Component<ITopicEditAnswerProps> {
     private data: TopicEditAnswer;
