@@ -2,6 +2,7 @@ import {Model} from "../../../react-stateful/src/model";
 import {AnswersController} from "../controllers/answersController";
 import {AnswerMeta} from "./answerMeta";
 import {IQueryResult, QuerySet} from "./querySet";
+import {UserView} from "./userView";
 
 export interface IAnswer {
     answerId: string;
@@ -9,6 +10,8 @@ export interface IAnswer {
     body: string;
     meta: AnswerMeta;
     rowVersion: string;
+    userId: string;
+    user: UserView;
 }
 
 export class Answer extends Model<IAnswer> {
@@ -80,6 +83,8 @@ export class Answer extends Model<IAnswer> {
             meta: new AnswerMeta(),
             questionId: "",
             rowVersion: "",
+            user: new UserView(),
+            userId: "",
         };
     }
 
@@ -87,9 +92,11 @@ export class Answer extends Model<IAnswer> {
         const controller = new AnswersController();
         const answerData = await controller.get(answerId);
         const meta = new AnswerMeta(await controller.getMetadata(answerId));
+        const user = await UserView.get(answerData.userId);
         return {
             ...answerData,
             meta,
+            user,
         };
     }
 

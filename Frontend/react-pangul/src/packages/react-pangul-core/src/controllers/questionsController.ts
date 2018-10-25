@@ -12,6 +12,7 @@ export interface IQuestionData {
     title: string;
     body: string;
     tags: string[];
+    userId: string;
     rowVersion: string;
 }
 
@@ -19,6 +20,7 @@ export interface IQuestionSummaryData {
     questionId: string;
     topic: string;
     title: string;
+    userId: string;
     summary: string;
     tags: string[];
 }

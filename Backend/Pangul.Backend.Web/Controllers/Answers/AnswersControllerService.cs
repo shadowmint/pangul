@@ -83,7 +83,7 @@ namespace Pangul.Backend.Web.Controllers.Answers
         using (var user = await _userService.Become(db, identity, null))
         {
           var answer = await _answerService.GetAnswer(db, user, model.Id);
-          return StandardResponse.For(MapToAnswerViewModel(answer));
+          return StandardResponse.For(AnswerViewModel.From(answer));
         }
       }
     }
@@ -105,13 +105,13 @@ namespace Pangul.Backend.Web.Controllers.Answers
             NewBody = model.Body,
             RowVersion = model.RowVersion
           });
-          
+
           await db.SaveChangesAsync();
           return StandardResponse.ForSuccess();
         }
       }
     }
-    
+
     public async Task<StandardResponse> DeleteAnswer(ClaimsPrincipal identity, DeleteAnswerViewModel model, ModelStateDictionary modelState)
     {
       if (!modelState.IsValid)
@@ -127,19 +127,6 @@ namespace Pangul.Backend.Web.Controllers.Answers
           return StandardResponse.ForSuccess();
         }
       }
-    }
-
-
-    private AnswerViewModel MapToAnswerViewModel(Answer answer)
-    {
-      return new AnswerViewModel()
-      {
-        AnswerId = answer.AnswerId.ToString(),
-        QuestionId = answer.QuestionId.ToString(),
-        Body = answer.Body,
-        RowVersion = PangulRowVersion.GetString(answer.RowVersion),
-        CanEdit = answer.CanEdit,
-      };
     }
 
     public async Task<StandardResponse> UpdateAnswerMetadata(ClaimsPrincipal identity, AnswerMetadataUpdateViewModel model,

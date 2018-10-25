@@ -7,6 +7,7 @@ import {LayoutRightBox} from "../../layout/layoutRightBox/layoutRightBox";
 import {VotesAndStars} from "../../metadata/votesAndStars/votesAndStars";
 import {AnswerLink, AnswerLinkType} from "../answerLink/answerLink";
 import "./answerView.css";
+import {UserSummary} from "../../user/userSummary/userSummary";
 
 export interface IAnswerView {
     answer: Answer;
@@ -34,7 +35,12 @@ export class AnswerView extends React.Component<IAnswerView> {
                                    onStar={null}/>
                 </div>
                 <div className="output">
-                    <SafeMarkdown markdown={this.props.answer.state.body}/>
+                    <div className="rendered">
+                        <SafeMarkdown markdown={this.props.answer.state.body}/>
+                    </div>
+                    <LayoutRightBox expand={true}>
+                        <UserSummary user={this.props.answer.state.user}/>
+                    </LayoutRightBox>
                 </div>
             </div>
         );

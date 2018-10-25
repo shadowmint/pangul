@@ -12,6 +12,7 @@ interface IAnswerNew {
 }
 
 export interface IAnswerData {
+    userId: string;
     questionId: string;
     answerId: string;
     body: string;

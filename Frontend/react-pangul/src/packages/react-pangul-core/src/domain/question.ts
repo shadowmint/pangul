@@ -2,6 +2,7 @@ import {Model} from "../../../react-stateful/src/model";
 import {QuestionsController} from "../controllers/questionsController";
 import {IQueryResult, QuerySet} from "./querySet";
 import {QuestionMeta} from "./questionMeta";
+import {UserView} from "./userView";
 
 export interface IQuestion {
     questionId: string;
@@ -9,7 +10,9 @@ export interface IQuestion {
     title: string;
     body: string;
     tags: string[];
+    userId: string;
     meta: QuestionMeta;
+    user: UserView;
     rowVersion: string;
 }
 
@@ -87,6 +90,8 @@ export class Question extends Model<IQuestion> {
             tags: [],
             title: "new question",
             topic: "default",
+            user: new UserView(),
+            userId: "",
         };
     }
 
@@ -94,9 +99,11 @@ export class Question extends Model<IQuestion> {
         const controller = new QuestionsController();
         const questionData = await controller.get(questionId);
         const meta = new QuestionMeta(await controller.getMetadata(questionId));
+        const user = await UserView.get(questionData.userId);
         return {
             ...questionData,
             meta,
+            user,
         };
     }
 
