@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NCore.Base.WebAuth;
 using NLog;
-using Pangul.Backend.Web.Configuration.Authentication.Identity;
 using Pangul.Backend.Web.Controllers.Auth.ViewModels;
 using Pangul.Backend.Web.Infrastructure.Conventions;
 using Pangul.Services.Services;

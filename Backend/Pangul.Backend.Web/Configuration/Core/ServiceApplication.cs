@@ -11,7 +11,7 @@ using NCore.Base.Commands.Conventions;
 using NCore.Base.Log;
 using NLog;
 using Pangul.Backend.Web.Configuration.Authentication;
-using Pangul.Backend.Web.Configuration.Authentication.Identity;
+using Pangul.Backend.Web.Configuration.Authentication.Infrastructure;
 using Pangul.Services;
 using Pangul.Services.Concrete;
 using Pangul.Services.Services;
@@ -44,14 +44,16 @@ namespace Pangul.Backend.Web.Configuration.Core
 
       // 3rd-party
       builder.RegisterType<FileSystem>().AsImplementedInterfaces();
-      
+
       // Load asp.net core services
       services.AddRouting();
       services.AddMvc().AddFluentValidation();
-      new ServiceCorsPolicy().AddCors(services);
+      new ServiceExtensions()
+        .AddCors(services)
+        .AddGlobalExceptionHandler(services);
 
       // Configure web auth
-      var authService = new ServiceWebAuthentication().Build(services);
+      var authService = new ServicePolicyList().Build(services);
       services.AddSingleton(authService);
 
       // Convert to autofac
@@ -61,7 +63,7 @@ namespace Pangul.Backend.Web.Configuration.Core
       // Configure pangul auth
       var authBuilder = _container.Resolve<IPangulAuthServiceBuilder>();
       var userService = _container.Resolve<IUserService>();
-      authBuilder.ConfigureProvider(new ServiceAuthentication(userService));
+      authBuilder.ConfigureProvider(new ServiceIdentityList(userService));
       authBuilder.Build(_container.Resolve<IPangulAuthService>());
 
       // Bind autofac as service provider
@@ -72,8 +74,8 @@ namespace Pangul.Backend.Web.Configuration.Core
     {
       app.UseAuthentication();
       app.UseMvc();
-      app.UseCors(ServiceCorsPolicy.PangulCorsPolicy);
-      
+      app.UseCors(ServiceExtensions.PangulCorsPolicy);
+
       // Log start message~
       var logger = LogManager.GetCurrentClassLogger();
       logger.Info("Application started");

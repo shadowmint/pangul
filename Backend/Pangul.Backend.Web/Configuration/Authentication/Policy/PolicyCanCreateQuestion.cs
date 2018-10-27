@@ -5,23 +5,23 @@ using NCore.Base.WebAuth;
 
 namespace Pangul.Backend.Web.Configuration.Authentication.Policy
 {
-    public class PangulQuestionAsker : IPolicy, IClaims
+    public class PolicyCanCreateQuestion : IPolicy, IClaims
     {
         public void Require(AuthorizationPolicyBuilder policyOptions)
         {
             policyOptions.AuthenticationSchemes.Add(ServiceAuthConsts.AuthenticationScheme);
             policyOptions.RequireAuthenticatedUser();
             policyOptions.RequireClaim(ServiceAuthConsts.ClaimUserType, ServiceAuthConsts.ClaimUserTypeUser);
-            policyOptions.RequireClaim(ServiceAuthConsts.ClaimCanCreate, ServiceAuthConsts.ClaimCanCreateQuestion);
+            policyOptions.RequireClaim(ServiceAuthConsts.ClaimCanCreate, ServiceAuthConsts.ClaimTargetQuestion);
         }
 
         public IEnumerable<Claim> Claims => new[]
         {
-            new Claim(ServiceAuthConsts.ClaimCanCreate, ServiceAuthConsts.ClaimCanCreateQuestion)
+            new Claim(ServiceAuthConsts.ClaimCanCreate, ServiceAuthConsts.ClaimTargetQuestion)
         };
 
         string IPolicy.PolicyName => PolicyName;
 
-        public const string PolicyName = "PangulQuestionAsker";
+        public const string PolicyName = "PolicyCanAskQuestion";
     }
 }

@@ -5,6 +5,7 @@ using Pangul.Core.Data;
 using Pangul.Core.Data.Questions;
 using Pangul.Services.Actions;
 using Pangul.Services.Db.Questions;
+using Pangul.Services.Infrastructure.Backup;
 using Pangul.Services.Internal.Questions;
 using Pangul.Services.Model;
 using Pangul.Services.Services.Questions;
@@ -33,7 +34,7 @@ namespace Pangul.Services.Concrete.Services.Questions
       _getAnswerGlobalMeta = getAnswerGlobalMeta;
       _updateAnswerMeta = updateAnswerMeta;
       _updateAnswer = updateAnswer;
-      _internalMetaService = internalMetaService;
+      _internalMetaService = internalMetaService;      
     }
 
     public async Task<Answer> CreateAnswer(PangulDbContext db, UserContext user, string questionId, string answerBody)

@@ -16,7 +16,7 @@ export class UserCurrentInfo extends React.Component<IUserCurrentInfo> {
         return (
             <div className="component--UserCurrentInfo">
                 <div>
-                    {this.props.user.username}
+                    <Link to={this.nav.urlForSelfProfile()}>{this.props.user.username}</Link>
                 </div>
                 <div className="logout">
                     <Link to={this.nav.urlForLogout()}>logout</Link>

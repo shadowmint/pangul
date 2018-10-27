@@ -10,14 +10,18 @@ namespace Pangul.Backend.Web.Controllers.Questions.ViewModels
     public string QuestionId { get; set; }
     public string Title { get; set; }
     public string Body { get; set; }
+    public string UserId { get; set; }
     public IList<string> Tags { get; set; }
     public string RowVersion { get; set; }
     public string Topic { get; set; }
+    public bool CanEdit { get; set; }
 
     public static QuestionViewModel From(Question question)
     {
       return new QuestionViewModel()
       {
+        CanEdit = question.CanEdit,
+        UserId = question.UserId.ToString(),
         QuestionId = question.QuestionId.ToString(),
         Title = question.Title,
         Tags = question.Tags.Select(i => i.Tag).ToList(),

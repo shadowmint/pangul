@@ -10,19 +10,19 @@ namespace Pangul.Backend.Web.Configuration.Authentication
     // User type claim
     public const string ClaimUserType = "UserType";
     public const string ClaimUserTypeUser = "User";
-    
-    // Question claims
-    public const string ClaimCanCreate = "CanCreate";
-    public const string ClaimCanCreateQuestion = "Question";
-    
-    // Topic claims
+
+    // Generic modification claims
     public const string ClaimCanDelete = "CanDelete";
-    public const string ClaimCanDeleteTopic = "Topic";
+    public const string ClaimCanCreate = "CanCreate";
     
-    /// The roles this admin is permitted to do.
+    // Generic targets
+    public const string ClaimTargetQuestion = "Question";
+    public const string ClaimTargetTopic = "Topic";
+    public const string ClaimTargetAnswer = "Answer";
+    
+    // The roles this admin is permitted to do.
     public static string ClaimAdminRoles = "AdminRoles";
     public const string ClaimAdminRolesView = "View";
     public const string ClaimAdminRolesDbAdmin = "DbAdmin";
-
   }
 }

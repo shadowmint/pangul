@@ -12,17 +12,20 @@ namespace Pangul.Backend.Web.Configuration.Authentication.Policy
       policyOptions.AuthenticationSchemes.Add(ServiceAuthConsts.AuthenticationScheme);
       policyOptions.RequireAuthenticatedUser();
       policyOptions.RequireClaim(ServiceAuthConsts.ClaimUserType, ServiceAuthConsts.ClaimUserTypeUser);
-      policyOptions.RequireClaim(ServiceAuthConsts.ClaimCanDelete, ServiceAuthConsts.ClaimCanDeleteTopic);
+      policyOptions.RequireClaim(ServiceAuthConsts.ClaimCanDelete, ServiceAuthConsts.ClaimTargetTopic);
     }
 
     public IEnumerable<Claim> Claims => new[]
     {
       new Claim(ServiceAuthConsts.ClaimUserType, ServiceAuthConsts.ClaimUserTypeUser),
-      new Claim(ServiceAuthConsts.ClaimCanDelete, ServiceAuthConsts.ClaimCanDeleteTopic), 
+      new Claim(ServiceAuthConsts.ClaimCanDelete, ServiceAuthConsts.ClaimTargetTopic), 
     };
 
     string IPolicy.PolicyName => PolicyName;
 
-    public const string PolicyName = ServiceAuthConsts.ClaimCanDeleteTopic;
+    public const string PolicyName = ServiceAuthConsts.ClaimTargetTopic;
   }
+}
+namespace Pangul.Backend.Web.Configuration.Authentication.Policy
+{
 }

@@ -11,6 +11,7 @@ import {TopicViewQuestionPage} from "../../pages/question/topicViewQuestion/topi
 import {TopicDiscoverPage} from "../../pages/topic/topicDiscover/topicDiscoverPage";
 import {TopicEditPage} from "../../pages/topic/topicEdit/topicEditPage";
 import {TopicSearchPage} from "../../pages/topic/topicSearch/topicSearchPage";
+import {UserViewSelfProfilePage} from "../../pages/user/userViewProfile/userViewSelfProfilePage";
 
 export interface IAppRoutes {
     user: UserContext;
@@ -23,6 +24,7 @@ export class AppRoutes extends React.Component<IAppRoutes> {
                 <Switch>
                     <Route exact={true} path="/" render={this.discoverTopics}/>
                     <Route exact={true} path="/help" render={this.help}/>
+                    <Route exact={true} path="/self" render={this.self}/>
                     <Route exact={true} path="/logout" render={this.logout}/>
                     <Route exact={true} path="/t/:name" render={this.searchTopic}/>
                     <Route exact={true} path="/t/:name/edit" render={this.editTopic}/>
@@ -43,6 +45,11 @@ export class AppRoutes extends React.Component<IAppRoutes> {
     private logout = () => (
         <GenericLogoutPage user={this.props.user}/>
     )
+
+    private self = () => (
+        <UserViewSelfProfilePage user={this.props.user}/>
+    )
+
 
     private discoverTopics = () => (
         <TopicDiscoverPage user={this.props.user} search="*"/>

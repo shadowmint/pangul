@@ -3,8 +3,11 @@ import {Answer} from "../../../../../react-pangul-core/src/domain/answer";
 import {Question} from "../../../../../react-pangul-core/src/domain/question";
 import {Topic} from "../../../../../react-pangul-core/src/domain/topic";
 import {SafeMarkdown} from "../../common/display/safeMarkdown/safeMarkdown";
+import {LayoutIf} from "../../layout/layoutIf/layoutIf";
+import {LayoutRightBottom} from "../../layout/layoutRightBottom/layoutRightBottom";
 import {LayoutRightBox} from "../../layout/layoutRightBox/layoutRightBox";
 import {VotesAndStars} from "../../metadata/votesAndStars/votesAndStars";
+import {UserSummary} from "../../user/userSummary/userSummary";
 import {AnswerLink, AnswerLinkType} from "../answerLink/answerLink";
 import "./answerView.css";
 
@@ -20,11 +23,15 @@ export class AnswerView extends React.Component<IAnswerView> {
 
         return (
             <div className="component--AnswerView">
-                <LayoutRightBox expand={false}>
-                    <AnswerLink question={this.props.question} answer={this.props.answer} target={AnswerLinkType.Edit}>
-                        Edit
-                    </AnswerLink>
-                </LayoutRightBox>
+                <LayoutIf show={this.props.answer.state.canEdit}>
+                    <LayoutRightBox expand={false}>
+                        <AnswerLink question={this.props.question} answer={this.props.answer}
+                                    target={AnswerLinkType.Edit}>
+                            Edit
+                        </AnswerLink>
+                    </LayoutRightBox>
+                </LayoutIf>
+
                 <div className="metadata">
                     <VotesAndStars showStars={false}
                                    userStars={0}
@@ -34,7 +41,12 @@ export class AnswerView extends React.Component<IAnswerView> {
                                    onStar={null}/>
                 </div>
                 <div className="output">
-                    <SafeMarkdown markdown={this.props.answer.state.body}/>
+                    <div className="rendered">
+                        <SafeMarkdown markdown={this.props.answer.state.body}/>
+                    </div>
+                    <LayoutRightBottom>
+                        <UserSummary user={this.props.answer.state.user}/>
+                    </LayoutRightBottom>
                 </div>
             </div>
         );

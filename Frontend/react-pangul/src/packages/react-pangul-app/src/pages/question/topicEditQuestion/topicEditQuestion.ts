@@ -2,6 +2,7 @@ import {Question} from "../../../../../react-pangul-core/src/domain/question";
 import {Topic} from "../../../../../react-pangul-core/src/domain/topic";
 import {UserContext} from "../../../../../react-pangul-core/src/domain/userContext";
 import {Page} from "../../../infrastructure/componentHelpers/page";
+import NavigationService from "../../../infrastructure/service/navigationService";
 
 export interface ITopicEditQuestionProps {
     topic: string;
@@ -26,6 +27,13 @@ export class TopicEditQuestion extends Page<ITopicEditQuestionProps, ITopicEditQ
                 return Promise.resolve({notice: "Saved question"});
             });
         }
+    }
+
+    public async deleteQuestion() {
+        await this.state.question.delete();
+        const nav = new NavigationService();
+        const postDeleteUrl = nav.urlForTopic(this.state.topic.state.name);
+        nav.redirect(postDeleteUrl);
     }
 
     protected async loadInitialData(fromProps: ITopicEditQuestionProps): Promise<void> {

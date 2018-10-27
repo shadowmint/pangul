@@ -7,26 +7,24 @@ interface IQuestionId {
 }
 
 export interface IQuestionData {
+    canEdit: boolean;
     questionId: string;
     topic: string;
     title: string;
     body: string;
     tags: string[];
+    userId: string;
     rowVersion: string;
 }
 
 export interface IQuestionSummaryData {
+    canEdit: boolean;
     questionId: string;
     topic: string;
     title: string;
+    userId: string;
     summary: string;
     tags: string[];
-}
-
-export interface IQuestionTopic {
-    questionId: string;
-    topic: string;
-    rowVersion: string;
 }
 
 export class QuestionsController extends BaseController {

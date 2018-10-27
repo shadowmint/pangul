@@ -25,7 +25,7 @@ namespace Pangul.Backend.Web.Controllers.Questions
     }
 
     [HttpPost]
-    [Authorize(Policy = PangulQuestionAsker.PolicyName)]
+    [Authorize(Policy = PolicyCanCreateQuestion.PolicyName)]
     public async Task<IActionResult> Add([FromBody] QuestionAddViewModel model)
     {
       try
@@ -41,7 +41,7 @@ namespace Pangul.Backend.Web.Controllers.Questions
     }
     
     [HttpPost]
-    [Authorize(Policy = PangulQuestionAsker.PolicyName)]
+    [Authorize(Policy = PolicyCanCreateQuestion.PolicyName)]
     public async Task<IActionResult> Update([FromBody] QuestionUpdateViewModel model)
     {
       try
@@ -57,7 +57,7 @@ namespace Pangul.Backend.Web.Controllers.Questions
     }
     
     [HttpPost]
-    [Authorize(Policy = PangulQuestionAsker.PolicyName)]
+    [Authorize(Policy = PolicyCanCreateQuestion.PolicyName)]
     public async Task<IActionResult> UpdateMetadata([FromBody] QuestionMetadataUpdateViewModel model)
     {
       try

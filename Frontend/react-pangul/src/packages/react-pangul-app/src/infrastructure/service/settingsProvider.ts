@@ -1,3 +1,5 @@
+import * as React from "react";
+import {UserContext} from "../../../../react-pangul-core/src/domain/userContext";
 import AjaxFetch from "../../../../react-pangul-core/src/infrastructure/fetch/ajaxFetch";
 import ConsoleLogger from "../../../../react-pangul-core/src/infrastructure/logger/consoleLogger";
 import ProviderSingleton from "../../../../react-pangul-core/src/infrastructure/providers/providerSingleton";
@@ -5,9 +7,10 @@ import { FetchProvider } from "../../../../react-pangul-core/src/providers/fetch
 import { LoggerProvider } from "../../../../react-pangul-core/src/providers/loggerProvider";
 
 export interface ITestSettings {
+    test: boolean;
     testUser: string;
     testUserAuth: string;
-    testUserEnabled: boolean;
+    testContent: null | ((user: UserContext) => React.ReactNode);
 }
 
 export interface ISettings {

@@ -2,6 +2,7 @@ import * as React from "react";
 import {AnswerList} from "../../../components/answer/answerList/answerList";
 import {QuerySetPaginator} from "../../../components/common/fragments/querySetPaginator/querySetPaginator";
 import {LayoutContentContainer} from "../../../components/layout/layoutContentContainer/layoutContentContainer";
+import {LayoutIf} from "../../../components/layout/layoutIf/layoutIf";
 import {LayoutRightBox} from "../../../components/layout/layoutRightBox/layoutRightBox";
 import {LayoutStandardHeader} from "../../../components/layout/layoutStandardHeader/layoutStandardHeader";
 import {QuestionLink, QuestionLinkType} from "../../../components/question/questionLink/questionLink";
@@ -38,14 +39,16 @@ export class TopicViewQuestionPage extends React.Component<ITopicViewQuestionPro
         const topic = this.data.state.topic;
 
         return (
-            <div className={"component--TopicHomePage"}>
+            <div className={"component--TopicViewQuestionPage"}>
                 <LayoutStandardHeader user={this.props.user.state}
                                       topic={topic.state}
                                       loading={this.data.updating}/>
 
                 <LayoutContentContainer>
                     <LayoutRightBox expand={false}>
-                        <QuestionLink question={question} target={QuestionLinkType.Edit}>Edit</QuestionLink>
+                        <LayoutIf show={question.state.canEdit}>
+                            <QuestionLink question={question} target={QuestionLinkType.Edit}>Edit</QuestionLink>
+                        </LayoutIf>
                         <TopicLink topic={question.state.topic} target={TopicLinkType.View}>Close</TopicLink>
                     </LayoutRightBox>
                     <QuestionView question={question}/>

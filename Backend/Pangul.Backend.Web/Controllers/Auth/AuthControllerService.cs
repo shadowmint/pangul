@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using NCore.Base.WebAuth;
 using Pangul.Backend.Web.Configuration.Authentication;
-using Pangul.Backend.Web.Configuration.Authentication.Identity;
+using Pangul.Backend.Web.Configuration.Authentication.Infrastructure;
 using Pangul.Backend.Web.Configuration.Settings;
 using Pangul.Backend.Web.Controllers.Auth.ViewModels;
 using Pangul.Backend.Web.Errors;
@@ -35,7 +35,7 @@ namespace Pangul.Backend.Web.Controllers.Auth
         return modelState.StandardError();
       }
 
-      var authContext = new ServiceAuthentication.ServiceAuthContext();
+      var authContext = new ServiceIdentityList.ServiceAuthContext();
       var isValid = await TryAuthorize(model.Username, model.Password, httpContext, authContext);
       if (!isValid)
       {
@@ -57,7 +57,7 @@ namespace Pangul.Backend.Web.Controllers.Auth
     }
 
     private async Task<bool> TryAuthorize(string username, string password, HttpContext httpContext,
-      ServiceAuthentication.ServiceAuthContext authContext)
+      ServiceIdentityList.ServiceAuthContext authContext)
     {
       GuardIsAjaxRequest(httpContext);
       GuardHasValidReferrer(httpContext);

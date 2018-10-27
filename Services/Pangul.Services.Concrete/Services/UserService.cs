@@ -29,7 +29,7 @@ namespace Pangul.Services.Concrete.Services
       _getAllLoginUsernames = getAllLoginUsernames;
     }
 
-    public Task<User> Get(PangulDbContext db, string usernmae)
+    private Task<User> GetByUsername(PangulDbContext db, string usernmae)
     {
       try
       {
@@ -41,6 +41,14 @@ namespace Pangul.Services.Concrete.Services
       }
     }
 
+    public async Task<User> Get(PangulDbContext db, string userId)
+    {
+      return await _getUserDetails.Execute(db, new GetUserDetails()
+      {
+        UserId = userId
+      });
+    }
+
     public async Task<User> Create(PangulDbContext db, string username)
     {
       try
@@ -49,7 +57,7 @@ namespace Pangul.Services.Concrete.Services
         {
           Username = username,
         });
-        return await Get(db, username);
+        return await GetByUsername(db, username);
       }
       catch (Exception error)
       {
@@ -62,7 +70,7 @@ namespace Pangul.Services.Concrete.Services
       try
       {
         currentUser?.Dispose();
-        var user = await Get(db, username);
+        var user = await GetByUsername(db, username);
         return new UserContext()
         {
           User = user,

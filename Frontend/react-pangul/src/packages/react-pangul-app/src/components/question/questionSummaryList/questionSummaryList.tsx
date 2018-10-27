@@ -1,14 +1,12 @@
 import * as React from "react";
 import {QuerySet} from "../../../../../react-pangul-core/src/domain/querySet";
 import {QuestionSummary} from "../../../../../react-pangul-core/src/domain/questionSummary";
-import {Topic} from "../../../../../react-pangul-core/src/domain/topic";
 import {LayoutContentContainer} from "../../layout/layoutContentContainer/layoutContentContainer";
 import {QuestionSummaryView} from "../questionSummaryView/questionSummaryView";
 import "./questionSummaryList.css";
 
 export interface IQuestionSummaryList {
     questions: QuerySet<QuestionSummary>;
-    topic: Topic;
 }
 
 export interface IQuestionSummaryListState {
@@ -34,8 +32,12 @@ export class QuestionSummaryList extends React.Component<IQuestionSummaryList, I
     }
 
     public renderList() {
-        if (this.props.questions.state.instances == null) {
-            return [];
+        if (this.props.questions.state.instances === null || this.props.questions.state.instances.length === 0) {
+            return (
+                <LayoutContentContainer>
+                    No questions found
+                </LayoutContentContainer>
+            );
         }
         return this.props.questions.state.instances.map((question) => {
             if (!question.state.questionId) {
@@ -43,7 +45,7 @@ export class QuestionSummaryList extends React.Component<IQuestionSummaryList, I
             }
             return (
                 <LayoutContentContainer key={question.state.questionId}>
-                    <QuestionSummaryView question={question} topic={this.props.topic}/>
+                    <QuestionSummaryView question={question}/>
                 </LayoutContentContainer>
             );
         });

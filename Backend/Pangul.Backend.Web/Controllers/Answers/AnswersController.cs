@@ -5,8 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 using NLog;
 using Pangul.Backend.Web.Configuration.Authentication.Policy;
 using Pangul.Backend.Web.Controllers.Answers.ViewModels;
-using Pangul.Backend.Web.Controllers.Questions;
-using Pangul.Backend.Web.Controllers.Questions.ViewModels;
 using Pangul.Backend.Web.Infrastructure.Conventions;
 using Pangul.Services.Services;
 using Pangul.Services.Services.Questions;
@@ -20,14 +18,14 @@ namespace Pangul.Backend.Web.Controllers.Answers
     private readonly Logger _logger;
     private readonly AnswersControllerService _service;
 
-    public AnswersController(IUserService userService, IAnswerService answerService, ISearchService searchService)
+    public AnswersController(IUserService userService, IAnswerService answerService, ISearchService searchService, IPurgeService purgeService)
     {
       _logger = LogManager.GetCurrentClassLogger();
-      _service = new AnswersControllerService(userService, answerService, searchService);
+      _service = new AnswersControllerService(userService, answerService, searchService, purgeService);
     }
 
     [HttpPost]
-    [Authorize(Policy = PangulQuestionAsker.PolicyName)]
+    [Authorize(Policy = PolicyCanCreateQuestion.PolicyName)]
     public async Task<IActionResult> Add([FromBody] AddAnswerViewModel model)
     {
       try
@@ -90,7 +88,23 @@ namespace Pangul.Backend.Web.Controllers.Answers
         return StandardResponse.ForError().JsonResult();
       }
     }
-    
+
+    [HttpPost]
+    [Authorize(Policy = PolicyCanDeleteAnswer.PolicyName)]
+    public async Task<IActionResult> Delete([FromBody] DeleteAnswerViewModel model)
+    {
+      try
+      {
+        var response = await _service.DeleteAnswer(User, model, ModelState);
+        return response.JsonResult();
+      }
+      catch (Exception error)
+      {
+        _logger.Error(error);
+        return StandardResponse.ForError().JsonResult();
+      }
+    }
+
     [HttpPost]
     [Authorize(Policy = PangulUser.PolicyName)]
     public async Task<IActionResult> Metadata([FromBody] GetAnswerViewModel model)
@@ -106,9 +120,9 @@ namespace Pangul.Backend.Web.Controllers.Answers
         return StandardResponse.ForError().JsonResult();
       }
     }
-    
+
     [HttpPost]
-    [Authorize(Policy = PangulQuestionAsker.PolicyName)]
+    [Authorize(Policy = PolicyCanCreateQuestion.PolicyName)]
     public async Task<IActionResult> UpdateMetadata([FromBody] AnswerMetadataUpdateViewModel model)
     {
       try

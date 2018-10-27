@@ -1,0 +1,10 @@
+.component--LayoutRightBottom {
+    bottom: 0;
+    right: 0;
+    display: block;
+    position: absolute;
+    text-align: right;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+    margin-right: 0.5em;
+}

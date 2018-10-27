@@ -5,11 +5,13 @@
 .component--QuestionSummaryView .metadata {
     vertical-align: top;
     display: inline-block;
+    width: 3.5em;
 }
 
 .component--QuestionSummaryView .output {
     vertical-align: top;
     display: inline-block;
+    max-width: calc(100% - 3.5em);
 }
 
 .component--QuestionSummaryView h2 {

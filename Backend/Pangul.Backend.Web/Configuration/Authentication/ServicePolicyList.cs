@@ -3,9 +3,9 @@ using Pangul.Backend.Web.Configuration.Authentication.Policy;
 
 namespace Pangul.Backend.Web.Configuration.Authentication
 {
-    public class ServiceWebAuthentication : AuthenticationServiceBuilderBase
+    public class ServicePolicyList : AuthenticationServiceBuilderBase
     {
-        public ServiceWebAuthentication() : base(ServiceAuthConsts.AuthenticationScheme)
+        public ServicePolicyList() : base(ServiceAuthConsts.AuthenticationScheme)
         {
         }
 
@@ -14,8 +14,10 @@ namespace Pangul.Backend.Web.Configuration.Authentication
             AddPolicy<PangulUser>();
             AddPolicy<PangulAdmin>();
             AddPolicy<PangulAdminDatabase>();
-            AddPolicy<PangulQuestionAsker>();
+            AddPolicy<PolicyCanCreateQuestion>();
             AddPolicy<PolicyCanDeleteTopic>();
+            AddPolicy<PolicyCanDeleteAnswer>();
+            AddPolicy<PolicyCanDeleteQuestion>();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Security.Claims;
 using System.Threading.Tasks;
 using Pangul.Core.Data;
+using Pangul.Core.Data.Questions;
 using Pangul.Core.Data.Users;
 using Pangul.Services.Infrastructure;
 using Pangul.Services.Model;
@@ -24,6 +25,11 @@ namespace Pangul.Services.Services
     /// </summary>
     Task<UserContext> Become(PangulDbContext db, ClaimsPrincipal identity, UserContext currentUser = null);
 
+    /// <summary>
+    /// Return a user, by id.
+    /// </summary>
+    Task<User> Get(PangulDbContext db, string modelId);
+    
     /// <summary>
     /// List all users; this is a super expensive query, so it only returns the usernames.
     /// Remember that a User may or may not have a Login associated with it; but every login

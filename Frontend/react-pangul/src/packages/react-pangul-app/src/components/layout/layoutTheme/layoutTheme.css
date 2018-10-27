@@ -112,3 +112,24 @@ a:hover {
     text-decoration: none !important;
 }
 
+/** Code styles */
+code {
+    display: inline-block;
+    background: #fdffce;
+
+    border-radius: 2px;
+}
+
+pre {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+pre code {
+    padding: 0.5em 1em;
+    width: calc(100% - 2em);
+}
+
+p code {
+    padding: 0.2em 0.4em;
+}

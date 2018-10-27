@@ -1,8 +1,7 @@
-﻿using System.Security.Cryptography;
-using Pangul.Core.Infrastructure;
+﻿using Pangul.Core.Infrastructure;
 using Pangul.Services.Model;
 
-namespace Pangul.Backend.Web.Controllers.Answers
+namespace Pangul.Backend.Web.Controllers.Answers.ViewModels
 {
   internal class AnswerMetaViewModel
   {

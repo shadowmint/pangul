@@ -1,9 +1,21 @@
 import "whatwg-fetch";
 import IFetch from "../../interfaces/fetch";
+import {LoggerProvider} from "../../providers/loggerProvider";
 import IStandardResponse from "../standardResponse";
 import StandardError from "./standardError";
 
 export default class AjaxFetch implements IFetch {
+    private static serializeRequestBody(body: any): string {
+        try {
+            return JSON.stringify(body);
+        } catch (error) {
+            const logger = LoggerProvider.get();
+            logger.info("Unable to serialize object", body);
+            logger.error(error);
+            throw new Error("Request failed: Unable to serialize object for POST");
+        }
+    }
+
     constructor(private rootUrl: string) {
     }
 
@@ -13,9 +25,11 @@ export default class AjaxFetch implements IFetch {
             "Content-Type": "application/json",
             "X-Requested-With": "PANGUL",
         });
+
         try {
+            const raw = AjaxFetch.serializeRequestBody(body);
             const response = await fetch(`${this.rootUrl}${url}`, {
-                body: JSON.stringify(body),
+                body: raw,
                 cache: "no-cache",
                 credentials: "include",
                 headers: apiHeaders,

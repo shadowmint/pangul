@@ -12,9 +12,11 @@ interface IAnswerNew {
 }
 
 export interface IAnswerData {
+    userId: string;
     questionId: string;
     answerId: string;
     body: string;
+    canEdit: boolean;
     rowVersion: string;
 }
 
@@ -23,12 +25,16 @@ export class AnswersController extends BaseController {
         return await this.post<IAnswerId>("/api/Answers/add", answer);
     }
 
-    public async get(AnswerId: string): Promise<IAnswerData> {
-        return await this.post<IAnswerData>("/api/Answers/get", {id: AnswerId});
+    public async delete(answerId: string) {
+        return await this.post<IAnswerData>("/api/Answers/delete", {id: answerId});
     }
 
-    public async getMetadata(AnswerId: string) {
-        return await this.post<IAnswerMeta>("/api/Answers/metadata", {id: AnswerId});
+    public async get(answerId: string): Promise<IAnswerData> {
+        return await this.post<IAnswerData>("/api/Answers/get", {id: answerId});
+    }
+
+    public async getMetadata(answerId: string) {
+        return await this.post<IAnswerMeta>("/api/Answers/metadata", {id: answerId});
     }
 
     public async updateMetadata(metadata: IAnswerMeta) {
@@ -46,4 +52,5 @@ export class AnswersController extends BaseController {
             questionId,
         });
     }
+
 }

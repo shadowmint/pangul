@@ -1,8 +1,10 @@
 import * as React from "react";
 import {Question} from "../../../../../react-pangul-core/src/domain/question";
 import {SafeMarkdown} from "../../common/display/safeMarkdown/safeMarkdown";
+import {LayoutRightBottom} from "../../layout/layoutRightBottom/layoutRightBottom";
 import {VotesAndStars} from "../../metadata/votesAndStars/votesAndStars";
 import {TagList} from "../../tag/tagList/tagList";
+import {UserSummary} from "../../user/userSummary/userSummary";
 import "./questionView.css";
 
 export interface IQuestionView {
@@ -20,12 +22,15 @@ export class QuestionView extends React.Component<IQuestionView> {
                                    userVotes={meta.state.votes}
                                    votes={meta.state.global.votes}
                                    onVote={this.onVote}
-                                    onStar={this.onStar}/>
+                                   onStar={this.onStar}/>
                 </div>
                 <div className="output">
                     <h2>{this.props.question.state.title}</h2>
                     <TagList tags={this.props.question.state.tags}/>
                     <SafeMarkdown markdown={this.props.question.state.body}/>
+                    <LayoutRightBottom>
+                        <UserSummary user={this.props.question.state.user}/>
+                    </LayoutRightBottom>
                 </div>
             </div>
         );
