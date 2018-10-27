@@ -33,7 +33,13 @@ export class TopicAskQuestion extends Page<ITopicAskQuestionProps, ITopicAskQues
             if (topic.error) {
                 throw topic.error;
             }
-            return {question: new Question(), topic};
+
+            const question = new Question();
+            await question.update(async () => {
+                return {topic: topic.state.name};
+            });
+
+            return {question, topic};
         });
     }
 

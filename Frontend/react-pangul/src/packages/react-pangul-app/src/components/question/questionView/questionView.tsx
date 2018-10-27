@@ -1,7 +1,7 @@
 import * as React from "react";
 import {Question} from "../../../../../react-pangul-core/src/domain/question";
 import {SafeMarkdown} from "../../common/display/safeMarkdown/safeMarkdown";
-import {LayoutRightBox} from "../../layout/layoutRightBox/layoutRightBox";
+import {LayoutRightBottom} from "../../layout/layoutRightBottom/layoutRightBottom";
 import {VotesAndStars} from "../../metadata/votesAndStars/votesAndStars";
 import {TagList} from "../../tag/tagList/tagList";
 import {UserSummary} from "../../user/userSummary/userSummary";
@@ -28,9 +28,9 @@ export class QuestionView extends React.Component<IQuestionView> {
                     <h2>{this.props.question.state.title}</h2>
                     <TagList tags={this.props.question.state.tags}/>
                     <SafeMarkdown markdown={this.props.question.state.body}/>
-                    <LayoutRightBox expand={true}>
+                    <LayoutRightBottom>
                         <UserSummary user={this.props.question.state.user}/>
-                    </LayoutRightBox>
+                    </LayoutRightBottom>
                 </div>
             </div>
         );

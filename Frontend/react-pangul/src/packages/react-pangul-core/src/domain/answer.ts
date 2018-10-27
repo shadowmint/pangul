@@ -6,6 +6,7 @@ import {UserView} from "./userView";
 
 export interface IAnswer {
     answerId: string;
+    canEdit: boolean;
     questionId: string;
     body: string;
     meta: AnswerMeta;
@@ -58,6 +59,7 @@ export class Answer extends Model<IAnswer> {
                 ...this.state,
             };
             delete simpleState.meta;
+            delete simpleState.user;
             if (!this.state.answerId) {
                 const identity = await controller.add(simpleState);
                 return await this.fetchAnswerData(identity.answerId);
@@ -80,6 +82,7 @@ export class Answer extends Model<IAnswer> {
         return {
             answerId: "",
             body: "...",
+            canEdit: false,
             meta: new AnswerMeta(),
             questionId: "",
             rowVersion: "",

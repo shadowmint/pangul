@@ -5,27 +5,24 @@ using NCore.Base.WebAuth;
 
 namespace Pangul.Backend.Web.Configuration.Authentication.Policy
 {
-  public class PolicyCanDeleteTopic : IPolicy, IClaims
+  public class PolicyCanDeleteAnswer : IPolicy, IClaims
   {
     public void Require(AuthorizationPolicyBuilder policyOptions)
     {
       policyOptions.AuthenticationSchemes.Add(ServiceAuthConsts.AuthenticationScheme);
       policyOptions.RequireAuthenticatedUser();
       policyOptions.RequireClaim(ServiceAuthConsts.ClaimUserType, ServiceAuthConsts.ClaimUserTypeUser);
-      policyOptions.RequireClaim(ServiceAuthConsts.ClaimCanDelete, ServiceAuthConsts.ClaimTargetTopic);
+      policyOptions.RequireClaim(ServiceAuthConsts.ClaimCanDelete, ServiceAuthConsts.ClaimTargetAnswer);
     }
 
     public IEnumerable<Claim> Claims => new[]
     {
       new Claim(ServiceAuthConsts.ClaimUserType, ServiceAuthConsts.ClaimUserTypeUser),
-      new Claim(ServiceAuthConsts.ClaimCanDelete, ServiceAuthConsts.ClaimTargetTopic), 
+      new Claim(ServiceAuthConsts.ClaimCanDelete, ServiceAuthConsts.ClaimTargetAnswer), 
     };
 
     string IPolicy.PolicyName => PolicyName;
 
-    public const string PolicyName = ServiceAuthConsts.ClaimTargetTopic;
+    public const string PolicyName = ServiceAuthConsts.ClaimTargetAnswer;
   }
-}
-namespace Pangul.Backend.Web.Configuration.Authentication.Policy
-{
 }

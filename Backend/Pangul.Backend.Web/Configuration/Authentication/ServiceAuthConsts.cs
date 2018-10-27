@@ -15,20 +15,14 @@ namespace Pangul.Backend.Web.Configuration.Authentication
     public const string ClaimCanDelete = "CanDelete";
     public const string ClaimCanCreate = "CanCreate";
     
-    // Question claims
-    public const string ClaimCanCreateQuestion = "Question";
-    
-    // Topic claims
-    public const string ClaimCanDeleteTopic = "Topic";
-    
-    // Answer claims
-    public static string ClaimCanDeleteAnswer = "Answer";
+    // Generic targets
+    public const string ClaimTargetQuestion = "Question";
+    public const string ClaimTargetTopic = "Topic";
+    public const string ClaimTargetAnswer = "Answer";
     
     // The roles this admin is permitted to do.
     public static string ClaimAdminRoles = "AdminRoles";
     public const string ClaimAdminRolesView = "View";
     public const string ClaimAdminRolesDbAdmin = "DbAdmin";
-
-
   }
 }

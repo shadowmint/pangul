@@ -17,6 +17,7 @@ namespace Pangul.Backend.Web.Configuration.Authentication
             AddPolicy<PolicyCanCreateQuestion>();
             AddPolicy<PolicyCanDeleteTopic>();
             AddPolicy<PolicyCanDeleteAnswer>();
+            AddPolicy<PolicyCanDeleteQuestion>();
         }
     }
 }

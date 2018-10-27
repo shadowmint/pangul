@@ -13,6 +13,7 @@ export interface IQuestion {
     userId: string;
     meta: QuestionMeta;
     user: UserView;
+    canEdit: boolean;
     rowVersion: string;
 }
 
@@ -72,6 +73,7 @@ export class Question extends Model<IQuestion> {
                 ...this.state,
             };
             delete simpleState.meta;
+            delete simpleState.user;
             if (!this.state.questionId) {
                 const identity = await controller.add(simpleState);
                 return await this.fetchQuestionData(identity.questionId);
@@ -84,6 +86,7 @@ export class Question extends Model<IQuestion> {
     protected blank(): IQuestion {
         return {
             body: "...",
+            canEdit: false,
             meta: new QuestionMeta(),
             questionId: "",
             rowVersion: "",

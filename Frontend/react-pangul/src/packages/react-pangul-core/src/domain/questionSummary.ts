@@ -2,13 +2,16 @@ import {Model} from "../../../react-stateful/src/model";
 import {QuestionsController} from "../controllers/questionsController";
 import {IQueryResult, QuerySet} from "./querySet";
 import {QuestionMeta} from "./questionMeta";
+import {UserView} from "./userView";
 
 export interface IQuestionSummary {
+    canEdit: boolean;
     questionId: string;
     topic: string;
     title: string;
     summary: string;
     tags: string[];
+    user: UserView;
     meta: QuestionMeta;
 }
 
@@ -43,12 +46,14 @@ export class QuestionSummary extends Model<IQuestionSummary> {
 
     protected blank(): IQuestionSummary {
         return {
+            canEdit: false,
             meta: new QuestionMeta(),
             questionId: "",
             summary: "...",
             tags: [],
             title: "new answer",
             topic: "default",
+            user: new UserView(),
         };
     }
 
@@ -56,9 +61,11 @@ export class QuestionSummary extends Model<IQuestionSummary> {
         const controller = new QuestionsController();
         const questionData = await controller.getSummary(questionId);
         const meta = new QuestionMeta(await controller.getMetadata(questionId));
+        const user = await UserView.get(questionData.userId);
         return {
             ...questionData,
             meta,
+            user,
         };
     }
 

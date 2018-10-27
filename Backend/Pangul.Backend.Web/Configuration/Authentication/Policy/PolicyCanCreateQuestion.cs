@@ -12,12 +12,12 @@ namespace Pangul.Backend.Web.Configuration.Authentication.Policy
             policyOptions.AuthenticationSchemes.Add(ServiceAuthConsts.AuthenticationScheme);
             policyOptions.RequireAuthenticatedUser();
             policyOptions.RequireClaim(ServiceAuthConsts.ClaimUserType, ServiceAuthConsts.ClaimUserTypeUser);
-            policyOptions.RequireClaim(ServiceAuthConsts.ClaimCanCreate, ServiceAuthConsts.ClaimCanCreateQuestion);
+            policyOptions.RequireClaim(ServiceAuthConsts.ClaimCanCreate, ServiceAuthConsts.ClaimTargetQuestion);
         }
 
         public IEnumerable<Claim> Claims => new[]
         {
-            new Claim(ServiceAuthConsts.ClaimCanCreate, ServiceAuthConsts.ClaimCanCreateQuestion)
+            new Claim(ServiceAuthConsts.ClaimCanCreate, ServiceAuthConsts.ClaimTargetQuestion)
         };
 
         string IPolicy.PolicyName => PolicyName;

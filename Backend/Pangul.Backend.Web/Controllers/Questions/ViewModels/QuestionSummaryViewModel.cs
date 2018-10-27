@@ -13,16 +13,20 @@ namespace Pangul.Backend.Web.Controllers.Questions.ViewModels
     public string Summary { get; set; }
     public IList<string> Tags { get; set; }
     public string Topic { get; set; }
+    public bool CanEdit { get; set; }
+    public string UserId { get; set; }
 
     public static QuestionSummaryViewModel From(Question question)
     {
       return new QuestionSummaryViewModel()
       {
         QuestionId = question.QuestionId.ToString(),
+        UserId = question.UserId.ToString(),
         Title = question.Title,
         Tags = question.Tags.Select(i => i.Tag).ToList(),
         Summary = MakeSummaryFrom(question),
-        Topic = question.Topic.Name
+        Topic = question.Topic.Name,
+        CanEdit = question.CanEdit
       };
     }
 

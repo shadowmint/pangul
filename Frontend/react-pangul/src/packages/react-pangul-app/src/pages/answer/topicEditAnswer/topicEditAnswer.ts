@@ -3,6 +3,7 @@ import {Question} from "../../../../../react-pangul-core/src/domain/question";
 import {Topic} from "../../../../../react-pangul-core/src/domain/topic";
 import {UserContext} from "../../../../../react-pangul-core/src/domain/userContext";
 import {Page} from "../../../infrastructure/componentHelpers/page";
+import NavigationService from "../../../infrastructure/service/navigationService";
 
 export interface ITopicEditAnswerProps {
     topic: string;
@@ -33,6 +34,9 @@ export class TopicEditAnswer extends Page<ITopicEditAnswerProps, ITopicEditAnswe
 
     public async deleteAnswer() {
         await this.state.answer.delete();
+        const nav = new NavigationService();
+        const question = this.state.question;
+        nav.redirect(nav.urlForQuestion(question.state.topic, question.state.questionId));
     }
 
     protected async loadInitialData(fromProps: ITopicEditAnswerProps): Promise<void> {

@@ -7,6 +7,7 @@ using Pangul.Core.Data.Questions;
 using Pangul.Services.Actions;
 using Pangul.Services.Db.Questions;
 using Pangul.Services.Infrastructure;
+using Pangul.Services.Internal.User;
 
 namespace Pangul.Services.Concrete.Db.Questions
 {
@@ -16,6 +17,13 @@ namespace Pangul.Services.Concrete.Db.Questions
     IQueryHandler<GetQuestionMeta, QuestionMeta>,
     IQueryHandler<GetQuestionGlobalMeta, QuestionGlobalMeta>
   {
+    private readonly IInternalUserPermissionService _internalUserPermissionService;
+
+    public QuestionQueryHandler(IInternalUserPermissionService internalUserPermissionService)
+    {
+      _internalUserPermissionService = internalUserPermissionService;
+    }
+    
     public Task<IEnumerable<IQueryable<Question>>> Execute(PangulDbContext context, GetUserQuestions query)
     {
       query.Validate();
@@ -43,11 +51,18 @@ namespace Pangul.Services.Concrete.Db.Questions
         return await qStatement.FirstOrDefaultAsync();
       }
 
-      return await qStatement
+      var question = await qStatement
         .Include(i => i.Tags)
         .Include(i => i.Meta)
         .Include(i => i.Topic)
         .FirstOrDefaultAsync();
+
+      if (question != null)
+      {
+        question.CanEdit = await _internalUserPermissionService.HasWriteAccessFor(question, query.UserContext);
+      }
+
+      return question;
     }
 
     public async Task<QuestionMeta> Execute(PangulDbContext db, GetQuestionMeta query)

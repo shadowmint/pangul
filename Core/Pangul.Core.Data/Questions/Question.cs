@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using Pangul.Core.Data.Topics;
 using Pangul.Core.Data.Users;
@@ -21,12 +22,18 @@ namespace Pangul.Core.Data.Questions
 
     public string Title { get; set; }
     public string Body { get; set; }
-    
+
     public DateTimeOffset TimeCreated { get; set; }
 
     public virtual ICollection<QuestionMeta> Meta { get; set; }
 
     public virtual ICollection<QuestionTag> Tags { get; set; }
+
+    /// <summary>
+    /// This is a display only field to bind for the current active user without a view model.
+    /// </summary>
+    [NotMapped]
+    public bool CanEdit { get; set; }
 
     public static void BuildModel(ModelBuilder modelBuilder)
     {
@@ -50,15 +57,15 @@ namespace Pangul.Core.Data.Questions
       modelBuilder.Entity<Question>()
         .Property(i => i.UserId)
         .IsRequired();
-      
+
       modelBuilder.Entity<Question>()
         .Property(i => i.TopicId)
         .IsRequired();
-      
+
       modelBuilder.Entity<Question>()
         .Property(i => i.TimeCreated)
         .IsRequired();
-      
+
       BuildVersionModel<Question>(modelBuilder);
     }
   }

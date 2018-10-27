@@ -38,6 +38,7 @@ namespace Pangul.Backend.Web.Configuration.Authentication
           new PangulAdmin(),
           new PolicyCanDeleteTopic(),
           new PolicyCanDeleteAnswer(),
+          new PolicyCanDeleteQuestion(),
           new PangulAdminDatabase(),
           new PolicyCanCreateQuestion()
         }

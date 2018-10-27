@@ -16,6 +16,7 @@ export interface IAnswerData {
     questionId: string;
     answerId: string;
     body: string;
+    canEdit: boolean;
     rowVersion: string;
 }
 
