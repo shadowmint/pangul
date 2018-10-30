@@ -16,12 +16,6 @@ namespace Pangul.Backend.Web
       return new WebHostBuilder()
         .UseKestrel()
         .UseContentRoot(Directory.GetCurrentDirectory())
-/*        .ConfigureLogging((hostingContext, logging) =>
-        {
-          logging.AddConfiguration()
-          logging.AddConsole();
-          logging.AddDebug();
-        })*/
         .UseStartup<Startup>()
         .Build();
     }

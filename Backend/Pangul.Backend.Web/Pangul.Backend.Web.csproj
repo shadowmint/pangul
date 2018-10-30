@@ -3,10 +3,6 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="Configuration\Authentication\Identity" />
-    <Folder Include="wwwroot\" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Autofac" Version="4.8.1" />
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.3.0" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="8.0.100" />
@@ -23,5 +19,19 @@
     <ProjectReference Include="..\..\Core\Pangul.Core.Infrastructure\Pangul.Core.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Services\Pangul.Services.Concrete\Pangul.Services.Concrete.csproj" />
     <ProjectReference Include="..\..\Services\Pangul.Services\Pangul.Services.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="backup\answer54.json" />
+    <_ContentIncludedByDefault Remove="backup\answer55.json" />
+    <_ContentIncludedByDefault Remove="backup\answer56.json" />
+    <_ContentIncludedByDefault Remove="backup\answer58.json" />
+    <_ContentIncludedByDefault Remove="backup\answer60.json" />
+    <_ContentIncludedByDefault Remove="backup\answer62.json" />
+    <_ContentIncludedByDefault Remove="backup\answer64.json" />
+    <_ContentIncludedByDefault Remove="backup\answer65.json" />
+    <_ContentIncludedByDefault Remove="backup\answer66.json" />
+    <_ContentIncludedByDefault Remove="backup\answer67.json" />
+    <_ContentIncludedByDefault Remove="backup\answer68.json" />
+    <_ContentIncludedByDefault Remove="backup\question89.json" />
   </ItemGroup>
 </Project>
