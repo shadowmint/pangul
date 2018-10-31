@@ -1,0 +1,165 @@
+2018-10-31 12:55:46.8409 INFO User profile is available. Using '/Users/doug/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2018-10-31 12:55:47.2856 INFO Application started
+2018-10-31 12:55:52.2252 INFO Request starting HTTP/1.1 GET http://localhost:5000/static/css/main.65cbb0f8.css.map  
+2018-10-31 12:55:52.2252 INFO Request starting HTTP/1.1 POST http://localhost:5000/api/auth/claims application/json 4
+2018-10-31 12:55:52.2364 INFO Request starting HTTP/1.1 GET http://localhost:5000/static/js/main.4f1815bc.js.map  
+2018-10-31 12:55:52.2587 INFO Pangul was not authenticated. Failure message: Unprotect ticket failed
+2018-10-31 12:55:52.2594 INFO Pangul was not authenticated. Failure message: Unprotect ticket failed
+2018-10-31 12:55:52.2594 INFO Pangul was not authenticated. Failure message: Unprotect ticket failed
+2018-10-31 12:55:52.4079 INFO Request starting HTTP/1.1 GET http://localhost:5000/service-worker.js  
+2018-10-31 12:55:52.4085 INFO Pangul was not authenticated. Failure message: Unprotect ticket failed
+2018-10-31 12:55:52.4286 INFO Route matched with {action = "Claims", controller = "Auth"}. Executing action Pangul.Backend.Web.Controllers.Auth.AuthController.Claims (Pangul.Backend.Web)
+2018-10-31 12:55:52.4334 INFO Sending file. Request path: '/service-worker.js'. Physical path: '/Users/doug/dev/dotnet/pangul/Snapshot/wwwroot/service-worker.js'
+2018-10-31 12:55:52.4334 INFO Sending file. Request path: '/static/css/main.65cbb0f8.css.map'. Physical path: '/Users/doug/dev/dotnet/pangul/Snapshot/wwwroot/static/css/main.65cbb0f8.css.map'
+2018-10-31 12:55:52.4341 INFO Policy execution successful.
+2018-10-31 12:55:52.4396 INFO Request finished in 31.4932ms 200 application/javascript
+2018-10-31 12:55:52.4416 INFO Request finished in 216.476ms 200 text/plain
+2018-10-31 12:55:52.4423 INFO Request starting HTTP/1.1 GET http://localhost:5000/favicon-32x32.png  
+2018-10-31 12:55:52.4423 INFO Pangul was not authenticated. Failure message: Unprotect ticket failed
+2018-10-31 12:55:52.4434 INFO Sending file. Request path: '/favicon-32x32.png'. Physical path: '/Users/doug/dev/dotnet/pangul/Snapshot/wwwroot/favicon-32x32.png'
+2018-10-31 12:55:52.4434 INFO Request finished in 1.3408ms 200 image/png
+2018-10-31 12:55:52.4934 INFO Sending file. Request path: '/static/js/main.4f1815bc.js.map'. Physical path: '/Users/doug/dev/dotnet/pangul/Snapshot/wwwroot/static/js/main.4f1815bc.js.map'
+2018-10-31 12:55:52.4943 INFO Request finished in 269.5983ms 200 text/plain
+2018-10-31 12:55:52.5067 INFO Authorization failed.
+2018-10-31 12:55:52.5075 INFO Authorization failed for the request at filter 'Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter'.
+2018-10-31 12:55:52.5243 INFO Executing ChallengeResult with authentication schemes ().
+2018-10-31 12:55:52.5287 INFO AuthenticationScheme: Pangul was challenged.
+2018-10-31 12:55:52.5304 INFO Executed action Pangul.Backend.Web.Controllers.Auth.AuthController.Claims (Pangul.Backend.Web) in 99.4718ms
+2018-10-31 12:55:52.5317 INFO Request finished in 307.0117ms 403 
+2018-10-31 12:55:52.5433 INFO Connection id "0HLHUTKGU2CEB", Request id "0HLHUTKGU2CEB:00000001": the application completed without reading the entire request body.
+2018-10-31 12:55:53.6856 INFO Request starting HTTP/1.1 GET http://localhost:5000/service-worker.js  
+2018-10-31 12:55:53.6863 INFO Pangul was not authenticated. Failure message: Unprotect ticket failed
+2018-10-31 12:55:53.6863 INFO Sending file. Request path: '/service-worker.js'. Physical path: '/Users/doug/dev/dotnet/pangul/Snapshot/wwwroot/service-worker.js'
+2018-10-31 12:55:53.6863 INFO Request finished in 1.2878ms 200 application/javascript
+2018-10-31 12:55:57.2871 INFO Request starting HTTP/1.1 POST http://localhost:5000/api/auth/login application/json 39
+2018-10-31 12:55:57.2871 INFO Pangul was not authenticated. Failure message: Unprotect ticket failed
+2018-10-31 12:55:57.3128 INFO Route matched with {action = "Login", controller = "Auth"}. Executing action Pangul.Backend.Web.Controllers.Auth.AuthController.Login (Pangul.Backend.Web)
+2018-10-31 12:55:57.3133 INFO Policy execution successful.
+2018-10-31 12:55:57.4023 INFO Executing action method Pangul.Backend.Web.Controllers.Auth.AuthController.Login (Pangul.Backend.Web) with arguments (Pangul.Backend.Web.Controllers.Auth.ViewModels.LoginViewModel) - Validation state: Valid
+2018-10-31 12:55:57.9165 ERROR Pangul.Services.Infrastructure.Errors.PangulCommandFailedException: TransactionFailed: SQLite Error 1: 'no such table: Logins'. ---> Microsoft.Data.Sqlite.SqliteException: SQLite Error 1: 'no such table: Logins'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements(Stopwatch timer)+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteAsync(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.AsyncQueryingEnumerable`1.AsyncEnumerator.BufferlessMoveNext(DbContext _, Boolean buffer, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.AsyncQueryingEnumerable`1.AsyncEnumerator.MoveNext(CancellationToken cancellationToken)
+   at System.Linq.AsyncEnumerable.FirstOrDefault_[TSource](IAsyncEnumerable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.AsyncLinqOperatorProvider.TaskResultAsyncEnumerable`1.Enumerator.MoveNext(CancellationToken cancellationToken)
+   at System.Linq.AsyncEnumerable.SelectEnumerableAsyncIterator`2.MoveNextCore(CancellationToken cancellationToken)
+   at System.Linq.AsyncEnumerable.AsyncIterator`1.MoveNext(CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.AsyncLinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext(CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExecuteSingletonAsyncQuery[TResult](QueryContext queryContext, Func`2 compiledQuery, IDiagnosticsLogger`1 logger, Type contextType)
+   at Pangul.Services.Concrete.Db.Users.UserCommandHandler.GuardNoExistingLogin(PangulDbContext context, CreateNewUser command) in /Users/doug/dev/dotnet/pangul/Services/Pangul.Services.Concrete/Db/Users/UserCommandHandler.cs:line 41
+   at Pangul.Services.Concrete.Db.Users.UserCommandHandler.Execute(PangulDbContext context, CreateNewUser command) in /Users/doug/dev/dotnet/pangul/Services/Pangul.Services.Concrete/Db/Users/UserCommandHandler.cs:line 16
+   at Pangul.Services.Concrete.Services.UserService.Create(PangulDbContext db, String username) in /Users/doug/dev/dotnet/pangul/Services/Pangul.Services.Concrete/Services/UserService.cs:line 56
+   --- End of inner exception stack trace ---
+   at Pangul.Services.Concrete.Services.UserService.Create(PangulDbContext db, String username) in /Users/doug/dev/dotnet/pangul/Services/Pangul.Services.Concrete/Services/UserService.cs:line 64
+   at Pangul.Backend.Web.Configuration.Authentication.ServiceIdentityList.RequireUserRecordForUser(String username) in /Users/doug/dev/dotnet/pangul/Backend/Pangul.Backend.Web/Configuration/Authentication/ServiceIdentityList.cs:line 87
+   at Pangul.Backend.Web.Configuration.Authentication.ServiceIdentityList.TryAuthorize[TAuth,TContext](String username, TAuth authenticationToken, TContext authenticationContext) in /Users/doug/dev/dotnet/pangul/Backend/Pangul.Backend.Web/Configuration/Authentication/ServiceIdentityList.cs:line 71
+   at Pangul.Services.Concrete.Services.PangulAuthService.TryAuthorize[TAuth,TContext](String username, TAuth authenticationToken, TContext authenticationContext) in /Users/doug/dev/dotnet/pangul/Services/Pangul.Services.Concrete/Services/PangulAuthService.cs:line 23
+   at Pangul.Backend.Web.Controllers.Auth.AuthControllerService.TryAuthorize(String username, String password, HttpContext httpContext, ServiceAuthContext authContext) in /Users/doug/dev/dotnet/pangul/Backend/Pangul.Backend.Web/Controllers/Auth/AuthControllerService.cs:line 66
+   at Pangul.Backend.Web.Controllers.Auth.AuthControllerService.Login(HttpContext httpContext, LoginViewModel model, ModelStateDictionary modelState) in /Users/doug/dev/dotnet/pangul/Backend/Pangul.Backend.Web/Controllers/Auth/AuthControllerService.cs:line 39
+   at Pangul.Backend.Web.Controllers.Auth.AuthController.Login(LoginViewModel model) in /Users/doug/dev/dotnet/pangul/Backend/Pangul.Backend.Web/Controllers/Auth/AuthController.cs:line 34
+2018-10-31 12:55:57.9359 INFO Executed action method Pangul.Backend.Web.Controllers.Auth.AuthController.Login (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 531.9922ms.
+2018-10-31 12:55:57.9432 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse'.
+2018-10-31 12:55:57.9514 INFO Executed action Pangul.Backend.Web.Controllers.Auth.AuthController.Login (Pangul.Backend.Web) in 638.1319ms
+2018-10-31 12:55:57.9566 INFO Request finished in 669.5247ms 400 application/json; charset=utf-8
+2018-10-31 12:56:41.6668 INFO User profile is available. Using '/Users/doug/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2018-10-31 12:56:42.0882 INFO Application started
+2018-10-31 12:56:44.7027 INFO Request starting HTTP/1.1 GET http://localhost:5000/static/js/main.4f1815bc.js.map  
+2018-10-31 12:56:44.7027 INFO Request starting HTTP/1.1 GET http://localhost:5000/static/css/main.65cbb0f8.css.map  
+2018-10-31 12:56:44.7027 INFO Request starting HTTP/1.1 POST http://localhost:5000/api/auth/claims application/json 4
+2018-10-31 12:56:44.7361 INFO Pangul was not authenticated. Failure message: Unprotect ticket failed
+2018-10-31 12:56:44.7361 INFO Pangul was not authenticated. Failure message: Unprotect ticket failed
+2018-10-31 12:56:44.7361 INFO Pangul was not authenticated. Failure message: Unprotect ticket failed
+2018-10-31 12:56:44.8787 INFO Route matched with {action = "Claims", controller = "Auth"}. Executing action Pangul.Backend.Web.Controllers.Auth.AuthController.Claims (Pangul.Backend.Web)
+2018-10-31 12:56:44.8843 INFO Policy execution successful.
+2018-10-31 12:56:44.8860 INFO Request starting HTTP/1.1 GET http://localhost:5000/service-worker.js  
+2018-10-31 12:56:44.8860 INFO Pangul was not authenticated. Failure message: Unprotect ticket failed
+2018-10-31 12:56:44.9005 INFO Sending file. Request path: '/service-worker.js'. Physical path: '/Users/doug/dev/dotnet/pangul/Snapshot/wwwroot/service-worker.js'
+2018-10-31 12:56:44.9007 INFO Sending file. Request path: '/static/css/main.65cbb0f8.css.map'. Physical path: '/Users/doug/dev/dotnet/pangul/Snapshot/wwwroot/static/css/main.65cbb0f8.css.map'
+2018-10-31 12:56:44.9049 INFO Authorization failed.
+2018-10-31 12:56:44.9058 INFO Authorization failed for the request at filter 'Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter'.
+2018-10-31 12:56:44.9087 INFO Request finished in 206.1473ms 200 text/plain
+2018-10-31 12:56:44.9087 INFO Request finished in 22.7572ms 200 application/javascript
+2018-10-31 12:56:44.9087 INFO Request starting HTTP/1.1 GET http://localhost:5000/favicon-32x32.png  
+2018-10-31 12:56:44.9100 INFO Pangul was not authenticated. Failure message: Unprotect ticket failed
+2018-10-31 12:56:44.9109 INFO Sending file. Request path: '/favicon-32x32.png'. Physical path: '/Users/doug/dev/dotnet/pangul/Snapshot/wwwroot/favicon-32x32.png'
+2018-10-31 12:56:44.9109 INFO Request finished in 1.5558ms 200 image/png
+2018-10-31 12:56:44.9120 INFO Executing ChallengeResult with authentication schemes ().
+2018-10-31 12:56:44.9174 INFO AuthenticationScheme: Pangul was challenged.
+2018-10-31 12:56:44.9192 INFO Executed action Pangul.Backend.Web.Controllers.Auth.AuthController.Claims (Pangul.Backend.Web) in 38.2073ms
+2018-10-31 12:56:44.9208 INFO Request finished in 218.1681ms 403 
+2018-10-31 12:56:44.9245 INFO Request starting HTTP/1.1 GET http://localhost:5000/favicon-16x16.png  
+2018-10-31 12:56:44.9252 INFO Pangul was not authenticated. Failure message: Unprotect ticket failed
+2018-10-31 12:56:44.9252 INFO Sending file. Request path: '/favicon-16x16.png'. Physical path: '/Users/doug/dev/dotnet/pangul/Snapshot/wwwroot/favicon-16x16.png'
+2018-10-31 12:56:44.9258 INFO Request finished in 1.2948ms 200 image/png
+2018-10-31 12:56:44.9346 INFO Request starting HTTP/1.1 GET http://localhost:5000/favicon-96x96.png  
+2018-10-31 12:56:44.9353 INFO Pangul was not authenticated. Failure message: Unprotect ticket failed
+2018-10-31 12:56:44.9357 INFO Sending file. Request path: '/favicon-96x96.png'. Physical path: '/Users/doug/dev/dotnet/pangul/Snapshot/wwwroot/favicon-96x96.png'
+2018-10-31 12:56:44.9357 INFO Request finished in 1.3234ms 200 image/png
+2018-10-31 12:56:44.9574 INFO Connection id "0HLHUTL0KU229", Request id "0HLHUTL0KU229:00000001": the application completed without reading the entire request body.
+2018-10-31 12:56:44.9665 INFO Sending file. Request path: '/static/js/main.4f1815bc.js.map'. Physical path: '/Users/doug/dev/dotnet/pangul/Snapshot/wwwroot/static/js/main.4f1815bc.js.map'
+2018-10-31 12:56:44.9665 INFO Request finished in 264.4171ms 200 text/plain
+2018-10-31 12:56:45.9306 INFO Request starting HTTP/1.1 GET http://localhost:5000/service-worker.js  
+2018-10-31 12:56:45.9315 INFO Pangul was not authenticated. Failure message: Unprotect ticket failed
+2018-10-31 12:56:45.9321 INFO Sending file. Request path: '/service-worker.js'. Physical path: '/Users/doug/dev/dotnet/pangul/Snapshot/wwwroot/service-worker.js'
+2018-10-31 12:56:45.9321 INFO Request finished in 1.703ms 200 application/javascript
+2018-10-31 12:56:49.2315 INFO Request starting HTTP/1.1 POST http://localhost:5000/api/auth/login application/json 39
+2018-10-31 12:56:49.2322 INFO Pangul was not authenticated. Failure message: Unprotect ticket failed
+2018-10-31 12:56:49.2553 INFO Route matched with {action = "Login", controller = "Auth"}. Executing action Pangul.Backend.Web.Controllers.Auth.AuthController.Login (Pangul.Backend.Web)
+2018-10-31 12:56:49.2558 INFO Policy execution successful.
+2018-10-31 12:56:49.3452 INFO Executing action method Pangul.Backend.Web.Controllers.Auth.AuthController.Login (Pangul.Backend.Web) with arguments (Pangul.Backend.Web.Controllers.Auth.ViewModels.LoginViewModel) - Validation state: Valid
+2018-10-31 12:56:49.8948 INFO AuthenticationScheme: Pangul signed in.
+2018-10-31 12:56:49.8970 INFO Executed action method Pangul.Backend.Web.Controllers.Auth.AuthController.Login (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 550.2458ms.
+2018-10-31 12:56:49.9020 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse'.
+2018-10-31 12:56:49.9121 INFO Executed action Pangul.Backend.Web.Controllers.Auth.AuthController.Login (Pangul.Backend.Web) in 656.4748ms
+2018-10-31 12:56:49.9143 INFO Request finished in 682.7622ms 200 application/json; charset=utf-8
+2018-10-31 12:56:49.9172 INFO Request starting HTTP/1.1 POST http://localhost:5000/api/auth/claims application/json 4
+2018-10-31 12:56:49.9198 INFO Route matched with {action = "Claims", controller = "Auth"}. Executing action Pangul.Backend.Web.Controllers.Auth.AuthController.Claims (Pangul.Backend.Web)
+2018-10-31 12:56:49.9198 INFO Policy execution successful.
+2018-10-31 12:56:49.9210 INFO Authorization was successful.
+2018-10-31 12:56:49.9249 INFO Executing action method Pangul.Backend.Web.Controllers.Auth.AuthController.Claims (Pangul.Backend.Web) - Validation state: Valid
+2018-10-31 12:56:49.9268 INFO Executed action method Pangul.Backend.Web.Controllers.Auth.AuthController.Claims (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 1.4738ms.
+2018-10-31 12:56:49.9268 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse`1[[<>f__AnonymousType3`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Pangul.Backend.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-10-31 12:56:49.9328 INFO Executed action Pangul.Backend.Web.Controllers.Auth.AuthController.Claims (Pangul.Backend.Web) in 12.808ms
+2018-10-31 12:56:49.9328 INFO Request finished in 15.8938ms 200 application/json; charset=utf-8
+2018-10-31 12:56:49.9328 INFO Connection id "0HLHUTL0KU22A", Request id "0HLHUTL0KU22A:00000004": the application completed without reading the entire request body.
+2018-10-31 12:56:49.9447 INFO Request starting HTTP/1.1 POST http://localhost:5000/api/topics/search application/json 35
+2018-10-31 12:56:49.9507 INFO Route matched with {action = "Search", controller = "Topics"}. Executing action Pangul.Backend.Web.Controllers.Topics.TopicsController.Search (Pangul.Backend.Web)
+2018-10-31 12:56:49.9511 INFO Policy execution successful.
+2018-10-31 12:56:49.9525 INFO Authorization was successful.
+2018-10-31 12:56:49.9615 INFO Executing action method Pangul.Backend.Web.Controllers.Topics.TopicsController.Search (Pangul.Backend.Web) with arguments (Pangul.Backend.Web.Controllers.Topics.TopicSearchViewModel) - Validation state: Valid
+2018-10-31 12:56:50.0383 INFO Executed action method Pangul.Backend.Web.Controllers.Topics.TopicsController.Search (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 76.6052ms.
+2018-10-31 12:56:50.0388 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse`1[[Pangul.Services.Infrastructure.Search.SearchResult, Pangul.Services.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-10-31 12:56:50.0442 INFO Executed action Pangul.Backend.Web.Controllers.Topics.TopicsController.Search (Pangul.Backend.Web) in 93.1109ms
+2018-10-31 12:56:50.0442 INFO Request finished in 99.8802ms 200 application/json; charset=utf-8
+2018-10-31 12:56:50.0482 INFO Request starting HTTP/1.1 POST http://localhost:5000/api/topics/get application/json 14
+2018-10-31 12:56:50.0528 INFO Request starting HTTP/1.1 POST http://localhost:5000/api/topics/get application/json 14
+2018-10-31 12:56:50.0528 INFO Request starting HTTP/1.1 POST http://localhost:5000/api/topics/get application/json 14
+2018-10-31 12:56:50.0528 INFO Route matched with {action = "Get", controller = "Topics"}. Executing action Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web)
+2018-10-31 12:56:50.0537 INFO Policy execution successful.
+2018-10-31 12:56:50.0537 INFO Route matched with {action = "Get", controller = "Topics"}. Executing action Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web)
+2018-10-31 12:56:50.0537 INFO Policy execution successful.
+2018-10-31 12:56:50.0528 INFO Route matched with {action = "Get", controller = "Topics"}. Executing action Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web)
+2018-10-31 12:56:50.0547 INFO Policy execution successful.
+2018-10-31 12:56:50.0547 INFO Authorization was successful.
+2018-10-31 12:56:50.0547 INFO Authorization was successful.
+2018-10-31 12:56:50.0537 INFO Authorization was successful.
+2018-10-31 12:56:50.0590 INFO Executing action method Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web) with arguments (Pangul.Backend.Web.Controllers.Topics.TopicGetViewModel) - Validation state: Valid
+2018-10-31 12:56:50.0590 INFO Executing action method Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web) with arguments (Pangul.Backend.Web.Controllers.Topics.TopicGetViewModel) - Validation state: Valid
+2018-10-31 12:56:50.0590 INFO Executing action method Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web) with arguments (Pangul.Backend.Web.Controllers.Topics.TopicGetViewModel) - Validation state: Valid
+2018-10-31 12:56:50.1092 INFO Executed action method Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 49.2383ms.
+2018-10-31 12:56:50.1092 INFO Executed action method Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 49.8385ms.
+2018-10-31 12:56:50.1092 INFO Executed action method Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 49.596ms.
+2018-10-31 12:56:50.1092 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse`1[[Pangul.Backend.Web.Controllers.Topics.ViewModels.TopicViewModel, Pangul.Backend.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-10-31 12:56:50.1100 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse`1[[Pangul.Backend.Web.Controllers.Topics.ViewModels.TopicViewModel, Pangul.Backend.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-10-31 12:56:50.1100 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse`1[[Pangul.Backend.Web.Controllers.Topics.ViewModels.TopicViewModel, Pangul.Backend.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-10-31 12:56:50.1142 INFO Executed action Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web) in 59.909ms
+2018-10-31 12:56:50.1142 INFO Request finished in 61.4352ms 200 application/json; charset=utf-8
+2018-10-31 12:56:50.1142 INFO Executed action Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web) in 60.6353ms
+2018-10-31 12:56:50.1151 INFO Request finished in 66.8844ms 200 application/json; charset=utf-8
+2018-10-31 12:56:50.1142 INFO Executed action Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web) in 59.4146ms
+2018-10-31 12:56:50.1164 INFO Request finished in 63.5544ms 200 application/json; charset=utf-8

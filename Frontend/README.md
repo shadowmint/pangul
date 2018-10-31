@@ -1,5 +1,12 @@
 # setup
 
     cd react-pangul
-    npm install
+    npm ci
     npm start
+
+## build
+
+    cd react-pangul
+    npm ci
+    npm run build
+    cp -r build/* ../../Backend/Pangul.Backend.Web/wwwroot/

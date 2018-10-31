@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.IO.Abstractions;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
@@ -6,6 +7,7 @@ using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
 using NCore.Base.Commands.Conventions;
 using NCore.Base.Log;
@@ -73,10 +75,26 @@ namespace Pangul.Backend.Web.Configuration.Core
     public void ConfigureApplication(IApplicationBuilder app, IHostingEnvironment env)
     {
       app.UseAuthentication();
-      app.UseMvc();
+
+      app.UseMvc(routes =>
+      {
+        routes.MapRoute(
+          name: "default",
+          template: "{controller=Frontend}/{action=Index}/{id?}");
+      });
+      
       app.UseCors(ServiceExtensions.PangulCorsPolicy);
 
-      // Log start message~
+      app.UseStaticFiles(new StaticFileOptions
+      {
+        FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")),
+        RequestPath = ""
+      });
+
+      app.UseWhen(
+        context => !context.Request.Path.StartsWithSegments("/api"),
+        appBuilder => appBuilder.UseStaticFiles());
+
       var logger = LogManager.GetCurrentClassLogger();
       logger.Info("Application started");
     }
