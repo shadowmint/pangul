@@ -20,4 +20,7 @@
     <ProjectReference Include="..\..\Services\Pangul.Services.Concrete\Pangul.Services.Concrete.csproj" />
     <ProjectReference Include="..\..\Services\Pangul.Services\Pangul.Services.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot" />
+  </ItemGroup>
 </Project>
