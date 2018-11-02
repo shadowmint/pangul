@@ -19,6 +19,14 @@ export default class AjaxFetch implements IFetch {
     constructor(private rootUrl: string) {
     }
 
+    public async get<T>(url: string): Promise<T> {
+        const response = await fetch(`${this.rootUrl}${url}`, {method: "GET"});
+        if (!response.ok) {
+            throw new Error(response.statusText);
+        }
+        return response.json();
+    }
+
     public async post<T>(url: string, body: any): Promise<IStandardResponse<T>> {
         const apiHeaders = new Headers({
             "Accept": "*/*",

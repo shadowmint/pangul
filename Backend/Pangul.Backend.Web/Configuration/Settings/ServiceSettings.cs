@@ -6,6 +6,8 @@ namespace Pangul.Backend.Web.Configuration.Settings
 {
   public class ServiceSettings
   {
+    public ServiceCoreSettings Core => _core.Value;
+    
     public ServiceDbSettings Db => _db.Value;
 
     public ServiceLogSettings Logging => _logging.Value;
@@ -14,6 +16,8 @@ namespace Pangul.Backend.Web.Configuration.Settings
 
     public ServiceFolderSettings Folders => StaticFolders.Value;
 
+    private readonly Lazy<ServiceCoreSettings> _core = new Lazy<ServiceCoreSettings>(() => new ServiceCoreSettings(Config.Value));
+    
     private readonly Lazy<ServiceDbSettings> _db = new Lazy<ServiceDbSettings>(() => new ServiceDbSettings(Config.Value));
 
     private readonly Lazy<ServiceLogSettings> _logging = new Lazy<ServiceLogSettings>(() => new ServiceLogSettings(Config.Value));

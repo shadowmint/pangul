@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
+using Pangul.Backend.Web.Configuration.Settings;
 
 namespace Pangul.Backend.Web
 {
@@ -8,15 +9,17 @@ namespace Pangul.Backend.Web
   {
     public static void Main(string[] args)
     {
-      BuildWebHost(args).Run();
+      var settings = new ServiceSettings();
+      BuildWebHost(settings).Run();
     }
 
-    private static IWebHost BuildWebHost(string[] args)
+    private static IWebHost BuildWebHost(ServiceSettings settings)
     {
       return new WebHostBuilder()
         .UseKestrel()
-        .UseContentRoot(Directory.GetCurrentDirectory())
+        .UseContentRoot(settings.Folders.RootFolder)
         .UseStartup<Startup>()
+        .UseUrls(settings.Core.BindAddress)
         .Build();
     }
   }

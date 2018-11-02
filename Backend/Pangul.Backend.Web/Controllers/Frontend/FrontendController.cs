@@ -1,5 +1,7 @@
+using System;
 using System.IO;
 using Microsoft.AspNetCore.Mvc;
+using NLog;
 using Pangul.Backend.Web.Configuration.Settings;
 
 namespace Pangul.Backend.Web.Controllers.Frontend
@@ -14,8 +16,9 @@ namespace Pangul.Backend.Web.Controllers.Frontend
     }
 
     public IActionResult Index()
-    {      
-      return File(Path.Combine(_settings.Folders.StaticAssetsFolder, "index.html"), "text/html");
+    {
+      var content = System.IO.File.ReadAllText(Path.Combine(_settings.Folders.StaticAssetsFolder, "index.html"));
+      return Content(content, "text/html");
     }
   }
 }

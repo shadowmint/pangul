@@ -163,3 +163,332 @@
 2018-10-31 12:56:50.1151 INFO Request finished in 66.8844ms 200 application/json; charset=utf-8
 2018-10-31 12:56:50.1142 INFO Executed action Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web) in 59.4146ms
 2018-10-31 12:56:50.1164 INFO Request finished in 63.5544ms 200 application/json; charset=utf-8
+2018-10-31 13:00:21.8703 INFO User profile is available. Using '/Users/doug/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2018-10-31 13:00:22.3214 INFO Application started
+2018-10-31 13:00:28.0380 INFO Request starting HTTP/1.1 GET http://localhost:5000/static/js/main.4f1815bc.js.map  
+2018-10-31 13:00:28.0380 INFO Request starting HTTP/1.1 POST http://localhost:5000/api/auth/claims application/json 4
+2018-10-31 13:00:28.0394 INFO Request starting HTTP/1.1 GET http://localhost:5000/static/css/main.65cbb0f8.css.map  
+2018-10-31 13:00:28.2154 INFO Route matched with {action = "Claims", controller = "Auth"}. Executing action Pangul.Backend.Web.Controllers.Auth.AuthController.Claims (Pangul.Backend.Web)
+2018-10-31 13:00:28.2204 INFO Policy execution successful.
+2018-10-31 13:00:28.2275 INFO Sending file. Request path: '/static/css/main.65cbb0f8.css.map'. Physical path: '/Users/doug/dev/dotnet/pangul/Snapshot/wwwroot/static/css/main.65cbb0f8.css.map'
+2018-10-31 13:00:28.2347 INFO Request finished in 195.1726ms 200 text/plain
+2018-10-31 13:00:28.3013 INFO Sending file. Request path: '/static/js/main.4f1815bc.js.map'. Physical path: '/Users/doug/dev/dotnet/pangul/Snapshot/wwwroot/static/js/main.4f1815bc.js.map'
+2018-10-31 13:00:28.3015 INFO Authorization was successful.
+2018-10-31 13:00:28.3015 INFO Request finished in 264.6278ms 200 text/plain
+2018-10-31 13:00:28.3319 INFO Executing action method Pangul.Backend.Web.Controllers.Auth.AuthController.Claims (Pangul.Backend.Web) - Validation state: Valid
+2018-10-31 13:00:28.3360 INFO Executed action method Pangul.Backend.Web.Controllers.Auth.AuthController.Claims (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 2.3137ms.
+2018-10-31 13:00:28.3448 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse`1[[<>f__AnonymousType3`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Pangul.Backend.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-10-31 13:00:28.4111 INFO Executed action Pangul.Backend.Web.Controllers.Auth.AuthController.Claims (Pangul.Backend.Web) in 191.8499ms
+2018-10-31 13:00:28.4132 INFO Request finished in 375.3655ms 200 application/json; charset=utf-8
+2018-10-31 13:00:28.4341 INFO Request starting HTTP/1.1 GET http://localhost:5000/favicon-32x32.png  
+2018-10-31 13:00:28.4358 INFO Sending file. Request path: '/favicon-32x32.png'. Physical path: '/Users/doug/dev/dotnet/pangul/Snapshot/wwwroot/favicon-32x32.png'
+2018-10-31 13:00:28.4358 INFO Request finished in 1.9609ms 200 image/png
+2018-10-31 13:00:28.4405 INFO Request starting HTTP/1.1 POST http://localhost:5000/api/topics/search application/json 35
+2018-10-31 13:00:28.4405 INFO Request starting HTTP/1.1 GET http://localhost:5000/favicon-16x16.png  
+2018-10-31 13:00:28.4432 INFO Sending file. Request path: '/favicon-16x16.png'. Physical path: '/Users/doug/dev/dotnet/pangul/Snapshot/wwwroot/favicon-16x16.png'
+2018-10-31 13:00:28.4437 INFO Request finished in 2.5927ms 200 image/png
+2018-10-31 13:00:28.4522 INFO Request starting HTTP/1.1 GET http://localhost:5000/favicon-96x96.png  
+2018-10-31 13:00:28.4529 INFO Sending file. Request path: '/favicon-96x96.png'. Physical path: '/Users/doug/dev/dotnet/pangul/Snapshot/wwwroot/favicon-96x96.png'
+2018-10-31 13:00:28.4529 INFO Request finished in 0.9146ms 200 image/png
+2018-10-31 13:00:28.4550 INFO Connection id "0HLHUTN347O6J", Request id "0HLHUTN347O6J:00000001": the application completed without reading the entire request body.
+2018-10-31 13:00:28.4563 INFO Request starting HTTP/1.1 GET http://localhost:5000/service-worker.js  
+2018-10-31 13:00:28.4572 INFO Sending file. Request path: '/service-worker.js'. Physical path: '/Users/doug/dev/dotnet/pangul/Snapshot/wwwroot/service-worker.js'
+2018-10-31 13:00:28.4572 INFO Request finished in 1.1044ms 200 application/javascript
+2018-10-31 13:00:28.4726 INFO Route matched with {action = "Search", controller = "Topics"}. Executing action Pangul.Backend.Web.Controllers.Topics.TopicsController.Search (Pangul.Backend.Web)
+2018-10-31 13:00:28.4726 INFO Policy execution successful.
+2018-10-31 13:00:28.5456 INFO Authorization was successful.
+2018-10-31 13:00:28.6003 INFO Executing action method Pangul.Backend.Web.Controllers.Topics.TopicsController.Search (Pangul.Backend.Web) with arguments (Pangul.Backend.Web.Controllers.Topics.TopicSearchViewModel) - Validation state: Valid
+2018-10-31 13:00:29.2649 INFO Executed action method Pangul.Backend.Web.Controllers.Topics.TopicsController.Search (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 664.2486ms.
+2018-10-31 13:00:29.2649 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse`1[[Pangul.Services.Infrastructure.Search.SearchResult, Pangul.Services.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-10-31 13:00:29.2693 INFO Executed action Pangul.Backend.Web.Controllers.Topics.TopicsController.Search (Pangul.Backend.Web) in 796.3348ms
+2018-10-31 13:00:29.2698 INFO Request finished in 829.3196ms 200 application/json; charset=utf-8
+2018-10-31 13:00:29.2733 INFO Request starting HTTP/1.1 POST http://localhost:5000/api/topics/get application/json 14
+2018-10-31 13:00:29.2748 INFO Request starting HTTP/1.1 POST http://localhost:5000/api/topics/get application/json 14
+2018-10-31 13:00:29.2765 INFO Request starting HTTP/1.1 POST http://localhost:5000/api/topics/get application/json 14
+2018-10-31 13:00:29.2783 INFO Route matched with {action = "Get", controller = "Topics"}. Executing action Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web)
+2018-10-31 13:00:29.2788 INFO Policy execution successful.
+2018-10-31 13:00:29.2788 INFO Authorization was successful.
+2018-10-31 13:00:29.2817 INFO Route matched with {action = "Get", controller = "Topics"}. Executing action Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web)
+2018-10-31 13:00:29.2817 INFO Policy execution successful.
+2018-10-31 13:00:29.2817 INFO Authorization was successful.
+2018-10-31 13:00:29.2817 INFO Route matched with {action = "Get", controller = "Topics"}. Executing action Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web)
+2018-10-31 13:00:29.2831 INFO Policy execution successful.
+2018-10-31 13:00:29.2838 INFO Authorization was successful.
+2018-10-31 13:00:29.2838 INFO Executing action method Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web) with arguments (Pangul.Backend.Web.Controllers.Topics.TopicGetViewModel) - Validation state: Valid
+2018-10-31 13:00:29.2846 INFO Executing action method Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web) with arguments (Pangul.Backend.Web.Controllers.Topics.TopicGetViewModel) - Validation state: Valid
+2018-10-31 13:00:29.2857 INFO Executing action method Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web) with arguments (Pangul.Backend.Web.Controllers.Topics.TopicGetViewModel) - Validation state: Valid
+2018-10-31 13:00:29.3395 INFO Executed action method Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 54.7234ms.
+2018-10-31 13:00:29.3395 INFO Executed action method Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 53.5678ms.
+2018-10-31 13:00:29.3395 INFO Executed action method Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 54.958ms.
+2018-10-31 13:00:29.3395 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse`1[[Pangul.Backend.Web.Controllers.Topics.ViewModels.TopicViewModel, Pangul.Backend.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-10-31 13:00:29.3395 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse`1[[Pangul.Backend.Web.Controllers.Topics.ViewModels.TopicViewModel, Pangul.Backend.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-10-31 13:00:29.3407 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse`1[[Pangul.Backend.Web.Controllers.Topics.ViewModels.TopicViewModel, Pangul.Backend.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-10-31 13:00:29.3447 INFO Executed action Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web) in 65.9485ms
+2018-10-31 13:00:29.3447 INFO Request finished in 71.7485ms 200 application/json; charset=utf-8
+2018-10-31 13:00:29.3447 INFO Executed action Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web) in 62.6923ms
+2018-10-31 13:00:29.3456 INFO Request finished in 70.837ms 200 application/json; charset=utf-8
+2018-10-31 13:00:29.3447 INFO Executed action Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web) in 62.0309ms
+2018-10-31 13:00:29.3465 INFO Request finished in 69.9889ms 200 application/json; charset=utf-8
+2018-10-31 13:00:30.3531 INFO Request starting HTTP/1.1 GET http://localhost:5000/service-worker.js  
+2018-10-31 13:00:30.3540 INFO Sending file. Request path: '/service-worker.js'. Physical path: '/Users/doug/dev/dotnet/pangul/Snapshot/wwwroot/service-worker.js'
+2018-10-31 13:00:30.3540 INFO Request finished in 1.1074ms 200 application/javascript
+2018-10-31 13:00:46.1326 INFO Request starting HTTP/1.1 GET http://localhost:5000/favicon-32x32.png  
+2018-10-31 13:00:46.1337 INFO Sending file. Request path: '/favicon-32x32.png'. Physical path: '/Users/doug/dev/dotnet/pangul/Snapshot/wwwroot/favicon-32x32.png'
+2018-10-31 13:00:46.1337 INFO Request finished in 1.2638ms 200 image/png
+2018-10-31 13:00:46.1396 INFO Request starting HTTP/1.1 POST http://localhost:5000/api/topics/get application/json 22
+2018-10-31 13:00:46.1404 INFO Route matched with {action = "Get", controller = "Topics"}. Executing action Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web)
+2018-10-31 13:00:46.1404 INFO Policy execution successful.
+2018-10-31 13:00:46.1404 INFO Authorization was successful.
+2018-10-31 13:00:46.1434 INFO Executing action method Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web) with arguments (Pangul.Backend.Web.Controllers.Topics.TopicGetViewModel) - Validation state: Valid
+2018-10-31 13:00:46.1544 INFO Executed action method Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 10.7261ms.
+2018-10-31 13:00:46.1544 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse`1[[Pangul.Backend.Web.Controllers.Topics.ViewModels.TopicViewModel, Pangul.Backend.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-10-31 13:00:46.1554 INFO Executed action Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web) in 14.6096ms
+2018-10-31 13:00:46.1554 INFO Request finished in 16.0774ms 200 application/json; charset=utf-8
+2018-10-31 13:00:46.1608 INFO Request starting HTTP/1.1 POST http://localhost:5000/api/questions/search application/json 47
+2018-10-31 13:00:46.1651 INFO Route matched with {action = "Search", controller = "Questions"}. Executing action Pangul.Backend.Web.Controllers.Questions.QuestionsController.Search (Pangul.Backend.Web)
+2018-10-31 13:00:46.1655 INFO Policy execution successful.
+2018-10-31 13:00:46.1655 INFO Authorization was successful.
+2018-10-31 13:00:46.1655 INFO Authorization was successful.
+2018-10-31 13:00:46.2356 INFO Executing action method Pangul.Backend.Web.Controllers.Questions.QuestionsController.Search (Pangul.Backend.Web) with arguments (Pangul.Backend.Web.Controllers.Questions.ViewModels.PerformSearchViewModel) - Validation state: Valid
+2018-10-31 13:00:46.3072 INFO Executed action method Pangul.Backend.Web.Controllers.Questions.QuestionsController.Search (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 71.387ms.
+2018-10-31 13:00:46.3075 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse`1[[Pangul.Services.Infrastructure.Search.SearchResult, Pangul.Services.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-10-31 13:00:46.3075 INFO Executed action Pangul.Backend.Web.Controllers.Questions.QuestionsController.Search (Pangul.Backend.Web) in 142.7604ms
+2018-10-31 13:00:46.3084 INFO Request finished in 147.6621ms 200 application/json; charset=utf-8
+2018-10-31 13:00:46.3129 INFO Request starting HTTP/1.1 POST http://localhost:5000/api/questions/getSummary application/json 9
+2018-10-31 13:00:46.3137 INFO Request starting HTTP/1.1 POST http://localhost:5000/api/questions/getSummary application/json 9
+2018-10-31 13:00:46.3180 INFO Route matched with {action = "GetSummary", controller = "Questions"}. Executing action Pangul.Backend.Web.Controllers.Questions.QuestionsController.GetSummary (Pangul.Backend.Web)
+2018-10-31 13:00:46.3180 INFO Policy execution successful.
+2018-10-31 13:00:46.3186 INFO Route matched with {action = "GetSummary", controller = "Questions"}. Executing action Pangul.Backend.Web.Controllers.Questions.QuestionsController.GetSummary (Pangul.Backend.Web)
+2018-10-31 13:00:46.3186 INFO Authorization was successful.
+2018-10-31 13:00:46.3186 INFO Authorization was successful.
+2018-10-31 13:00:46.3186 INFO Policy execution successful.
+2018-10-31 13:00:46.3199 INFO Authorization was successful.
+2018-10-31 13:00:46.3204 INFO Authorization was successful.
+2018-10-31 13:00:46.3237 INFO Executing action method Pangul.Backend.Web.Controllers.Questions.QuestionsController.GetSummary (Pangul.Backend.Web) with arguments (Pangul.Backend.Web.Controllers.Questions.ViewModels.GetQuestionViewModel) - Validation state: Valid
+2018-10-31 13:00:46.3237 INFO Executing action method Pangul.Backend.Web.Controllers.Questions.QuestionsController.GetSummary (Pangul.Backend.Web) with arguments (Pangul.Backend.Web.Controllers.Questions.ViewModels.GetQuestionViewModel) - Validation state: Valid
+2018-10-31 13:00:46.4795 INFO Executed action method Pangul.Backend.Web.Controllers.Questions.QuestionsController.GetSummary (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 155.2363ms.
+2018-10-31 13:00:46.4795 INFO Executed action method Pangul.Backend.Web.Controllers.Questions.QuestionsController.GetSummary (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 155.5875ms.
+2018-10-31 13:00:46.4795 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse`1[[Pangul.Backend.Web.Controllers.Questions.ViewModels.QuestionSummaryViewModel, Pangul.Backend.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-10-31 13:00:46.4804 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse`1[[Pangul.Backend.Web.Controllers.Questions.ViewModels.QuestionSummaryViewModel, Pangul.Backend.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-10-31 13:00:46.4871 INFO Executed action Pangul.Backend.Web.Controllers.Questions.QuestionsController.GetSummary (Pangul.Backend.Web) in 168.1699ms
+2018-10-31 13:00:46.4871 INFO Executed action Pangul.Backend.Web.Controllers.Questions.QuestionsController.GetSummary (Pangul.Backend.Web) in 168.9648ms
+2018-10-31 13:00:46.4876 INFO Request finished in 175.1085ms 200 application/json; charset=utf-8
+2018-10-31 13:00:46.4876 INFO Request finished in 173.9249ms 200 application/json; charset=utf-8
+2018-10-31 13:00:46.4925 INFO Request starting HTTP/1.1 POST http://localhost:5000/api/questions/metadata application/json 9
+2018-10-31 13:00:46.4945 INFO Request starting HTTP/1.1 POST http://localhost:5000/api/questions/metadata application/json 9
+2018-10-31 13:00:46.4975 INFO Route matched with {action = "Metadata", controller = "Questions"}. Executing action Pangul.Backend.Web.Controllers.Questions.QuestionsController.Metadata (Pangul.Backend.Web)
+2018-10-31 13:00:46.4975 INFO Policy execution successful.
+2018-10-31 13:00:46.4975 INFO Authorization was successful.
+2018-10-31 13:00:46.4984 INFO Authorization was successful.
+2018-10-31 13:00:46.4984 INFO Route matched with {action = "Metadata", controller = "Questions"}. Executing action Pangul.Backend.Web.Controllers.Questions.QuestionsController.Metadata (Pangul.Backend.Web)
+2018-10-31 13:00:46.4995 INFO Policy execution successful.
+2018-10-31 13:00:46.4995 INFO Authorization was successful.
+2018-10-31 13:00:46.4995 INFO Authorization was successful.
+2018-10-31 13:00:46.5004 INFO Executing action method Pangul.Backend.Web.Controllers.Questions.QuestionsController.Metadata (Pangul.Backend.Web) with arguments (Pangul.Backend.Web.Controllers.Questions.ViewModels.GetQuestionViewModel) - Validation state: Valid
+2018-10-31 13:00:46.5021 INFO Executing action method Pangul.Backend.Web.Controllers.Questions.QuestionsController.Metadata (Pangul.Backend.Web) with arguments (Pangul.Backend.Web.Controllers.Questions.ViewModels.GetQuestionViewModel) - Validation state: Valid
+2018-10-31 13:00:46.5830 INFO Executed action method Pangul.Backend.Web.Controllers.Questions.QuestionsController.Metadata (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 80.7652ms.
+2018-10-31 13:00:46.5830 INFO Executed action method Pangul.Backend.Web.Controllers.Questions.QuestionsController.Metadata (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 81.7556ms.
+2018-10-31 13:00:46.5834 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse`1[[Pangul.Backend.Web.Controllers.Questions.ViewModels.QuestionMetaViewModel, Pangul.Backend.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-10-31 13:00:46.5834 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse`1[[Pangul.Backend.Web.Controllers.Questions.ViewModels.QuestionMetaViewModel, Pangul.Backend.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-10-31 13:00:46.5896 INFO Executed action Pangul.Backend.Web.Controllers.Questions.QuestionsController.Metadata (Pangul.Backend.Web) in 90.0925ms
+2018-10-31 13:00:46.5896 INFO Executed action Pangul.Backend.Web.Controllers.Questions.QuestionsController.Metadata (Pangul.Backend.Web) in 91.9548ms
+2018-10-31 13:00:46.5896 INFO Request finished in 97.6042ms 200 application/json; charset=utf-8
+2018-10-31 13:00:46.5896 INFO Request finished in 95.3769ms 200 application/json; charset=utf-8
+2018-10-31 13:00:46.5941 INFO Request starting HTTP/1.1 POST http://localhost:5000/api/users/get application/json 10
+2018-10-31 13:00:46.5987 INFO Route matched with {action = "Get", controller = "Users"}. Executing action Pangul.Backend.Web.Controllers.Users.UsersController.Get (Pangul.Backend.Web)
+2018-10-31 13:00:46.5987 INFO Policy execution successful.
+2018-10-31 13:00:46.6030 INFO Executing action method Pangul.Backend.Web.Controllers.Users.UsersController.Get (Pangul.Backend.Web) with arguments (Pangul.Backend.Web.Controllers.Users.GetUserViewModel) - Validation state: Valid
+2018-10-31 13:00:46.6399 INFO Executed action method Pangul.Backend.Web.Controllers.Users.UsersController.Get (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 36.7401ms.
+2018-10-31 13:00:46.6399 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse`1[[Pangul.Backend.Web.Controllers.Users.UserViewModel, Pangul.Backend.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-10-31 13:00:46.6432 INFO Executed action Pangul.Backend.Web.Controllers.Users.UsersController.Get (Pangul.Backend.Web) in 44.1365ms
+2018-10-31 13:00:46.6435 INFO Request finished in 49.3829ms 200 application/json; charset=utf-8
+2018-10-31 13:00:46.6463 INFO Request starting HTTP/1.1 POST http://localhost:5000/api/users/get application/json 10
+2018-10-31 13:00:46.6463 INFO Route matched with {action = "Get", controller = "Users"}. Executing action Pangul.Backend.Web.Controllers.Users.UsersController.Get (Pangul.Backend.Web)
+2018-10-31 13:00:46.6463 INFO Policy execution successful.
+2018-10-31 13:00:46.6490 INFO Executing action method Pangul.Backend.Web.Controllers.Users.UsersController.Get (Pangul.Backend.Web) with arguments (Pangul.Backend.Web.Controllers.Users.GetUserViewModel) - Validation state: Valid
+2018-10-31 13:00:46.6529 INFO Executed action method Pangul.Backend.Web.Controllers.Users.UsersController.Get (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 3.6148ms.
+2018-10-31 13:00:46.6529 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse`1[[Pangul.Backend.Web.Controllers.Users.UserViewModel, Pangul.Backend.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-10-31 13:00:46.6536 INFO Executed action Pangul.Backend.Web.Controllers.Users.UsersController.Get (Pangul.Backend.Web) in 6.409ms
+2018-10-31 13:00:46.6536 INFO Request finished in 7.6746ms 200 application/json; charset=utf-8
+2018-10-31 13:00:49.0270 INFO Request starting HTTP/1.1 GET http://localhost:5000/favicon-32x32.png  
+2018-10-31 13:00:49.0277 INFO Sending file. Request path: '/favicon-32x32.png'. Physical path: '/Users/doug/dev/dotnet/pangul/Snapshot/wwwroot/favicon-32x32.png'
+2018-10-31 13:00:49.0277 INFO Request finished in 0.8993ms 200 image/png
+2018-10-31 13:00:49.0318 INFO Request starting HTTP/1.1 POST http://localhost:5000/api/topics/get application/json 22
+2018-10-31 13:00:49.0325 INFO Route matched with {action = "Get", controller = "Topics"}. Executing action Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web)
+2018-10-31 13:00:49.0325 INFO Policy execution successful.
+2018-10-31 13:00:49.0325 INFO Authorization was successful.
+2018-10-31 13:00:49.0345 INFO Executing action method Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web) with arguments (Pangul.Backend.Web.Controllers.Topics.TopicGetViewModel) - Validation state: Valid
+2018-10-31 13:00:49.0384 INFO Executed action method Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 3.7262ms.
+2018-10-31 13:00:49.0384 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse`1[[Pangul.Backend.Web.Controllers.Topics.ViewModels.TopicViewModel, Pangul.Backend.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-10-31 13:00:49.0384 INFO Executed action Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web) in 6.3237ms
+2018-10-31 13:00:49.0384 INFO Request finished in 7.4226ms 200 application/json; charset=utf-8
+2018-10-31 13:00:49.0430 INFO Request starting HTTP/1.1 POST http://localhost:5000/api/questions/get application/json 11
+2018-10-31 13:00:49.0478 INFO Route matched with {action = "Get", controller = "Questions"}. Executing action Pangul.Backend.Web.Controllers.Questions.QuestionsController.Get (Pangul.Backend.Web)
+2018-10-31 13:00:49.0478 INFO Policy execution successful.
+2018-10-31 13:00:49.0486 INFO Authorization was successful.
+2018-10-31 13:00:49.0486 INFO Authorization was successful.
+2018-10-31 13:00:49.0506 INFO Executing action method Pangul.Backend.Web.Controllers.Questions.QuestionsController.Get (Pangul.Backend.Web) with arguments (Pangul.Backend.Web.Controllers.Questions.ViewModels.GetQuestionViewModel) - Validation state: Valid
+2018-10-31 13:00:49.0584 INFO Executed action method Pangul.Backend.Web.Controllers.Questions.QuestionsController.Get (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 7.5962ms.
+2018-10-31 13:00:49.0584 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse`1[[Pangul.Backend.Web.Controllers.Questions.ViewModels.QuestionViewModel, Pangul.Backend.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-10-31 13:00:49.0631 INFO Executed action Pangul.Backend.Web.Controllers.Questions.QuestionsController.Get (Pangul.Backend.Web) in 14.9743ms
+2018-10-31 13:00:49.0634 INFO Request finished in 20.3447ms 200 application/json; charset=utf-8
+2018-10-31 13:00:49.0670 INFO Request starting HTTP/1.1 POST http://localhost:5000/api/questions/metadata application/json 11
+2018-10-31 13:00:49.0676 INFO Route matched with {action = "Metadata", controller = "Questions"}. Executing action Pangul.Backend.Web.Controllers.Questions.QuestionsController.Metadata (Pangul.Backend.Web)
+2018-10-31 13:00:49.0676 INFO Policy execution successful.
+2018-10-31 13:00:49.0676 INFO Authorization was successful.
+2018-10-31 13:00:49.0684 INFO Authorization was successful.
+2018-10-31 13:00:49.0703 INFO Executing action method Pangul.Backend.Web.Controllers.Questions.QuestionsController.Metadata (Pangul.Backend.Web) with arguments (Pangul.Backend.Web.Controllers.Questions.ViewModels.GetQuestionViewModel) - Validation state: Valid
+2018-10-31 13:00:49.0739 INFO Executed action method Pangul.Backend.Web.Controllers.Questions.QuestionsController.Metadata (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 3.3666ms.
+2018-10-31 13:00:49.0739 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse`1[[Pangul.Backend.Web.Controllers.Questions.ViewModels.QuestionMetaViewModel, Pangul.Backend.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-10-31 13:00:49.0746 INFO Executed action Pangul.Backend.Web.Controllers.Questions.QuestionsController.Metadata (Pangul.Backend.Web) in 6.6658ms
+2018-10-31 13:00:49.0746 INFO Request finished in 7.8106ms 200 application/json; charset=utf-8
+2018-10-31 13:00:49.0785 INFO Request starting HTTP/1.1 POST http://localhost:5000/api/users/get application/json 10
+2018-10-31 13:00:49.0785 INFO Route matched with {action = "Get", controller = "Users"}. Executing action Pangul.Backend.Web.Controllers.Users.UsersController.Get (Pangul.Backend.Web)
+2018-10-31 13:00:49.0795 INFO Policy execution successful.
+2018-10-31 13:00:49.0814 INFO Executing action method Pangul.Backend.Web.Controllers.Users.UsersController.Get (Pangul.Backend.Web) with arguments (Pangul.Backend.Web.Controllers.Users.GetUserViewModel) - Validation state: Valid
+2018-10-31 13:00:49.0850 INFO Executed action method Pangul.Backend.Web.Controllers.Users.UsersController.Get (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 3.3791ms.
+2018-10-31 13:00:49.0853 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse`1[[Pangul.Backend.Web.Controllers.Users.UserViewModel, Pangul.Backend.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-10-31 13:00:49.0853 INFO Executed action Pangul.Backend.Web.Controllers.Users.UsersController.Get (Pangul.Backend.Web) in 6.1427ms
+2018-10-31 13:00:49.0853 INFO Request finished in 7.2919ms 200 application/json; charset=utf-8
+2018-10-31 13:00:49.0966 INFO Request starting HTTP/1.1 POST http://localhost:5000/api/Answers/search application/json 40
+2018-10-31 13:00:49.1008 INFO Route matched with {action = "Search", controller = "Answers"}. Executing action Pangul.Backend.Web.Controllers.Answers.AnswersController.Search (Pangul.Backend.Web)
+2018-10-31 13:00:49.1008 INFO Policy execution successful.
+2018-10-31 13:00:49.1014 INFO Authorization was successful.
+2018-10-31 13:00:49.1014 INFO Authorization was successful.
+2018-10-31 13:00:49.1070 INFO Executing action method Pangul.Backend.Web.Controllers.Answers.AnswersController.Search (Pangul.Backend.Web) with arguments (Pangul.Backend.Web.Controllers.Answers.ViewModels.SearchAnswersViewModel) - Validation state: Valid
+2018-10-31 13:00:49.1287 INFO Executed action method Pangul.Backend.Web.Controllers.Answers.AnswersController.Search (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 21.4898ms.
+2018-10-31 13:00:49.1287 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse`1[[Pangul.Services.Infrastructure.Search.SearchResult, Pangul.Services.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-10-31 13:00:49.1296 INFO Executed action Pangul.Backend.Web.Controllers.Answers.AnswersController.Search (Pangul.Backend.Web) in 28.5155ms
+2018-10-31 13:00:49.1296 INFO Request finished in 33.2261ms 200 application/json; charset=utf-8
+2018-10-31 13:00:50.8741 INFO Request starting HTTP/1.1 GET http://localhost:5000/favicon-32x32.png  
+2018-10-31 13:00:50.8748 INFO Sending file. Request path: '/favicon-32x32.png'. Physical path: '/Users/doug/dev/dotnet/pangul/Snapshot/wwwroot/favicon-32x32.png'
+2018-10-31 13:00:50.8748 INFO Request finished in 0.857ms 200 image/png
+2018-10-31 13:00:50.8758 INFO Request starting HTTP/1.1 POST http://localhost:5000/api/topics/get application/json 22
+2018-10-31 13:00:50.8764 INFO Route matched with {action = "Get", controller = "Topics"}. Executing action Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web)
+2018-10-31 13:00:50.8764 INFO Policy execution successful.
+2018-10-31 13:00:50.8764 INFO Authorization was successful.
+2018-10-31 13:00:50.8782 INFO Executing action method Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web) with arguments (Pangul.Backend.Web.Controllers.Topics.TopicGetViewModel) - Validation state: Valid
+2018-10-31 13:00:50.8814 INFO Executed action method Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 2.9573ms.
+2018-10-31 13:00:50.8814 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse`1[[Pangul.Backend.Web.Controllers.Topics.ViewModels.TopicViewModel, Pangul.Backend.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-10-31 13:00:50.8814 INFO Executed action Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web) in 5.7145ms
+2018-10-31 13:00:50.8824 INFO Request finished in 6.6037ms 200 application/json; charset=utf-8
+2018-10-31 13:00:50.8899 INFO Request starting HTTP/1.1 POST http://localhost:5000/api/questions/search application/json 47
+2018-10-31 13:00:50.8906 INFO Route matched with {action = "Search", controller = "Questions"}. Executing action Pangul.Backend.Web.Controllers.Questions.QuestionsController.Search (Pangul.Backend.Web)
+2018-10-31 13:00:50.8906 INFO Policy execution successful.
+2018-10-31 13:00:50.8906 INFO Authorization was successful.
+2018-10-31 13:00:50.8915 INFO Authorization was successful.
+2018-10-31 13:00:50.8949 INFO Executing action method Pangul.Backend.Web.Controllers.Questions.QuestionsController.Search (Pangul.Backend.Web) with arguments (Pangul.Backend.Web.Controllers.Questions.ViewModels.PerformSearchViewModel) - Validation state: Valid
+2018-10-31 13:00:50.9040 INFO Executed action method Pangul.Backend.Web.Controllers.Questions.QuestionsController.Search (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 8.8595ms.
+2018-10-31 13:00:50.9044 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse`1[[Pangul.Services.Infrastructure.Search.SearchResult, Pangul.Services.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-10-31 13:00:50.9044 INFO Executed action Pangul.Backend.Web.Controllers.Questions.QuestionsController.Search (Pangul.Backend.Web) in 14.0091ms
+2018-10-31 13:00:50.9044 INFO Request finished in 15.1401ms 200 application/json; charset=utf-8
+2018-10-31 13:00:50.9089 INFO Request starting HTTP/1.1 POST http://localhost:5000/api/questions/getSummary application/json 9
+2018-10-31 13:00:50.9094 INFO Route matched with {action = "GetSummary", controller = "Questions"}. Executing action Pangul.Backend.Web.Controllers.Questions.QuestionsController.GetSummary (Pangul.Backend.Web)
+2018-10-31 13:00:50.9094 INFO Policy execution successful.
+2018-10-31 13:00:50.9094 INFO Authorization was successful.
+2018-10-31 13:00:50.9104 INFO Authorization was successful.
+2018-10-31 13:00:50.9104 INFO Request starting HTTP/1.1 POST http://localhost:5000/api/questions/getSummary application/json 9
+2018-10-31 13:00:50.9114 INFO Route matched with {action = "GetSummary", controller = "Questions"}. Executing action Pangul.Backend.Web.Controllers.Questions.QuestionsController.GetSummary (Pangul.Backend.Web)
+2018-10-31 13:00:50.9114 INFO Policy execution successful.
+2018-10-31 13:00:50.9114 INFO Authorization was successful.
+2018-10-31 13:00:50.9114 INFO Executing action method Pangul.Backend.Web.Controllers.Questions.QuestionsController.GetSummary (Pangul.Backend.Web) with arguments (Pangul.Backend.Web.Controllers.Questions.ViewModels.GetQuestionViewModel) - Validation state: Valid
+2018-10-31 13:00:50.9114 INFO Authorization was successful.
+2018-10-31 13:00:50.9142 INFO Executing action method Pangul.Backend.Web.Controllers.Questions.QuestionsController.GetSummary (Pangul.Backend.Web) with arguments (Pangul.Backend.Web.Controllers.Questions.ViewModels.GetQuestionViewModel) - Validation state: Valid
+2018-10-31 13:00:50.9179 INFO Executed action method Pangul.Backend.Web.Controllers.Questions.QuestionsController.GetSummary (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 5.5684ms.
+2018-10-31 13:00:50.9179 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse`1[[Pangul.Backend.Web.Controllers.Questions.ViewModels.QuestionSummaryViewModel, Pangul.Backend.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-10-31 13:00:50.9192 INFO Executed action Pangul.Backend.Web.Controllers.Questions.QuestionsController.GetSummary (Pangul.Backend.Web) in 9.5011ms
+2018-10-31 13:00:50.9195 INFO Request finished in 10.5396ms 200 application/json; charset=utf-8
+2018-10-31 13:00:50.9195 INFO Executed action method Pangul.Backend.Web.Controllers.Questions.QuestionsController.GetSummary (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 5.8124ms.
+2018-10-31 13:00:50.9206 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse`1[[Pangul.Backend.Web.Controllers.Questions.ViewModels.QuestionSummaryViewModel, Pangul.Backend.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-10-31 13:00:50.9206 INFO Executed action Pangul.Backend.Web.Controllers.Questions.QuestionsController.GetSummary (Pangul.Backend.Web) in 9.3771ms
+2018-10-31 13:00:50.9206 INFO Request finished in 10.2882ms 200 application/json; charset=utf-8
+2018-10-31 13:00:50.9234 INFO Request starting HTTP/1.1 POST http://localhost:5000/api/questions/metadata application/json 9
+2018-10-31 13:00:50.9234 INFO Route matched with {action = "Metadata", controller = "Questions"}. Executing action Pangul.Backend.Web.Controllers.Questions.QuestionsController.Metadata (Pangul.Backend.Web)
+2018-10-31 13:00:50.9243 INFO Policy execution successful.
+2018-10-31 13:00:50.9243 INFO Authorization was successful.
+2018-10-31 13:00:50.9243 INFO Authorization was successful.
+2018-10-31 13:00:50.9272 INFO Request starting HTTP/1.1 POST http://localhost:5000/api/questions/metadata application/json 9
+2018-10-31 13:00:50.9275 INFO Executing action method Pangul.Backend.Web.Controllers.Questions.QuestionsController.Metadata (Pangul.Backend.Web) with arguments (Pangul.Backend.Web.Controllers.Questions.ViewModels.GetQuestionViewModel) - Validation state: Valid
+2018-10-31 13:00:50.9275 INFO Route matched with {action = "Metadata", controller = "Questions"}. Executing action Pangul.Backend.Web.Controllers.Questions.QuestionsController.Metadata (Pangul.Backend.Web)
+2018-10-31 13:00:50.9285 INFO Policy execution successful.
+2018-10-31 13:00:50.9285 INFO Authorization was successful.
+2018-10-31 13:00:50.9285 INFO Authorization was successful.
+2018-10-31 13:00:50.9305 INFO Executing action method Pangul.Backend.Web.Controllers.Questions.QuestionsController.Metadata (Pangul.Backend.Web) with arguments (Pangul.Backend.Web.Controllers.Questions.ViewModels.GetQuestionViewModel) - Validation state: Valid
+2018-10-31 13:00:50.9326 INFO Executed action method Pangul.Backend.Web.Controllers.Questions.QuestionsController.Metadata (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 4.8945ms.
+2018-10-31 13:00:50.9326 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse`1[[Pangul.Backend.Web.Controllers.Questions.ViewModels.QuestionMetaViewModel, Pangul.Backend.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-10-31 13:00:50.9334 INFO Executed action Pangul.Backend.Web.Controllers.Questions.QuestionsController.Metadata (Pangul.Backend.Web) in 9.1458ms
+2018-10-31 13:00:50.9334 INFO Request finished in 10.2555ms 200 application/json; charset=utf-8
+2018-10-31 13:00:50.9356 INFO Executed action method Pangul.Backend.Web.Controllers.Questions.QuestionsController.Metadata (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 4.9162ms.
+2018-10-31 13:00:50.9356 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse`1[[Pangul.Backend.Web.Controllers.Questions.ViewModels.QuestionMetaViewModel, Pangul.Backend.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-10-31 13:00:50.9356 INFO Executed action Pangul.Backend.Web.Controllers.Questions.QuestionsController.Metadata (Pangul.Backend.Web) in 7.7135ms
+2018-10-31 13:00:50.9369 INFO Request finished in 9.6913ms 200 application/json; charset=utf-8
+2018-10-31 13:00:50.9396 INFO Request starting HTTP/1.1 POST http://localhost:5000/api/users/get application/json 10
+2018-10-31 13:00:50.9396 INFO Route matched with {action = "Get", controller = "Users"}. Executing action Pangul.Backend.Web.Controllers.Users.UsersController.Get (Pangul.Backend.Web)
+2018-10-31 13:00:50.9396 INFO Policy execution successful.
+2018-10-31 13:00:50.9417 INFO Executing action method Pangul.Backend.Web.Controllers.Users.UsersController.Get (Pangul.Backend.Web) with arguments (Pangul.Backend.Web.Controllers.Users.GetUserViewModel) - Validation state: Valid
+2018-10-31 13:00:50.9443 INFO Executed action method Pangul.Backend.Web.Controllers.Users.UsersController.Get (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 2.4173ms.
+2018-10-31 13:00:50.9445 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse`1[[Pangul.Backend.Web.Controllers.Users.UserViewModel, Pangul.Backend.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-10-31 13:00:50.9445 INFO Executed action Pangul.Backend.Web.Controllers.Users.UsersController.Get (Pangul.Backend.Web) in 4.7643ms
+2018-10-31 13:00:50.9445 INFO Request finished in 5.6724ms 200 application/json; charset=utf-8
+2018-10-31 13:00:51.8085 INFO Request starting HTTP/1.1 GET http://localhost:5000/favicon-32x32.png  
+2018-10-31 13:00:51.8085 INFO Sending file. Request path: '/favicon-32x32.png'. Physical path: '/Users/doug/dev/dotnet/pangul/Snapshot/wwwroot/favicon-32x32.png'
+2018-10-31 13:00:51.8094 INFO Request finished in 0.9036ms 200 image/png
+2018-10-31 13:00:51.8094 INFO Request starting HTTP/1.1 POST http://localhost:5000/api/topics/get application/json 22
+2018-10-31 13:00:51.8108 INFO Route matched with {action = "Get", controller = "Topics"}. Executing action Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web)
+2018-10-31 13:00:51.8108 INFO Policy execution successful.
+2018-10-31 13:00:51.8114 INFO Authorization was successful.
+2018-10-31 13:00:51.8128 INFO Executing action method Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web) with arguments (Pangul.Backend.Web.Controllers.Topics.TopicGetViewModel) - Validation state: Valid
+2018-10-31 13:00:51.8158 INFO Executed action method Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 2.8011ms.
+2018-10-31 13:00:51.8158 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse`1[[Pangul.Backend.Web.Controllers.Topics.ViewModels.TopicViewModel, Pangul.Backend.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-10-31 13:00:51.8165 INFO Executed action Pangul.Backend.Web.Controllers.Topics.TopicsController.Get (Pangul.Backend.Web) in 5.5265ms
+2018-10-31 13:00:51.8165 INFO Request finished in 6.4432ms 200 application/json; charset=utf-8
+2018-10-31 13:00:51.8218 INFO Request starting HTTP/1.1 POST http://localhost:5000/api/questions/get application/json 11
+2018-10-31 13:00:51.8226 INFO Route matched with {action = "Get", controller = "Questions"}. Executing action Pangul.Backend.Web.Controllers.Questions.QuestionsController.Get (Pangul.Backend.Web)
+2018-10-31 13:00:51.8226 INFO Policy execution successful.
+2018-10-31 13:00:51.8234 INFO Authorization was successful.
+2018-10-31 13:00:51.8234 INFO Authorization was successful.
+2018-10-31 13:00:51.8253 INFO Executing action method Pangul.Backend.Web.Controllers.Questions.QuestionsController.Get (Pangul.Backend.Web) with arguments (Pangul.Backend.Web.Controllers.Questions.ViewModels.GetQuestionViewModel) - Validation state: Valid
+2018-10-31 13:00:51.8298 INFO Executed action method Pangul.Backend.Web.Controllers.Questions.QuestionsController.Get (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 4.4078ms.
+2018-10-31 13:00:51.8298 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse`1[[Pangul.Backend.Web.Controllers.Questions.ViewModels.QuestionViewModel, Pangul.Backend.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-10-31 13:00:51.8306 INFO Executed action Pangul.Backend.Web.Controllers.Questions.QuestionsController.Get (Pangul.Backend.Web) in 7.7208ms
+2018-10-31 13:00:51.8306 INFO Request finished in 9.0856ms 200 application/json; charset=utf-8
+2018-10-31 13:00:51.8355 INFO Request starting HTTP/1.1 POST http://localhost:5000/api/questions/metadata application/json 11
+2018-10-31 13:00:51.8365 INFO Route matched with {action = "Metadata", controller = "Questions"}. Executing action Pangul.Backend.Web.Controllers.Questions.QuestionsController.Metadata (Pangul.Backend.Web)
+2018-10-31 13:00:51.8365 INFO Policy execution successful.
+2018-10-31 13:00:51.8365 INFO Authorization was successful.
+2018-10-31 13:00:51.8375 INFO Authorization was successful.
+2018-10-31 13:00:51.8397 INFO Executing action method Pangul.Backend.Web.Controllers.Questions.QuestionsController.Metadata (Pangul.Backend.Web) with arguments (Pangul.Backend.Web.Controllers.Questions.ViewModels.GetQuestionViewModel) - Validation state: Valid
+2018-10-31 13:00:51.8430 INFO Executed action method Pangul.Backend.Web.Controllers.Questions.QuestionsController.Metadata (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 3.0493ms.
+2018-10-31 13:00:51.8430 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse`1[[Pangul.Backend.Web.Controllers.Questions.ViewModels.QuestionMetaViewModel, Pangul.Backend.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-10-31 13:00:51.8437 INFO Executed action Pangul.Backend.Web.Controllers.Questions.QuestionsController.Metadata (Pangul.Backend.Web) in 6.8391ms
+2018-10-31 13:00:51.8437 INFO Request finished in 8.4174ms 200 application/json; charset=utf-8
+2018-10-31 13:00:51.8541 INFO Request starting HTTP/1.1 POST http://localhost:5000/api/Answers/search application/json 40
+2018-10-31 13:00:51.8548 INFO Route matched with {action = "Search", controller = "Answers"}. Executing action Pangul.Backend.Web.Controllers.Answers.AnswersController.Search (Pangul.Backend.Web)
+2018-10-31 13:00:51.8548 INFO Policy execution successful.
+2018-10-31 13:00:51.8554 INFO Authorization was successful.
+2018-10-31 13:00:51.8554 INFO Authorization was successful.
+2018-10-31 13:00:51.8573 INFO Executing action method Pangul.Backend.Web.Controllers.Answers.AnswersController.Search (Pangul.Backend.Web) with arguments (Pangul.Backend.Web.Controllers.Answers.ViewModels.SearchAnswersViewModel) - Validation state: Valid
+2018-10-31 13:00:51.8612 INFO Executed action method Pangul.Backend.Web.Controllers.Answers.AnswersController.Search (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 3.6451ms.
+2018-10-31 13:00:51.8615 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse`1[[Pangul.Services.Infrastructure.Search.SearchResult, Pangul.Services.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-10-31 13:00:51.8615 INFO Executed action Pangul.Backend.Web.Controllers.Answers.AnswersController.Search (Pangul.Backend.Web) in 6.8403ms
+2018-10-31 13:00:51.8615 INFO Request finished in 7.9905ms 200 application/json; charset=utf-8
+2018-10-31 13:00:51.8658 INFO Request starting HTTP/1.1 POST http://localhost:5000/api/Answers/get application/json 9
+2018-10-31 13:00:51.8713 INFO Route matched with {action = "Get", controller = "Answers"}. Executing action Pangul.Backend.Web.Controllers.Answers.AnswersController.Get (Pangul.Backend.Web)
+2018-10-31 13:00:51.8713 INFO Policy execution successful.
+2018-10-31 13:00:51.8713 INFO Authorization was successful.
+2018-10-31 13:00:51.8724 INFO Authorization was successful.
+2018-10-31 13:00:51.8776 INFO Executing action method Pangul.Backend.Web.Controllers.Answers.AnswersController.Get (Pangul.Backend.Web) with arguments (Pangul.Backend.Web.Controllers.Answers.ViewModels.GetAnswerViewModel) - Validation state: Valid
+2018-10-31 13:00:51.9096 INFO Executed action method Pangul.Backend.Web.Controllers.Answers.AnswersController.Get (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 31.7079ms.
+2018-10-31 13:00:51.9096 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse`1[[Pangul.Backend.Web.Controllers.Answers.ViewModels.AnswerViewModel, Pangul.Backend.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-10-31 13:00:51.9132 INFO Executed action Pangul.Backend.Web.Controllers.Answers.AnswersController.Get (Pangul.Backend.Web) in 41.6954ms
+2018-10-31 13:00:51.9135 INFO Request finished in 47.7167ms 200 application/json; charset=utf-8
+2018-10-31 13:00:51.9171 INFO Request starting HTTP/1.1 POST http://localhost:5000/api/Answers/metadata application/json 9
+2018-10-31 13:00:51.9223 INFO Route matched with {action = "Metadata", controller = "Answers"}. Executing action Pangul.Backend.Web.Controllers.Answers.AnswersController.Metadata (Pangul.Backend.Web)
+2018-10-31 13:00:51.9223 INFO Policy execution successful.
+2018-10-31 13:00:51.9223 INFO Authorization was successful.
+2018-10-31 13:00:51.9233 INFO Authorization was successful.
+2018-10-31 13:00:51.9250 INFO Executing action method Pangul.Backend.Web.Controllers.Answers.AnswersController.Metadata (Pangul.Backend.Web) with arguments (Pangul.Backend.Web.Controllers.Answers.ViewModels.GetAnswerViewModel) - Validation state: Valid
+2018-10-31 13:00:51.9800 INFO Executed action method Pangul.Backend.Web.Controllers.Answers.AnswersController.Metadata (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 54.791ms.
+2018-10-31 13:00:51.9800 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse`1[[Pangul.Backend.Web.Controllers.Answers.ViewModels.AnswerMetaViewModel, Pangul.Backend.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-10-31 13:00:51.9845 INFO Executed action Pangul.Backend.Web.Controllers.Answers.AnswersController.Metadata (Pangul.Backend.Web) in 61.9532ms
+2018-10-31 13:00:51.9845 INFO Request finished in 67.794ms 200 application/json; charset=utf-8
