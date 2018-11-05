@@ -10,6 +10,7 @@ export interface IQuestionSummary {
     topic: string;
     title: string;
     summary: string;
+    answer: string | null;
     tags: string[];
     user: UserView;
     meta: QuestionMeta;
@@ -46,6 +47,7 @@ export class QuestionSummary extends Model<IQuestionSummary> {
 
     protected blank(): IQuestionSummary {
         return {
+            answer: null,
             canEdit: false,
             meta: new QuestionMeta(),
             questionId: "",

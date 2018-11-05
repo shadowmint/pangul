@@ -69,12 +69,11 @@ namespace Pangul.Services.Concrete.Services.Questions
       });
     }
 
-    public async Task<Question> UpdateQuestion(PangulDbContext db, UserContext user, UpdateQuestion model)
+    public async Task UpdateQuestion(PangulDbContext db, UserContext user, UpdateQuestion model)
     {
       model.UserContext = user;
       model.Derived.Topic = model.Topic == null ? null : await _topicService.RequireTopic(db, user, model.Topic);
       await _updateQuestion.Execute(db, model);
-      return await GetQuestion(db, user, model.QuestionId);
     }
 
     public async Task<QuestionMetaInternalModel> UpdateQuestionMetadata(PangulDbContext db, UserContext user, UpdateQuestionMeta model)

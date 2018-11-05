@@ -11,6 +11,9 @@ export class TagList extends React.Component<ITagList> {
         const tags = this.props.tags.map((i) => {
             return (<div key={i} className="tag">{i}</div>);
         });
+        if (tags.length === 0) {
+            return <React.Fragment/>;
+        }
         return (
             <div className="component--TagList">
                 {this.props.tags.length > 0 ? tags : "No tags"}

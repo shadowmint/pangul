@@ -18,10 +18,10 @@ namespace Pangul.Backend.Web.Controllers.Questions
     private readonly Logger _logger;
     private readonly QuestionsControllerService _service;
 
-    public QuestionsController(IQuestionService questionService, ISearchService searchService, IUserService userService, IPurgeService purgeService)
+    public QuestionsController(IQuestionService questionService, ISearchService searchService, IUserService userService, IPurgeService purgeService, IAnswerService answerService)
     {
       _logger = LogManager.GetCurrentClassLogger();
-      _service = new QuestionsControllerService(questionService, searchService, userService, purgeService);
+      _service = new QuestionsControllerService(questionService, searchService, userService, purgeService, answerService);
     }
 
     [HttpPost]

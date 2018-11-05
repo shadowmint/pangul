@@ -14,6 +14,7 @@ using NCore.Base.Log;
 using NLog;
 using Pangul.Backend.Web.Configuration.Authentication;
 using Pangul.Backend.Web.Configuration.Authentication.Infrastructure;
+using Pangul.Backend.Web.Configuration.Settings;
 using Pangul.Services;
 using Pangul.Services.Concrete;
 using Pangul.Services.Services;
@@ -30,6 +31,9 @@ namespace Pangul.Backend.Web.Configuration.Core
 
     public IServiceProvider ConfigureServices(IServiceCollection services)
     {
+      // Load settings
+      var settings = new ServiceSettings();
+
       // Configure logging
       new LogService().ConfigureLogging(new ServiceLogging());
       services.AddSingleton<ILoggerFactory>((_) => new ServiceLoggerFactory());
@@ -50,6 +54,8 @@ namespace Pangul.Backend.Web.Configuration.Core
       // Load asp.net core services
       services.AddRouting();
       services.AddMvc().AddFluentValidation();
+      services.AddSpaStaticFiles(options => { options.RootPath = settings.Folders.StaticAssetsFolder; });
+
       new ServiceExtensions()
         .AddCors(services)
         .AddGlobalExceptionHandler(services);
@@ -82,7 +88,7 @@ namespace Pangul.Backend.Web.Configuration.Core
           name: "default",
           template: "{controller=Frontend}/{action=Index}/{id?}");
       });
-      
+
       app.UseCors(ServiceExtensions.PangulCorsPolicy);
 
       app.UseStaticFiles(new StaticFileOptions
@@ -93,7 +99,7 @@ namespace Pangul.Backend.Web.Configuration.Core
 
       app.UseWhen(
         context => !context.Request.Path.StartsWithSegments("/api"),
-        appBuilder => appBuilder.UseStaticFiles());
+        appBuilder => appBuilder.UseSpaStaticFiles());
 
       var logger = LogManager.GetCurrentClassLogger();
       logger.Info("Application started");

@@ -29,10 +29,22 @@ export class QuestionSummaryView extends React.Component<IQuestionSummaryView> {
                     </QuestionLink>
                     <TagList tags={this.props.question.state.tags}/>
                     <SafeMarkdown markdown={this.props.question.state.summary}/>
+                    {this.renderAnswer()}
                     <LayoutRightBottom>
                         <UserSummary user={this.props.question.state.user}/>
                     </LayoutRightBottom>
                 </div>
+            </div>
+        );
+    }
+
+    private renderAnswer() {
+        if (!this.props.question.state.answer) {
+            return <React.Fragment/>;
+        }
+        return (
+            <div className="answer">
+                <SafeMarkdown markdown={this.props.question.state.answer}/>
             </div>
         );
     }

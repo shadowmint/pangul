@@ -18,6 +18,7 @@ export interface IQuestionData {
 }
 
 export interface IQuestionSummaryData {
+    answer: string | null;
     canEdit: boolean;
     questionId: string;
     topic: string;

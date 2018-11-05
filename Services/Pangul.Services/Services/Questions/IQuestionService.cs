@@ -25,7 +25,7 @@ namespace Pangul.Services.Services.Questions
     /// <summary>
     /// Update an existing question.
     /// </summary>
-    Task<Question> UpdateQuestion(PangulDbContext db, UserContext user, UpdateQuestion model);
+    Task UpdateQuestion(PangulDbContext db, UserContext user, UpdateQuestion model);
 
     /// <summary>
     /// Get the user specific metadata about this question for this user.

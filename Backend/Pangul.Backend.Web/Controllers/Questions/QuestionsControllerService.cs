@@ -2,6 +2,7 @@
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using NCore.Optional;
 using Pangul.Backend.Web.Configuration.Core;
 using Pangul.Backend.Web.Controllers.Questions.ViewModels;
 using Pangul.Backend.Web.Infrastructure;
@@ -21,14 +22,16 @@ namespace Pangul.Backend.Web.Controllers.Questions
     private readonly ISearchService _searchService;
     private readonly IUserService _userService;
     private readonly IPurgeService _purgeService;
+    private readonly IAnswerService _answerService;
 
     public QuestionsControllerService(IQuestionService questionService, ISearchService searchService, IUserService userService,
-      IPurgeService purgeService)
+      IPurgeService purgeService, IAnswerService answerService)
     {
       _questionService = questionService;
       _searchService = searchService;
       _userService = userService;
       _purgeService = purgeService;
+      _answerService = answerService;
     }
 
     public async Task<StandardResponse> AskQuestion(ClaimsPrincipal identity, QuestionAddViewModel model, ModelStateDictionary modelState)
@@ -137,17 +140,19 @@ namespace Pangul.Backend.Web.Controllers.Questions
       {
         using (var user = await _userService.Become(db, identity))
         {
-          var question = await _questionService.UpdateQuestion(db, user, new UpdateQuestion()
+          await _questionService.UpdateQuestion(db, user, new UpdateQuestion()
           {
             QuestionId = model.QuestionId,
             RowVersion = model.RowVersion,
             Body = model.Body,
             Tags = model.Tags ?? new string[] { },
             Title = model.Title,
-            Topic = model.Topic            
+            Topic = model.Topic
           });
 
           await db.SaveChangesAsync();
+
+          var question = await _questionService.GetQuestion(db, user, model.QuestionId);
           return StandardResponse.For(QuestionViewModel.From(question));
         }
       }
@@ -191,7 +196,13 @@ namespace Pangul.Backend.Web.Controllers.Questions
         using (var user = await _userService.Become(db, identity, null))
         {
           var question = await _questionService.GetQuestion(db, user, model.Id);
-          return StandardResponse.For(QuestionSummaryViewModel.From(question));
+          var results = await _searchService.FindAnswersForQuestion(db, user, model.Id, 0, 1);
+
+          var bestAnswer = results.HasResults
+            ? Option.Some(await _answerService.GetAnswer(db, user, results.IdentityList[0].ToString()))
+            : Option.None<Answer>();
+
+          return StandardResponse.For(QuestionSummaryViewModel.From(question, bestAnswer));
         }
       }
     }
