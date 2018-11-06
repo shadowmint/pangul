@@ -6,3 +6,4 @@ package-lock.json
 yarn-lock.json
 old
 Snapshot/logs
+Snapshot/backup
