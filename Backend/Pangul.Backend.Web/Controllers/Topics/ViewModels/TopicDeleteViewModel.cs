@@ -1,4 +1,4 @@
-namespace Pangul.Backend.Web.Controllers.Topics
+namespace Pangul.Backend.Web.Controllers.Topics.ViewModels
 {
   public class TopicDeleteViewModel
   {

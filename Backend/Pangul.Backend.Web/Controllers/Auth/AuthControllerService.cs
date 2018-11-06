@@ -9,8 +9,8 @@ using Pangul.Backend.Web.Configuration.Authentication;
 using Pangul.Backend.Web.Configuration.Authentication.Infrastructure;
 using Pangul.Backend.Web.Configuration.Settings;
 using Pangul.Backend.Web.Controllers.Auth.ViewModels;
-using Pangul.Backend.Web.Errors;
 using Pangul.Backend.Web.Infrastructure.Conventions;
+using Pangul.Backend.Web.Infrastructure.Errors;
 using Pangul.Services.Services.Auth;
 
 namespace Pangul.Backend.Web.Controllers.Auth

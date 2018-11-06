@@ -1,4 +1,4 @@
-namespace Pangul.Backend.Web.Controllers.Users
+namespace Pangul.Backend.Web.Controllers.Users.ViewModels
 {
   public class GetUserViewModel
   {

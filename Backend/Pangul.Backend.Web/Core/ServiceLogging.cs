@@ -2,7 +2,7 @@ using NCore.Base.Log;
 using NLog;
 using Pangul.Backend.Web.Configuration.Settings;
 
-namespace Pangul.Backend.Web.Configuration.Core
+namespace Pangul.Backend.Web.Core
 {
   public class ServiceLogging : DefaultConfigBuilder
   {

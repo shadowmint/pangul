@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using FluentValidation;
+﻿using FluentValidation;
 using Pangul.Services;
 
-namespace Pangul.Backend.Web.Configuration.Core
+namespace Pangul.Backend.Web.Core
 {
     public class ServiceLocalDependencies
     {

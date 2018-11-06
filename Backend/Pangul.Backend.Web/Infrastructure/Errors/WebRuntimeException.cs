@@ -1,6 +1,6 @@
 using System;
 
-namespace Pangul.Backend.Web.Errors
+namespace Pangul.Backend.Web.Infrastructure.Errors
 {
   public class WebRuntimeException : Exception
   {

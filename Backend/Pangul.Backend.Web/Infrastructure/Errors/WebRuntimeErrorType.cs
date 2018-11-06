@@ -1,4 +1,4 @@
-namespace Pangul.Backend.Web.Errors
+namespace Pangul.Backend.Web.Infrastructure.Errors
 {
   public enum WebRuntimeErrorType
   {

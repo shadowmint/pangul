@@ -6,6 +6,7 @@ using NLog;
 using Pangul.Backend.Web.Configuration.Authentication.Policy;
 using Pangul.Backend.Web.Controllers.Questions;
 using Pangul.Backend.Web.Controllers.Questions.ViewModels;
+using Pangul.Backend.Web.Controllers.Topics.ViewModels;
 using Pangul.Backend.Web.Infrastructure.Conventions;
 using Pangul.Services.Services;
 using Pangul.Services.Services.Questions;

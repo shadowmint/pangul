@@ -4,7 +4,7 @@ using Autofac;
 using NCore.Base.Commands.Conventions;
 using Pangul.Services;
 
-namespace Pangul.Backend.Web.Configuration.Core
+namespace Pangul.Backend.Web.Core
 {
   public class ServiceDependencies : PangulServiceConventions.IClassLocator, PangulServiceConventions.IContainerBuilder
   {

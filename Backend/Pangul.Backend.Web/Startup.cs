@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Pangul.Backend.Web.Configuration.Core;
+using Pangul.Backend.Web.Core;
 
 namespace Pangul.Backend.Web
 {

@@ -3,7 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Pangul.Backend.Web.Configuration.Core;
+using Pangul.Backend.Web.Core;
 
 namespace Pangul.Backend.Web.Migrations
 {

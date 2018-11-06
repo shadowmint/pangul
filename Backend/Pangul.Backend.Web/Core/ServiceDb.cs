@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Pangul.Backend.Web.Configuration.Settings;
-using Pangul.Backend.Web.Errors;
+using Pangul.Backend.Web.Infrastructure.Errors;
 using Pangul.Core.Data;
 
-namespace Pangul.Backend.Web.Configuration.Core
+namespace Pangul.Backend.Web.Core
 {
   public class ServiceDb : PangulDbContext
   {

@@ -2,8 +2,8 @@
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Pangul.Backend.Web.Configuration.Core;
 using Pangul.Backend.Web.Controllers.Admin.AdminDb.ViewModels;
+using Pangul.Backend.Web.Core;
 
 namespace Pangul.Backend.Web.Controllers.Admin.AdminDb
 {

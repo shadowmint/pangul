@@ -6,6 +6,7 @@ using NCore.Base.WebAuth;
 using NLog;
 using Pangul.Backend.Web.Controllers.Auth;
 using Pangul.Backend.Web.Controllers.Auth.ViewModels;
+using Pangul.Backend.Web.Controllers.Users.ViewModels;
 using Pangul.Backend.Web.Infrastructure.Conventions;
 using Pangul.Services.Services;
 using Pangul.Services.Services.Auth;

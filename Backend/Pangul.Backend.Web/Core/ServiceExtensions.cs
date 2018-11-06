@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Pangul.Backend.Web.Configuration.Settings;
 using Pangul.Backend.Web.Infrastructure;
 
-namespace Pangul.Backend.Web.Configuration.Core
+namespace Pangul.Backend.Web.Core
 {
   public class ServiceExtensions
   {

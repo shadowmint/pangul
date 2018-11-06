@@ -1,11 +1,10 @@
 using System;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NLog;
 using ILogger = Microsoft.Extensions.Logging.ILogger;
 using LogLevel = Microsoft.Extensions.Logging.LogLevel;
 
-namespace Pangul.Backend.Web.Configuration.Core
+namespace Pangul.Backend.Web.Core
 {
   public class ServiceLoggerFactory : ILoggerFactory
   {

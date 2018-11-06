@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.Options;
 using NCore.Optional;
 using NLog;
+using NLog.Fluent;
 
 namespace Pangul.Backend.Web.Infrastructure.Middleware
 {
@@ -17,11 +18,11 @@ namespace Pangul.Backend.Web.Infrastructure.Middleware
     private PangulSpaMiddlewareOptions _options;
     private Logger _logger;
 
-    public PangulSpaMiddleware(RequestDelegate next, IOptions<PangulSpaMiddlewareOptions> options)
+    public PangulSpaMiddleware(RequestDelegate next, PangulSpaMiddlewareOptions options)
     {
       _next = next;
       _logger = LogManager.GetCurrentClassLogger();
-      _options = options.Value;
+      _options = options;
     }
 
 
@@ -30,26 +31,31 @@ namespace Pangul.Backend.Web.Infrastructure.Middleware
       var requestPath = context.Request.Path;
       _logger.Info($"path: {requestPath}");
 
-      // Ignore API routes, etc.
-      if (_options.IgnoreRoutes.Any(i => requestPath.StartsWithSegments(i)))
+      try
       {
-        await _next(context);
-        return;
+        // Ignore API routes, etc.
+        if (_options.IgnoreRoutes.Any(i => requestPath.StartsWithSegments(i)))
+        {
+          _logger.Info($"Static file from SPA middleware: {requestPath} -> Skip, ignore list");
+          await _next(context);
+          return;
+        }
+
+        // Match static files in the root folder
+        var fileInfo = await GetStaticFileInfo(requestPath, _options.StaticFolderRoot, _options.DefaultPath);
+        if (fileInfo)
+        {
+          var details = fileInfo.Unwrap(new PangulSpaMiddlewareServiceFileInfo());
+          _logger.Info($"Static file from SPA middleware: {requestPath} -> {details.Filename}: {details.MineType}: {details.Bytes.Length} bytes");
+          context.Response.StatusCode = 200;
+          context.Response.ContentType = details.MineType;
+          await context.Response.Body.WriteAsync(details.Bytes);
+          return;
+        }
       }
-
-      // Match static files in the root folder
-      var fileInfo = await GetStaticFileInfo(requestPath, _options.StaticFolderRoot, _options.DefaultPath);
-      if (fileInfo)
+      catch (Exception error)
       {
-        var details = fileInfo.Unwrap(new PangulSpaMiddlewareServiceFileInfo());
-        _logger.Info($"Static file from SPA middleware: {details.Filename}: {details.MineType}: {details.Bytes.Length} bytes");
-        //      context.Response.StatusCode = 500;
-//        context.Response.ContentType = "text/html";
-//        await context.Response.WriteAsync("Hello");
-
-
-        // to stop futher pipeline execution 
-//        return;
+        _logger.Error(error);
       }
 
       await _next(context);
@@ -58,68 +64,32 @@ namespace Pangul.Backend.Web.Infrastructure.Middleware
     private async Task<Option<PangulSpaMiddlewareServiceFileInfo>> GetStaticFileInfo(PathString requestPath, string rootFolder, string defaultPath)
     {
       var service = PangulSpaMiddlewareServiceFactory.GetStaticFileService();
-      var info = await service.GetStaticFileInfo(requestPath, rootFolder);
+      var info = await service.GetStaticFileInfo(requestPath, rootFolder, _options.ExpireSeconds);
       if (info)
       {
         return info;
       }
 
-      return await service.GetStaticFileInfo(defaultPath, rootFolder);
-    }
-  }
-
-  internal class PangulSpaMiddlewareService
-  {
-    private PangulSpaMiddlewareFileCache _cache;
-
-    public PangulSpaMiddlewareService()
-    {
-      _cache = new PangulSpaMiddlewareFileCache();
-    }
-
-    public async Task<Option<PangulSpaMiddlewareServiceFileInfo>> GetStaticFileInfo(PathString requestPath, string rootFolder)
-    {
-      var fullPath = GetFullPath(requestPath, rootFolder);
-      if (fullPath == null)
-      {
-        return Option.None<PangulSpaMiddlewareServiceFileInfo>();
-      }
-
-      if (_cache.Exists(fullPath))
-      {
-        return _cache.Get(fullPath);
-      }
-
-      if (File.Exists(fullPath))
-      {
-        await _cache.PopulateFrom(fullPath);
-        return _cache.Get(fullPath);
-      }
-
-      return Option.None<PangulSpaMiddlewareServiceFileInfo>();
-    }
-
-    private string GetFullPath(PathString requestPath, string rootFolder)
-    {
-      var path = Path.GetFullPath(Path.Combine(rootFolder, requestPath));
-      return !path.StartsWith(rootFolder) ? null : path;
+      return await service.GetStaticFileInfo(defaultPath, rootFolder, _options.ExpireSeconds);
     }
   }
 
   internal class PangulSpaMiddlewareFileCache
   {
-    private readonly ConcurrentDictionary<string, PangulSpaMiddlewareServiceFileInfo> _cache = new ConcurrentDictionary<string, PangulSpaMiddlewareServiceFileInfo>();
+    private readonly ConcurrentDictionary<string, PangulSpaMiddlewareServiceFileInfo> _cache =
+      new ConcurrentDictionary<string, PangulSpaMiddlewareServiceFileInfo>();
 
     private readonly FileExtensionContentTypeProvider _contentTypeProvider = new FileExtensionContentTypeProvider();
 
-    public bool Exists(string fullPath)
+    public bool Exists(string fullPath, int expireSeconds)
     {
-      return _cache.ContainsKey(fullPath);
+      var expiry = DateTimeOffset.Now - TimeSpan.FromSeconds(expireSeconds);
+      return _cache.ContainsKey(fullPath) && _cache[fullPath].Created > expiry;
     }
 
     public Option<PangulSpaMiddlewareServiceFileInfo> Get(string fullPath)
     {
-      return Exists(fullPath) ? Option.Some(_cache[fullPath]) : Option.None<PangulSpaMiddlewareServiceFileInfo>();
+      return Exists(fullPath, 1000) ? Option.Some(_cache[fullPath]) : Option.None<PangulSpaMiddlewareServiceFileInfo>();
     }
 
     public async Task PopulateFrom(string fullPath)
@@ -129,15 +99,14 @@ namespace Pangul.Backend.Web.Infrastructure.Middleware
       {
         Filename = filename,
         MineType = MimeTypeFor(filename),
-        Bytes = await File.ReadAllBytesAsync(fullPath)
+        Bytes = await File.ReadAllBytesAsync(fullPath),
+        Created = DateTimeOffset.Now
       };
     }
 
-
-    public string MimeTypeFor(string fileName)
+    private string MimeTypeFor(string fileName)
     {
-      string contentType;
-      if (!_contentTypeProvider.TryGetContentType(fileName, out contentType))
+      if (!_contentTypeProvider.TryGetContentType(fileName, out var contentType))
       {
         contentType = "application/octet-stream";
       }

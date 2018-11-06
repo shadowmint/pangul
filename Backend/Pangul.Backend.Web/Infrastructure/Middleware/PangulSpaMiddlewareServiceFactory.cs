@@ -2,9 +2,9 @@ using System;
 
 namespace Pangul.Backend.Web.Infrastructure.Middleware
 {
-  internal class PangulSpaMiddlewareServiceFactory
+  internal static class PangulSpaMiddlewareServiceFactory
   {
-    private static Lazy<PangulSpaMiddlewareService> _instance = new Lazy<PangulSpaMiddlewareService>();
+    private static readonly Lazy<PangulSpaMiddlewareService> _instance = new Lazy<PangulSpaMiddlewareService>();
 
     public static PangulSpaMiddlewareService GetStaticFileService()
     {

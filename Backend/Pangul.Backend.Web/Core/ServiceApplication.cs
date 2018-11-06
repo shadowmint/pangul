@@ -1,5 +1,4 @@
 using System;
-using System.IO;
 using System.IO.Abstractions;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
@@ -7,13 +6,11 @@ using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
 using NCore.Base.Commands.Conventions;
 using NCore.Base.Log;
 using NLog;
 using Pangul.Backend.Web.Configuration.Authentication;
-using Pangul.Backend.Web.Configuration.Authentication.Infrastructure;
 using Pangul.Backend.Web.Configuration.Settings;
 using Pangul.Backend.Web.Infrastructure.Middleware;
 using Pangul.Services;
@@ -22,7 +19,7 @@ using Pangul.Services.Services;
 using Pangul.Services.Services.Auth;
 using IContainer = Autofac.IContainer;
 
-namespace Pangul.Backend.Web.Configuration.Core
+namespace Pangul.Backend.Web.Core
 {
   public class ServiceApplication
   {
@@ -93,7 +90,8 @@ namespace Pangul.Backend.Web.Configuration.Core
       app.UseMiddleware<PangulSpaMiddleware>(new PangulSpaMiddlewareOptions()
       {
         StaticFolderRoot = settings.Folders.StaticAssetsFolder,
-        IgnoreRoutes = new [] { "/api" }
+        IgnoreRoutes = new [] { "/api" },
+        DefaultPath = "/index.html"
       });
 
       var logger = LogManager.GetCurrentClassLogger();

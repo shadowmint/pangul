@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using NCore.Base.WebAuth;
 using Pangul.Backend.Web.Configuration.Authentication.Infrastructure;
 using Pangul.Backend.Web.Configuration.Authentication.Policy;
-using Pangul.Backend.Web.Configuration.Core;
+using Pangul.Backend.Web.Core;
 using Pangul.Services.Services;
 using Pangul.Services.Services.Auth;
 

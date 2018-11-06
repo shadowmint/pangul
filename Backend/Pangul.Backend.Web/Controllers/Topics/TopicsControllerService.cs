@@ -1,8 +1,8 @@
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Pangul.Backend.Web.Configuration.Core;
 using Pangul.Backend.Web.Controllers.Topics.ViewModels;
+using Pangul.Backend.Web.Core;
 using Pangul.Backend.Web.Infrastructure.Conventions;
 using Pangul.Core.Infrastructure;
 using Pangul.Services.Db.Topics;
