@@ -4,7 +4,8 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using NCore.Base.WebAuth;
 using Pangul.Backend.Web.Configuration.Authentication.Infrastructure;
-using Pangul.Backend.Web.Configuration.Authentication.Policy;
+using Pangul.Backend.Web.Configuration.Authentication.Providers;
+using Pangul.Backend.Web.Configuration.Settings;
 using Pangul.Backend.Web.Core;
 using Pangul.Services.Services;
 using Pangul.Services.Services.Auth;
@@ -15,36 +16,6 @@ namespace Pangul.Backend.Web.Configuration.Authentication
   {
     private readonly IUserService _userService;
 
-    private readonly Dictionary<string, string> _users = new Dictionary<string, string>
-    {
-      {"admin", "admin"},
-      {"doug", "doug"}
-    };
-
-    private readonly Dictionary<string, IClaims[]> _userClaims = new Dictionary<string, IClaims[]>
-    {
-      {
-        "doug", new IClaims[]
-        {
-          new PangulUser(),
-          new PolicyCanCreateQuestion(),
-          new PolicyCanDeleteAnswer(),
-        }
-      },
-      {
-        "admin", new IClaims[]
-        {
-          new PangulUser(),
-          new PangulAdmin(),
-          new PolicyCanDeleteTopic(),
-          new PolicyCanDeleteAnswer(),
-          new PolicyCanDeleteQuestion(),
-          new PangulAdminDatabase(),
-          new PolicyCanCreateQuestion()
-        }
-      }
-    };
-
     public ServiceIdentityList(IUserService userService)
     {
       _userService = userService;
@@ -52,6 +23,9 @@ namespace Pangul.Backend.Web.Configuration.Authentication
 
     public async Task<bool> TryAuthorize<TAuth, TContext>(string username, TAuth authenticationToken, TContext authenticationContext)
     {
+      var settings = new ServiceSettings();
+      var policy = GetPolicyFor(settings.Auth.AuthProvider);
+
       var authContext = authenticationContext as ServiceAuthContext;
       if (authContext == null) return false;
 
@@ -59,11 +33,11 @@ namespace Pangul.Backend.Web.Configuration.Authentication
       if (string.IsNullOrEmpty(username)) return false;
       if (string.IsNullOrEmpty(token)) return false;
 
-      var success = _users.ContainsKey(username) && token.Equals(_users[username]);
+      var success = policy.Authorize(username, token);
 
       if (success)
       {
-        authContext.ClaimsForUser = CollectAllClaimsFor(_userClaims[token]);
+        authContext.ClaimsForUser = CollectAllClaimsFor(policy.ClaimsFor(username));
       }
 
       if (success)
@@ -72,6 +46,17 @@ namespace Pangul.Backend.Web.Configuration.Authentication
       }
 
       return success;
+    }
+
+    private IAuthAndClaimsProvider GetPolicyFor(ServiceAuthSettings.AuthProviderType authAuthProvider)
+    {
+      switch (authAuthProvider)
+      {
+        case ServiceAuthSettings.AuthProviderType.Test:
+          return new TestAuthAndClaimsProvider();
+        default:
+          throw new ArgumentOutOfRangeException(nameof(authAuthProvider), authAuthProvider, null);
+      }
     }
 
     private async Task RequireUserRecordForUser(string username)

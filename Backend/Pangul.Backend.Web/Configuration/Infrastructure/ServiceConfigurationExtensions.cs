@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Microsoft.Extensions.Configuration;
 using NLog;
+using Pangul.Backend.Web.Configuration.Settings;
 
 namespace Pangul.Backend.Web.Configuration.Infrastructure
 {
@@ -33,6 +35,16 @@ namespace Pangul.Backend.Web.Configuration.Infrastructure
       if (values == null) return new string[0];
 
       return values.Select(i => i.Value == null ? "" : i.Value.Trim()).Where(i => !string.IsNullOrEmpty(i)).ToArray();
+    }
+
+    public static T AsEnumOrDefault<T>(this IConfiguration conf, string key, T defaultValue) where T : struct
+    {
+      if (conf[key] == null) return defaultValue;
+      if (Enum.TryParse<T>(conf[key], out var value))
+      {
+        return value;
+      }
+      return defaultValue;
     }
   }
 }
