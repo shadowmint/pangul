@@ -42,7 +42,7 @@ namespace Pangul.Backend.Web.Infrastructure.Middleware
         }
 
         // Match static files in the root folder
-        var fileInfo = await GetStaticFileInfo(requestPath, _options.StaticFolderRoot, _options.DefaultPath);
+        var fileInfo = await GetStaticFileInfo(requestPath, _options.StaticFolderRoots, _options.DefaultPath);
         if (fileInfo)
         {
           var details = fileInfo.Unwrap(new PangulSpaMiddlewareServiceFileInfo());
@@ -61,16 +61,16 @@ namespace Pangul.Backend.Web.Infrastructure.Middleware
       await _next(context);
     }
 
-    private async Task<Option<PangulSpaMiddlewareServiceFileInfo>> GetStaticFileInfo(PathString requestPath, string rootFolder, string defaultPath)
+    private async Task<Option<PangulSpaMiddlewareServiceFileInfo>> GetStaticFileInfo(PathString requestPath, string[] rootFolders, string defaultPath)
     {
       var service = PangulSpaMiddlewareServiceFactory.GetStaticFileService();
-      var info = await service.GetStaticFileInfo(requestPath, rootFolder, _options.ExpireSeconds);
+      var info = await service.GetStaticFileInfo(requestPath, rootFolders, _options.ExpireSeconds);
       if (info)
       {
         return info;
       }
 
-      return await service.GetStaticFileInfo(defaultPath, rootFolder, _options.ExpireSeconds);
+      return await service.GetStaticFileInfo(defaultPath, rootFolders, _options.ExpireSeconds);
     }
   }
 

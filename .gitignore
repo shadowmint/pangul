@@ -8,3 +8,5 @@ old
 Backend/Pangul.Backend.Web/wwwroot/
 Snapshot/logs
 Snapshot/backup
+Backend/Pangul.Backend.Web/data.sqlite
+Snapshot

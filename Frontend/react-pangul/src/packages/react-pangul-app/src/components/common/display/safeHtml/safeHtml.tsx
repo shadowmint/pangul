@@ -4,7 +4,6 @@ import "./safeHtml.css";
 
 export interface ISafeHtml {
     value: string;
-    styles: string;
 }
 
 /**
@@ -32,7 +31,6 @@ export class SafeHtml extends React.Component<ISafeHtml> {
             selfClosing: ["img", "br", "hr", "area", "base", "basefont", "input", "link", "meta"],
         }) as string;
     }
-
 
     public constructor(props: ISafeHtml) {
         super(props);

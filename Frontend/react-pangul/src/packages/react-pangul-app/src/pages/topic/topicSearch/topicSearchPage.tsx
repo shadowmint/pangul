@@ -41,14 +41,6 @@ export class TopicSearchPage extends React.Component<ITopicViewQuestionProps> {
                                       topic={topic.state}
                                       loading={this.data.updating}/>
 
-                <LayoutContentContainer>
-                    <LayoutRightBox expand={true}>
-                        <TopicLink target={TopicLinkType.AddQuestion} topic={this.props.topic}>
-                            <button>Ask question</button>
-                        </TopicLink>
-                    </LayoutRightBox>
-                </LayoutContentContainer>
-
                 <SearchBar error={this.data.error}
                            value={search}
                            onChange={this.onSearchEvent}/>
@@ -61,6 +53,14 @@ export class TopicSearchPage extends React.Component<ITopicViewQuestionProps> {
                                    onNext={this.onNext}
                                    onPrev={this.onPrev}
                                    error={questions.error}/>
+
+                <LayoutContentContainer>
+                    <LayoutRightBox expand={true}>
+                        <TopicLink target={TopicLinkType.AddQuestion} topic={this.props.topic}>
+                            <button>Ask question</button>
+                        </TopicLink>
+                    </LayoutRightBox>
+                </LayoutContentContainer>
             </div>
         );
     }

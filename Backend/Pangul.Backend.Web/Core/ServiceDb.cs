@@ -1,4 +1,6 @@
+using System.IO;
 using Microsoft.EntityFrameworkCore;
+using NLog;
 using Pangul.Backend.Web.Configuration.Settings;
 using Pangul.Backend.Web.Infrastructure.Errors;
 using Pangul.Core.Data;
@@ -23,6 +25,23 @@ namespace Pangul.Backend.Web.Core
     public override PangulDbContext CreateScope()
     {
       return new ServiceDb();
+    }
+
+    public static void CreateAndMigrateDatabaseIfMissing()
+    {
+      var settings = new ServiceSettings();
+      if (!settings.Db.UseSqlite) return;
+      
+      var logger = LogManager.GetCurrentClassLogger();
+      var dbPath = settings.Db.Connection.Substring("DataSource=".Length);
+      if (!File.Exists(dbPath))
+      {
+        logger.Info("Missing database! Create and migrating a new database");
+        using (var db = new ServiceDb())
+        {
+          db.Database.Migrate();
+        }
+      }
     }
   }
 }

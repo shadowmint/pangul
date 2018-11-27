@@ -5,7 +5,7 @@ echo "Building from: ${HERE}"
 # Cleanup
 echo "Removing old snapshot"
 cd ${HERE}
-rm -r Snapshot
+rm -r Snapshot/bin
 
 # Backend
 echo "Building backend"
@@ -25,4 +25,4 @@ cp -r build/* ../../Backend/Pangul.Backend.Web/wwwroot/
 # Deployment snapshot
 echo "Building snapshot"
 cd ${HERE}/Backend/Pangul.Backend.Web
-dotnet publish -o ../../Snapshot -c Release
+dotnet publish -o ../../Snapshot/bin -c Release

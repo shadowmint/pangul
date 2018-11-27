@@ -89,11 +89,18 @@ namespace Pangul.Backend.Web.Core
 
       app.UseMiddleware<PangulSpaMiddleware>(new PangulSpaMiddlewareOptions()
       {
-        StaticFolderRoot = settings.Folders.StaticAssetsFolder,
+        StaticFolderRoots = new []
+        {
+          settings.Folders.StaticAssetsFolder,
+          settings.Folders.StaticAssetsFallbackFolder,
+        },
         IgnoreRoutes = new [] { "/api" },
         DefaultPath = "/index.html"
       });
 
+      // If we don't have a database, create it now
+      ServiceDb.CreateAndMigrateDatabaseIfMissing();      
+      
       var logger = LogManager.GetCurrentClassLogger();
       logger.Info("Application started");
     }

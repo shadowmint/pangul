@@ -10,6 +10,13 @@ Should be usable for small numbers of users for simple purposes.
 
 ## quickstart
 
+    cd Snapshot
+    dotnet Pangul.Backend.Web.dll
+
+To customize, modify `appsettings.json` and `wwwroot/config.json`
+
+## dev
+
     sh server.sh
     sh client.sh
 
