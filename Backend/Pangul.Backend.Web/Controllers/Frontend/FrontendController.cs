@@ -17,7 +17,13 @@ namespace Pangul.Backend.Web.Controllers.Frontend
 
     public IActionResult Index()
     {
-      var content = System.IO.File.ReadAllText(Path.Combine(_settings.Folders.StaticAssetsFolder, "index.html"));
+      var path = Path.Combine(_settings.Folders.StaticAssetsFolder, "index.html");
+      if (!System.IO.File.Exists(path))
+      {
+        path = Path.Combine(_settings.Folders.StaticAssetsFallbackFolder, "index.html");
+      }
+
+      var content = System.IO.File.ReadAllText(path);
       return Content(content, "text/html");
     }
   }

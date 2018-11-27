@@ -11,7 +11,7 @@ Should be usable for small numbers of users for simple purposes.
 ## quickstart
 
     cd Snapshot
-    dotnet Pangul.Backend.Web.dll
+    dotnet bin/Pangul.Backend.Web.dll
 
 To customize, modify `appsettings.json` and `wwwroot/config.json`
 
@@ -23,6 +23,12 @@ To customize, modify `appsettings.json` and `wwwroot/config.json`
 (hint: on windows use git bash)
 
 ### Release history
+
+#### 1.2.0
+
+- Now creates database if missing
+- Adds a Snapshot folder with a built version of the app
+- Minor style and bug fixes
 
 #### 1.1.0
 

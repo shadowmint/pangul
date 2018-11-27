@@ -1,0 +1,11 @@
+{
+  "backendUrl": "http://localhost:9000",
+  "baseUrl": "",
+  "footerNotice": "Hi!!",
+  "test": {
+    "test": false,
+    "testContent": null,
+    "testUser": "",
+    "testUserAuth": ""
+  }
+}
