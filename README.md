@@ -22,7 +22,15 @@ To customize, modify `appsettings.json` and `wwwroot/config.json`
 
 (hint: on windows use git bash)
 
-### 1.0.0
+### Release history
+
+#### 1.1.0
+
+- many bug fixes
+- better searching
+- answers, topics and questions can now be deleted by users with the correct permissions
+
+#### 1.0.0
 
 - site in now basically feature complete and can be used for dog fooding.
 - users are hard coded into [ServiceAuthentication.cs](https://github.com/shadowmint/pangul/blob/master/Backend/Pangul.Backend.Web/Configuration/Authentication/Identity/ServiceAuthentication.cs) for now.
