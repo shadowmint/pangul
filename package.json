@@ -17,8 +17,6 @@
     "NCore.Base.Commands": "github:shadowmint/ncore-base-commands",
     "NCore.Base.Log": "github:shadowmint/ncore-base-log",
     "NCore.Base.WebAuth": "github:shadowmint/ncore-base-webauth",
-    "NCore.Optional": "github:shadowmint/ncore-optional",
-    "react-loadable": "^5.5.0",
-    "react-router-dom": "^4.3.1"
+    "NCore.Optional": "github:shadowmint/ncore-optional"
   }
 }

@@ -1,4 +1,4 @@
-module.exports = {
+exports = {
   'moduleFileExtensions': [
     'ts',
     'tsx',

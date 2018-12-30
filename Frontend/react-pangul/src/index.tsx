@@ -5,7 +5,7 @@ import {ISettings} from "./packages/react-pangul-app/src/infrastructure/service/
 import AjaxFetch from './packages/react-pangul-core/src/infrastructure/fetch/ajaxFetch';
 import registerServiceWorker from './registerServiceWorker';
 
-new AjaxFetch("/").get("config.json").then((settings: ISettings) => {
+new AjaxFetch("/").get<ISettings>("config.json").then((settings: ISettings) => {
     ReactDOM.render(
         <App settings={settings}/>,
         document.getElementById('root') as HTMLElement
