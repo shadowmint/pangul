@@ -27,7 +27,7 @@ export class QuestionSummaryView extends React.Component<IQuestionSummaryView> {
                     <QuestionLink question={this.props.question} target={QuestionLinkType.View}>
                         <h2>{this.props.question.state.title}</h2>
                     </QuestionLink>
-                    <TagList tags={this.props.question.state.tags}/>
+                    <TagList tags={this.props.question.state.tags} topic={this.props.question.state.topic}/>
                     <SafeMarkdown markdown={this.props.question.state.summary}/>
                     {this.renderAnswer()}
                     <LayoutRightBottom>

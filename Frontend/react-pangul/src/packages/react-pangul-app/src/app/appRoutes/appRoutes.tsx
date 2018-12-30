@@ -27,6 +27,7 @@ export class AppRoutes extends React.Component<IAppRoutes> {
                     <Route exact={true} path="/self" render={this.self}/>
                     <Route exact={true} path="/logout" render={this.logout}/>
                     <Route exact={true} path="/t/:name" render={this.searchTopic}/>
+                    <Route exact={true} path="/t/:name/search/:query" render={this.searchTopicWithQuery}/>
                     <Route exact={true} path="/t/:name/edit" render={this.editTopic}/>
                     <Route exact={true} path="/t/:name/ask" render={this.askQuestion}/>
                     <Route exact={true} path="/t/:name/:questionId" render={this.viewQuestion}/>
@@ -54,6 +55,12 @@ export class AppRoutes extends React.Component<IAppRoutes> {
     private discoverTopics = () => (
         <TopicDiscoverPage user={this.props.user} search="*"/>
     )
+
+    private searchTopicWithQuery = (props: any) => {
+        return (
+            <TopicSearchPage user={this.props.user} topic={props.match.params.name} search={props.match.params.query}/>
+        );
+    }
 
     private searchTopic = (props: any) => (
         <TopicSearchPage user={this.props.user} topic={props.match.params.name} search="*"/>

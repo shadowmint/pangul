@@ -1,4 +1,4 @@
-import { SettingsProvider } from "./settingsProvider";
+import {SettingsProvider} from "./settingsProvider";
 
 export default class NavigationService {
     private readonly root: string;
@@ -52,6 +52,10 @@ export default class NavigationService {
 
     public urlForSelfProfile() {
         return `${this.root}/self`;
+    }
+
+    public urlForTopicQuery(topic: any, query: string) {
+        return `${this.root}/t/${topic}/search/${query}`;
     }
 
     public redirect(url: string) {

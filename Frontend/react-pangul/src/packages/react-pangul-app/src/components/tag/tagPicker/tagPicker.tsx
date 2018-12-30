@@ -1,7 +1,7 @@
 import * as React from "react";
-import { InputEditor } from "../../common/editors/inputEditor/inputEditor";
-import { isSameArray } from "../../common/utility/sameArray";
-import { TagList } from "../tagList/tagList";
+import {InputEditor} from "../../common/editors/inputEditor/inputEditor";
+import {isSameArray} from "../../common/utility/sameArray";
+import {TagList} from "../tagList/tagList";
 import "./tagPicker.css";
 
 export interface ITagPicker {
@@ -42,7 +42,7 @@ export class TagPicker extends React.Component<ITagPicker, ITagPickerStart> {
             <div className="component--TagPicker">
                 <InputEditor value={this.state.tagEditValue} onChange={this.onTagsChangedEvent}/>
                 <div className="rendered">
-                    <TagList tags={this.props.value}/>
+                    <TagList tags={this.props.value} topic={null}/>
                 </div>
             </div>
         );

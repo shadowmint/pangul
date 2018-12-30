@@ -26,6 +26,12 @@ export class TopicSearchPage extends React.Component<ITopicViewQuestionProps> {
         this.data.unload();
     }
 
+    public componentDidUpdate(prevProps: Readonly<ITopicViewQuestionProps>, prevState: Readonly<{}>, snapshot?: any): void {
+        if (this.props.search !== this.data.state.search) {
+            this.data.load(this.props);
+        }
+    }
+
     public render() {
         if (!this.guardInvalidState()) {
             return (<React.Fragment/>);

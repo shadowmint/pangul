@@ -26,7 +26,7 @@ export class QuestionView extends React.Component<IQuestionView> {
                 </div>
                 <div className="output">
                     <h2>{this.props.question.state.title}</h2>
-                    <TagList tags={this.props.question.state.tags}/>
+                    <TagList tags={this.props.question.state.tags} topic={this.props.question.state.topic}/>
                     <SafeMarkdown markdown={this.props.question.state.body}/>
                     <LayoutRightBottom>
                         <UserSummary user={this.props.question.state.user}/>
