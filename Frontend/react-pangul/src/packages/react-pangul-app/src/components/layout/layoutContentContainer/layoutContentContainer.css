@@ -1,7 +1,8 @@
 .component--LayoutContentContainer {
+    font-size: 1em;
     border: thin solid #efefef;
-    padding: 0.2em;
+    padding: 0.3em 0.2em 0.3em 0.5em;
     margin: 0.5em;
-    width: calc(100% - 1.5em);
+    width: calc(100% - 1.9em);
     position: relative;
 }

@@ -10,12 +10,33 @@ Should be usable for small numbers of users for simple purposes.
 
 ## quickstart
 
+    cd Snapshot
+    dotnet bin/Pangul.Backend.Web.dll
+
+To customize, modify `appsettings.json` and `wwwroot/config.json`
+
+## dev
+
     sh server.sh
     sh client.sh
 
 (hint: on windows use git bash)
 
-### 1.0.0
+### Release history
+
+#### 1.2.0
+
+- Now creates database if missing
+- Adds a Snapshot folder with a built version of the app
+- Minor style and bug fixes
+
+#### 1.1.0
+
+- many bug fixes
+- better searching
+- answers, topics and questions can now be deleted by users with the correct permissions
+
+#### 1.0.0
 
 - site in now basically feature complete and can be used for dog fooding.
 - users are hard coded into [ServiceAuthentication.cs](https://github.com/shadowmint/pangul/blob/master/Backend/Pangul.Backend.Web/Configuration/Authentication/Identity/ServiceAuthentication.cs) for now.

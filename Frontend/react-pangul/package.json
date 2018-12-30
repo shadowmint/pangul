@@ -36,6 +36,7 @@
     "@types/showdown": "^1.9.0",
     "node-sass": "^4.11.0",
     "react-scripts": "2.1.2",
-    "typescript": "^3.2.2"
+    "typescript": "^3.2.2",
+    "tslint": "^5.11.0"
   }
 }
