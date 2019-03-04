@@ -11,6 +11,6 @@
     <Folder Include="Db" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="System.IO.Abstractions" Version="2.1.0.231" />
+    <PackageReference Include="System.IO.Abstractions" Version="3.0.10" />
   </ItemGroup>
 </Project>

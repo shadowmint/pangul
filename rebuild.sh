@@ -16,7 +16,7 @@ dotnet build -c Release
 # Frontend
 echo "Building frontend"
 cd ${HERE}/Frontend/react-pangul/
-npm ci
+npm install
 npm run build
 rm -r ../../Backend/Pangul.Backend.Web/wwwroot
 mkdir ../../Backend/Pangul.Backend.Web/wwwroot

@@ -8,12 +8,19 @@ import {QuestionSummaryList} from "../../../components/question/questionSummaryL
 import {TopicLink, TopicLinkType} from "../../../components/topic/topicLink/topicLink";
 import {ITopicViewQuestionProps, TopicSearch} from "./topicSearch";
 
-export class TopicSearchPage extends React.Component<ITopicViewQuestionProps> {
+interface ITopicViewQuestionState {
+    lastSearchProp: string;
+}
+
+export class TopicSearchPage extends React.Component<ITopicViewQuestionProps, ITopicViewQuestionState> {
     private data: TopicSearch;
 
     constructor(props: ITopicViewQuestionProps) {
         super(props);
         this.data = new TopicSearch(() => this.forceUpdate());
+        this.state = {
+            lastSearchProp: ""
+        };
     }
 
     public componentDidMount() {
@@ -27,8 +34,10 @@ export class TopicSearchPage extends React.Component<ITopicViewQuestionProps> {
     }
 
     public componentDidUpdate(prevProps: Readonly<ITopicViewQuestionProps>, prevState: Readonly<{}>, snapshot?: any): void {
-        if (this.props.search !== this.data.state.search) {
-            this.data.load(this.props);
+        if (this.props.search !== this.state.lastSearchProp) {
+            this.setState({lastSearchProp: this.props.search}, () => {
+                this.data.load(this.props);
+            });
         }
     }
 

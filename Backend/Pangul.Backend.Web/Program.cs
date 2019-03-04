@@ -1,6 +1,5 @@
-﻿using System.IO;
+﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Logging;
 using Pangul.Backend.Web.Configuration.Settings;
 
 namespace Pangul.Backend.Web
@@ -15,8 +14,7 @@ namespace Pangul.Backend.Web
 
     private static IWebHost BuildWebHost(ServiceSettings settings)
     {
-      return new WebHostBuilder()
-        .UseKestrel()
+      return WebHost.CreateDefaultBuilder()
         .UseContentRoot(settings.Folders.RootFolder)
         .UseStartup<Startup>()
         .UseUrls(settings.Core.BindAddress)

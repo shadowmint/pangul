@@ -24,6 +24,10 @@ To customize, modify `appsettings.json` and `wwwroot/config.json`
 
 ### Release history
 
+#### 1.2.1
+
+- Minor bug fixes
+
 #### 1.2.0
 
 - Now creates database if missing
