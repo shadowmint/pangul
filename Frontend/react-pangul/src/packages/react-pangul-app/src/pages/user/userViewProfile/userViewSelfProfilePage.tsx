@@ -41,7 +41,7 @@ export class UserViewSelfProfilePage extends React.Component<IUserViewSelfProfil
                         <h3>Marked questions</h3>
                     </LayoutContentContainer>
 
-                    <QuestionSummaryList questions={starred}/>
+                    <QuestionSummaryList questions={starred} showEmpty={true}/>
 
                     <QuerySetPaginator allowedSizes={[1, 5, 10, 25]}
                                        queryState={starred.state}

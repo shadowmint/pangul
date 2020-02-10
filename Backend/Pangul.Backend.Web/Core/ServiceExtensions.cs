@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Cors.Infrastructure;
+﻿using System;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Cors.Internal;
 using Microsoft.Extensions.DependencyInjection;
 using Pangul.Backend.Web.Configuration.Settings;
 using Pangul.Backend.Web.Infrastructure;
@@ -13,7 +13,6 @@ namespace Pangul.Backend.Web.Core
 
     public ServiceExtensions AddCors(IServiceCollection services)
     {
-      services.Configure<MvcOptions>(opt => { opt.Filters.Add(new CorsAuthorizationFilterFactory(PangulCorsPolicy)); });
       services.AddCors(options => { options.AddPolicy(PangulCorsPolicy, corsOptions => Configure(corsOptions, services)); });
       return this;
     }

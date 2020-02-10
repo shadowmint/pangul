@@ -2,7 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Debug;
+using Microsoft.Extensions.Logging.Console;
+using Microsoft.Extensions.Options;
 using Pangul.Core.Data;
 
 namespace Pangul.Services.Tests.Fixtures
@@ -14,8 +15,8 @@ namespace Pangul.Services.Tests.Fixtures
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            RequireConnection();
-            ConfigureDebugLogging(optionsBuilder);
+           RequireConnection();
+           ConfigureDebugLogging(optionsBuilder);
            optionsBuilder.UseSqlite(_connection);
         }
 
@@ -23,9 +24,14 @@ namespace Pangul.Services.Tests.Fixtures
         {
             if (_loggerFactory == null)
             {
-                var serviceProvider = new ServiceCollection().AddLogging().BuildServiceProvider();
+                var serviceProvider = new ServiceCollection().AddLogging(options =>
+                {
+                    options.AddFilter(DbLoggerCategory.Database.Command.Name, LogLevel.Debug);
+                    options.AddConsole();
+                    options.AddDebug();
+                    options.SetMinimumLevel(LogLevel.Debug);
+                }).BuildServiceProvider();
                 _loggerFactory = serviceProvider.GetService<ILoggerFactory>();
-                _loggerFactory.AddProvider(new DebugLoggerProvider());               
             }
 
             optionsBuilder.UseLoggerFactory(_loggerFactory);

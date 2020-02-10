@@ -15,8 +15,8 @@
   "license": "MIT",
   "dependencies": {
     "NCore.Base.Commands": "github:shadowmint/ncore-base-commands",
-    "NCore.Base.Log": "github:shadowmint/ncore-base-log",
-    "NCore.Base.WebAuth": "github:shadowmint/ncore-base-webauth",
+    "NCore.Base.Log": "github:shadowmint/ncore-base-log#2.0.0",
+    "NCore.Base.WebAuth": "github:shadowmint/ncore-base-webauth#2.0.0",
     "NCore.Optional": "github:shadowmint/ncore-optional"
   }
 }

@@ -14,23 +14,29 @@ namespace Pangul.Backend.Web.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.1-rtm-30846");
+                .HasAnnotation("ProductVersion", "3.1.1");
 
             modelBuilder.Entity("Pangul.Core.Data.Questions.Answer", b =>
                 {
                     b.Property<long>("AnswerId")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
 
-                    b.Property<long>("AnswerGlobalMetaId");
+                    b.Property<long>("AnswerGlobalMetaId")
+                        .HasColumnType("INTEGER");
 
-                    b.Property<string>("Body");
+                    b.Property<string>("Body")
+                        .HasColumnType("TEXT");
 
-                    b.Property<long>("QuestionId");
+                    b.Property<long>("QuestionId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken();
+                        .IsConcurrencyToken()
+                        .HasColumnType("BLOB");
 
-                    b.Property<long>("UserId");
+                    b.Property<long>("UserId")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("AnswerId");
 
@@ -47,12 +53,15 @@ namespace Pangul.Backend.Web.Migrations
             modelBuilder.Entity("Pangul.Core.Data.Questions.AnswerGlobalMeta", b =>
                 {
                     b.Property<long>("AnswerGlobalMetaId")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
 
                     b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken();
+                        .IsConcurrencyToken()
+                        .HasColumnType("BLOB");
 
-                    b.Property<int>("Votes");
+                    b.Property<int>("Votes")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("AnswerGlobalMetaId");
 
@@ -62,16 +71,21 @@ namespace Pangul.Backend.Web.Migrations
             modelBuilder.Entity("Pangul.Core.Data.Questions.AnswerMeta", b =>
                 {
                     b.Property<long>("AnswerMetaId")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
 
-                    b.Property<long>("AnswerId");
+                    b.Property<long>("AnswerId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken();
+                        .IsConcurrencyToken()
+                        .HasColumnType("BLOB");
 
-                    b.Property<long>("UserId");
+                    b.Property<long>("UserId")
+                        .HasColumnType("INTEGER");
 
-                    b.Property<int>("Votes");
+                    b.Property<int>("Votes")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("AnswerMetaId");
 
@@ -85,22 +99,30 @@ namespace Pangul.Backend.Web.Migrations
             modelBuilder.Entity("Pangul.Core.Data.Questions.Question", b =>
                 {
                     b.Property<long>("QuestionId")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
 
-                    b.Property<string>("Body");
+                    b.Property<string>("Body")
+                        .HasColumnType("TEXT");
 
-                    b.Property<long>("QuestionGlobalMetaId");
+                    b.Property<long>("QuestionGlobalMetaId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken();
+                        .IsConcurrencyToken()
+                        .HasColumnType("BLOB");
 
-                    b.Property<DateTimeOffset>("TimeCreated");
+                    b.Property<DateTimeOffset>("TimeCreated")
+                        .HasColumnType("TEXT");
 
-                    b.Property<string>("Title");
+                    b.Property<string>("Title")
+                        .HasColumnType("TEXT");
 
-                    b.Property<long>("TopicId");
+                    b.Property<long>("TopicId")
+                        .HasColumnType("INTEGER");
 
-                    b.Property<long>("UserId");
+                    b.Property<long>("UserId")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("QuestionId");
 
@@ -117,12 +139,15 @@ namespace Pangul.Backend.Web.Migrations
             modelBuilder.Entity("Pangul.Core.Data.Questions.QuestionGlobalMeta", b =>
                 {
                     b.Property<long>("QuestionGlobalMetaId")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
 
                     b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken();
+                        .IsConcurrencyToken()
+                        .HasColumnType("BLOB");
 
-                    b.Property<int>("Votes");
+                    b.Property<int>("Votes")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("QuestionGlobalMetaId");
 
@@ -132,20 +157,27 @@ namespace Pangul.Backend.Web.Migrations
             modelBuilder.Entity("Pangul.Core.Data.Questions.QuestionMeta", b =>
                 {
                     b.Property<long>("QuestionMetaId")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
 
-                    b.Property<long>("QuestionId");
+                    b.Property<long>("QuestionId")
+                        .HasColumnType("INTEGER");
 
-                    b.Property<long?>("QuestionId1");
+                    b.Property<long?>("QuestionId1")
+                        .HasColumnType("INTEGER");
 
                     b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken();
+                        .IsConcurrencyToken()
+                        .HasColumnType("BLOB");
 
-                    b.Property<bool>("Star");
+                    b.Property<bool>("Star")
+                        .HasColumnType("INTEGER");
 
-                    b.Property<long>("UserId");
+                    b.Property<long>("UserId")
+                        .HasColumnType("INTEGER");
 
-                    b.Property<int>("Votes");
+                    b.Property<int>("Votes")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("QuestionMetaId");
 
@@ -161,14 +193,18 @@ namespace Pangul.Backend.Web.Migrations
             modelBuilder.Entity("Pangul.Core.Data.Questions.QuestionTag", b =>
                 {
                     b.Property<long>("QuestionTagId")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
 
-                    b.Property<long>("QuestionId");
+                    b.Property<long>("QuestionId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken();
+                        .IsConcurrencyToken()
+                        .HasColumnType("BLOB");
 
-                    b.Property<string>("Tag");
+                    b.Property<string>("Tag")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("QuestionTagId");
 
@@ -180,21 +216,28 @@ namespace Pangul.Backend.Web.Migrations
             modelBuilder.Entity("Pangul.Core.Data.Topics.Topic", b =>
                 {
                     b.Property<long>("TopicId")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
 
-                    b.Property<string>("Description");
+                    b.Property<string>("Description")
+                        .HasColumnType("TEXT");
 
-                    b.Property<byte[]>("Icon");
+                    b.Property<byte[]>("Icon")
+                        .HasColumnType("BLOB");
 
-                    b.Property<string>("IconType");
+                    b.Property<string>("IconType")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken();
+                        .IsConcurrencyToken()
+                        .HasColumnType("BLOB");
 
-                    b.Property<DateTimeOffset>("TimeCreated");
+                    b.Property<DateTimeOffset>("TimeCreated")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("TopicId");
 
@@ -207,12 +250,15 @@ namespace Pangul.Backend.Web.Migrations
             modelBuilder.Entity("Pangul.Core.Data.Users.Login", b =>
                 {
                     b.Property<long>("LoginId")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
 
                     b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken();
+                        .IsConcurrencyToken()
+                        .HasColumnType("BLOB");
 
-                    b.Property<string>("Username");
+                    b.Property<string>("Username")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("LoginId");
 
@@ -222,14 +268,18 @@ namespace Pangul.Backend.Web.Migrations
             modelBuilder.Entity("Pangul.Core.Data.Users.User", b =>
                 {
                     b.Property<long>("UserId")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
 
-                    b.Property<long?>("LoginId");
+                    b.Property<long?>("LoginId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken();
+                        .IsConcurrencyToken()
+                        .HasColumnType("BLOB");
 
-                    b.Property<long>("UserContactId");
+                    b.Property<long>("UserContactId")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("UserId");
 
@@ -245,16 +295,21 @@ namespace Pangul.Backend.Web.Migrations
             modelBuilder.Entity("Pangul.Core.Data.Users.UserContact", b =>
                 {
                     b.Property<long>("UserContactId")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
 
-                    b.Property<string>("Email");
+                    b.Property<string>("Email")
+                        .HasColumnType("TEXT");
 
-                    b.Property<string>("Firstname");
+                    b.Property<string>("Firstname")
+                        .HasColumnType("TEXT");
 
-                    b.Property<string>("Lastname");
+                    b.Property<string>("Lastname")
+                        .HasColumnType("TEXT");
 
                     b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken();
+                        .IsConcurrencyToken()
+                        .HasColumnType("BLOB");
 
                     b.HasKey("UserContactId");
 
@@ -266,17 +321,20 @@ namespace Pangul.Backend.Web.Migrations
                     b.HasOne("Pangul.Core.Data.Questions.AnswerGlobalMeta", "AnswerGlobalMeta")
                         .WithOne("Answer")
                         .HasForeignKey("Pangul.Core.Data.Questions.Answer", "AnswerGlobalMetaId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Pangul.Core.Data.Questions.Question", "Question")
                         .WithMany()
                         .HasForeignKey("QuestionId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Pangul.Core.Data.Users.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Pangul.Core.Data.Questions.AnswerMeta", b =>
@@ -284,12 +342,14 @@ namespace Pangul.Backend.Web.Migrations
                     b.HasOne("Pangul.Core.Data.Questions.Answer", "Answer")
                         .WithMany()
                         .HasForeignKey("AnswerId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Pangul.Core.Data.Users.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Pangul.Core.Data.Questions.Question", b =>
@@ -297,17 +357,20 @@ namespace Pangul.Backend.Web.Migrations
                     b.HasOne("Pangul.Core.Data.Questions.QuestionGlobalMeta", "QuestionGlobalMeta")
                         .WithOne("Question")
                         .HasForeignKey("Pangul.Core.Data.Questions.Question", "QuestionGlobalMetaId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Pangul.Core.Data.Topics.Topic", "Topic")
                         .WithMany()
                         .HasForeignKey("TopicId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Pangul.Core.Data.Users.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Pangul.Core.Data.Questions.QuestionMeta", b =>
@@ -315,16 +378,18 @@ namespace Pangul.Backend.Web.Migrations
                     b.HasOne("Pangul.Core.Data.Questions.Question", "Question")
                         .WithMany()
                         .HasForeignKey("QuestionId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("Pangul.Core.Data.Questions.Question")
+                    b.HasOne("Pangul.Core.Data.Questions.Question", null)
                         .WithMany("Meta")
                         .HasForeignKey("QuestionId1");
 
                     b.HasOne("Pangul.Core.Data.Users.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Pangul.Core.Data.Questions.QuestionTag", b =>
@@ -332,7 +397,8 @@ namespace Pangul.Backend.Web.Migrations
                     b.HasOne("Pangul.Core.Data.Questions.Question", "Question")
                         .WithMany("Tags")
                         .HasForeignKey("QuestionId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Pangul.Core.Data.Users.User", b =>
@@ -344,7 +410,8 @@ namespace Pangul.Backend.Web.Migrations
                     b.HasOne("Pangul.Core.Data.Users.UserContact", "UserContact")
                         .WithOne("User")
                         .HasForeignKey("Pangul.Core.Data.Users.User", "UserContactId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

@@ -22,6 +22,20 @@ To customize, modify `appsettings.json` and `wwwroot/config.json`
 
 (hint: on windows use git bash)
 
+## upgrades
+
+### efcore
+
+Use:
+
+    dotnet tool update --global dotnet-ef --version 3.1.0
+    
+Or, for the latest:
+
+    dotnet tool update --global dotnet-ef
+    
+ To get the latest version of ef core tooling.
+
 ### Release history
 
 #### 1.2.1

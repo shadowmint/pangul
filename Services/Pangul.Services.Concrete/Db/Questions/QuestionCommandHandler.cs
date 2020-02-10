@@ -94,7 +94,7 @@ namespace Pangul.Services.Concrete.Db.Questions
         await db.QuestionTag.AddRangeAsync(command.Tags.Where(t => !string.IsNullOrWhiteSpace(t)).Select(t => new QuestionTag
         {
           Tag = t,
-          QuestionId = question.QuestionId
+          Question = question,
         }));
       }
 

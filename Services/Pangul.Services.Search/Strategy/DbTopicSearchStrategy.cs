@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -42,11 +43,12 @@ namespace Pangul.Services.Search.Strategy
 
       foreach (var term in parsedQuery.Terms)
       {
-        collectedResults.AddRange(await db.Topic
+        var unsortedList = await db.Topic
           .Where(q => EF.Functions.Like(q.Name, $"%{term}%"))
-          .OrderByDescending(i => i.TimeCreated)
-          .Select(i => i.TopicId)
-          .ToListAsync());
+          .Select(i => Tuple.Create(i.TopicId, i.TimeCreated))
+          .ToListAsync();
+        var sortedList = unsortedList.OrderByDescending(i => i.Item2).Select(i => i.Item1).ToList();
+        collectedResults.AddRange(sortedList);
       }
 
       return collectedResults.Distinct().ToList();
@@ -59,10 +61,8 @@ namespace Pangul.Services.Search.Strategy
         return new long[] { };
       }
 
-      return await db.Topic
-        .OrderByDescending(i => i.TimeCreated)
-        .Select(i => i.TopicId)
-        .ToListAsync();
+      var unsortedList = await db.Topic.Select(i => Tuple.Create(i.TopicId, i.TimeCreated)).ToListAsync();
+      return unsortedList.OrderByDescending(i => i.Item2).Select(i => i.Item1).ToList();
     }
   }
 }

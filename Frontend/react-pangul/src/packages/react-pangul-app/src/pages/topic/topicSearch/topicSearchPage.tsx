@@ -60,7 +60,7 @@ export class TopicSearchPage extends React.Component<ITopicViewQuestionProps, IT
                            value={search}
                            onChange={this.onSearchEvent}/>
 
-                <QuestionSummaryList questions={questions}/>
+                <QuestionSummaryList questions={questions} showEmpty={true}/>
 
                 <QuerySetPaginator allowedSizes={[1, 5, 10, 25]}
                                    queryState={questions.state}

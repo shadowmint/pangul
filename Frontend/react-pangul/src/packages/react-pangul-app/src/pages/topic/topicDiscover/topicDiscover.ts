@@ -2,18 +2,20 @@ import { QuerySet } from "../../../../../react-pangul-core/src/domain/querySet";
 import { Topic } from "../../../../../react-pangul-core/src/domain/topic";
 import { UserContext } from "../../../../../react-pangul-core/src/domain/userContext";
 import { Page } from "../../../infrastructure/componentHelpers/page";
+import {QuestionSummary} from "../../../../../react-pangul-core/src/domain/questionSummary";
 
-export interface ITopicDiscoverProps {
+export interface TopicDiscoverProps {
     search: string;
     user: UserContext;
 }
 
-interface ITopicDiscover {
+interface TopicDiscoverState {
     search: string;
     topics: QuerySet<Topic>;
+    questions: QuerySet<QuestionSummary>;
 }
 
-export class TopicDiscover extends Page<ITopicDiscoverProps, ITopicDiscover> {
+export class TopicDiscover extends Page<TopicDiscoverProps, TopicDiscoverState> {
     constructor(forceUpdate: () => void) {
         super(forceUpdate);
     }
@@ -29,11 +31,17 @@ export class TopicDiscover extends Page<ITopicDiscoverProps, ITopicDiscover> {
                 throw topics.error;
             }
 
-            return {topics};
+            const query = `topic:* ${value}`;
+            const questions = await QuestionSummary.search(query, 10);
+            if (questions.error) {
+                throw questions.error;
+            }
+
+            return {topics, questions};
         });
     }
 
-    protected async loadInitialData(fromProps: ITopicDiscoverProps): Promise<void> {
+    protected async loadInitialData(fromProps: TopicDiscoverProps): Promise<void> {
         await this.update(async () => {
             const topics = await Topic.search(fromProps.search);
             if (topics.error) {
@@ -44,10 +52,11 @@ export class TopicDiscover extends Page<ITopicDiscoverProps, ITopicDiscover> {
         });
     }
 
-    protected blank(): ITopicDiscover {
+    protected blank(): TopicDiscoverState {
         return {
             search: "",
             topics: new QuerySet<Topic>(),
+            questions: new QuerySet<QuestionSummary>()
         };
     }
 

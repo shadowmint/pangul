@@ -5,17 +5,18 @@ import {LayoutContentContainer} from "../../layout/layoutContentContainer/layout
 import {QuestionSummaryView} from "../questionSummaryView/questionSummaryView";
 import "./questionSummaryList.css";
 
-export interface IQuestionSummaryList {
+export interface QuestionSummaryListProps {
     questions: QuerySet<QuestionSummary>;
+    showEmpty: boolean;
 }
 
-export interface IQuestionSummaryListState {
+export interface QuestionSummaryListState {
     pageSize: number;
     page: number;
 }
 
-export class QuestionSummaryList extends React.Component<IQuestionSummaryList, IQuestionSummaryListState> {
-    constructor(props: IQuestionSummaryList) {
+export class QuestionSummaryList extends React.Component<QuestionSummaryListProps, QuestionSummaryListState> {
+    constructor(props: QuestionSummaryListProps) {
         super(props);
         this.state = {
             page: 0,
@@ -33,6 +34,9 @@ export class QuestionSummaryList extends React.Component<IQuestionSummaryList, I
 
     public renderList() {
         if (this.props.questions.state.instances === null || this.props.questions.state.instances.length === 0) {
+            if (!this.props.showEmpty) {
+                return <></>;
+            }
             return (
                 <LayoutContentContainer>
                     No questions found

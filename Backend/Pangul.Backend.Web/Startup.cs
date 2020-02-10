@@ -20,9 +20,9 @@ namespace Pangul.Backend.Web
       return _application.ConfigureServices(services);
     }
 
-    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    public void Configure(IApplicationBuilder app)
     {
-      _application.ConfigureApplication(app, env);
+      _application.ConfigureApplication(app);
     }
   }
 }

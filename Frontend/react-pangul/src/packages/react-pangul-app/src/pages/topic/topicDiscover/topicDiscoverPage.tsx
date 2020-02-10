@@ -2,12 +2,13 @@ import * as React from "react";
 import { SearchBar } from "../../../components/common/fragments/searchBar/searchBar";
 import { LayoutStandardHeader } from "../../../components/layout/layoutStandardHeader/layoutStandardHeader";
 import { TopicList } from "../../../components/topic/topicList/topicList";
-import { ITopicDiscoverProps, TopicDiscover } from "./topicDiscover";
+import { TopicDiscoverProps, TopicDiscover } from "./topicDiscover";
+import {QuestionSummaryList} from "../../../components/question/questionSummaryList/questionSummaryList";
 
-export class TopicDiscoverPage extends React.Component<ITopicDiscoverProps> {
+export class TopicDiscoverPage extends React.Component<TopicDiscoverProps> {
     private data: TopicDiscover;
 
-    constructor(props: ITopicDiscoverProps) {
+    constructor(props: TopicDiscoverProps) {
         super(props);
         this.data = new TopicDiscover(() => this.forceUpdate());
     }
@@ -29,6 +30,7 @@ export class TopicDiscoverPage extends React.Component<ITopicDiscoverProps> {
 
         const search = this.data.state.search;
         const topics = this.data.state.topics;
+        const questions = this.data.state.questions;
 
         return (
             <div className={"component--TopicDiscoverPage"}>
@@ -41,6 +43,8 @@ export class TopicDiscoverPage extends React.Component<ITopicDiscoverProps> {
                            error={this.data.error}/>
 
                 <TopicList topics={topics}/>
+
+                <QuestionSummaryList questions={questions} showEmpty={false}/>
             </div>
         );
     }

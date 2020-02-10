@@ -48,14 +48,16 @@ namespace Pangul.Backend.Web.Core
 
       // Load asp.net core services
       services.AddRouting();
-      services.AddMvc().AddFluentValidation();
+      services.AddControllers()
+          .AddFluentValidation()
+          .AddNewtonsoftJson();
 
       new ServiceExtensions()
         .AddCors(services)
         .AddGlobalExceptionHandler(services);
 
       // Configure web auth
-      var authService = new ServicePolicyList().Build(services);
+      var authService = new ServicePolicyList().AddAuthorization(services);
       services.AddSingleton(authService);
 
       // Convert to autofac
@@ -72,21 +74,19 @@ namespace Pangul.Backend.Web.Core
       return new AutofacServiceProvider(_container);
     }
 
-    public void ConfigureApplication(IApplicationBuilder app, IHostingEnvironment env)
+    public void ConfigureApplication(IApplicationBuilder app)
     {
       // Load settings
       var settings = new ServiceSettings();
       
       app.UseAuthentication();
-      app.UseMvc(routes =>
-      {
-        routes.MapRoute(
-          name: "default",
-          template: "{controller=Frontend}/{action=Index}/{id?}");
-      });
-
+      app.UseRouting();
+      app.UseAuthorization();
       app.UseCors(ServiceExtensions.PangulCorsPolicy);
-
+      app.UseEndpoints(endpoints =>
+      {
+          endpoints.MapControllerRoute("default", "{controller=Frontend}/{action=Index}/{id?}");
+      });
       app.UseMiddleware<PangulSpaMiddleware>(new PangulSpaMiddlewareOptions()
       {
         StaticFolderRoots = new []
