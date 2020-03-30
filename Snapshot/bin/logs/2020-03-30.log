@@ -1,0 +1,78 @@
+2020-03-30 21:42:04.1746 INFO Application started
+2020-03-30 21:42:04.2748 INFO User profile is available. Using 'C:\Users\mtdun\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-03-30 21:42:04.2748 INFO Creating key {dd0ddd84-f1d9-4c17-84fd-438c83836a49} with creation date 2020-03-30 13:42:04Z, activation date 2020-03-30 13:42:04Z, and expiration date 2020-06-28 13:42:04Z.
+2020-03-30 21:42:04.3191 INFO Writing data to file 'C:\Users\mtdun\AppData\Local\ASP.NET\DataProtection-Keys\key-dd0ddd84-f1d9-4c17-84fd-438c83836a49.xml'.
+2020-03-30 21:42:25.7158 INFO Request starting HTTP/1.1 GET http://localhost:9000/  
+2020-03-30 21:42:25.7584 INFO Executing endpoint 'Pangul.Backend.Web.Controllers.Frontend.FrontendController.Index (Pangul.Backend.Web)'
+2020-03-30 21:42:25.7751 INFO Route matched with {action = "Index", controller = "Frontend"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Pangul.Backend.Web.Controllers.Frontend.FrontendController (Pangul.Backend.Web).
+2020-03-30 21:42:25.7751 INFO Executing action method Pangul.Backend.Web.Controllers.Frontend.FrontendController.Index (Pangul.Backend.Web) - Validation state: Valid
+2020-03-30 21:42:25.7751 INFO Executed action method Pangul.Backend.Web.Controllers.Frontend.FrontendController.Index (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.ContentResult in 1.3974ms.
+2020-03-30 21:42:25.7838 INFO Executing ContentResult with HTTP Response ContentType of text/html
+2020-03-30 21:42:25.7838 INFO Executed action Pangul.Backend.Web.Controllers.Frontend.FrontendController.Index (Pangul.Backend.Web) in 16.5842ms
+2020-03-30 21:42:25.7838 INFO Executed endpoint 'Pangul.Backend.Web.Controllers.Frontend.FrontendController.Index (Pangul.Backend.Web)'
+2020-03-30 21:42:25.7838 INFO Request finished in 79.0838ms 200 text/html
+2020-03-30 21:42:25.8484 INFO Request starting HTTP/1.1 GET http://localhost:9000/static/js/main.703c3819.chunk.js  
+2020-03-30 21:42:25.8484 INFO Request starting HTTP/1.1 GET http://localhost:9000/static/js/2.e93d31d4.chunk.js  
+2020-03-30 21:42:25.8484 INFO Request starting HTTP/1.1 GET http://localhost:9000/static/css/main.df6edae5.chunk.css  
+2020-03-30 21:42:25.8484 INFO path: /static/js/main.703c3819.chunk.js
+2020-03-30 21:42:25.8484 INFO path: /static/css/main.df6edae5.chunk.css
+2020-03-30 21:42:25.8484 INFO path: /static/js/2.e93d31d4.chunk.js
+2020-03-30 21:42:25.8667 INFO Static file from SPA middleware: /static/css/main.df6edae5.chunk.css -> main.df6edae5.chunk.css: text/css: 11809 bytes
+2020-03-30 21:42:25.8667 INFO Static file from SPA middleware: /static/js/main.703c3819.chunk.js -> main.703c3819.chunk.js: application/javascript: 99634 bytes
+2020-03-30 21:42:25.8667 INFO Static file from SPA middleware: /static/js/2.e93d31d4.chunk.js -> 2.e93d31d4.chunk.js: application/javascript: 505410 bytes
+2020-03-30 21:42:25.8667 INFO Request finished in 17.247ms 200 text/css
+2020-03-30 21:42:25.8667 INFO Request finished in 25.1371ms 200 application/javascript
+2020-03-30 21:42:25.8667 INFO Request finished in 25.1371ms 200 application/javascript
+2020-03-30 21:42:26.5178 INFO Request starting HTTP/1.1 GET http://localhost:9000/config.json  
+2020-03-30 21:42:26.5178 INFO path: /config.json
+2020-03-30 21:42:26.5178 INFO Static file from SPA middleware: /config.json -> config.json: application/json: 202 bytes
+2020-03-30 21:42:26.5178 INFO Request finished in 5.3821ms 200 application/json
+2020-03-30 21:42:26.5598 INFO Request starting HTTP/1.1 POST http://localhost:9000/api/auth/claims application/json 4
+2020-03-30 21:42:26.5658 INFO Authorization failed.
+2020-03-30 21:42:26.5658 INFO AuthenticationScheme: Pangul was challenged.
+2020-03-30 21:42:26.5658 INFO Request finished in 9.2607ms 403 
+2020-03-30 21:42:26.6761 INFO Request starting HTTP/1.1 GET http://localhost:9000/favicon-96x96.png  
+2020-03-30 21:42:26.6761 INFO Request starting HTTP/1.1 GET http://localhost:9000/favicon-32x32.png  
+2020-03-30 21:42:26.6761 INFO path: /favicon-96x96.png
+2020-03-30 21:42:26.6761 INFO path: /favicon-32x32.png
+2020-03-30 21:42:26.6761 INFO Static file from SPA middleware: /favicon-96x96.png -> favicon-96x96.png: image/png: 6655 bytes
+2020-03-30 21:42:26.6761 INFO Static file from SPA middleware: /favicon-32x32.png -> favicon-32x32.png: image/png: 25170 bytes
+2020-03-30 21:42:26.6761 INFO Request finished in 3.2777ms 200 image/png
+2020-03-30 21:42:26.6761 INFO Request finished in 3.6487ms 200 image/png
+2020-03-30 21:42:26.9837 INFO Request starting HTTP/1.1 GET http://localhost:9000/service-worker.js  
+2020-03-30 21:42:26.9862 INFO path: /service-worker.js
+2020-03-30 21:42:26.9862 INFO Static file from SPA middleware: /service-worker.js -> service-worker.js: application/javascript: 1181 bytes
+2020-03-30 21:42:26.9862 INFO Request finished in 7.0056ms 200 application/javascript
+2020-03-30 21:42:30.8442 INFO Request starting HTTP/1.1 POST http://localhost:9000/api/auth/login application/json 37
+2020-03-30 21:42:30.8491 INFO CORS policy execution successful.
+2020-03-30 21:42:30.8491 INFO Executing endpoint 'Pangul.Backend.Web.Controllers.Auth.AuthController.Login (Pangul.Backend.Web)'
+2020-03-30 21:42:30.8678 INFO Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Pangul.Backend.Web.Controllers.Auth.ViewModels.LoginViewModel) on controller Pangul.Backend.Web.Controllers.Auth.AuthController (Pangul.Backend.Web).
+2020-03-30 21:42:30.9837 INFO Executing action method Pangul.Backend.Web.Controllers.Auth.AuthController.Login (Pangul.Backend.Web) - Validation state: Valid
+2020-03-30 21:42:31.8695 INFO AuthenticationScheme: Pangul signed in.
+2020-03-30 21:42:31.8695 INFO Executed action method Pangul.Backend.Web.Controllers.Auth.AuthController.Login (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 886.0691ms.
+2020-03-30 21:42:31.8695 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse'.
+2020-03-30 21:42:31.9051 INFO Executed action Pangul.Backend.Web.Controllers.Auth.AuthController.Login (Pangul.Backend.Web) in 1036.8014ms
+2020-03-30 21:42:31.9051 INFO Executed endpoint 'Pangul.Backend.Web.Controllers.Auth.AuthController.Login (Pangul.Backend.Web)'
+2020-03-30 21:42:31.9051 INFO Request finished in 1062.0291ms 200 application/json; charset=utf-8
+2020-03-30 21:42:31.9051 INFO Request starting HTTP/1.1 POST http://localhost:9000/api/auth/claims application/json 4
+2020-03-30 21:42:31.9051 INFO Authorization was successful.
+2020-03-30 21:42:31.9051 INFO CORS policy execution successful.
+2020-03-30 21:42:31.9157 INFO Executing endpoint 'Pangul.Backend.Web.Controllers.Auth.AuthController.Claims (Pangul.Backend.Web)'
+2020-03-30 21:42:31.9157 INFO Route matched with {action = "Claims", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Claims() on controller Pangul.Backend.Web.Controllers.Auth.AuthController (Pangul.Backend.Web).
+2020-03-30 21:42:31.9157 INFO Executing action method Pangul.Backend.Web.Controllers.Auth.AuthController.Claims (Pangul.Backend.Web) - Validation state: Valid
+2020-03-30 21:42:31.9157 INFO Executed action method Pangul.Backend.Web.Controllers.Auth.AuthController.Claims (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 0.7821ms.
+2020-03-30 21:42:31.9157 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse`1[[<>f__AnonymousType3`3[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Pangul.Backend.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2020-03-30 21:42:31.9331 INFO Executed action Pangul.Backend.Web.Controllers.Auth.AuthController.Claims (Pangul.Backend.Web) in 15.7806ms
+2020-03-30 21:42:31.9331 INFO Executed endpoint 'Pangul.Backend.Web.Controllers.Auth.AuthController.Claims (Pangul.Backend.Web)'
+2020-03-30 21:42:31.9331 INFO Request finished in 21.411ms 200 application/json; charset=utf-8
+2020-03-30 21:42:31.9786 INFO Request starting HTTP/1.1 POST http://localhost:9000/api/topics/search application/json 35
+2020-03-30 21:42:31.9786 INFO Authorization was successful.
+2020-03-30 21:42:31.9786 INFO CORS policy execution successful.
+2020-03-30 21:42:31.9786 INFO Executing endpoint 'Pangul.Backend.Web.Controllers.Topics.TopicsController.Search (Pangul.Backend.Web)'
+2020-03-30 21:42:31.9786 INFO Route matched with {action = "Search", controller = "Topics"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Search(Pangul.Backend.Web.Controllers.Topics.ViewModels.TopicSearchViewModel) on controller Pangul.Backend.Web.Controllers.Topics.TopicsController (Pangul.Backend.Web).
+2020-03-30 21:42:31.9950 INFO Executing action method Pangul.Backend.Web.Controllers.Topics.TopicsController.Search (Pangul.Backend.Web) - Validation state: Valid
+2020-03-30 21:42:32.0761 INFO Executed action method Pangul.Backend.Web.Controllers.Topics.TopicsController.Search (Pangul.Backend.Web), returned result Microsoft.AspNetCore.Mvc.JsonResult in 80.5483ms.
+2020-03-30 21:42:32.0761 INFO Executing JsonResult, writing value of type 'Pangul.Backend.Web.Infrastructure.Conventions.StandardResponse`1[[Pangul.Services.Infrastructure.Search.SearchResult, Pangul.Services.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2020-03-30 21:42:32.0761 INFO Executed action Pangul.Backend.Web.Controllers.Topics.TopicsController.Search (Pangul.Backend.Web) in 96.6872ms
+2020-03-30 21:42:32.0761 INFO Executed endpoint 'Pangul.Backend.Web.Controllers.Topics.TopicsController.Search (Pangul.Backend.Web)'
+2020-03-30 21:42:32.0761 INFO Request finished in 102.9065ms 200 application/json; charset=utf-8
