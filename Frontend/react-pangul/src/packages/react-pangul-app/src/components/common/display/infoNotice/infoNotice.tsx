@@ -1,5 +1,4 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 import "./infoNotice.css";
 
 export interface IInfoNotice {
@@ -28,11 +27,6 @@ export class InfoNotice extends React.Component<IInfoNotice> {
     }
 
     private scrollAsync() {
-        setTimeout(() => {
-            if (this.innerRef.current != null) {
-                const errorRef = ReactDOM.findDOMNode(this.innerRef.current);
-                (errorRef as Element).scrollIntoView({block: "end", behavior: "smooth"});
-            }
-        }, 1);
+        // Skip, this never worked
     }
 }

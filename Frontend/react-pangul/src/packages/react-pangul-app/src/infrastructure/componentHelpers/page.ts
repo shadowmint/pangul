@@ -2,7 +2,7 @@ import { LoggerProvider } from "../../../../react-pangul-core/src/providers/logg
 import { Model } from "../../../../react-stateful/src/model";
 
 export abstract class Page<TInitialStateProps, TPageState> extends Model<TPageState> {
-    protected isLoaded: boolean = false;
+    protected isLoaded = false;
     protected unsubscribe: () => void;
 
     public constructor(forceUpdate: () => void) {

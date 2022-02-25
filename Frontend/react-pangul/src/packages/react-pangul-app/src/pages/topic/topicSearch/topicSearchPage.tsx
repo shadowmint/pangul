@@ -33,7 +33,7 @@ export class TopicSearchPage extends React.Component<ITopicViewQuestionProps, IT
         this.data.unload();
     }
 
-    public componentDidUpdate(prevProps: Readonly<ITopicViewQuestionProps>, prevState: Readonly<{}>, snapshot?: any): void {
+    public componentDidUpdate(): void {
         if (this.props.search !== this.state.lastSearchProp) {
             this.setState({lastSearchProp: this.props.search}, () => {
                 this.data.load(this.props);

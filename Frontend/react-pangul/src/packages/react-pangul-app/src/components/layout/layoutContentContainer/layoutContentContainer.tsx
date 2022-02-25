@@ -1,12 +1,10 @@
 import * as React from "react";
 import "./layoutContentContainer.css";
 
-export class LayoutContentContainer extends React.PureComponent {
-    public render() {
-        return (
-            <div className="component--LayoutContentContainer">
-                {this.props.children}
-            </div>
-        );
-    }
+export const LayoutContentContainer = (props: { children: React.ReactNode }) => {
+    return (
+        <div className="component--LayoutContentContainer">
+            {props.children}
+        </div>
+    );
 }
