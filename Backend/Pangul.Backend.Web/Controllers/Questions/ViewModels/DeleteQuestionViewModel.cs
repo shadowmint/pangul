@@ -2,6 +2,6 @@
 {
   public class DeleteQuestionViewModel
   {
-    public string Id { get; set; }
+    public string? Id { get; set; }
   }
 }

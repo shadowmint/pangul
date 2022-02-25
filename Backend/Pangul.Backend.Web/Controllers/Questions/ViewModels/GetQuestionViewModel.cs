@@ -2,7 +2,7 @@
 {
   public class GetQuestionViewModel
   {
-    public string Id { get; set; }
-    public string RowVersion { get; set; }
+    public string? Id { get; set; }
+    public string? RowVersion { get; set; }
   }
 }

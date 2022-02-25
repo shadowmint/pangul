@@ -25,7 +25,7 @@ export class SafeMarkdown extends React.PureComponent<ISafeMarkdown> {
             );
         } catch (error) {
             return (
-                <ErrorNotice error={error}/>
+                <ErrorNotice error={error as Error}/>
             );
         }
     }

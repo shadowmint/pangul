@@ -11,10 +11,10 @@ namespace Pangul.Core.Data.Topics
     public const string DefaultTopic = "default";
     
     public long TopicId { get; set; }
-    public string Name { get; set; }
-    public string Description { get; set; }
-    public byte[] Icon { get; set; }
-    public string IconType { get; set; }
+    public string? Name { get; set; }
+    public string? Description { get; set; } 
+    public byte[]? Icon { get; set; }
+    public string? IconType { get; set; }
     
     public DateTimeOffset TimeCreated { get; set; }
 

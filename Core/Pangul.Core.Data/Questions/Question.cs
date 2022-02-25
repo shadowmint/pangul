@@ -11,23 +11,23 @@ namespace Pangul.Core.Data.Questions
   {
     public long QuestionId { get; set; }
 
-    public virtual Topic Topic { get; set; }
+    public virtual Topic? Topic { get; set; } 
     public long TopicId { get; set; }
 
-    public virtual User User { get; set; }
+    public virtual User? User { get; set; }
     public long UserId { get; set; }
 
     public long QuestionGlobalMetaId { get; set; }
-    public virtual QuestionGlobalMeta QuestionGlobalMeta { get; set; }
+    public virtual QuestionGlobalMeta? QuestionGlobalMeta { get; set; }
 
-    public string Title { get; set; }
-    public string Body { get; set; }
+    public string Title { get; set; } = "";
+    public string Body { get; set; } = "";
 
     public DateTimeOffset TimeCreated { get; set; }
 
-    public virtual ICollection<QuestionMeta> Meta { get; set; }
+    public virtual ICollection<QuestionMeta>? Meta { get; set; }
 
-    public virtual ICollection<QuestionTag> Tags { get; set; }
+    public virtual ICollection<QuestionTag>? Tags { get; set; }
 
     /// <summary>
     /// This is a display only field to bind for the current active user without a view model.

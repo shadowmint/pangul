@@ -8,10 +8,10 @@ namespace Pangul.Core.Data.Questions
         public long AnswerMetaId { get; set; }
         
         public long AnswerId { get; set; }
-        public virtual Answer Answer { get; set; }
+        public virtual Answer? Answer { get; set; }
 
         public long UserId { get; set; }
-        public virtual User User { get; set; }
+        public virtual User? User { get; set; } 
         
         public int Votes { get; set; }
         

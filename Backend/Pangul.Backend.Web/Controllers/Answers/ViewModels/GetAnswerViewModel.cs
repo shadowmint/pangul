@@ -2,6 +2,6 @@
 {
   public class GetAnswerViewModel
   {
-    public string Id { get; set; }
+    public string? Id { get; set; }
   }
 }

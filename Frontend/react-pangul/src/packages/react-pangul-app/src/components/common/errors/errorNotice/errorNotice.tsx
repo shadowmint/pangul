@@ -1,5 +1,4 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 import "./errorNotice.css";
 
 export interface IErrorLike {
@@ -49,11 +48,6 @@ export class ErrorNotice extends React.Component<IErrorNotice> {
     }
 
     private scrollAsync() {
-        setTimeout(() => {
-            if (this.innerRef.current != null) {
-                const errorRef = ReactDOM.findDOMNode(this.innerRef.current);
-                (errorRef as Element).scrollIntoView({block: "end", behavior: "smooth"});
-            }
-        }, 1);
+        // Skip this, it never really worked.
     }
 }

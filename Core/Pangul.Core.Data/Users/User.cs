@@ -8,11 +8,13 @@ namespace Pangul.Core.Data.Users
     {
         public long UserId { get; set; }
 
-        public virtual Login Login { get; set; }
+        public virtual Login? Login { get; set; }
+        
         public long? LoginId { get; set; }
 
-        public virtual UserContact UserContact { get; set; }
-        public long UserContactId { get; set; }
+        public virtual UserContact? UserContact { get; set; }
+        
+        public long? UserContactId { get; set; }
 
         public static void BuildModel(ModelBuilder modelBuilder)
         {

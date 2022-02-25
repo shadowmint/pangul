@@ -42,17 +42,17 @@ export default class MemoryCache {
     public async update<T>(action: () => Promise<T>): Promise<T> {
         let result: T | null = null;
 
-        this.pending = new Promise(async (resolve, reject) => {
-            try {
-                result = await action();
+        this.pending = new Promise( (resolve, reject) => {
+            action().then((output) => {
+                result = output;
                 resolve();
-            } catch (error) {
+            }, (error) => {
                 reject(error);
-            }
+            })
         });
         await this.pending;
 
-        if (result == null) {
+        if (result === null) {
             throw new Error("No data returned from cache update query");
         }
 

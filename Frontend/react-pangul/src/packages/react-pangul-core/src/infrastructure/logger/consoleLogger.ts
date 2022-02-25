@@ -9,8 +9,6 @@ export default class ConsoleLogger implements ILogger {
     }
 
     public info(message?: any, ...optionalParams: any[]): void {
-        // @ts-ignore
-        // noinspection TsLint
         (window.console as any).log(message, ...optionalParams);
     }
 }

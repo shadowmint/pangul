@@ -4,9 +4,9 @@ namespace Pangul.Backend.Web.Controllers.Questions.ViewModels
 {
   public class QuestionMetaViewModel
   {
-    public string QuestionMetaId { get; set; }
-    public string RowVersion { get; set; }
-    public string QuestionId { get; set; }
+    public string? QuestionMetaId { get; set; }
+    public string? RowVersion { get; set; }
+    public string? QuestionId { get; set; }
     public int Votes { get; set; }
     public bool Star { get; set; }
     public QuestionGlobalMetaViewModel Global { get; set; }

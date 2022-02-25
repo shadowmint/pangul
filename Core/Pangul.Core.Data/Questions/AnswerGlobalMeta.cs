@@ -6,7 +6,7 @@ namespace Pangul.Core.Data.Questions
   {    
     public long AnswerGlobalMetaId { get; set; }
 
-    public virtual Answer Answer { get; set; }
+    public virtual Answer? Answer { get; set; }
     
     public int Votes { get; set; }
 

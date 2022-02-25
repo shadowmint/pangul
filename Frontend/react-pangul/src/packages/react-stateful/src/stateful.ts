@@ -43,8 +43,8 @@ export default class Stateful {
             if (delta) {
                 this.props = {...this.props, ...delta};
             }
-        } catch (error) {
-            this.error = error;
+        } catch (error: unknown) {
+            this.error = error as Error;
         }
         this._completedUpdate();
     }
