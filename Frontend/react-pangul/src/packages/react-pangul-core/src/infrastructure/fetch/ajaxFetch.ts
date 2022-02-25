@@ -64,7 +64,7 @@ export default class AjaxFetch implements IFetch {
             return await response.json();
         } catch (error) {
             return {
-                error,
+                error: error as Error,
                 success: false,
             };
         }

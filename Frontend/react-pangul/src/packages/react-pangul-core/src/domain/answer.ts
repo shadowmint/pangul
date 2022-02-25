@@ -1,5 +1,5 @@
 import {Model} from "../../../react-stateful/src/model";
-import {AnswersController} from "../controllers/answersController";
+import {AnswersController, IAnswerData} from "../controllers/answersController";
 import {AnswerMeta} from "./answerMeta";
 import {IQueryResult, QuerySet} from "./querySet";
 import {UserView} from "./userView";
@@ -25,7 +25,7 @@ export class Answer extends Model<IAnswer> {
     }
 
     /** Search for answers */
-    public static search(questionId: string, pageSize: number = 10, page: number = 0): Promise<QuerySet<Answer>> {
+    public static search(questionId: string, pageSize = 10, page = 0): Promise<QuerySet<Answer>> {
         return QuerySet.fromQuery({
             fetchIds: Answer.searchForIds,
             fetchInstance: Answer.get,
@@ -55,11 +55,14 @@ export class Answer extends Model<IAnswer> {
     public async save(): Promise<void> {
         const controller = new AnswersController();
         await this.update(async () => {
-            const simpleState = {
-                ...this.state,
+            const simpleState: IAnswerData = {
+                userId: this.state.userId,
+                questionId: this.state.questionId,
+                answerId: this.state.answerId,
+                body: this.state.body,
+                canEdit: this.state.canEdit,
+                rowVersion: this.state.rowVersion,
             };
-            delete simpleState.meta;
-            delete simpleState.user;
             if (!this.state.answerId) {
                 const identity = await controller.add(simpleState);
                 return await this.fetchAnswerData(identity.answerId);

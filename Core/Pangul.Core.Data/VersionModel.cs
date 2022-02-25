@@ -9,7 +9,7 @@ namespace Pangul.Core.Data
         /// This is not necessarily a `rowversion` column type in sqlserver;
         /// it is a generic field to use for concurrency checks.
         /// </summary>
-        public byte[] RowVersion { get; set; }
+        public byte[]? RowVersion { get; set; }
 
         public static void BuildVersionModel<T>(ModelBuilder modelBuilder) where T : VersionModel
         {

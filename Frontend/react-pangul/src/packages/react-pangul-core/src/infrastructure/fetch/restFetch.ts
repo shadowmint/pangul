@@ -49,7 +49,7 @@ export default class RestFetch implements IFetch {
                         } catch (error) {
                             resolve({
                                 data: {} as T,
-                                error,
+                                error: error as Error,
                                 success: false,
                             });
                             return;
@@ -59,7 +59,7 @@ export default class RestFetch implements IFetch {
             } catch (error) {
                 resolve({
                     data: {} as T,
-                    error,
+                    error: error as Error,
                     success: false,
                 });
             }

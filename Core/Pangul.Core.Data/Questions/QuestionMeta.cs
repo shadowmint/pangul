@@ -8,12 +8,13 @@ namespace Pangul.Core.Data.Questions
     public long QuestionMetaId { get; set; }
 
     public long UserId { get; set; }
-    public virtual User User { get; set; }
+    public virtual User? User { get; set; } 
 
     public long QuestionId { get; set; }
-    public virtual Question Question { get; set; }
+    public virtual Question? Question { get; set; } 
 
     public int Votes { get; set; }
+    
     public bool Star { get; set; }
 
     public static void BuildModel(ModelBuilder modelBuilder)

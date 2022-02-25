@@ -6,9 +6,9 @@ namespace Pangul.Core.Data.Users
     {
         public long LoginId { get; set; }
 
-        public string Username { get; set; }
-        
-        public User User { get; set; }
+        public string? Username { get; set; } 
+
+        public User? User { get; set; }
 
         public static void BuildModel(ModelBuilder modelBuilder)
         {

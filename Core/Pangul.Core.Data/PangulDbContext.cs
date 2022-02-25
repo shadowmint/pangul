@@ -14,26 +14,26 @@ namespace Pangul.Core.Data
 {
   public abstract class PangulDbContext : DbContext
   {
-    private IDbContextTransaction _activeTransactionScope;
+    private IDbContextTransaction? _activeTransactionScope;
 
     // Logins & claims
-    public DbSet<Login> Logins { get; set; }
+    public DbSet<Login>? Logins { get; set; }
 
     // Users
-    public DbSet<User> Users { get; set; }
-    public DbSet<UserContact> UserContacts { get; set; }
+    public DbSet<User>? Users { get; set; }
+    public DbSet<UserContact>? UserContacts { get; set; }
 
     // Topics
-    public DbSet<Topic> Topic { get; set; }
+    public DbSet<Topic>? Topic { get; set; }
 
     // Questions
-    public DbSet<Question> Question { get; set; }
-    public DbSet<Answer> Answer { get; set; }
-    public DbSet<AnswerMeta> AnswerMeta { get; set; }
-    public DbSet<AnswerGlobalMeta> AnswerGlobalMeta { get; set; }
-    public DbSet<QuestionTag> QuestionTag { get; set; }
-    public DbSet<QuestionMeta> QuestionMeta { get; set; }
-    public DbSet<QuestionGlobalMeta> QuestionGlobalMeta { get; set; }
+    public DbSet<Question>? Question { get; set; }
+    public DbSet<Answer>? Answer { get; set; }
+    public DbSet<AnswerMeta>? AnswerMeta { get; set; }
+    public DbSet<AnswerGlobalMeta>? AnswerGlobalMeta { get; set; }
+    public DbSet<QuestionTag>? QuestionTag { get; set; }
+    public DbSet<QuestionMeta>? QuestionMeta { get; set; }
+    public DbSet<QuestionGlobalMeta>? QuestionGlobalMeta { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

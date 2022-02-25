@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Redirect} from "react-router";
+import {Redirect} from "react-router-dom";
 import {InfoNotice} from "../../../components/common/display/infoNotice/infoNotice";
 import {LayoutContentContainer} from "../../../components/layout/layoutContentContainer/layoutContentContainer";
 import {LayoutFormContainer} from "../../../components/layout/layoutFormContainer/layoutFormContainer";

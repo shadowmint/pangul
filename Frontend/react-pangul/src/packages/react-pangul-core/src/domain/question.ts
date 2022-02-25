@@ -1,5 +1,5 @@
 import {Model} from "../../../react-stateful/src/model";
-import {QuestionsController} from "../controllers/questionsController";
+import {IQuestionData, QuestionsController} from "../controllers/questionsController";
 import {IQueryResult, QuerySet} from "./querySet";
 import {QuestionMeta} from "./questionMeta";
 import {UserView} from "./userView";
@@ -27,7 +27,7 @@ export class Question extends Model<IQuestion> {
     }
 
     /** Search for topics */
-    public static search(query: string, pageSize: number = 10, page: number = 0): Promise<QuerySet<Question>> {
+    public static search(query: string, pageSize = 10, page = 0): Promise<QuerySet<Question>> {
         return QuerySet.fromQuery({
             fetchIds: Question.searchForIds,
             fetchInstance: Question.get,
@@ -65,15 +65,20 @@ export class Question extends Model<IQuestion> {
         });
     }
 
-    /** Save a answer */
+    /** Save an answer */
     public async save(): Promise<void> {
         const controller = new QuestionsController();
         await this.update(async () => {
-            const simpleState = {
-                ...this.state,
+            const simpleState:IQuestionData = {
+                canEdit: this.state.canEdit,
+                questionId: this.state.questionId,
+                topic: this.state.topic,
+                title: this.state.title,
+                body: this.state.body,
+                tags: this.state.tags,
+                userId: this.state.userId,
+                rowVersion: this.state.rowVersion,
             };
-            delete simpleState.meta;
-            delete simpleState.user;
             if (!this.state.questionId) {
                 const identity = await controller.add(simpleState);
                 return await this.fetchQuestionData(identity.questionId);
@@ -111,6 +116,8 @@ export class Question extends Model<IQuestion> {
     }
 
     protected rebind(): void {
-        this.state.meta.parent = this;
+        if (this.state.meta) {
+            this.state.meta.parent = this;
+        }
     }
 }

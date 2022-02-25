@@ -7,10 +7,11 @@ namespace Pangul.Core.Data.Questions
   {
     public long QuestionTagId { get; set; }
 
-    public virtual Question Question { get; set; }
+    public virtual Question? Question { get; set; }
+    
     public long QuestionId { get; set; }
 
-    public string Tag { get; set; }
+    public string? Tag { get; set; }
 
     public static void BuildModel(ModelBuilder modelBuilder)
     {
