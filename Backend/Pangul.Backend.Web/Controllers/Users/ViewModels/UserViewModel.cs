@@ -4,8 +4,8 @@ namespace Pangul.Backend.Web.Controllers.Users.ViewModels
 {
   public class UserViewModel
   {
-    public string UserId { get; set; }
-    public string Username { get; set; }
+    public string? UserId { get; set; }
+    public string? Username { get; set; }
 
     public static UserViewModel From(User user)
     {

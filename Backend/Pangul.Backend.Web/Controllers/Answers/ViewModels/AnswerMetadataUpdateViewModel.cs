@@ -2,8 +2,8 @@
 {
   public class AnswerMetadataUpdateViewModel
   {
-    public string AnswerId { get; set; }
+    public string? AnswerId { get; set; }
     public int Votes { get; set; }
-    public string RowVersion { get; set; }
+    public string? RowVersion { get; set; }
   }
 }

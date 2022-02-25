@@ -2,9 +2,9 @@
 {
   public class QuestionMetadataUpdateViewModel
   {
-    public string QuestionId { get; set; }
+    public string? QuestionId { get; set; }
     public int Votes { get; set; }
     public bool Star { get; set; }
-    public string RowVersion { get; set; }
+    public string? RowVersion { get; set; }
   }
 }

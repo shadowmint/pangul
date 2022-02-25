@@ -5,11 +5,11 @@ namespace Pangul.Backend.Web.Controllers.Answers.ViewModels
 {
   internal class AnswerMetaViewModel
   {
-    public string RowVersion { get; set; }
-    public AnswerGlobalMetaViewModel Global { get; set; }
+    public string? RowVersion { get; set; }
+    public AnswerGlobalMetaViewModel? Global { get; set; }
     public int Votes { get; set; }
-    public string AnswerMetaId { get; set; }
-    public string AnswerId { get; set; }
+    public string? AnswerMetaId { get; set; }
+    public string? AnswerId { get; set; }
 
     public static AnswerMetaViewModel From(AnswerMetaInternalModel model)
     {

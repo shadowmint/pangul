@@ -10,14 +10,14 @@ namespace Pangul.Backend.Web.Controllers.Questions.ViewModels
     private const int MaxSummaryLength = 256;
     private const int MaxAnswerSummaryLength = 256;
 
-    public string QuestionId { get; set; }
-    public string Title { get; set; }
-    public string Summary { get; set; }
-    public string Answer { get; set; }
-    public IList<string> Tags { get; set; }
-    public string Topic { get; set; }
+    public string? QuestionId { get; set; }
+    public string? Title { get; set; }
+    public string? Summary { get; set; }
+    public string? Answer { get; set; }
+    public IList<string>? Tags { get; set; }
+    public string? Topic { get; set; }
     public bool CanEdit { get; set; }
-    public string UserId { get; set; }
+    public string? UserId { get; set; }
 
     public static QuestionSummaryViewModel From(Question question, Option<Answer> bestAnswer)
     {

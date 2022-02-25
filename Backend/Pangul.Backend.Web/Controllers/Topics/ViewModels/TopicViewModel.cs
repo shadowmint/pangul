@@ -14,10 +14,10 @@ namespace Pangul.Backend.Web.Controllers.Topics.ViewModels
       RowVersion = PangulRowVersion.GetString(model.RowVersion);
     }
 
-    public string Name { get; set; }
-    public string TopicId { get; set; }
-    public string Icon { get; set; }
-    public string Description { get; set; }
-    public string RowVersion { get; set; }
+    public string? Name { get; set; }
+    public string? TopicId { get; set; }
+    public string? Icon { get; set; }
+    public string? Description { get; set; }
+    public string? RowVersion { get; set; }
   }
 }
