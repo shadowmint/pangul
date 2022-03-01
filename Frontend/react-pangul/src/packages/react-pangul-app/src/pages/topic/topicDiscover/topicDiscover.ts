@@ -32,7 +32,7 @@ export class TopicDiscover extends Page<TopicDiscoverProps, TopicDiscoverState> 
             }
 
             const query = `topic:* ${value}`;
-            const questions = await QuestionSummary.search(query, 10);
+            const questions = await QuestionSummary.search(query, 256);
             if (questions.error) {
                 throw questions.error;
             }
