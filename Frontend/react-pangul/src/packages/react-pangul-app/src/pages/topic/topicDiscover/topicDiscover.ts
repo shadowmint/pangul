@@ -26,13 +26,13 @@ export class TopicDiscover extends Page<TopicDiscoverProps, TopicDiscoverState> 
         });
 
         await this.update(async () => {
-            const topics = await Topic.search(value);
+            const topics = await Topic.search(value, 256);
             if (topics.error) {
                 throw topics.error;
             }
 
             const query = `topic:* ${value}`;
-            const questions = await QuestionSummary.search(query, 256);
+            const questions = await QuestionSummary.search(query, 25);
             if (questions.error) {
                 throw questions.error;
             }
@@ -43,7 +43,7 @@ export class TopicDiscover extends Page<TopicDiscoverProps, TopicDiscoverState> 
 
     protected async loadInitialData(fromProps: TopicDiscoverProps): Promise<void> {
         await this.update(async () => {
-            const topics = await Topic.search(fromProps.search);
+            const topics = await Topic.search(fromProps.search, 256);
             if (topics.error) {
                 throw topics.error;
             }

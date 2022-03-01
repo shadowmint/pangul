@@ -9,7 +9,7 @@ namespace Pangul.Backend.Web.Controllers.Questions.Validators
     {
       RuleFor(x => x.Query).NotEmpty();
       RuleFor(x => x.Offset).GreaterThanOrEqualTo(0);
-      RuleFor(x => x.Limit).LessThanOrEqualTo(25);
+      RuleFor(x => x.Limit).LessThanOrEqualTo(1024);
     }
   }
 }
